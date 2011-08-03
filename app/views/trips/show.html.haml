@@ -1,0 +1,139 @@
+-#
+  übergebene Variablen:
+    - @user
+      der aktuell zugreifende Benutzer
+    - @trip
+      die Fahrt, um die es gerade geht
+    - @free_seats
+      noch freie Sitzplätze
+    - @occupied_seats
+      Anzahl besetzter Plätze
+    - @commited_passenger
+      Array mit allen Mitfahrern
+    - @uncommited_passenger
+      Array mit potentiellen Mitfahrern, die noch nicht akzeptiert wurden
+    - Variablen, zum bedingten Ausgeben von Informationen, abhängig davon, welchen Status
+      der aktuelle Benutzer hat:
+        * @status
+          Status des aktuellen Benutzers (s.u.)
+        * @FAHRER
+          der aktuelle Benutzer ist Fahrer
+        * @MITFAHRER
+          der aktuelle Benutzer ist Mitfahrer
+        * @POTENTIELLER_MITFAHRER
+          der aktuelle Benutzer hat sich als Mitfahrer beworben, wurde aber noch nicht
+          angenommen
+        * @GAST
+          der aktuelle Benutzer ist weder Fahrer, noch Mitfahrer, noch hat er eine
+          Bewerbung zur Mitfahrt abgeschickt (also reiner Beobachter - z.B. über die
+          Suche zu dieser Fahrt gekommen)
+
+  übergebene Methoden:
+    - passenger.get_avg_rating
+      gibt das aktuelle Rating (Durchschnitt aller Bewertungen) aus
+    - passenger.count_ratings
+      gibt aus, wie oft der Benutzer bewertet wurde
+
+  to do:
+    - Bedingte Ausgabe für die einzelnen Benutzer-Status implementieren
+    - Senden von Nachrichten an angezeitge Benutzer implementieren
+    - Anzeigen des Fahrers
+    - Anzeigen des Autos
+    - Anzeigen der Karte
+    - Annehmen/Ablehnen von Bewerbungen für Fahrer
+    - Austragen von Mitfahrern (für Fahrer) oder sich selbst
+
+-# Die Tabelle hat zwei Spalten: Eine für den die Tabelle der Mitfahrer etc, eine für die Map
+
+- c_passengers = @commited_passenger
+- u_passengers = @uncommited_passenger
+- f_seats = @free_seats
+- o_seats = @occupied_seats
+- fahrer = @trip.user
+- trip = @trip
+- user = @user
+
+
+%table.trips_base_table
+  %tr
+    %td
+      %table.trips_table
+        %tr
+          %td.center{:colspan => "4"} Fahrtinformationen
+        %tr
+          %td.left_bold#minimal Abfahrt:
+          %td.left= trip.address_start
+          %td.center#minimal= trip.start_time.strftime("%d.%m.%Y")
+          %td.center#minimal= trip.start_time.strftime("%H:%M")
+        %tr
+          %td.left_bold#minimal Ankunft:
+          %td.left= trip.address_end
+          %td.center#minimal
+          %td.center#minimal
+        %tr
+          %td.left_bold#minimal Fahrer:
+          %td.left{:colspan => "3"}
+            = link_to("#{fahrer.name}", fahrer)
+            = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :uid => fahrer.id, :tid => trip.id)) + " "
+            = link_to("Bewerten", url_for(:action => "new", :controller => "ratings", :uid => fahrer.id, :tid => trip.id))
+        %tr
+          %td.left_bold#minimal Auto:
+          %td.left{:colspan => "3"}= link_to("#{trip.car.car_type}", trip.car) +" (#{trip.car.description.truncate(60)})"
+
+      %table.trips_table
+        %tr
+          %td.center{:colspan => "4"}= "Mitfahrer (#{o_seats}/#{f_seats})"
+        - if @status != @FAHRER and @status != @MITFAHRER
+          %tr
+            %td.center{:colspan => "3"} Sie haben keine Berechtigung, Mitfahrer zu untersuchen
+        - if @status == @FAHRER or @status == @MITFAHRER
+          - if c_passengers == nil or c_passengers.count <= 0
+            %tr
+              %td.center{:colspan => "3"} keine Mitfahrer vorhanden
+          -else
+            %tr
+              %td Benutzername
+              %td.left{:colspan => "3"} Rating
+            - c_passengers.each do |passenger|
+              %tr
+                %td= link_to "#{passenger}", passenger
+                %td= "#{passenger.get_avg_rating} (#{passenger.count_ratings})"
+                %td.right
+                  = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :tid => trip.id, :uid => passenger.id))
+                  = link_to "Austragen", passenger
+                  = link_to("Bewerten", url_for(:action => "new", :controller => "ratings", :uid => passenger.id, :tid => trip.id))
+                %td#minimal
+
+      %table.trips_table
+        %tr
+          %td.center{:colspan => "4"}= "Anfragen (#{u_passengers == nil ? "0" : u_passengers.count})"
+        - if u_passengers == nil or u_passengers.count <= 0
+          %tr
+            %td.center{:colspan => "3"} keine Bewerbungen vorhanden
+        - else
+          - if @status != @FAHRER and @status != @POTENTIELLER_MITFAHRER
+            %tr
+              %td.center{:colspan => "3"} Sie haben keine Berechtigung, Bewerber zu untersuchen
+          - if @status == @FAHRER or @status == @POTENTIELLER_MITFAHRER
+            %tr
+              %td Benutzername
+              %td.left{:colspan => "3"} Rating
+            - u_passengers.each do |passenger|
+              - if @status == @FAHRER or passenger == user
+                %tr
+                  %td= link_to "#{passenger}", passenger
+                  %td= "#{passenger.get_avg_rating} (#{passenger.count_ratings})"
+                  - if @status == @FAHRER
+                    %td.right= link_to("annehmen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :accept => true))
+                    %td.right= link_to("ablehnen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
+                  - else
+                    %td
+                    %td.right= link_to("austragen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
+    %td
+      %h2 Hier kommt die Karten hin
+      %br/
+      %h2 (evtl als Miniatur mit
+      %br/
+      %h2 Link zur Gro&szlig;ansicht)
+  %tr
+    %td{:colspan => "2"}= link_to("Bewerben", url_for(:action => "update", :controller => "trips", :request => true))

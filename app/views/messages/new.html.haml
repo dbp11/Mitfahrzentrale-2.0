@@ -1,0 +1,32 @@
+%h2 Nachricht Schreiben
+
+= form_for @message do |f|
+	-if @message.errors.any?
+		#error_explanation
+			%h2= "#{pluralize(@message.errors.count, "error")} prohibited this message from being saved:"
+			%ul
+				- @message.errors.full_messages.each do |msg|
+					%li= msg
+	= f.hidden_field :writer_id
+	= f.hidden_field :receiver_id
+	%table.form_table
+		%tr
+			%td.form_table_both{:colspan => "2"}
+				= f.label("An:")
+				= link_to(@message.receiver.name, url_for(:action => "show", :controller => "users", :id => @message.receiver.id))
+		%tr
+			%td.form_table_both{:colspan => "2"}
+				= f.label(:subject, "Betreff")
+				%br
+				= f.text_field(:subject, :maxlength => "120", :required => "required")
+		%tr
+			%td.form_table_both{:colspan => "2"}
+				= f.label(:message, "Nachricht")
+				%br
+				= f.text_area(:message, :required => "required")
+		%tr
+			%td.form_table_left
+				= link_to('Zurück', "javascript:history.back()")
+			%td.form_table_right
+				= f.submit 'Senden'
+

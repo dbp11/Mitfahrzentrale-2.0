@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @rating.comment
+%p
+  %b Mark:
+  = @rating.mark
+%p
+  %b Written by:
+  = @rating.author
+%p
+  %b Sent to:
+  = @rating.receiver
+%p
+  %b Trip:
+  = @rating.trip
+
+= link_to 'Edit', edit_rating_path(@rating)
+\|
+= link_to 'Back', ratings_path

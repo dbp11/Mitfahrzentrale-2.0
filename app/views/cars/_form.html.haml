@@ -1,0 +1,39 @@
+= stylesheet_link_tag :cars
+= form_for @car do |f|
+  -if @car.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@car.errors.count, "error")} Beim speichern des Fahrzeuges ist ein Fehler aufgetreten:"
+      %ul
+        - @car.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :seats, "Sitzplätze*" 
+    %br
+    = f.number_field :seats, :size => 30, :value => 5, :min => 0, :max =>40
+  .field
+    = f.label :car_type, "Fahrzeugmodell*"
+    %br
+    = f.text_field :car_type, :required => true
+  .field
+    = f.label :licence, "Kennzeichen*"
+    %br
+    = f.text_field :licence, :required => true 
+  .field
+    = f.label :price_km, "Preis/km"
+    %br
+    = f.text_field :price_km
+  .field
+    = f.label :smoker, "Raucher"
+    %br
+    = f.check_box :smoker
+  .field
+    = f.label :description, "Beschreibung"
+    %br
+    = f.text_field :description
+  .field
+    = f.label :carpic, "Bild hochladen"
+    %br    
+    = f.file_field :carpic
+
+  .actions
+    = f.submit 'Speichern'

@@ -1,0 +1,261 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require "normalize"
+ *= require_self
+ *= require_tree .
+*/
+/*  =============================================================================
+    Farbcodes
+    ========================================================================== */   
+/*$bg_color1: #87CEEB;*/
+$bg_color1: #BBBBBB;
+$font_color: black;
+$bg_color2: lighten($bg_color1, 90%);
+$nav_border_color_2: lighten($bg_color1, 10%);
+$nav_border_color_1: darken($bg_color1, 20%);
+$nav_font_color: black;
+$nav_bg_color: darken($bg_color1, 20%);
+
+/* =============================================================================
+	 General settings in application.css.scss
+	 ========================================================================== */
+body {
+	background-color: $bg_color1;
+	color: $font_color;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+}
+
+p, ol, ul, td {
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-size: 13px;
+	line-height: 18px;
+}
+
+pre {
+	background-color: $bg_color1;
+	padding: 10px;
+	font-size: 11px;
+}
+
+/* =============================================================================
+	 Links
+	 ========================================================================== */
+a {
+}
+
+a:visited {
+/*		color: #551a8b;*/
+}
+
+/*
+ * Addresses outline displayed oddly in Chrome
+ */
+
+a:focus {
+		outline: thin dotted;
+}
+
+/*
+ * Improves readability when focused and also mouse hovered in all browsers
+ * people.opera.com/patrickl/experiments/keyboard/test
+ */
+
+a:hover,
+a:active {
+		outline: 0;
+}
+
+
+
+
+
+textarea {
+	/*width: 300px;
+	height: 6em;*/
+	resize: none;
+}
+label {
+	font-weight: bold;
+}
+.form_table_left {
+	padding: 5px;
+	vertical-align: top;
+	width: 100px;
+}
+.form_table_right {
+	text-align: right;
+	padding: 5px;
+	vertical-align: top;
+}
+body {
+	margin: 0;
+  width: 100%;
+}
+.container {
+/*	margin-left: 10em;*/
+/*	margin-right: 10em;*/
+	width: 1000px;
+	margin: auto;
+}
+#main {
+	min-height: 600px;
+	background:-moz-linear-gradient(top, $bg_color1, $bg_color2); /* Firefox */
+	background:-webkit-gradient(linear, left top, left bottom, from($bg_color1), to($bg_color2)); /* Safari, Chrome */
+	background:-webkit-linear-gradient(top, $bg_color1, $bg_color2); /* Safari, Chrome - neue Syntax! */
+	background:-o-linear-gradient(top, $bg_color1, $bg_color2); /* Opera */
+	background:-ms-linear-gradient(top, $bg_color1, $bg_color2); /* IE */
+	background:linear-gradient(top, $bg_color1, $bg_color2); /* W3C Standard */
+	padding-left: 3em;
+	padding-right: 3em;
+	padding-top: 1em;
+	padding-bottom: 2em;
+}
+ 
+/* =============================================================================
+	 Navigation bar
+	 ========================================================================== */
+header {
+  font-family:  Arial, Gadget, sans-serif;
+  font-weight: bolder;
+  color: black;
+	background: darken($bg_color1,10%);
+  text-shadow: #222222 1px 1px 3px;
+  background: -webkit-raidal-gradient( darken($bg_color1, 10%), $bg_color2);
+}
+nav {
+  background: $nav_bg_color;
+	display: block;
+	margin: 0;
+	border:1px solid $nav_border_color_1;
+  border-color: black $nav_bg_color black $nav_bg_color;
+	position: relative;
+	font-size: 16px;
+	font-weight: bold;
+	ul {
+    margin: 0px;
+		padding: 0;
+		&:after {
+			content: ".";
+			height: 0;
+			clear: both;
+			display: block;
+			visibility: hidden;
+		}
+		li {
+      width: 14.3%;
+      min-width: 120px;
+			position: relative;
+			float: left;
+			list-style-type: none;
+			text-align: center;
+			a {
+				display: block;
+				padding: 10px 20px;
+				border-left: 1px solid $nav_border_color_2;
+				border-right: 1px solid $nav_border_color_1;
+				text-decoration: none;
+        text-shadow: white 1px 1px 1px;
+				&:focus {
+					outline: none;
+					text-decoration: underline;
+				}
+				&:link, &:visited {
+					color: $nav_font_color;
+				}/*
+        &:hover {
+
+          -webkit-animation-name: abutton;
+          -webkit-animation-duration: 1s;
+          -webkit-animation-iteration-count: 1;
+          -webkit-animation-direction: alternate;
+          -webkit-animation-timing-function: ease-in;
+        }*/
+			}
+		}
+		li:first-child a {
+      padding-left: 35;
+      padding-right: 35;
+			border-left: none;
+		}
+		li:last-child a {
+      padding-left: 35;
+      padding-right: 35;
+			border-right: none;
+		}
+	}
+}
+.cssgradients nav {
+	background: -moz-linear-gradient(0% 22px 90deg, $nav_border_color_1, $nav_border_color_2);
+	background: -webkit-gradient(linear, 0% 0%, 0% 70%, from($nav_border_color_2), to($nav_border_color_1));
+/*	background: -webkit-linear-gradient(90deg, $nav_border_color_1, $nav_border_color_2);*/
+}
+.cssgradients nav li:hover {
+	background: -moz-linear-gradient(0% 100px 90deg, $nav_border_color_2, $nav_border_color_1);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($nav_border_color_1), to($nav_border_color_2));
+ /* -webkit-animation-name: abutton;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-iteration-count: 10;
+  -webkit-animation-direction: alternate;
+  -webkit-animation-timing-function: ease-in;
+/*	background: -webkit-linear-gradient(90deg, $nav_border_color_2, $nav_border_color_1);*/
+}
+
+@-webkit-keyframes abutton {
+  from{opacity: 0;}
+  to{opacity: 1;}
+}
+/*.boxshadow.rgba nav {
+	-moz-box-shadow: 0px 2px 2px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 0px 2px 2px rgba(0,0,0,0.75);
+	box-shadow: 0px 2px 2px rgba(0,0,0,0.75);
+}*/
+
+/* =============================================================================
+	 notices
+	 ========================================================================== */
+#flash_notice, #flash_alert {
+	padding: 5px 8px;
+	margin: 0em;
+}
+#flash_notice {
+	background-color: #CFC;
+	border: solid 1px #6C6;
+}
+#flash_alert {
+	background-color: #FCC;
+	border: solid 1px #C66;
+}
+#notice {
+	color: green;
+}
+.field_with_errors {
+	padding: 2px;
+	background-color: red;
+	display: table;
+}
+#error_explanation {
+	width: 450px;
+	border: 2px solid red;
+	padding: 7px;
+	padding-bottom: 0;
+	margin-bottom: 20px;
+	background-color: #f0f0f0;
+	h2 {
+		text-align: left;
+		font-weight: bold;
+		padding: 5px 5px 5px 15px;
+		font-size: 12px;
+		margin: -7px;
+		margin-bottom: 0px;
+		background-color: #c00;
+		color: #fff;
+	}
+	ul li {
+		font-size: 12px;
+		list-style: square;
+	}
+}
