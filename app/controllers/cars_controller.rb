@@ -1,6 +1,16 @@
 class CarsController < ApplicationController
-  before_filter :authenticate_user!
+ before_filter :authenticate_user!
+  load_and_authorize_resource 
   
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Zugriff verweigert!"
+    redirect_to cars_url
+  end
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    flash[:error] = "Zugriff verweigert!"
+    redirect_to cars_url
+  end 
+
   # GET /cars
   # GET /cars.json
   def index

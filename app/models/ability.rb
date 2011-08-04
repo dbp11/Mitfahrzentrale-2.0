@@ -2,9 +2,47 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :show, :car
-    can :create, :car
-    can :manage, :all
+    if user.role == "member"
+      can [:index], :all
+      can :create [Car, Message, Request, Trip, User]
+        
+      can [:show, :update, :destroy], Car do |car|
+        car && car.user == user 
+      end
+      can :show, user.get_visible_cars
+
+      can [:outbox, :show, :update, :destroy], Message do |message|
+        message && message.writer == user
+      end
+      can [:show, :destroy], Message do |message|
+        message && message.receiver == user
+      end
+
+      can [:show, :update, :destroy], Request do |request|
+        request && request.user == user
+      end
+
+      can :show, Trip
+      can [:update, :destroy], Trip do |trip|
+        trip && trip.user == user
+      end
+
+      can [:show, :update, :destroy], Rating do |rating|
+        rating && rating.author == user
+      end
+      can :show, Rating do |rating|
+        rating && rating.receiver == user
+      end
+
+      can :show, user.get_visible_users
+      can [:show, :update, :destroy], User do |user1|
+        user1 && user1 == user
+      end
+
+    elsif user.role == "admin"
+      can :manage, :all
+    end
+
     #can ...
     # Define abilities for the passed in user here. For example:
     #
@@ -30,3 +68,4 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
   end
 end
+
