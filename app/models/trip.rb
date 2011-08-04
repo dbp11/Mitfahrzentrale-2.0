@@ -202,7 +202,7 @@ class Trip < ActiveRecord::Base
   end
 
   def accept (compared_user)
-    self.passengers.where("user_id = ?", compared_user.id).first.confirmed = true
+    t = self.passengers.where("user_id = ?", compared_user.id).first.update_attribute(:confirmed, true)
   end
 
   def declined (compared_user)
