@@ -9,7 +9,9 @@
 %h3
 	= "Bewertungen als Fahrer"
 %p
-	= "Durchschnittliche Bewertung:"
+	= "Durchschnittliche Bewertung ("
+	= @driver_cnt
+	= "):"
 	%span
 		= @driver_avg 
 - @driver_ratings.each do |rating|
@@ -35,7 +37,9 @@
 %h3
 	= "Bewertungen als Mitfahrer"
 %p
-	= "Durchschnittliche Bewertung:"
+	= "Durchschnittliche Bewertung ("
+	= @passenger_cnt
+	= "):"
 	%span
 		= @passenger_avg 
 - @passenger_ratings.each do |rating|
