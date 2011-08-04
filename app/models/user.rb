@@ -179,7 +179,7 @@ class User < ActiveRecord::Base
     erg =[]
     self.passengers.each do |p|
       if p.start_time > Time.now and !p.confirmed?
-        erg = erg << x
+        erg = erg << p.trip
       end
     end
     erg
