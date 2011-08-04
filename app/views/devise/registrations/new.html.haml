@@ -2,6 +2,16 @@
   Registrieren
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"Formular", :action=>"create"}) do |f|
   = devise_error_messages!
+  :javascript
+    function formtest(){
+      if (document.Formular.user[business].checked){
+        alert('Bis dort');
+        document.getElementById("privat").style.visibility="hidden";
+      } 
+    }
+  %p 
+    = f.label :"Geschäftskunde?"
+    = f.check_box:business, :onClick=>"formtest();" 
   %p
     = f.label :"Name*"
     %br/
@@ -18,7 +28,7 @@
     = f.label :"Passwort wiederholen*"
     %br/
     = f.password_field :password_confirmation, :required=>"required"
-  %p
+  %p#privat
     = f.label :"Geburtsdatum"
     %br/
     = f.date_select :birthday,
@@ -36,17 +46,19 @@
     %br
       = f.text_field:zipcode, :required=>"required", :class=>"integer", 
                               :maxlength=>"5", :size=>"30", :remote=>"true",
-                              :onblur => "if(this.value.length<5){alert('PlZ zu kurz'); this.focus();}"
+                    :onblur =>" var b = (this.value).search(/[^0-9]+/);if(this.value.length<5){alert('PLZ zu kurz!'); this.focus();} if(b>=0){alert('PLZ enthält falsche Zeichen!'); this.focus;}"
+
+
   %p
     = f.label :"Stadt*"
     %br/
     = f.text_field:city, :required=>"required"
-
-  %p
+  
+  %p#privat
     %br/
     = f.label :Geschlecht
     %br
-    = f.select:sex,  options_for_select([["Maennlich","1"], ["Weiblich","0"]], @user.sex? ? "Maennlich" : "Weiblich"), :id=>"form_table_second"
+    = f.select:sex,  options_for_select([["Maennlich","1"], ["Weiblich","0"]]), :id=>"form_table_second"
 
   %p
     = f.label :Telefon

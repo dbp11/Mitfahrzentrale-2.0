@@ -8,55 +8,64 @@
 
         %tr.form_table_row
           %td.form_table_left
-            User: 
+            %h4 Nutzername: 
           %td.form_table_right
             #{@user.name}
         %tr.form_table_row
           %td.form_table_left
-            Email:
+            %h4 Email:
           %td.form_table_right
             #{@user.email if @user.email}
 
         %tr.form_table_row
           %td.form_table_left
-            Geschlecht:
+            %h4 Geschlecht:
           %td.form_table_right
             #{@user.sex? ? "Maennlich" : "Weiblich"}
 
         %tr.form_table_row
           %td.form_table_left
-            Adresse: 
+            %h4 Adresse: 
           %td.form_table_right
             #{@user.visible_address? ? @user.address: "versteckt"}
 
         %tr.form_table_row
           %td.form_table_left
-            PLZ: 
+            %h4 PLZ: 
           %td.form_table_right
             #{@user.visible_zip? ? @user.zipcode : "versteckt"}
         %tr.form_table_row
           %td.form_table_left
-            Ort: 
+            %h4 Ort: 
           %td.form_table_right
             #{@user.visible_city? ? @user.city : "versteckt"}
 
         %tr.form_table_row
           %td.form_table_left
-            Geburtsdatum: 
+            %h4 Geburtsdatum: 
           %td.form_table_right
             #{@user.visible_age? ?  @user.birthday : "versteckt"}
 
         %tr.form_table_row
           %td.form_table_left
-            InstantMassenger: 
+            %h4 InstantMassenger: 
           %td.form_table_right
             #{@user.visible_im? ?  @user.instantmessenger: "versteckt"}
 
         %tr.form_table_row
           %td.form_table_left
-            Telefon: 
+            %h4 Telefon: 
           %td.form_table_right 
             #{@user.visible_phone? ? @user.phone : "versteckt"}
 
       %td.form_arround_right
-        = image_tag @user.pic.url(:medium)
+        %p#box
+          - if (@user.pic?)
+            = image_tag @user.pic.url(:medium)
+          - else 
+            - if (@user.sex?)
+              = image_tag "../images/user/männlich.jpg"
+            - else 
+              = image_tag "../images/user/weiblich.jpg"
+        
+

@@ -4,7 +4,7 @@
   Profil bearbeiten
 %p.under
   Mit * gekennzeichnete Felder müssen ausgefüllt sein
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :name=>"Formular" }) do |f|
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :name=>"Formular", :onsubmit => "return zipcheck();" }) do |f|
   = devise_error_messages!
 
   %table.form_table
@@ -66,8 +66,23 @@
       %td.form_table_right
         = f.label :"PLZ*"
       %td.form_table_left
-        = f.text_field:zipcode, :required=>"required", :maxlength=>"5", :size=>"30", :class=>"integer", 
-      :onblur =>" var b = (this.value).search(/[^0-9]+/);if(this.value.length<5){alert('PLZ zu kurz!'); this.focus();} if(b>=0){alert('PLZ enthält falsche Zeichen!'); this.focus;}"
+        :javascript
+          function zipcheck() {
+            var plz_field = document.getElementsByName("user[zipcode]")[0];
+            var b = (plz_field.value).search(/[^0-9]+/);
+            if(plz_field.value.length<5){
+              alert('PLZ zu kurz!');
+              plz_field.focus();
+              return false;
+            }
+            if(b>=0){
+              alert('PLZ enthält falsche Zeichen!');
+              plz_field.focus;
+              return false;
+            }
+            return true;
+          }
+        = f.text_field:zipcode, :required=>"required", :maxlength=>"5", :size=>"30", :class=>"integer"
 
       %td{:class=>"label", :id=>"form_table_middle"}sichtbar
       %td.form_table_end
