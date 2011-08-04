@@ -167,5 +167,9 @@ class Trip < ActiveRecord::Base
   def delete_unaccepted (compared_user)
     self.passengers.where("user_id = ?", compared_user.id).first.destroy
   end
+  
+  def get_start_city
+    Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + self.starts_at_E.to_string + "E", "de")[0][:full_data]["address_components"][3]["long_name"]
+  end
 
 end
