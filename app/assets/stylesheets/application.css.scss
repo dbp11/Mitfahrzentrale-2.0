@@ -22,8 +22,8 @@ $nav_bg_color: darken($bg_color1, 20%);
 	 General settings in application.css.scss
 	 ========================================================================== */
 body {
-	background-color: $bg_color1;
-	color: $font_color;
+	background-color: #FFFFFF;
+	color: #333333;
 	font-family: verdana, arial, helvetica, sans-serif;
 	font-size: 13px;
 	line-height: 18px;
@@ -36,7 +36,7 @@ p, ol, ul, td {
 }
 
 pre {
-	background-color: $bg_color1;
+	background-color: #EEEEEE;
 	padding: 10px;
 	font-size: 11px;
 }
@@ -45,16 +45,20 @@ pre {
 	 Links
 	 ========================================================================== */
 a {
-}
-
-a:visited {
-/*		color: #551a8b;*/
+	//color: #000000;
+	&:visited {
+	//	color: #666666;
+	//	color: #551a8b;
+	}
+	&:hover {
+	//	color: #FFFFFF;
+	//	background-color: #000000;
+	}
 }
 
 /*
  * Addresses outline displayed oddly in Chrome
  */
-
 a:focus {
 		outline: thin dotted;
 }
@@ -63,7 +67,6 @@ a:focus {
  * Improves readability when focused and also mouse hovered in all browsers
  * people.opera.com/patrickl/experiments/keyboard/test
  */
-
 a:hover,
 a:active {
 		outline: 0;
@@ -74,8 +77,8 @@ a:active {
 
 
 textarea {
-	/*width: 300px;
-	height: 6em;*/
+//	width: 300px;
+//	height: 6em;
 	resize: none;
 }
 label {
@@ -96,8 +99,8 @@ body {
   width: 100%;
 }
 .container {
-/*	margin-left: 10em;*/
-/*	margin-right: 10em;*/
+//	margin-left: 10em;
+//	margin-right: 10em;
 	width: 1000px;
 	margin: auto;
 }
