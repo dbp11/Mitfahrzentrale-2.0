@@ -3,38 +3,59 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .cars {
+  .cars_base_table {
+    margin-top: 30px;
+    width: 100%;
+    tr {
+      width: 100%;
+    }
+    .head {
+      text-align: left;
+      font-size: 20pt;
+    }
+  }
+  .cars_top_link {
+    width:10px;
+    padding-right: 5px;
+    text-align: right;
+
+  }
+  .cars_top {
+    text-align: left;
+    width: 63;
+    padding-right: 5px;
+    }
+    
+  
   .other_side {
     text-align: right;
   }
-  table{width: 100%} tbody {
+  .cars_2 {
+    background-color: lighten(#777777, 10%);
+  }
+  .cars_links {
+    background-color: lighten(#777777, 10%);
+    border-style: solid;
+    border-left-width:  1px;
+  }
+  .cars_table_top {
+    width: 100%;
+ }
+  .cars_table_bot {
+    width: 100%;
     border: 1px solid;
-    border-width: 1px;
-    padding: 0 5px 5 5;
     tr {
       td {
-        min-height: 40px;
-        border: 1px solid;
         text-align: center;
       }
-    a img:hover {
-
-      -webkit-animation: resize 700ms;
-      -webkit-animation-iteration-count: infinite;
-      -webkit-animation-direction: alternate;
-      //height: 30px;
-      //width: 30px;
-    }
-  
       th {
-        text-align: center;
-        font-size: 14px;
         border: 1px solid;
-        border-width: 1px;
         padding: 5px;
       }
     }
   }
 }
+
 @-webkit-keyframes resize {
   from { height: 40px; width: 40px;}
   to{ height: 40px; width: 40px;}

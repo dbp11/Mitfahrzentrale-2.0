@@ -138,7 +138,7 @@
                 %td= "#{passenger.get_avg_rating} (#{passenger.count_ratings})"
                 %td.right
                   = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :tid => trip.id, :uid => passenger.id))
-                  = link_to "Austragen", passenger
+                  = link_to( "Austragen", passenger)
                   = link_to("Bewerten", url_for(:action => "new", :controller => "ratings", :uid => passenger.id, :tid => trip.id))
                 %td#minimal
 
