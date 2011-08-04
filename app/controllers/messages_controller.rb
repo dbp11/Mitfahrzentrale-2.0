@@ -45,7 +45,7 @@ class MessagesController < ApplicationController
 		if params[:tid]
 			# message relatet to a trip
 			temp = Trip.find(params[:tid])
-			@message.subject = "[["+ url_for(temp) + "|" + "LINKTEXT HIER" +"]]"
+			@message.subject = "[["+ url_for(temp) + "|" + temp.get_start_city + " - " + temp.get_end_city + " " + temp.start_time.strftime("%d.%m.%y") +"]]"
 		else
 			# new message
 			# all set
