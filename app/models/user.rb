@@ -310,7 +310,7 @@ class User < ActiveRecord::Base
   def allready_rated (rater, trp)
     check = false
     rater.written_ratings.each do |r|
-      if r.receiver_id = self.id and r.trip_id = trp.id then check = true
+      if r.receiver_id == self.id and r.trip_id == trp.id then check = true
       end
     end
     check
@@ -326,7 +326,28 @@ class User < ActiveRecord::Base
         self.passengers.create(trip_id: trp.id, confirmed: false)
         true
       end
-
   end    
  
+  def can_rate
+    trips = driven + driven_with
+    persons = []
+    erg = []
+    trips.each do |t|
+      rates = self.written_ratings.where("trip_id = ?",t.id)
+      t.get_committed_passengers.each do |p|
+        persons << p
+      end
+      persons << t.user
+      persons.each do |k|
+        if !rates.include?(k)
+          erg << k
+        end
+      end
+    end
+      return erg
+  end
+  
+  end
+    
+
 end
