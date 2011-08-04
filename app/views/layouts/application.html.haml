@@ -7,7 +7,7 @@
 		= stylesheet_link_tag :application
 		= javascript_include_tag :application
 		= csrf_meta_tags
-		%body{:class => controller.controller_name}
+		%body{gmap_onload, :class => controller.controller_name}
 			#container.container
 				%header
 					%banner

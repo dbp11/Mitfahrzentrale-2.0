@@ -21,6 +21,14 @@ module ApplicationHelper
     ie_tag(:body, attrs, &block)
   end
 
+  def gmap_onload()
+    if params[:controller] == "trips" and params[:action] == "show"
+      {:onload => "initialize()"}
+    else
+      {}
+    end
+  end
+
 private
 
   def add_class(name, attrs)
