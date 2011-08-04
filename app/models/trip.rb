@@ -134,12 +134,12 @@ class Trip < ActiveRecord::Base
   end
 
 
-  #liefert die Anzahl freier Sitzplätze, die noch nicht vergeben sind
+  #Liefert die Anzahl freier Sitzplätze, die noch nicht vergeben sind
   def get_free_seats
     return free_seats - get_occupied_seats
   end
   
-  # liefert die Anzahl belegter Sitzpläte
+  # Liefert die Anzahl belegter Sitzpläte des benutzten Autos
   def get_occupied_seats
     count = 0
     self.passengers.all.each do |p|
@@ -151,7 +151,7 @@ class Trip < ActiveRecord::Base
   end
 
 
-  #liefert alle user dieses Trips, die schon committed wurden
+  #Liefert alle User dieses Trips, die schon committed wurden
   def get_committed_passengers
     erg = []
     self.passengers.all.each do |p|
@@ -191,24 +191,33 @@ class Trip < ActiveRecord::Base
     return (distance / 1000).round(3) + "Km"
   end
 
-
-
   def user_uncommitted (compared_user)
     get_uncommitted_passengers.include?(compared_user)
   end
-
+  
   def user_committed (compared_user)
     get_committed_passengers.include?(compared_user)
   end
-
+  
+  #Methode um als Fahrer einen User, der sich um Mitfahrt beworben hat, anzunehmen. Dabei wird das Datenfeld confirmed
+  #in der Tabelle Passengers auf true gesetzt
+  #@param User
+  #@return true, wenn Update erfolgreich; false sonst
   def accept (compared_user)
     t = self.passengers.where("user_id = ?", compared_user.id).first.update_attribute(:confirmed, true)
   end
-
+  
+  #Methode um als Fahrer einen User, der sich um Mitfahrt beworben hat, abzulehnen. Dieser wird hierbei direkt aus 
+  #der Mitfahrertabelle (Passengers) gelöscht.
+  #@param User
+  #@return true, wenn Löschvorgang erfolgreich; false sonst
   def declined (compared_user)
     self.passengers.where("user_id = ?", compared_user.id).first.destroy
   end
   
+  #Methode, die angibt, ob ein Trip schon beendet ist
+  #@return true, wenn zu überprüfender Trip in der Vergangenheit liegt
+  #@return false, wenn zu überprüfender Trip in der Zukunft liegt
   def finished
     if self.start_time < Time.now 
       true
@@ -217,6 +226,8 @@ class Trip < ActiveRecord::Base
     end
   end
   
+  #Liefert alle Mitfahrer dieses Trips
+  #@return User [] erg
   def get_passengers
     erg = []
     self.passengers.all.each do |p|
@@ -224,10 +235,15 @@ class Trip < ActiveRecord::Base
     end
     erg
   end
+
+  #Liefert den im Trip gespeicherten Abfahrtsort abgabd der eingespeicherten Koordinaten
+  #@return string Stadtname
   def get_start_city
     Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + self.starts_at_E.to_s + "E", "de")[0][:full_data]["address_components"][2]["long_name"]
   end
   
+  #Liefert den im Trip gespeicherten Ankunftsort anhand der eingespeicherten Koordinaten
+  #@return string Stadtname
   def get_end_city
     Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + self.ends_at_E.to_s + "E", "de")[0][:full_data]["address_components"][2]["long_name"]
   end
