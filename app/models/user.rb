@@ -348,9 +348,9 @@ class User < ActiveRecord::Base
       end
     end
       return erg
-  end
-  
-  end
-    
+  end  
 
 end
+    
+
+
