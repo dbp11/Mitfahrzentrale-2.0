@@ -238,9 +238,8 @@ class User < ActiveRecord::Base
         erg << c.car
       end
     end
-  erg
+    erg
   end
-   get_own_passen
   #Methode, die alle, für einen User sichtbaren User zurückliefert
   #User werden für sichtbar, wenn der Benutzer mit diesen über einen Trip in verbindung gebracht werden kann
   #@return User [] 
