@@ -51,8 +51,15 @@ class TripsController < ApplicationController
       flash[:notice] = "GAST"
       @status = @GAST
     end
+
+    if params[:accept] and @status == @FAHRER
+      #Methdoe
+    end
     
-    
+    if params[:decline] and @status == @FAHRER
+      #Methode
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @trip }
