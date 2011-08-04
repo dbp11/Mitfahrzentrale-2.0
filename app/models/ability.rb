@@ -27,7 +27,8 @@ class Ability
         trip && trip.user == user
       end
 
-      can :create, user.can_rate
+      can :create, user.can_rate(driven)
+      can :create, user.can_rate(driven_with)
       can [:show, :update, :destroy], Rating do |rating|
         rating && rating.author == user
       end
