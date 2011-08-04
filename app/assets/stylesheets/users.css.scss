@@ -4,4 +4,19 @@
 
 body.users {
   // Place scoped styles here
+  .form_arround_left{
+    width: 500px;
+  }
+
+  .head{
+    text-decoration: underline;
+  }
+
+  .form_table_right{
+    text-align: left;
+  }
+
+  .form_table_left{
+    width: 200px;
+  }
 }

@@ -198,7 +198,7 @@ class Trip < ActiveRecord::Base
   end
 
   def user_committed (compared_user)
-  get_committed_passengers.include?(compared_user)
+    get_committed_passengers.include?(compared_user)
   end
 
   def accept (compared_user)
