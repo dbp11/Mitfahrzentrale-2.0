@@ -65,16 +65,22 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true, :presence => true, 
   :length => {:minimum => 8}
   validates_presence_of :name, :address, :zipcode, :city 
-  validate :booleans_not_nil
+  validate :booleans_not_nil, :role_member_admin
 
   def booleans_not_nil 
-    if(self.user_type == nil and self.sex == nil and 
+    if(self.sex == nil and 
        self.email_notifications == nil and self.visible_phone == nil and 
        self.visible_email == nil and self.visible_address == nil and 
        self.visible_age == nil and self.visible_im == nil and 
        self.visible_cars == nil and self.visible_cip == nil and 
        self.visible_city == nil and self.business == nil)
       errors.add(:field, 'Irgendein Boolean nimmt den Wert Null ein, und das dar nicht sein, also gar nicht')
+    end
+  end
+
+  def role_member_admin
+    if(self.role!='admin' and self.role!='member')
+      errors.add(:field, 'Role muss entweder admin oder member sein!')
     end
   end
 
@@ -120,9 +126,6 @@ class User < ActiveRecord::Base
   has_many :written_messages,  :class_name => "Message", :foreign_key =>"writer_id", :dependent => :destroy
   has_many :written_ratings, :class_name => "Rating", :foreign_key => "author_id", :dependent => :destroy
   has_many :received_ratings, :class_name => "Rating", :foreign_key => "receiver_id", :dependent => :destroy
-
-  ROLES = %w[admin member]
-
 
   ################################################### ==Methoden:###################################################
   #toString Methode für User
