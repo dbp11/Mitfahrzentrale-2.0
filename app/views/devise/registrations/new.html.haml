@@ -58,6 +58,11 @@
     %br/
     = f.text_field :instantmessenger
 
+  %p
+    %br
+    = f.label :role
+    %br/
+    = f.collection_select :role, User::ROLES, :to_s, :humanize
 
   %p= f.submit "Anmelden"
 
