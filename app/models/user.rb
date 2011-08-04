@@ -175,13 +175,23 @@ class User < ActiveRecord::Base
     return erg
   end
 
+  def applied_at
+    erg =[]
+    self.passengers.each do |p|
+      if p.start_time > Time.now and !p.confirmed?
+        erg = erg << p.trip
+      end
+    end
+    erg
+  end
+
   #Methode zur Ermittlung des durchschnittlichen Ratings des Users 
   #@return float 3, wenn User noch keine Bewertungen hat
   #@return float Sum(Ratings)/Anz(Ratings)
-  def get_avg_rating
+  def get_avg_rating(rates)
     count = 0
     erg = 0
-    self.received_ratings.each do |x|
+    rates.each do |x|
         erg = erg + x.mark
         count +=1
     end
@@ -238,9 +248,8 @@ class User < ActiveRecord::Base
         erg << c.car
       end
     end
-  erg
+    erg
   end
-  
   #Methode, die alle, für einen User sichtbaren User zurückliefert
   #User werden für sichtbar, wenn der Benutzer mit diesen über einen Trip in verbindung gebracht werden kann
   #@return User [] 
@@ -312,18 +321,45 @@ class User < ActiveRecord::Base
     end
     check
   end
-  
+   
   #Lässt einen User sich um eine Mitfahrgelegenheit bewerben
   #@param Trip trp um den sich beworben werden soll
   def bewerben (trp)
-      if self.passengers.where("user_id = ?", self.id).where("trip_id = ?",
-                                                             trp.id).count > 0
+      if self.passengers.where("user_id = ?", self.id).where("trip_id = ?", trp.id).count > 0
         false
       else
-        self.passengers.create(trip_id: trp.id, confirmed: false)
-        true
+        begin
+        self.passengers.new(user_id: self.id, trip_id: trp.id, confirmed: false).save 
+        rescue Error
+          false
+        end
       end
-
   end    
  
+  #liefert alle Ratings, die der User erstellt hat sortiert nach Datum
+  def get_own_written_ratings
+    self.written_ratings.sort{|a,b| b.created_at <=> a.created_at}
+  end
+
+  #liefert alle Ratings, die dieser User als Fahrer erhalten hat
+  def get_own_driver_ratings
+    erg = []
+    self.received_ratings.each do |r|
+      if r.trip.user == self
+        erg << r
+      end
+    end
+    return erg
+  end
+
+  #lifert alle Ratings, die dieser User als Mitfahrer erhalten hat
+  def get_own_passenger_ratings
+    erg = []
+    self.received_ratings.each do |r|
+      if r.trip.users.include?(self)
+        erg << r
+      end
+    end
+    return erg
+  end
 end
