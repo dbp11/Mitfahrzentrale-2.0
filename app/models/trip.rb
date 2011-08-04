@@ -224,4 +224,13 @@ class Trip < ActiveRecord::Base
     end
     erg
   end
+  def get_start_city
+    Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + self.starts_at_E.to_s + "E", "de")[0][:full_data]["address_components"][3]["long_name"]
+  end
+  
+  def get_end_city
+    Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + self.ends_at_E.to_s + "E", "de")[0][:full_data]["address_components"][3]["long_name"]
+  end
+
+
 end
