@@ -3,7 +3,8 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
-    @ratings = Rating.all
+    temp = current_user
+    @ratings = temp.get_own_written_ratings
     #Meine erstellten Ratings --> Methode
 
     respond_to do |format|
@@ -15,7 +16,11 @@ class RatingsController < ApplicationController
   # GET /ratings/1
   # GET /ratings/1.json
   def show
-    @rating = Rating.find(params[:id])
+    temp = User.find(params[:id])
+    @driver_ratings = temp.get_own_driver_ratings
+    @passenger_ratings = get_own_passenger_ratings
+    @driver_avg = temp.get_avg_rating(@driver_ratings) 
+    @passenger_avg = temp.get_avg_rating(@passenger_ratings)
     # Zwei Arrays. eins mit den Ratings als Fahrer, eins als Mitfahrer
 
     respond_to do |format|
