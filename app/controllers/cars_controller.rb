@@ -6,7 +6,6 @@ class CarsController < ApplicationController
   def index
     temp = current_user
     @cars = temp.cars
-    authorize! :show, :car
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +17,6 @@ class CarsController < ApplicationController
   # GET /cars/1.json
   def show
     @car = Car.find(params[:id])
-    authorize! :show, :car
 
     respond_to do |format|
       format.html # show.html.erb
@@ -30,7 +28,6 @@ class CarsController < ApplicationController
   # GET /cars/new.json
   def new
     @car = Car.new
-    authorize! :create, :car
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,7 +38,6 @@ class CarsController < ApplicationController
   # GET /cars/1/edit
   def edit
     @car = Car.find(params[:id])
-    authorize! :update, @car
   end
 
 
@@ -49,7 +45,6 @@ class CarsController < ApplicationController
   # POST /cars.json
   def create
     @car = Car.new(params[:car])
-    authorize! :create, :car
     temp = current_user.id
     @car.user_id = temp
 
@@ -68,7 +63,6 @@ class CarsController < ApplicationController
   # PUT /cars/1.json
   def update
     @car = Car.find(params[:id])
-    authorize! :update, @car
 
     respond_to do |format|
       if @car.update_attributes(params[:car])
@@ -85,7 +79,6 @@ class CarsController < ApplicationController
   # DELETE /cars/1.json
   def destroy
     @car = Car.find(params[:id])
-    authorize! :delete, @car
     @car.destroy
 
     respond_to do |format|
