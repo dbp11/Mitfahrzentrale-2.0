@@ -175,6 +175,16 @@ class User < ActiveRecord::Base
     return erg
   end
 
+  def applied_at
+    erg =[]
+    self.passengers.each do |p|
+      if p.start_time > Time.now and !p.confirmed?
+        erg = erg << x
+      end
+    end
+    erg
+  end
+
   #Methode zur Ermittlung des durchschnittlichen Ratings des Users 
   #@return float 3, wenn User noch keine Bewertungen hat
   #@return float Sum(Ratings)/Anz(Ratings)
@@ -312,7 +322,7 @@ class User < ActiveRecord::Base
     end
     check
   end
-  
+   
   #Lässt einen User sich um eine Mitfahrgelegenheit bewerben
   #@param Trip trp um den sich beworben werden soll
   def bewerben (trp)
@@ -325,7 +335,6 @@ class User < ActiveRecord::Base
           false
         end
       end
-
   end    
  
 end
