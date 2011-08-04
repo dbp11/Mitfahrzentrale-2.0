@@ -316,7 +316,7 @@ class User < ActiveRecord::Base
   def allready_rated (rater, trp)
     check = false
     rater.written_ratings.each do |r|
-      if r.receiver_id = self.id and r.trip_id = trp.id then check = true
+      if r.receiver_id == self.id and r.trip_id == trp.id then check = true
       end
     end
     check
