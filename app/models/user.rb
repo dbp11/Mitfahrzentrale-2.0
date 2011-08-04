@@ -326,4 +326,8 @@ class User < ActiveRecord::Base
 
   end    
  
+  #liefert alle Ratings, die der User erstellt hat sortiert nach Datum
+  def get_own_ratings
+    self.written_ratings.sort{|a,b| b.created_at <=> a.created_at}
+  end
 end
