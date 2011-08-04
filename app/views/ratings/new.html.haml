@@ -19,7 +19,9 @@
 			= 'Mitfahrer '
 		= link_to(@rating.receiver.name, url_for(@rating.receiver))
 		= ' auf der Fahrt '
-		= link_to(@rating.trip, url_for(@rating.trip))
+		= link_to(@rating.trip.get_start_city() + " - " + @rating.trip.get_end_city(), url_for(@rating.trip))
+		= "vom"
+		= @rating.trip.start_time.strftime("%d.%m.%y")
 	%table.form_table
 		%tr
 			%td.form_table_left

@@ -17,8 +17,9 @@ class RatingsController < ApplicationController
   # GET /ratings/1.json
   def show
     temp = User.find(params[:id])
+	@user = temp
     @driver_ratings = temp.get_own_driver_ratings
-    @passenger_ratings = get_own_passenger_ratings
+    @passenger_ratings = temp.get_own_passenger_ratings
     @driver_avg = temp.get_avg_rating(@driver_ratings) 
     @passenger_avg = temp.get_avg_rating(@passenger_ratings)
     # Zwei Arrays. eins mit den Ratings als Fahrer, eins als Mitfahrer
@@ -60,7 +61,6 @@ class RatingsController < ApplicationController
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end
     end
-	puts "########################################### 59"
   end
 
   # PUT /ratings/1
