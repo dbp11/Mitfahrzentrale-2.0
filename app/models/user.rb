@@ -178,22 +178,94 @@ class User < ActiveRecord::Base
   #Methode zur Ermittlung des durchschnittlichen Ratings des Users 
   #@return float 3, wenn User noch keine Bewertungen hat
   #@return float Sum(Ratings)/Anz(Ratings)
-  def get_avg_rating(rates)
-    count = 0
-    erg = 0
-    rates.each do |x|
-        erg = erg + x.mark
-        count +=1
+  def get_avg_rating
+    count = count_ratings
+    if count == 0
+      return 3
     end
-    return erg.to_f / count.to_f
+
+    erg = 0
+    self.received_ratings.each do |x|
+        erg = erg + x.mark
+    end
+
+      return erg.to_f / count_ratings
   end
-  
+
+
+  #Methode zur Ermittlung des durchschnittlichen Ratings des Users als Fahrer
+  #@return float 3, wenn User noch keine Bewertungen hat
+  #@return float Sum(Ratings)/Anz(Ratings)
+  def get_avg_rating_driver
+    count = count_ratings_driver
+    if count == 0
+      return 3
+    end
+
+    erg = 0
+    self.driven.each do |d|
+      d.ratings.each do |r|
+        if r.receiver == self
+          erg += r.mark
+        end
+      end
+    end
+    
+    return erg.to_f / count
+  end
+
+  #Methode zur Ermittlung des durchschnittlichen Ratings des Users als Mitfahrer
+  #@return float 3, wenn User noch keine Bewertungen hat
+  #@return float Sum(Ratings)/Anz(Ratings)
+  def get_avg_rating_passenger
+    count = count_ratings_passenger
+    if count == 0
+      return 3
+    end
+
+    erg = 0
+    self.driven_with.each do |d|
+      d.ratings.each do |r|
+        if r.receiver == self
+          erg += r.mark
+        end
+      end
+    end
+    
+    return erg.to_f / count
+  end
+
+
   #Methode die alle Erhaltenen Ratings des Users zählt
   #@return integer count
   def count_ratings
+    self.received_ratings.count
+  end
+
+  #Methode, die nur die Ratings zählt, wo der User Fahrer war
+  #@return integer count
+  def count_ratings_driver
     count = 0
-    self.received_ratings.each do |x|
-      count += 1
+    self.driven.each do |d|
+      d.ratings.each do |r|
+        if r.receiver == self
+          count += 1
+        end
+      end
+    end
+    return count
+  end
+
+  #Methode, die nur die Ratings zählt, wo der User Mitfahrer war
+  #@return integer count
+  def count_ratings_passenger
+    count = 0
+    self.driven_with.each do |d|
+      d.ratings.each do |r|
+        if r.receiver == self
+          count += 1
+        end
+      end
     end
     return count
   end
