@@ -11,7 +11,7 @@
 		%tr
 			%td.rating_table_left
 				%div
-					= link_to(rating.trip.start_time.to_date, url_for(rating.trip))
+					= link_to(rating.trip.get_start_city() + " - " + rating.trip.get_end_city() + " " + rating.trip.start_time.strftime("%d.%m.%y"), url_for(rating.trip))
 			%td.rating_table_right
 				%div
 					= "Note:"
