@@ -31,9 +31,7 @@ class TripsController < ApplicationController
     @user = current_user
     
     @trip = Trip.find(params[:id])
-    if params[:request]
-      current_user.bewerben(@trip)
-    end
+
     @commited_passenger = @trip.get_committed_passengers
     @uncommited_passenger = @trip.get_uncommitted_passengers
     @free_seats = @trip.get_free_seats
@@ -50,6 +48,11 @@ class TripsController < ApplicationController
     else
       flash[:notice] = "GAST"
       @status = @GAST
+    end
+
+    if params[:request]
+      current_user.bewerben(@trip)
+      #geht noch nicht 
     end
 
     if params[:accept] and @status == @FAHRER

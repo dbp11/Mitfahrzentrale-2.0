@@ -4,6 +4,7 @@ class RatingsController < ApplicationController
   # GET /ratings.json
   def index
     @ratings = Rating.all
+    #Meine erstellten Ratings --> Methode
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +16,7 @@ class RatingsController < ApplicationController
   # GET /ratings/1.json
   def show
     @rating = Rating.find(params[:id])
+    # Zwei Arrays. eins mit den Ratings als Fahrer, eins als Mitfahrer
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,8 +28,8 @@ class RatingsController < ApplicationController
   # GET /ratings/new.json
   def new
     @rating = Rating.new
-	@rating.receiver = User.find(params[:uid])
-	@rating.trip = Trip.find(params[:tid])
+	  @rating.receiver = User.find(params[:uid])
+	  @rating.trip = Trip.find(params[:tid])
 
     respond_to do |format|
       format.html # new.html.erb
