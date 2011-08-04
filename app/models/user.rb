@@ -51,6 +51,7 @@ class User < ActiveRecord::Base
     :remember_me, :address, :zipcode, :birthday, :city, :sex, :phone, 
     :instantmessenger, :visible_age, :visible_address, :visible_zip, 
     :visible_phone, :visible_city, :visible_im, :visible_email, :visible_cars
+ 
   #Von Paperclip gefordertes Statement zum Anhängen von Bildern
   has_attached_file :pic, :styles => { :medium =>  "300x300>", 
                                            :thumb => "100x100>"}
@@ -81,7 +82,7 @@ class User < ActiveRecord::Base
 
  
   
-  ############################# ==Beziehungen: #################################
+  ############################# ==Beziehungen:#################################
   #Beziehung vom Modell User zu Trip über die Joinrelation Passengers 
   #(:through => Passengers) als passenger_trips
   has_many :passenger_trips, :class_name => "Trip", :through => :passengers, 
@@ -114,7 +115,7 @@ class User < ActiveRecord::Base
   has_many :written_ratings, :class_name => "Rating", :foreign_key => "author_id", :dependent => :destroy
   has_many :received_ratings, :class_name => "Rating", :foreign_key => "receiver_id", :dependent => :destroy
  
-  ################################################### ==Methoden: ####################################################
+  ################################################### ==Methoden:###################################################
   #toString Methode für User
   def to_s
     name
@@ -293,7 +294,7 @@ class User < ActiveRecord::Base
   end
   
   #Methode die ermittelt, ob der aktuelle User vom übergebenen User zum übergebenen Trip schon bewertet wurde
-  #@param User rater
+  #@param User rateri
   #@param Trip trp
   #@return false, wenn noch keine Bewertung abgegeben wurde
   #@return true, wenn eine Bewertung abgegeben wurde
@@ -309,7 +310,8 @@ class User < ActiveRecord::Base
   #Lässt einen User sich um eine Mitfahrgelegenheit bewerben
   #@param Trip trp um den sich beworben werden soll
   def bewerben (trp)
-      if self.passengers.where("user_id = ?", self.id).where("trip_id = ?", trp.id).count > 0
+      if self.passengers.where("user_id = ?", self.id).where("trip_id = ?",
+                                                             trp.id).count > 0
         false
       else
         self.passengers.create(trip_id: trp.id, confirmed: false)

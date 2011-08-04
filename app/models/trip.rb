@@ -1,16 +1,53 @@
+# =Klasse Trip
+#
+# Modelliert alle Fahrten die ein User als Fahrer oder Mitfahrer begeht. Das Modell hat die 
+# Datenfelder
+#
+# *trip_id :integers --<i>Von Rails erstellt</i> ID des Trips
+# *user_id :integers -- ID des Fahrenden Users
+# *car_id :integers -- ID des benutzten Autos des fahrenden Users
+# *starts_at_N :float -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Nördl. Breite
+# *starts_at_E :float -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Östl. Breite
+# *ends_at_N :float -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Nördl. Breite
+# *ends_at_E :float -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Östl. Breite
+# *address_start :string -- Durch den User eingegebene Startadresse 
+# *address_end :string -- Durch den User eingegebene Endadresse
+# *start_time :datetime -- Voraussichtliche Startzeit des Trip
+# *comment :text -- Kommentar zum Text
+# *created_at :datetime -- <i>Von Rails erstellt</i> Erstellungsdatum des Objekts
+# *updated_at :datetime <i>Von Rails erstellt</i> letztes Änderungsdatum des Objekts
+# *baggage :boolean -- Datenfeld ob Gepäck erlaubt ist
+# *free_seats :integer -- Noch freie Sitze des Autos auf der Fahrt
+# *distance :integer -- <i>Bei Erstellung automatisch eingefügt</i> Länge der zu fahrenden Strecke
+# *duration :integer -- <i>Bei Erstellung automatisch eingefügt</i> Dauer der zu fahrenden Strecke
+
+
 class Trip < ActiveRecord::Base
   include ActiveModel::Validations
 
-  #Modellierung der Beziehungen
+  ############################== Modellierung der Beziehungen #####################################
+
+  #Der aktive Fahrer, zu dem jeweils ein Trip gehört
   belongs_to :user
-  belongs_to :car 
-  has_many :users, :class_name => "User", :as => "passenger_trip", :through => :passengers, :source => :user, :dependent => :destroy
+
+  #Das benutzte Auto des Fahrenden
+  belongs_to :car
+  
+  #Die potentiellen Mitfahrer des Fahrers, ermittelt über die Join-Entität Passengers. Hierbei
+  #werden direkt Userobjekte zurückgeliefert, da diese über den Join mit den Fahrten in Verbindung
+  #gebracht werden.
+  has_many :users, :class_name => "User", :as => "passenger_trip", :through => :passengers, 
+    :source => :user, :dependent => :destroy
+
+  #Fahrer und Mitfahrer bewerten sich untereinander zu einem bestimmten Trip
   has_many :ratings, :dependent => :destroy
+
+  #Direkte Beziehung zur Join-Entität Passengers
   has_many :passengers, :dependent => :destroy
   
 
   #Validation, eine Fahrt muss ein Datum, Startort, Zielort, freie Sitzplätze haben
-  
+
   validate :start_time_in_past, :start_address_same_as_end_address, :baggage_not_nil
 
   validates_presence_of :address_start, :address_end, :start_time, :free_seats, :starts_at_N, :starts_at_E, :ends_at_N, :ends_at_E, :duration, :distance
@@ -18,6 +55,29 @@ class Trip < ActiveRecord::Base
   #Freie Sitzplätze dürfen nicht negativ sein
   validates_length_of :free_seats, :minimum => 1
 
+  # Methode prüft ob ein erstellter Trip in der Vergangenheit liegt
+  # @throws Error, wenn Startzeit in der Vergangenheit
+  def start_time_in_past
+    if start_time < Time.now
+      errors.add(:fields, 'Startzeit liegt in der Vergangenheit')
+    end
+  end
+  
+  # Start- und Endaddresse dürfen nicht übereinstimmen
+  # @throws Error, wenn Startpunkt = Zielpunkt
+  def start_address_same_as_end_address
+    if (starts_at_N == ends_at_N and starts_at_E == ends_at_E)
+      errors.add(:field, 'Startadresse = Endadresse, Fahrt lohnt sich nicht')
+    end    
+  end
+
+  # Baggage darf nicht Null sein
+  # @throws Error, wenn Baggage nicht ge<i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Nördl. Breitesetzt ist
+  def baggage_not_nil
+    if(self.baggage == nil)
+      errors.add(:field, 'Baggage ist Null')
+    end
+  end
 
   #Methoden:
   #toString Methode für Trips
@@ -131,26 +191,7 @@ class Trip < ActiveRecord::Base
     return (distance / 1000).round(3) + "Km"
   end
 
-  # Methode prüft ob ein erstellter Trip in der Vergangenheit liegt
-  def start_time_in_past
-    if start_time < Time.now
-      errors.add(:fields, 'Startzeit liegt in der Vergangenheit')
-    end
-  end
-  
-  #Start- und Endaddresse dürfen nicht übereinstimmen
-  def start_address_same_as_end_address
-    if (starts_at_N == ends_at_N and starts_at_E == ends_at_E)
-      errors.add(:field, 'Startadresse = Endadresse, Fahrt lohnt sich nicht')
-    end    
-  end
 
-  #Baggage darf nicht Null sein
-  def baggage_not_nil
-    if(self.baggage == nil)
-      errors.add(:field, 'Baggage ist Null')
-    end
-  end
 
   def user_uncommitted (compared_user)
     get_uncommitted_passengers.include?(compared_user)
@@ -164,8 +205,23 @@ class Trip < ActiveRecord::Base
     self.passengers.where("user_id = ?", compared_user.id).first.confirmed = true
   end
 
-  def delete_unaccepted (compared_user)
+  def declined (compared_user)
     self.passengers.where("user_id = ?", compared_user.id).first.destroy
   end
-
+  
+  def finished
+    if self.start_time < Time.now 
+      true
+    else 
+      false
+    end
+  end
+  
+  def get_passengers
+    erg = []
+    self.passengers.all.each do |p|
+      erg << p.user
+    end
+    erg
+  end
 end
