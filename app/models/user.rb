@@ -316,12 +316,14 @@ class User < ActiveRecord::Base
   #Lässt einen User sich um eine Mitfahrgelegenheit bewerben
   #@param Trip trp um den sich beworben werden soll
   def bewerben (trp)
-      if self.passengers.where("user_id = ?", self.id).where("trip_id = ?",
-                                                             trp.id).count > 0
+      if self.passengers.where("user_id = ?", self.id).where("trip_id = ?", trp.id).count > 0
         false
       else
-        self.passengers.create(trip_id: trp.id, confirmed: false)
-        true
+        begin
+        self.passengers.new(user_id: self.id, trip_id: trp.id, confirmed: false).save 
+        rescue Error
+          false
+        end
       end
 
   end    
