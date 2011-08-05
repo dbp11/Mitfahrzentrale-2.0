@@ -50,7 +50,7 @@ class Trip < ActiveRecord::Base
 
   validate :start_time_in_past, :start_address_same_as_end_address, :baggage_not_nil
 
-  validates_presence_of :address_start, :address_end, :start_time, :free_seats, :starts_at_N, :starts_at_E, :ends_at_N, :ends_at_E, :duration, :distance
+  validates_presence_of :start_city, :start_zipcode, :end_city, :end_zipcode, :start_time, :free_seats, :starts_at_N, :starts_at_E, :ends_at_N, :ends_at_E, :duration, :distance
   
   #Freie Sitzplätze dürfen nicht negativ sein
   validates_length_of :free_seats, :minimum => 1
@@ -113,8 +113,10 @@ class Trip < ActiveRecord::Base
     erg = []
 
     requests.each do |t|
-      start_con = Gmaps4rails.destination({"from" => self.address_start, "to" => t.address_start},{},"pretty")
-      end_con =  Gmaps4rails.destination({"from" => self.address_end, "to" => t.address_end},{},"pretty")
+      address_start = t.start_city
+      address_end = t.end_city
+      start_con = Gmaps4rails.destination({"from" => self.start_city, "to" => address_start},{},"pretty")
+      end_con =  Gmaps4rails.destination({"from" =>end_city, "to" => address_end},{},"pretty")
       
       start_distance = start_con[0]["distance"]["value"]
       start_duration = start_con[0]["duration"]["value"]
@@ -176,6 +178,8 @@ class Trip < ActiveRecord::Base
 
   # Berechnet die komplette Route mit allen Zwischenziele
   def set_route
+    address_start = self.end_zipcode.to_s
+    address_end = self.end_zipcode.to_s
     route = Gmaps4rails.destination({"from" =>address_start, "to" =>address_end},{},"pretty")
 
     self.distance = route[0]["distance"]["value"]

@@ -122,30 +122,26 @@ ps10 = Passenger.new :user_id => 2, :trip_id => 3, :confirmed => true
 
 
 #Creates request
-req1 = Request.new :starts_at_N => 48.1391265, :starts_at_E => 11.5801863, :ends_at_N => 52.2766061, :ends_at_E => 7.43844030000001, :address_start => "München", :address_end => "Rheine", :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => 1, :start_radius => 31, :end_radius => 37
-req2 = Request.new :starts_at_N => 48.1391265, :starts_at_E => 11.581863, :ends_at_N => 53.074981, :ends_at_E => 8.807081, :address_start => "München", :address_end => "Bremen", :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => false, :comment => "Hilfe", :user_id => 2, :start_radius => 12, :end_radius => 15
-req3 = Request.new :starts_at_N => 52.6875079, :starts_at_E => 7.2911623, :ends_at_N => 52.267281, :ends_at_E => 8.0531882, :address_start => "Meppen", :address_end => "Osnabrück", :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => 3, :start_radius => 43, :end_radius => 22
-req4 = Request.new :starts_at_N => 53.553813, :starts_at_E => 9.91586, :ends_at_N => 52.5234051, :ends_at_E => 13.4113999, :address_start => "Hamburg", :address_end => "Berlin", :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => false, :comment => "Hilfe", :user_id => 4, :start_radius => 12, :end_radius => 32
-req5 = Request.new :starts_at_N => 52.4025974, :starts_at_E => 7.6408948, :ends_at_N => 52.2766061, :ends_at_E => 7.438440300000001, :address_start => "Rheine", :address_end => "Hopsten-Halverde", :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => 5, :start_radius => 12, :end_radius=> 46
+req1 = Request.new :starts_at_N => 48.1391265, :starts_at_E => 11.5801863, :ends_at_N => 52.2766061, :ends_at_E => 7.43844030000001, :start_city => "München",:start_zipcode => 80539,:start_street=>"", :end_city => "Rheine", :end_zipcode => 48431, :end_street=>"", :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => 1, :start_radius => 31, :end_radius => 37
+req2 = Request.new :starts_at_N => 48.1391265, :starts_at_E => 11.581863, :ends_at_N => 53.074981, :ends_at_E => 8.807081, :start_city => "München",:start_zipcode => 80539,:start_street=>"" , :end_city => "Bremen",:end_zipcode => 28195,:end_street => "", :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => false, :comment => "Hilfe", :user_id => 2, :start_radius => 12, :end_radius => 15
+req3 = Request.new :starts_at_N => 52.6875079, :starts_at_E => 7.2911623, :ends_at_N => 52.267281, :ends_at_E => 8.0531882, :start_city => "Meppen", :start_zipcode => 49716, :start_street=>"", :end_city=> "Osnabrück",:end_zipcode=> 49716,:end_street => "",  :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => 3, :start_radius => 43, :end_radius => 22
+req4 = Request.new :starts_at_N => 53.553813, :starts_at_E => 9.91586, :ends_at_N => 52.5234051, :ends_at_E => 13.4113999, :start_city => "Hamburg",:start_zipcode => 20354, :start_street => "", :end_city => "Berlin",:end_zipcode => 10178,:end_street => "", :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => false, :comment => "Hilfe", :user_id => 4, :start_radius => 12, :end_radius => 32
+req5 = Request.new :starts_at_N => 52.4025974, :starts_at_E => 7.6408948, :ends_at_N => 52.2766061, :ends_at_E => 7.438440300000001, :start_city => "Rheine", :start_zipcode => 48431, :start_street => "", :end_city => "Hopsten-Halverde", :end_zipcode => 48496, :end_street => "", :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => 5, :start_radius => 12, :end_radius=> 46
 req1.set_route
 req2.set_route
 req3.set_route
 req4.set_route
 req5.set_route
 #Creates trips
-tri1 = Trip.new :user_id => 1, :car_id => 1, :starts_at_N => 52.27133, :starts_at_E => 7.4452, :ends_at_E => 8.13409, :ends_at_N => 52.57975, :address_start => "Hafenbahn 10 48431 Rheine", :address_end => "Großer Esch 20 48496 Hopsten", :start_time => Time.now+1.minutes, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => 4
-tri2 = Trip.new :user_id => 2, :car_id => 2, :starts_at_N => 48.1391265, :starts_at_E => 11.5801863, :ends_at_E => 8.807081, :ends_at_N => 53.074981,:address_start => "München", :address_end => "Bremen", :start_time => Time.now+1.minutes, :comment => "Platz für alle :D!", :baggage => true, :free_seats => 4
-tri3 = Trip.new :user_id => 3, :car_id => 3, :starts_at_N => 53.553813, :starts_at_E => 9.991586, :ends_at_E => 13.4113999, :ends_at_N => 52.523401, :address_start => "Hamburg" , :address_end => "Berlin", :start_time => Time.now+1.day, :comment => "Ahoi", :baggage => false, :free_seats => 3
-tri4 = Trip.new :user_id => 4, :car_id => 4, :starts_at_N => 52.2766061, :starts_at_E => 7.43840300000001, :ends_at_E => 7.3237899999999, :ends_at_N => 52.52306, :address_start => "Rheine" , :address_end => "Lingen", :start_time => Time.now+1.minutes, :comment => "Boom Boom", :baggage => true, :free_seats => 5
-tri5 = Trip.new :user_id => 5, :car_id => 5, :starts_at_N => 52.6875079, :starts_at_E => 7.2911623, :ends_at_E => 8.0531882, :ends_at_N => 52.267281, :address_start => "Meppen" , :address_end => "Osnabrück", :start_time => Time.now+1.minutes, :comment => "Schnell schnell!", :baggage => false, :free_seats => 4
+tri1 = Trip.new :user_id => 1, :car_id => 1, :starts_at_N => 52.27133, :starts_at_E => 7.4452, :ends_at_E => 8.13409, :ends_at_N => 52.57975, :start_city => "Rheine", :start_zipcode => 48431, :start_street =>"Hafenbahn 10", :end_city => "Hopsten", :end_zipcode =>48496, :end_street => "Großer Esch 20", :start_time => Time.now+1.minutes, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => 4
+tri2 = Trip.new :user_id => 2, :car_id => 2, :starts_at_N => 48.1391265, :starts_at_E => 11.5801863, :ends_at_E => 8.807081, :ends_at_N => 53.074981, :start_city => "München", :start_zipcode => 80539, :start_street => "", :end_city => "Bremen", :end_zipcode => 28195, :end_street => "", :start_time => Time.now+1.minutes, :comment => "Platz für alle :D!", :baggage => true, :free_seats => 4
+tri3 = Trip.new :user_id => 3, :car_id => 3, :starts_at_N => 53.553813, :starts_at_E => 9.991586, :ends_at_E => 13.4113999, :ends_at_N => 52.523401, :start_city => "Hamburg" ,:start_zipcode => 20354, :start_street => "", :end_city => "Berlin",:end_zipcode => 10178,:end_street => "" ,:start_time => Time.now+1.day, :comment => "Ahoi", :baggage => false, :free_seats => 3
+tri4 = Trip.new :user_id => 4, :car_id => 4, :starts_at_N => 52.2766061, :starts_at_E => 7.43840300000001, :ends_at_E => 7.3237899999999, :ends_at_N => 52.52306, :start_city => "Rheine",:start_zipcode =>48431,:start_street => "" , :end_city => "Lingen",:end_zipcode => 49808,:end_street => "" ,:start_time => Time.now+1.minutes, :comment => "Boom Boom", :baggage => true, :free_seats => 5
+tri5 = Trip.new :user_id => 5, :car_id => 5, :starts_at_N => 52.6875079, :starts_at_E => 7.2911623, :ends_at_E => 8.0531882, :ends_at_N => 52.267281, :start_city => "Meppen", :start_zipcode => 49716, :start_street => "" , :end_city => "Osnabrück", :end_zipcode => 49074, :end_street => "", :start_time => Time.now+1.minutes, :comment => "Schnell schnell!", :baggage => false, :free_seats => 4
 tri1.set_route
-sleep(10)
 tri2.set_route
-sleep(10)
 tri3.set_route
-sleep(10)
 tri4.set_route
-sleep(10)
 tri5.set_route
 tri1.save!
 tri2.save!
@@ -188,7 +184,7 @@ ps8.save!
 ps9.save!
 ps10.save!
 
-sleep(30)
+sleep(1.minutes)
 #Creates ratings
 ra1 = Rating.new :comment => "Auto im schlechten Zustand!", :mark => 6, :trip_id => 1, :receiver_id => 1, :author_id => 2
 ra2 = Rating.new :comment => "Benzin?", :mark => 5, :trip_id => 2, :receiver_id => 2, :author_id => 3
