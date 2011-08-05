@@ -53,19 +53,6 @@ class TripsController < ApplicationController
     @user = current_user
     @trip = Trip.find(params[:id])
 
-    #if current_user == @trip.user
-      #flash[:notice] = "FAHRER"
-      #@status = @FAHRER
-    #elsif @trip.user_committed (current_user)
-      #flash[:notice] = "MITFAHRER"
-      #@status = @MITFAHRER
-    #elsif @trip.user_uncommitted (current_user)
-      #flash[:notice] = "POTENTIELLER_MITFAHRER"
-      #@status = @POTENTIELLER_MITFAHRER
-    #else
-      #flash[:notice] = "GAST"
-      #@status = @GAST
-    #end
     @status = status(@trip)
     @free_seats = @trip.get_free_seats
     @occupied_seats = @trip.get_occupied_seats
@@ -73,6 +60,9 @@ class TripsController < ApplicationController
     if params[:request]
       if @free_seats - @occupied_seats > 0
         current_user.bewerben(@trip)
+        tmp = Message.new()
+
+        
       end
     end
 
