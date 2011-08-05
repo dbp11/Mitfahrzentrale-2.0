@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, 
     :remember_me, :address, :zipcode, :birthday, :city, :sex, :phone, 
     :instantmessenger, :visible_age, :visible_address, :visible_zip, 
-    :visible_phone, :visible_city, :visible_im, :visible_email, :visible_cars
+    :visible_phone, :visible_city, :visible_im, :visible_email, :visible_cars, :last_delivery
  
   #Von Paperclip gefordertes Statement zum Anhängen von Bildern
   has_attached_file :pic, :styles => { :medium =>  "300x300>", 
