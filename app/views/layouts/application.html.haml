@@ -7,7 +7,7 @@
 		= stylesheet_link_tag :application
 		= javascript_include_tag :application
 		= csrf_meta_tags
-		%body{:class => controller.controller_name}
+		%body{gmap_onload, :class => controller.controller_name}
 			#container.container
 				%header
 					%banner
@@ -21,10 +21,8 @@
 								= link_to('Suchen', new_request_path)
 							%li
 								= link_to('Fahrten', trips_path)
-							%li
-								= link_to('Nachrichten', messages_path)
-							%li
-								= link_to('Bewertungen', ratings_path)
+							= render 'messages/menu'
+							= render 'ratings/menu'
 							%li
 								= link_to('Fahrzeuge', cars_path)
 						= render 'devise/menu/registration_items'

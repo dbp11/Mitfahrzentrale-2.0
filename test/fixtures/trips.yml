@@ -1,0 +1,91 @@
+---
+trips_001:
+  id: 1
+  user_id: 1
+  car_id: 1
+  starts_at_N: 52.27133
+  starts_at_E: 7.4452
+  ends_at_E: 8.13409
+  ends_at_N: 52.57975
+  address_start: Hafenbahn 10 48431 Rheine
+  address_end: Großer Esch 20 48496 Hopsten
+  start_time: '2011-08-05 12:55:36.668443'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-05 12:55:17.832921'
+  updated_at: '2011-08-05 12:55:17.832921'
+  baggage: t
+  free_seats: 4
+  distance: 18875
+  duration: 1437
+trips_002:
+  id: 2
+  user_id: 2
+  car_id: 2
+  starts_at_N: 48.1391265
+  starts_at_E: 11.5801863
+  ends_at_E: 8.807081
+  ends_at_N: 53.074981
+  address_start: München
+  address_end: Bremen
+  start_time: '2011-08-05 12:55:36.734970'
+  comment: Platz für alle :D!
+  created_at: '2011-08-05 12:55:17.936074'
+  updated_at: '2011-08-05 12:55:17.936074'
+  baggage: t
+  free_seats: 4
+  distance: 748256
+  duration: 24639
+trips_003:
+  id: 3
+  user_id: 3
+  car_id: 3
+  starts_at_N: 53.553813
+  starts_at_E: 9.991586
+  ends_at_E: 13.4113999
+  ends_at_N: 52.523401
+  address_start: Hamburg
+  address_end: Berlin
+  start_time: '2011-08-06 12:54:36.735744'
+  comment: Ahoi
+  created_at: '2011-08-05 12:55:18.035000'
+  updated_at: '2011-08-05 12:55:18.035000'
+  baggage: f
+  free_seats: 3
+  distance: 288978
+  duration: 10317
+trips_004:
+  id: 4
+  user_id: 4
+  car_id: 4
+  starts_at_N: 52.2766061
+  starts_at_E: 7.43840300000001
+  ends_at_E: 7.3237899999999
+  ends_at_N: 52.52306
+  address_start: Rheine
+  address_end: Lingen
+  start_time: '2011-08-05 12:55:36.736459'
+  comment: Boom Boom
+  created_at: '2011-08-05 12:55:18.111933'
+  updated_at: '2011-08-05 12:55:18.111933'
+  baggage: t
+  free_seats: 5
+  distance: 33046
+  duration: 2162
+trips_005:
+  id: 5
+  user_id: 5
+  car_id: 5
+  starts_at_N: 52.6875079
+  starts_at_E: 7.2911623
+  ends_at_E: 8.0531882
+  ends_at_N: 52.267281
+  address_start: Meppen
+  address_end: Osnabrück
+  start_time: '2011-08-05 12:55:36.736997'
+  comment: Schnell schnell!
+  created_at: '2011-08-05 12:55:18.188995'
+  updated_at: '2011-08-05 12:55:18.188995'
+  baggage: f
+  free_seats: 4
+  distance: 110766
+  duration: 4086

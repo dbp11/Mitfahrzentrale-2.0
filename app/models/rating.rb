@@ -18,7 +18,7 @@ class Rating < ActiveRecord::Base
   validates_presence_of :trip_id, :receiver_id, :author_id
   validates_numericality_of :mark, :only_interger => true, :message => "Note kann nur ganze Zahl sein"
   validates_inclusion_of :mark, :in => 1..6, :message => "Note kann nur von 1 bis 6 verteilt werden"
-  validate :no_double_rating
+  validate :no_double_rating, :no_future_rating, :no_self_rating
 
   def no_double_rating
     self.trip.ratings.each do |r|
@@ -27,7 +27,26 @@ class Rating < ActiveRecord::Base
       end
     end
   end
-
+  
+  def no_future_rating
+    if self.trip.start_time > Time.now
+      errors.add(:field, "Du bist noch nicht gefahren!")
+    end
+  end
+  
+  def no_self_rating
+    if self.author == self.receiver
+      errors.add(:fields, "Man kann sich nicht selbst bewerten!")
+    end
+  end
+  
+  def authenticate_rater
+    if !((self.trip.users.include?(receiver) and self.trip.users.include?(author)) or
+        (self.trip.users.include?(receiver) and self.trip.user==author) or 
+        (self.trip.users.include?(author) and self.trip.user==author))
+      then errors.add(:field, "Keine Berechtigung diesen User für diese Fahrt zu bewerten!")
+    end
+  end
 ########################   Methoden für Controller   #######################
 
   #to String Methode für Ratings
