@@ -183,12 +183,10 @@
                   %td
       -#= link_to("Bewerben", url_for(:action => "update", :controller => "trips", :request => true))
 
-    %td{:style => "width:30%"}
-      #map_canvas{:style => "width:100%; height:100%"}
+    %td#map
+      #map_canvas{:style => "width: 100%;"}
+:javascript
+  var b = document.getElementById("map_canvas").offsetWidth;
+  var style = document.getElementById("map_canvas").getAttribute("style");
+  document.getElementById("map_canvas").setAttribute("style",style+"height:"+b,0);
 
-      -#  
-        %h2 Hier kommt die Karten hin
-        %br/
-        %h2 (evtl als Miniatur mit
-        %br/
-        %h2 Link zur Gro&szlig;ansicht)

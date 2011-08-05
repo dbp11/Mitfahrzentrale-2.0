@@ -6,9 +6,17 @@ body.trips {
   // Add the trips class to your body tag
   // Then, place scoped styles here.
   .trips_base_table {
-    border: solid 1px;
+    border: solid 2px;
     width: 100%;
+    td {
+      vertical-align: top;
+    }
+    td#map {
+      width: 40%;
+    }
   }
+
+
 	.trips_index_table {
 		margin-bottom: 1.5em;
 		width: 70%;
@@ -165,6 +173,7 @@ body.trips {
       &:hover {
         background-color: #777777;
       }
+
     }
 
 		.left {

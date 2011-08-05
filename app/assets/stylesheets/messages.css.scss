@@ -48,6 +48,11 @@ body.messages {
 			}
 			.message_table_both {
 			}
+			tr.new {
+				span.new {
+					color: red;
+				}
+			}
 			tr:first-child {
 				background-color: #777777;
 				border-bottom: solid 1px;
