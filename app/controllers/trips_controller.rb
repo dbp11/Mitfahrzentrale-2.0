@@ -64,7 +64,16 @@ class TripsController < ApplicationController
         tmp.receiver = current_user
         tmp.subject = "Ihre Bewerbung"
         tmp.message = "Ihre Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" war erfolgreich. <3"        
-        tmp.delete_writer = false
+        tmp.delete_writer = true
+        tmp.delete_receiver = false
+        tmp.save
+        tmp = Message.new()
+        tmp.writer_id = current_user 
+        tmp.receiver = User.find(@trip.user_id)
+        tmp.subject = "Ihre Bewerbung"
+        tmp.message = "Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" Nutzer annehmen: HIER LINK"        
+
+        tmp.delete_writer = true
         tmp.delete_receiver = false
         tmp.save
         end
@@ -78,7 +87,7 @@ class TripsController < ApplicationController
         tmp.receiver = temp
         tmp.message = "Sie wurden fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" angenommen!!"
         tmp.subject = "Ihre Bewerbung"
-        tmp.delete_writer = false
+        tmp.delete_writer = true
         tmp.delete_receiver = false
         tmp.save
       end
@@ -93,7 +102,7 @@ class TripsController < ApplicationController
           tmp.receiver = temp
           tmp.message = "Sie wurden fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" abgelehnt!!"
           tmp.subject = "Ihre Bewerbung"
-          tmp.delete_writer = false
+          tmp.delete_writer = true
           tmp.delete_receiver = false
           tmp.save
         end
