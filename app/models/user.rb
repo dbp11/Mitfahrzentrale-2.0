@@ -68,13 +68,13 @@ class User < ActiveRecord::Base
   validate :booleans_not_nil
 
   def booleans_not_nil 
-    if(self.user_type == nil and self.sex == nil and 
-       self.email_notifications == nil and self.visible_phone == nil and 
-       self.visible_email == nil and self.visible_address == nil and 
-       self.visible_age == nil and self.visible_im == nil and 
-       self.visible_cars == nil and self.visible_cip == nil and 
-       self.visible_city == nil and self.business == nil)
-      errors.add(:field, 'Irgendein Boolean nimmt den Wert Null ein, und das dar nicht sein, also gar nicht')
+    if(self.user_type == nil or self.sex == nil or 
+       self.email_notifications == nil or self.visible_phone == nil or 
+       self.visible_email == nil or self.visible_address == nil or 
+       self.visible_age == nil or self.visible_im == nil or 
+       self.visible_cars == nil or self.visible_cip == nil or 
+       self.visible_city == nil or self.business == nil)
+      errors.add(:field, 'Irgendein Boolean nimmt den Wert Null ein, und das darf nicht sein, also gar nicht')
     end
   end
 
