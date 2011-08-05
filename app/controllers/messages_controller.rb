@@ -3,9 +3,11 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    temp = User.find(current_user.id)
-    @messages = temp.get_received_messages
-    #Hier Methode einfügen, nur eigene Nachrichten
+    @messages = current_user.get_received_messages
+    @last_delivery = current_user.last_delivery
+	@latest_messages = current_user.get_latest_messages
+    current_user.last_delivery = Time.now
+    current_user.save
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,9 +16,7 @@ class MessagesController < ApplicationController
   end
 
   def outbox
-    temp = User.find(current_user.id)
-    @messages = temp.get_written_messages
-    #Hier Methode, nur empfangene
+    @messages = current_user.get_written_messages
   
     respond_to do |format|
       format.html # index.html.haml
@@ -45,7 +45,7 @@ class MessagesController < ApplicationController
 		if params[:tid]
 			# message relatet to a trip
 			temp = Trip.find(params[:tid])
-			@message.subject = "[["+ url_for(temp) + "|" + "LINKTEXT HIER" +"]]"
+			@message.subject = "[["+ url_for(temp) + "|" + temp.get_start_city + " - " + temp.get_end_city + " " + temp.start_time.strftime("%d.%m.%y") +"]]"
 		else
 			# new message
 			# all set

@@ -3,23 +3,23 @@
 # Modelliert alle Fahrten die ein User als Fahrer oder Mitfahrer begeht. Das Modell hat die 
 # Datenfelder
 #
-# *trip_id :integers --<i>Von Rails erstellt</i> ID des Trips
-# *user_id :integers -- ID des Fahrenden Users
-# *car_id :integers -- ID des benutzten Autos des fahrenden Users
-# *starts_at_N :float -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Nördl. Breite
-# *starts_at_E :float -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Östl. Breite
-# *ends_at_N :float -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Nördl. Breite
-# *ends_at_E :float -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Östl. Breite
-# *address_start :string -- Durch den User eingegebene Startadresse 
-# *address_end :string -- Durch den User eingegebene Endadresse
-# *start_time :datetime -- Voraussichtliche Startzeit des Trip
-# *comment :text -- Kommentar zum Text
-# *created_at :datetime -- <i>Von Rails erstellt</i> Erstellungsdatum des Objekts
-# *updated_at :datetime <i>Von Rails erstellt</i> letztes Änderungsdatum des Objekts
-# *baggage :boolean -- Datenfeld ob Gepäck erlaubt ist
-# *free_seats :integer -- Noch freie Sitze des Autos auf der Fahrt
-# *distance :integer -- <i>Bei Erstellung automatisch eingefügt</i> Länge der zu fahrenden Strecke
-# *duration :integer -- <i>Bei Erstellung automatisch eingefügt</i> Dauer der zu fahrenden Strecke
+# * trip_id :integers --<i>Von Rails erstellt</i> ID des Trips
+# * user_id :integers -- ID des Fahrenden Users
+# * car_id :integers -- ID des benutzten Autos des fahrenden Users
+# * starts_at_N :float -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Nördl. Breite
+# * starts_at_E :float -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Östl. Breite
+# * ends_at_N :float -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Nördl. Breite
+# * ends_at_E :float -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Östl. Breite
+# * address_start :string -- Durch den User eingegebene Startadresse 
+# * address_end :string -- Durch den User eingegebene Endadresse
+# * start_time :datetime -- Voraussichtliche Startzeit des Trip
+# * comment :text -- Kommentar zum Text
+# * created_at :datetime -- <i>Von Rails erstellt</i> Erstellungsdatum des Objekts
+# * updated_at :datetime <i>Von Rails erstellt</i> letztes Änderungsdatum des Objekts
+# * baggage :boolean -- Datenfeld ob Gepäck erlaubt ist
+# * free_seats :integer -- Noch freie Sitze des Autos auf der Fahrt
+# * distance :integer -- <i>Bei Erstellung automatisch eingefügt</i> Länge der zu fahrenden Strecke
+# * duration :integer -- <i>Bei Erstellung automatisch eingefügt</i> Dauer der zu fahrenden Strecke
 
 
 class Trip < ActiveRecord::Base
@@ -94,10 +94,11 @@ class Trip < ActiveRecord::Base
 
     Request.all.each do |t|
       if (start_f.between?(t.start_time.to_f, t.end_time.to_f) and 
-          ((Geocoder::Calculations.distance_between [t.starts_at_N, t.starts_at_E], 
-           [starts_at_N, starts_at_E], :units => :km) <= t.start_radius) and
-          ((Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
-           [ends_at_N, ends_at_E], :units => :km)  <= t.end_radius)) then 
+         ((Geocoder::Calculations.distance_between [t.starts_at_N, t.starts_at_E], 
+         [starts_at_N, starts_at_E], :units => :km) <= t.start_radius) and
+         ((Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
+         [ends_at_N, ends_at_E], :units => :km)  <= t.end_radius)) and
+         !self.user.ignorings.include?(t.user) then 
         erg << t
       end
     end
@@ -134,12 +135,12 @@ class Trip < ActiveRecord::Base
   end
 
 
-  #liefert die Anzahl freier Sitzplätze, die noch nicht vergeben sind
+  #Liefert die Anzahl freier Sitzplätze, die noch nicht vergeben sind
   def get_free_seats
     return free_seats - get_occupied_seats
   end
   
-  # liefert die Anzahl belegter Sitzpläte
+  # Liefert die Anzahl belegter Sitzpläte des benutzten Autos
   def get_occupied_seats
     count = 0
     self.passengers.all.each do |p|
@@ -151,7 +152,7 @@ class Trip < ActiveRecord::Base
   end
 
 
-  #liefert alle user dieses Trips, die schon committed wurden
+  #Liefert alle User dieses Trips, die schon committed wurden
   def get_committed_passengers
     erg = []
     self.passengers.all.each do |p|
@@ -191,24 +192,47 @@ class Trip < ActiveRecord::Base
     return (distance / 1000).round(3) + "Km"
   end
 
-
-
   def user_uncommitted (compared_user)
     get_uncommitted_passengers.include?(compared_user)
   end
-
+  
   def user_committed (compared_user)
     get_committed_passengers.include?(compared_user)
   end
-
+  
+  #Methode um als Fahrer einen User, der sich um Mitfahrt beworben hat, anzunehmen. Dabei wird das Datenfeld confirmed
+  #in der Tabelle Passengers auf true gesetzt
+  #@param User
+  #@return true, wenn Update erfolgreich; false sonst
   def accept (compared_user)
-    t = self.passengers.where("user_id = ?", compared_user.id).first.update_attribute(:confirmed, true)
-  end
-
+    if self.passengers.where("user_id = ?", compared_user.id).first.confirmed?
+        false
+      else
+        begin
+          self.passengers.where("user_id = ?", compared_user.id).first.update_attribute(:confirmed, true)
+          true
+        rescue Error
+          false
+        end
+      end
+    end
+  
+  #Methode um als Fahrer einen User, der sich um Mitfahrt beworben hat, abzulehnen. Dieser wird hierbei direkt aus 
+  #der Mitfahrertabelle (Passengers) gelöscht.
+  #@param User
+  #@return true, wenn Löschvorgang erfolgreich; false sonst
   def declined (compared_user)
-    self.passengers.where("user_id = ?", compared_user.id).first.destroy
+    begin
+      self.passengers.where("user_id = ?", compared_user.id).first.destroy
+    rescue Error
+      false
+    end
+    true
   end
   
+  #Methode, die angibt, ob ein Trip schon beendet ist
+  #@return true, wenn zu überprüfender Trip in der Vergangenheit liegt
+  #@return false, wenn zu überprüfender Trip in der Zukunft liegt
   def finished
     if self.start_time < Time.now 
       true
@@ -217,6 +241,8 @@ class Trip < ActiveRecord::Base
     end
   end
   
+  #Liefert alle Mitfahrer dieses Trips
+  #@return User [] erg
   def get_passengers
     erg = []
     self.passengers.all.each do |p|
@@ -224,13 +250,77 @@ class Trip < ActiveRecord::Base
     end
     erg
   end
+
+  # Füllt einen Hash mit Adressinformationen der Startadresse.
+  # "get_start_address_info[:street]" um an die Straße zu kommen
+  # "get_start_address_info[:city]" um an den Stadtnamen zu kommen
+  # "get_start_address_info[:plz]" um an die PLZ zu kommen
+  #
+  # @return Hash mit Feldern: Straße, Stadt, PLZ
+  # 
+  def get_start_address_info
+    erg = {}
+    street = ""
+    hausNr = ""
+    infos = Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
+            self.starts_at_E.to_s + "E", "de")[0][:full_data]
+    infos["address_components"].each do |i|
+      if i["types"].include?("postal_code")
+        erg[:plz] = i["long_name"]
+      end
+      if i["types"].include?("locality")
+        erg[:city] = i["long_name"]
+      end
+      if i["types"].include?("route")
+        street = i["long_name"]
+      end
+      if i["types"].include?("street_number")
+        hausNr = i["long_name"]
+      end
+    end
+
+    erg[:street] = street + " " + hausNr
+    
+    return erg
+  end
+  
+  # Füllt einen Hash mit Adressinformationen der Endadresse.
+  # "get_end_address_info[:street]" um an die Straße zu kommen
+  # "get_end_address_info[:city]" um an den Stadtnamen zu kommen
+  # "get_end_address_info[:plz]" um an die PLZ zu kommen
+  #
+  # @return Hash mit Feldern: Straße, Stadt, PLZ
+  def get_end_address_info
+    erg = {}
+    street = ""
+    hausNr = ""
+    infos = Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
+                                self.ends_at_E.to_s + "E", "de")[0][:full_data]
+    infos["address_components"].each do |i|
+      if i["types"].include?("postal_code")
+        erg[:plz] = i["long_name"]
+      end
+      if i["types"].include?("locality")
+        erg[:city] = i["long_name"]
+      end
+      if i["types"].include?("route")
+        street = i["long_name"]
+      end
+      if i["types"].include?("street_number")
+        hausNr = i["long_name"]
+      end
+    end
+
+    erg[:street] = street + " " + hausNr
+    
+    return erg
+  end
+  
   def get_start_city
-    Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + self.starts_at_E.to_s + "E", "de")[0][:full_data]["address_components"][2]["long_name"]
+    get_start_address_info[:city]
   end
   
   def get_end_city
-    Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + self.ends_at_E.to_s + "E", "de")[0][:full_data]["address_components"][2]["long_name"]
+    get_end_address_info[:city]
   end
-
-
 end

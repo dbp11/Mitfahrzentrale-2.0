@@ -1,0 +1,10 @@
+-if @latest_messages
+	-temp = @latest_messages
+-else
+	-temp = current_user.get_latest_messages
+-if temp == 0
+	%li
+		= link_to('Nachrichten', messages_path)
+-else
+	%li
+		= link_to('Nachrichten ('+temp.to_s+')' , messages_path)

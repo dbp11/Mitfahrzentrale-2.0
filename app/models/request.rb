@@ -1,12 +1,11 @@
 class Request < ActiveRecord::Base
 
-#############################   Beziehungen   ############################
-  
-  
-  #Beziehungen
+############################# == Beziehungen   ############################
+ 
+  #Beziehunge
   belongs_to :user
   
-#############################   Validations   ############################
+############################# == Validations   ############################
   
   
   #Validation
@@ -56,8 +55,9 @@ class Request < ActiveRecord::Base
            [starts_at_N, starts_at_E], :units => :km) <= self.start_radius) and
           ((Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
            [ends_at_N, ends_at_E], :units => :km)  <= self.end_radius) and 
-           (!self.baggage and !t.baggage or t.baggage) then 
-        erg << t
+           (!self.baggage and !t.baggage or t.baggage) and
+           !self.user.ignorings.include?(t.user)
+           then erg << t
       end
     end
     return erg

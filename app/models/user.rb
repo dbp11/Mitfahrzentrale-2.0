@@ -3,41 +3,41 @@
 # erstellt, Messages versandt, Ratings gegeben, an ihm die Profileinstellungen gespeichert. Folglich ist der User, 
 # in hinsicht der Beziehungen, die komplexeste Klasse.
 # Er besitzt folgende Datenfelder:
-# *email :string -- E-Mail Adresse des Benutzers
-# *encrypted_password :string -- verschlüsseltes Passwort des Benutzers (Devise Plugin)
-# *reset_password_token :string -- Zurücksetzen des Passwortkürzels
-# *reset_password_sent_at :datetime -- letztes Zurücksetzen des Passwort
-# *remember_created_at :datetime -- Remember_Me Anlage am
-# *sign_in_count :integer -- Anzahl der Logins
-# *current_sign_in_at :datetime -- Aktuell eingeloggt um
-# *last_sign_in_at :datetime -- Zuletzt eingeloggt am
-# *created_at :datetime -- <i>Von Rails automatisch angelegt:</i> Erstellungsdatum des Users
-# *updated_at :datetime -- <i>Vom Rails automatisch angelegt:</i> Letztes Update an den Datenfeldern
-# *name :string -- Nutzername
-# *user_type :boolean -- Adminrechte ja/nein
-# *sex :boolean -- false weiblich, true männlich
-# *address :string -- Straße, Hausnummer
-# *addressN :float -- <i>Von Geocoder benötigt:</i> nördliche Breite der Adresse 
-# *addressE :float -- <i>Von Geocoder benötigt:</i> östliche Länge der Adresse
-# *zipcode :integer -- Postleitzahl
-# *instantmessenger :string -- Instantmessenger
-# *city :string Wohnort
-# *birthday :date -- Geburtsdatum des Users 
-# *phone :string Telephonnummer
-# *business :boolean -- Ist User Gewerbs- oder Privatanbieter
-# *email_notifications -- E-Mail-Benachrichtigungen an- oder ausschalten
-# *visible_phone :boolean -- Sichtbarkeit der Telephonnummer an- oder ausschalten
-# *visible_email :boolean -- Sichtbarkeit der E-Mail an- oder ausschalten
-# *visible_address :boolean -- Sichtbarkeit der Adresse an- oder ausschalten
-# *visible_age :boolean -- Sichtbarkeit des Alter an- oder ausschalten
-# *visible_im :boolean -- Sichtbarkeit des Instantmessenger an- oder ausschalten
-# *visible_cars :boolean -- Sichtbarkeit der Autos an- oder ausschalten
-# *visible_zip :boolean -- Sichtbarkeit der Postleitzahl an- oder ausschalten
-# *visible_city :boolean -- Sichtbarkeit der Stadt an- oder ausschalten
-# *picture_file_name :string -- <i>Von Paperclip gefordert</i> Name des gespeicherten Bildes
-# *picture_content_type :string -- <i>Von Paperclip gefordert</i> Dateityp des Bildes
-# *picture_file_size :integer -- <i>Von Paperclip gefordert </i> Größe des Bildes
-# *picture_updated_at :datetime -- <i>Von Paperclip gefordert </i> letzte Bildänderung
+# * email :string -- E-Mail Adresse des Benutzers
+# * encrypted_password :string -- verschlüsseltes Passwort des Benutzers (Devise Plugin)
+# * reset_password_token :string -- Zurücksetzen des Passwortkürzels
+# * reset_password_sent_at :datetime -- letztes Zurücksetzen des Passwort
+# * remember_created_at :datetime -- Remember_Me Anlage am
+# * sign_in_count :integer -- Anzahl der Logins
+# * current_sign_in_at :datetime -- Aktuell eingeloggt um
+# * last_sign_in_at :datetime -- Zuletzt eingeloggt am
+# * created_at :datetime -- <i>Von Rails automatisch angelegt:</i> Erstellungsdatum des Users
+# * updated_at :datetime -- <i>Vom Rails automatisch angelegt:</i> Letztes Update an den Datenfeldern
+# * name :string -- Nutzername
+# * user_type :boolean -- Adminrechte ja/nein
+# * sex :boolean -- false weiblich, true männlich
+# * address :string -- Straße, Hausnummer
+# * addressN :float -- <i>Von Geocoder benötigt:</i> nördliche Breite der Adresse 
+# * addressE :float -- <i>Von Geocoder benötigt:</i> östliche Länge der Adresse
+# * zipcode :integer -- Postleitzahl
+# * instantmessenger :string -- Instantmessenger
+# * city :string Wohnort
+# * birthday :date -- Geburtsdatum des Users 
+# * phone :string Telephonnummer
+# * business :boolean -- Ist User Gewerbs- oder Privatanbieter
+# * email_notifications -- E-Mail-Benachrichtigungen an- oder ausschalten
+# * visible_phone :boolean -- Sichtbarkeit der Telephonnummer an- oder ausschalten
+# * visible_email :boolean -- Sichtbarkeit der E-Mail an- oder ausschalten
+# * visible_address :boolean -- Sichtbarkeit der Adresse an- oder ausschalten
+# * visible_age :boolean -- Sichtbarkeit des Alter an- oder ausschalten
+# * visible_im :boolean -- Sichtbarkeit des Instantmessenger an- oder ausschalten
+# * visible_cars :boolean -- Sichtbarkeit der Autos an- oder ausschalten
+# * visible_zip :boolean -- Sichtbarkeit der Postleitzahl an- oder ausschalten
+# * visible_city :boolean -- Sichtbarkeit der Stadt an- oder ausschalten
+# * picture_file_name :string -- <i>Von Paperclip gefordert</i> Name des gespeicherten Bildes
+# * picture_content_type :string -- <i>Von Paperclip gefordert</i> Dateityp des Bildes
+# * picture_file_size :integer -- <i>Von Paperclip gefordert </i> Größe des Bildes
+# * picture_updated_at :datetime -- <i>Von Paperclip gefordert </i> letzte Bildänderung
 class User < ActiveRecord::Base
 
   ####################### ==Railsplugin Devise ################################
@@ -50,8 +50,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, 
     :remember_me, :address, :zipcode, :birthday, :city, :sex, :phone, 
     :instantmessenger, :visible_age, :visible_address, :visible_zip, 
-    :visible_phone, :visible_city, :visible_im, :visible_email, :visible_cars
- 
+    :visible_phone, :visible_city, :visible_im, :visible_email, :visible_cars, :last_delivery, :user_type, :email_notifications, :business, :last_ratings 
   #Von Paperclip gefordertes Statement zum Anhängen von Bildern
   has_attached_file :pic, :styles => { :medium =>  "300x300>", 
                                            :thumb => "100x100>"}
@@ -67,19 +66,94 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :address, :zipcode, :city 
   validate :booleans_not_nil
 
+  private #die Validation-Methoden private
+
   def booleans_not_nil 
-    if(self.user_type == nil and self.sex == nil and 
-       self.email_notifications == nil and self.visible_phone == nil and 
-       self.visible_email == nil and self.visible_address == nil and 
-       self.visible_age == nil and self.visible_im == nil and 
-       self.visible_cars == nil and self.visible_cip == nil and 
-       self.visible_city == nil and self.business == nil)
-      errors.add(:field, 'Irgendein Boolean nimmt den Wert Null ein, und das dar nicht sein, also gar nicht')
+    user_type_not_nil
+    sex_not_nil 
+    email_notifications_not_nil 
+    visible_phone_not_nil  
+    visible_email_not_nil 
+    visible_address_not_nil 
+    visible_age_not_nil 
+    visible_im_not_nil 
+    visible_cars_not_nil 
+    visible_zip_not_nil  
+    visible_city_not_nil 
+    business_not_nil 
+  end
+
+  def user_type_not_nil
+    if self.user_type.nil?
+      errors.add(:field, 'user_type darf nicht nil sein!')
     end
   end
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :address, :zipcode, :birthday, :city, :sex, :phone, :instantmessenger, :visible_age, :visible_address, :visible_zip, :visible_phone, :visible_city, :visible_im, :visible_email, :visible_cars, :pic_file_size, :pic_file_name, :pic_content_type, :pic_update_at, :business, :pic
+  def sex_not_nil
+    if self.sex.nil?
+      errors.add(:field, 'sex darf nicht nil sein!')
+    end
+  end
+
+  def email_notifications_not_nil
+    if self.email_notifications.nil?
+      errors.add(:field, 'email_notifications darf nicht nil sein!')
+    end
+  end
+
+  def visible_phone_not_nil
+    if self.visible_phone.nil?
+      errors.add(:field, 'visible_phone darf nicht nil sein!')
+    end
+  end
+
+  def visible_email_not_nil
+    if self.visible_email.nil?
+      errors.add(:field, 'visible_email darf nicht nil sein!')
+    end
+  end
+
+  def visible_address_not_nil
+    if self.visible_address.nil?
+      errors.add(:field, 'visible_address darf nicht nil sein!')
+    end
+  end
+
+  def visible_age_not_nil
+    if self.visible_age.nil?
+      errors.add(:field, 'visible_age darf nicht nil sein!')
+    end
+  end
+
+  def visible_im_not_nil
+    if self.visible_im.nil?
+      errors.add(:field, 'visible_im darf nicht nil sein!')
+    end
+  end
+
+  def visible_cars_not_nil
+    if self.visible_cars.nil?
+      errors.add(:field, 'visible_cars darf nicht nil sein!')
+    end
+  end
+
+  def visible_zip_not_nil
+    if self.visible_zip.nil?
+      errors.add(:field, 'visible_zip darf nicht nil sein!')
+    end
+  end
+
+  def visible_city_not_nil
+    if self.visible_city.nil?
+      errors.add(:field, 'visible_city darf nicht nil sein!')
+    end
+  end
+
+  def business_not_nil
+    if self.business.nil?
+      errors.add(:field, 'business darf nicht nil sein!')
+    end
+  end
   
   
   #Von Paperclip gefordertes Statement zum Anhängen von Bildern
@@ -120,9 +194,12 @@ class User < ActiveRecord::Base
   has_many :written_messages,  :class_name => "Message", :foreign_key =>"writer_id", :dependent => :destroy
   has_many :written_ratings, :class_name => "Rating", :foreign_key => "author_id", :dependent => :destroy
   has_many :received_ratings, :class_name => "Rating", :foreign_key => "receiver_id", :dependent => :destroy
- 
+
+  public #ab hier wieder public
+
   ################################################### ==Methoden:###################################################
   #toString Methode für User
+  #@return Name des Users
   def to_s
     name
   end
@@ -175,6 +252,8 @@ class User < ActiveRecord::Base
     return erg
   end
 
+  #Liefert alle Trips des Users zurück, bei denen er sich um Mitfahrt beworben hat
+  #@return Trip [] erg
   def applied_at
     erg =[]
     self.passengers.each do |p|
@@ -188,22 +267,94 @@ class User < ActiveRecord::Base
   #Methode zur Ermittlung des durchschnittlichen Ratings des Users 
   #@return float 3, wenn User noch keine Bewertungen hat
   #@return float Sum(Ratings)/Anz(Ratings)
-  def get_avg_rating(rates)
-    count = 0
-    erg = 0
-    rates.each do |x|
-        erg = erg + x.mark
-        count +=1
+  def get_avg_rating
+    count = count_ratings
+    if count == 0
+      return 3
     end
-    return erg.to_f / count.to_f
+
+    erg = 0
+    self.received_ratings.each do |x|
+        erg = erg + x.mark
+    end
+
+      return erg.to_f / count_ratings
   end
-  
-  #Methode die alle Erhaltenen Ratings des Users zählt
+
+
+  #Methode zur Ermittlung des durchschnittlichen Ratings des Users als Fahrer
+  #@return float 3, wenn User noch keine Bewertungen als Fahrer hat
+  #@return float Sum(Ratings)/Anz(Ratings)
+  def get_avg_rating_driver
+    count = count_ratings_driver
+    if count == 0
+      return 3
+    end
+
+    erg = 0
+    self.driven.each do |d|
+      d.ratings.each do |r|
+        if r.receiver == self
+          erg += r.mark
+        end
+      end
+    end
+    
+    return erg.to_f / count
+  end
+
+  #Methode zur Ermittlung des durchschnittlichen Ratings des Users als Mitfahrer
+  #@return float 3, wenn User noch keine Bewertungen als Mitfahrer hat
+  #@return float Sum(Ratings)/Anz(Ratings)
+  def get_avg_rating_passenger
+    count = count_ratings_passenger
+    if count == 0
+      return 3
+    end
+
+    erg = 0
+    self.driven_with.each do |d|
+      d.ratings.each do |r|
+        if r.receiver == self
+          erg += r.mark
+        end
+      end
+    end
+    
+    return erg.to_f / count
+  end
+
+
+  #Methode, die alle Erhaltenen Ratings des Users zählt
   #@return integer count
   def count_ratings
+    self.received_ratings.count
+  end
+
+  #Methode, die nur die Ratings zählt, wo der User Fahrer war
+  #@return integer count
+  def count_ratings_driver
     count = 0
-    self.received_ratings.each do |x|
-      count += 1
+    self.driven.each do |d|
+      d.ratings.each do |r|
+        if r.receiver == self
+          count += 1
+        end
+      end
+    end
+    return count
+  end
+
+  #Methode, die nur die Ratings zählt, wo der User Mitfahrer war
+  #@return integer count
+  def count_ratings_passenger
+    count = 0
+    self.driven_with.each do |d|
+      d.ratings.each do |r|
+        if r.receiver == self
+          count += 1
+        end
+      end
     end
     return count
   end
@@ -233,12 +384,12 @@ class User < ActiveRecord::Base
   end
   
   #Methode, die die relative Anzahl an Ignorierungen eines Users zurückliefert
-  #@return float Ignorierungen_des_Users / Alle_User
+  #@return float Ignorierungen_des_Users / Anz(User)
   def get_relative_ignorations
     self.ignoreds.count.to_f / User.all.count.to_f
   end
   
-  #Methode, die alle, für den User sichtbaren Autos zurückliefert.
+  #Methode, die alle für den User sichtbaren Autos zurückliefert.
   #Wenn ein User bei einem Trip Mitfahrer ist, so wird das Auto das Fahrers für ihn sichtbar
   #@return Car Set
   def get_visible_cars
@@ -250,8 +401,9 @@ class User < ActiveRecord::Base
     end
     erg
   end
-  #Methode, die alle, für einen User sichtbaren User zurückliefert
-  #User werden für sichtbar, wenn der Benutzer mit diesen über einen Trip in verbindung gebracht werden kann
+
+  #Methode, die alle für einen User sichtbaren User zurückliefert
+  #User werden sichtbar, wenn der Benutzer mit diesen über einen Trip in verbindung gebracht werden kann
   #@return User [] 
   def get_visible_users
     erg = Array.new
@@ -273,7 +425,8 @@ class User < ActiveRecord::Base
     return erg
   end
   
-  #@return gesammte als Mitfahrer zurückgelegte Distanz
+  #Methode, die die zurückgelegte Distanz als Mitfahrer in <i>m</i> zurückgibt
+  #@return gesammte als aktueller Mitfahrer zurückgelegte Distanz
   def toured_distance_p
     distance = 0
     self.driven_with.each do |t|
@@ -281,7 +434,9 @@ class User < ActiveRecord::Base
     end
     distance
   end
-  #@return gesammte als Mitfahrer gefahrene Zeit
+
+  #Methode, die die als Mitfahrer gefahrene Zeit in <i>s</i> zurückgibt
+  #@return gesammte als aktueller Mitfahrer gefahrene Zeit
   def toured_time_p
     time = 0
     self.driven_with.each do |t|
@@ -290,6 +445,7 @@ class User < ActiveRecord::Base
     time
   end
   
+  #Methode, die die als Fahrer zurückgelgte Distanz in <i>m</i> zurückgibt
   #@return gesammte als Fahrer zurückgelgete Distanz
   def toured_distance_d
     distance = 0
@@ -299,6 +455,7 @@ class User < ActiveRecord::Base
     distance
   end
   
+  #Methode, die die asl Fahrer gefahrene Zeit in <i>s</i> zurückgibt
   #@return gesammte als Fahrer gefahrene Zeit
   def toured_time_d
     time = 0
@@ -309,14 +466,14 @@ class User < ActiveRecord::Base
   end
   
   #Methode die ermittelt, ob der aktuelle User vom übergebenen User zum übergebenen Trip schon bewertet wurde
-  #@param User rateri
+  #@param User rater
   #@param Trip trp
   #@return false, wenn noch keine Bewertung abgegeben wurde
   #@return true, wenn eine Bewertung abgegeben wurde
   def allready_rated (rater, trp)
     check = false
     rater.written_ratings.each do |r|
-      if r.receiver_id = self.id and r.trip_id = trp.id then check = true
+      if r.receiver_id == self.id and r.trip_id == trp.id then check = true
       end
     end
     check
@@ -324,6 +481,10 @@ class User < ActiveRecord::Base
    
   #Lässt einen User sich um eine Mitfahrgelegenheit bewerben
   #@param Trip trp um den sich beworben werden soll
+  #@return false, wenn der User sich schon auf den Trip beworben hat
+  #@return false, wenn eine Validatierung beim Einspeichern des Users eine
+  #Verletzung der Integrität feststellt
+  #@return true, wenn Einspeichern funktioniert hat
   def bewerben (trp)
       if self.passengers.where("user_id = ?", self.id).where("trip_id = ?", trp.id).count > 0
         false
@@ -336,12 +497,14 @@ class User < ActiveRecord::Base
       end
   end    
  
-  #liefert alle Ratings, die der User erstellt hat sortiert nach Datum
+  #Methode, die alle Ratings liefert, die der User erstellt hat 
+  #@return rating [] sortiert nach Datum
   def get_own_written_ratings
     self.written_ratings.sort{|a,b| b.created_at <=> a.created_at}
   end
 
-  #liefert alle Ratings, die dieser User als Fahrer erhalten hat
+  #Methode, die alle Ratings liefert, die dieser User als Fahrer erhalten hat
+  #@return rating [] sortiert nach Datum
   def get_own_driver_ratings
     erg = []
     self.received_ratings.each do |r|
@@ -349,10 +512,11 @@ class User < ActiveRecord::Base
         erg << r
       end
     end
-    return erg
+    return erg.sort{|a,b| b.created_at <=> a.created_at}
   end
 
-  #lifert alle Ratings, die dieser User als Mitfahrer erhalten hat
+  #Methode, die alle Ratings liefert, die dieser User als Mitfahrer erhalten hat
+  #@return rating [] sortiert nach Datum
   def get_own_passenger_ratings
     erg = []
     self.received_ratings.each do |r|
@@ -360,6 +524,32 @@ class User < ActiveRecord::Base
         erg << r
       end
     end
-    return erg
+    return erg.sort{|a,b| b.created_at <=> a.created_at}
   end
+  
+
+  #Liefert die Anzahl der Nachrichten zurück, die der User noch nicht eingesehen hat.
+  #@return integer count
+  def get_latest_messages
+    count = 0
+    self.received_messages.each do |m|
+      if m.created_at > self.last_delivery
+        count+=1
+      end
+    end
+    count
+  end    
+  
+  #Liefert die Anzahl der Ratings zurück, die der User noch nicht eingesehen hat.
+  #@return integer count
+  def get_latest_ratings
+    count = 0
+    self.received_ratings.each do |m|
+      if m.created_at > self.last_ratings
+        count+=1
+      end
+    end
+    count
+  end    
+
 end
