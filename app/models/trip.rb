@@ -237,17 +237,41 @@ class Trip < ActiveRecord::Base
     erg
   end
 
-  #Liefert den im Trip gespeicherten Abfahrtsort abgabd der eingespeicherten Koordinaten
-  #@return string Stadtname
-  def get_start_city
-    Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + self.starts_at_E.to_s + "E", "de")[0][:full_data]["address_components"][2]["long_name"]
+  # Füllt einen Hash mit Adressinformationen der Startadresse.
+  # "get_start_address_info[:street]" um an die Straße zu kommen
+  # "get_start_address_info[:city]" um an den Stadtnamen zu kommen
+  # "get_start_address_info[:plz]" um an die PLZ zu kommen
+  #
+  # @return Hash mit Feldern: Straße, Stadt, PLZ
+  # 
+  def get_start_address_info
+    erg = {}
+    infos = Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
+            self.starts_at_E.to_s + "E", "de")[0][:full_data]
+    erg[:street] = infos["address_components"][1]["long_name"]
+    erg[:street] = erg[:street] + " " + infos["address_components"][0]["long_name"]
+    erg[:city] = infos["address_components"][2]["long_name"]
+    erg[:plz]  = infos["address_components"][7]["long_name"]
+    
+    return erg
   end
   
-  #Liefert den im Trip gespeicherten Ankunftsort anhand der eingespeicherten Koordinaten
-  #@return string Stadtname
-  def get_end_city
-    Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + self.ends_at_E.to_s + "E", "de")[0][:full_data]["address_components"][2]["long_name"]
+  # Füllt einen Hash mit Adressinformationen der Endadresse.
+  # "get_end_address_info[:street]" um an die Straße zu kommen
+  # "get_end_address_info[:city]" um an den Stadtnamen zu kommen
+  # "get_end_address_info[:plz]" um an die PLZ zu kommen
+  #
+  # @return Hash mit Feldern: Straße, Stadt, PLZ
+  def get_end_address_info
+    erg = {}
+    infos = Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
+            self.ends_at_E.to_s + "E", "de")[0][:full_data]
+    erg[:street] = infos["address_components"][1]["long_name"]
+    erg[:street] = erg[:street] + " " + infos["address_components"][0]["long_name"]
+    erg[:city] = infos["address_components"][2]["long_name"]
+    erg[:plz]  = infos["address_components"][7]["long_name"]
+    
+    return erg
   end
-
-
+  
 end
