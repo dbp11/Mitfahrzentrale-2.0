@@ -3,56 +3,78 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .cars {
-  .cars_base_table {
-    margin-top: 30px;
+  .cars_index_table {
     width: 100%;
-    tr {
-      width: 100%;
-    }
-    .head {
-      text-align: left;
-      font-size: 20pt;
-    }
   }
-  .cars_top_link {
-    width:10px;
-    padding-right: 5px;
-    text-align: right;
-
-  }
-  .cars_top {
-    text-align: left;
-    width: 63;
-    padding-right: 5px;
-    }
-    
-  
-  .other_side {
-    text-align: right;
-  }
-  .cars_2 {
-    background-color: lighten(#777777, 10%);
-  }
-  .cars_links {
-    background-color: lighten(#777777, 10%);
-    border-style: solid;
-    border-left-width:  1px;
-  }
-  .cars_table_top {
-    width: 100%;
- }
-  .cars_table_bot {
-    width: 100%;
-    border: 1px solid;
-    tr {
+  .cars_index_top {
+    tr:first-child {
       td {
-        text-align: center;
+        width: 100%;
       }
-      th {
-        border: 1px solid;
-        padding: 5px;
+      td:first-child{
+        text-align: left;
+        font-size: 20pt;
+      }
+      td:last-child{
+        text-align: left;
+        padding-right: 5px;
+        width: 10px;
       }
     }
+  }
+  .cars_index_bot {
+    width: 100%;
+    tr {
+      background-color: #DDDDDD;
+      td {
+        
+        text-align: center;
+        border-style: solid;
+        padding: 0.1em 0.5em 0.1em 0.5em;
+      }
+    }
+    tr:nth-child(2n+1) {
+      background-color: #AAAAAA;
+    }
+    tr:first-child {
+      background-color: #777777;
+      font-weight: bold;
+      border-bottom: 1px solid;
+    }
+  }
+  .cars_show_index {
+    width: 100%;
+    td:first-child {
+      width: 50%;
+      height: 10%;
+    }
+    tr:first-child{
+      .head {
+        width: 100%;
+        border-bottom: 1px solid;
+        font-size: 20pt;
+        height: 1.3em;
+      }
+    }
+  }
+  .cars_show_left {
+    background-color: #DDDDDD;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    tr:nth-child(2n+1){
+      background-color: #AAAAAA;
+    }
+    td:first-child {
+      text-align: left;
+      font-weight: bold;
+    }
+    td:last-child {
+      text-align: left;
+    }
+  }
+  .cars_show_right {
+    text-align: right;
   }
 }
 
