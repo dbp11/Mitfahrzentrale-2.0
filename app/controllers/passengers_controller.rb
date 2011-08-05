@@ -1,4 +1,15 @@
 class PassengersController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Zugriff verweigert!"
+    redirect_to root_url
+  end
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    flash[:error] = "Zugriff verweigert!"
+    redirect_to root_url
+  end
+  
   # GET /passengers
   # GET /passengers.json
   def index

@@ -1,5 +1,15 @@
 class MessagesController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Zugriff verweigert!"
+    redirect_to messages_url
+  end
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    flash[:error] = "Zugriff verweigert!"
+    redirect_to messages_url
+  end
+  
   # GET /messages
   # GET /messages.json
   def index

@@ -56,6 +56,14 @@ class User < ActiveRecord::Base
   has_attached_file :pic, :styles => { :medium =>  "300x300>", 
                                            :thumb => "100x100>"}
 
+before_validation :set_member 
+  #before_save {|user| user.role = "member" if user.role.blank?} 
+  
+  def set_member
+    if (self.role != "admin")
+      self.role = "member"
+    end
+  end
 
   ############################ ==Validations: #################################
   # Stat. Integrität: Email muss vorhanden, unique und min 8 char lang sein
@@ -65,6 +73,7 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true, :presence => true, 
   :length => {:minimum => 8}
   validates_presence_of :name, :address, :zipcode, :city 
+  validate :role_member_admin
   #validate :booleans_not_nil
 
   def booleans_not_nil 
@@ -78,8 +87,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def role_member_admin
+    if(self.role!='admin' and self.role!='member')
+      errors.add(:field, 'Role muss entweder admin oder member sein!')
+    end
+  end
+
+
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :address, :zipcode, :birthday, :city, :sex, :phone, :instantmessenger, :visible_age, :visible_address, :visible_zip, :visible_phone, :visible_city, :visible_im, :visible_email, :visible_cars, :pic_file_size, :pic_file_name, :pic_content_type, :pic_update_at, :business, :pic
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :address, :zipcode, :birthday, :city, :sex, :phone, :instantmessenger, :visible_age, :visible_address, :visible_zip, :visible_phone, :visible_city, :visible_im, :visible_email, :visible_cars, :pic_file_size, :pic_file_name, :pic_content_type, :pic_update_at, :business, :pic, :role 
   
   
   #Von Paperclip gefordertes Statement zum Anhängen von Bildern
@@ -120,6 +136,9 @@ class User < ActiveRecord::Base
   has_many :written_messages,  :class_name => "Message", :foreign_key =>"writer_id", :dependent => :destroy
   has_many :written_ratings, :class_name => "Rating", :foreign_key => "author_id", :dependent => :destroy
   has_many :received_ratings, :class_name => "Rating", :foreign_key => "receiver_id", :dependent => :destroy
+
+
+  ROLES = %w[admin member]
  
   ################################################### ==Methoden:###################################################
   #toString Methode für User
@@ -317,11 +336,9 @@ class User < ActiveRecord::Base
   #Wenn ein User bei einem Trip Mitfahrer ist, so wird das Auto das Fahrers für ihn sichtbar
   #@return Car Set
   def get_visible_cars
-    erg = Set.new
-    self.passenger_trips.each do |c|
-      if c.passengers.confirmed? and c.start_time > Time.now
-        erg << c.car
-      end
+    erg = []
+    self.passenger_trips.each do |x|
+      erg << x.car
     end
     erg
   end
