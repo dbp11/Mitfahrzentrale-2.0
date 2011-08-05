@@ -62,9 +62,18 @@ class TripsController < ApplicationController
         tmp = Message.new()
         tmp.writer_id = User.find(@trip.user_id)
         tmp.receiver = current_user
-        tmp.subject = "Ihre Bewerbung"
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
         tmp.message = "Ihre Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" war erfolgreich. <3"        
-        tmp.delete_writer = false
+        tmp.delete_writer = true
+        tmp.delete_receiver = false
+        tmp.save
+        tmp = Message.new()
+        tmp.writer_id = current_user 
+        tmp.receiver = User.find(@trip.user_id)
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
+        tmp.message = "Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" Nutzer annehmen: [[/trips/"+@trip.id.to_s+"?accept=true&uid="+current_user.id.to_s+"|Hier!]]"        
+
+        tmp.delete_writer = true
         tmp.delete_receiver = false
         tmp.save
         end
@@ -77,8 +86,8 @@ class TripsController < ApplicationController
         tmp.writer = current_user
         tmp.receiver = temp
         tmp.message = "Sie wurden fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" angenommen!!"
-        tmp.subject = "Ihre Bewerbung"
-        tmp.delete_writer = false
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
+        tmp.delete_writer = true
         tmp.delete_receiver = false
         tmp.save
       end
@@ -93,7 +102,7 @@ class TripsController < ApplicationController
           tmp.receiver = temp
           tmp.message = "Sie wurden fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" abgelehnt!!"
           tmp.subject = "Ihre Bewerbung"
-          tmp.delete_writer = false
+          tmp.delete_writer = true
           tmp.delete_receiver = false
           tmp.save
         end
@@ -153,8 +162,11 @@ class TripsController < ApplicationController
       @trip.free_seats = params[:free_seats]
     end
     @trip.set_route
-    @trip.baggage = true
-
+    if params[:baggage] == nil
+      @trip.baggage = false
+    else
+      @trip.baggage = true
+    end
     respond_to do |format|
       if @trip.save
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
