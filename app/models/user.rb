@@ -66,6 +66,9 @@ class User < ActiveRecord::Base
   :length => {:minimum => 8}
   validates_presence_of :name, :address, :zipcode, :city 
   validate :booleans_not_nil, :role_member_admin
+  
+  before_create {|user| user.role = "member" if user.role.blank?} 
+
 
   def booleans_not_nil 
     if(self.sex == nil and 
@@ -332,7 +335,7 @@ class User < ActiveRecord::Base
         true
       end
   end    
-
+  
 end
     
 
