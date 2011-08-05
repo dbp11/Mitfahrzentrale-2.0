@@ -51,10 +51,4 @@ class Message < ActiveRecord::Base
   def to_s  
     writer+ " an " +receiver+ ": " +message
   end
-
-  
-
-
-
-
 end

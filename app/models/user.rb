@@ -3,41 +3,41 @@
 # erstellt, Messages versandt, Ratings gegeben, an ihm die Profileinstellungen gespeichert. Folglich ist der User, 
 # in hinsicht der Beziehungen, die komplexeste Klasse.
 # Er besitzt folgende Datenfelder:
-# *email :string -- E-Mail Adresse des Benutzers
-# *encrypted_password :string -- verschlüsseltes Passwort des Benutzers (Devise Plugin)
-# *reset_password_token :string -- Zurücksetzen des Passwortkürzels
-# *reset_password_sent_at :datetime -- letztes Zurücksetzen des Passwort
-# *remember_created_at :datetime -- Remember_Me Anlage am
-# *sign_in_count :integer -- Anzahl der Logins
-# *current_sign_in_at :datetime -- Aktuell eingeloggt um
-# *last_sign_in_at :datetime -- Zuletzt eingeloggt am
-# *created_at :datetime -- <i>Von Rails automatisch angelegt:</i> Erstellungsdatum des Users
-# *updated_at :datetime -- <i>Vom Rails automatisch angelegt:</i> Letztes Update an den Datenfeldern
-# *name :string -- Nutzername
-# *user_type :boolean -- Adminrechte ja/nein
-# *sex :boolean -- false weiblich, true männlich
-# *address :string -- Straße, Hausnummer
-# *addressN :float -- <i>Von Geocoder benötigt:</i> nördliche Breite der Adresse 
-# *addressE :float -- <i>Von Geocoder benötigt:</i> östliche Länge der Adresse
-# *zipcode :integer -- Postleitzahl
-# *instantmessenger :string -- Instantmessenger
-# *city :string Wohnort
-# *birthday :date -- Geburtsdatum des Users 
-# *phone :string Telephonnummer
-# *business :boolean -- Ist User Gewerbs- oder Privatanbieter
-# *email_notifications -- E-Mail-Benachrichtigungen an- oder ausschalten
-# *visible_phone :boolean -- Sichtbarkeit der Telephonnummer an- oder ausschalten
-# *visible_email :boolean -- Sichtbarkeit der E-Mail an- oder ausschalten
-# *visible_address :boolean -- Sichtbarkeit der Adresse an- oder ausschalten
-# *visible_age :boolean -- Sichtbarkeit des Alter an- oder ausschalten
-# *visible_im :boolean -- Sichtbarkeit des Instantmessenger an- oder ausschalten
-# *visible_cars :boolean -- Sichtbarkeit der Autos an- oder ausschalten
-# *visible_zip :boolean -- Sichtbarkeit der Postleitzahl an- oder ausschalten
-# *visible_city :boolean -- Sichtbarkeit der Stadt an- oder ausschalten
-# *picture_file_name :string -- <i>Von Paperclip gefordert</i> Name des gespeicherten Bildes
-# *picture_content_type :string -- <i>Von Paperclip gefordert</i> Dateityp des Bildes
-# *picture_file_size :integer -- <i>Von Paperclip gefordert </i> Größe des Bildes
-# *picture_updated_at :datetime -- <i>Von Paperclip gefordert </i> letzte Bildänderung
+# * email :string -- E-Mail Adresse des Benutzers
+# * encrypted_password :string -- verschlüsseltes Passwort des Benutzers (Devise Plugin)
+# * reset_password_token :string -- Zurücksetzen des Passwortkürzels
+# * reset_password_sent_at :datetime -- letztes Zurücksetzen des Passwort
+# * remember_created_at :datetime -- Remember_Me Anlage am
+# * sign_in_count :integer -- Anzahl der Logins
+# * current_sign_in_at :datetime -- Aktuell eingeloggt um
+# * last_sign_in_at :datetime -- Zuletzt eingeloggt am
+# * created_at :datetime -- <i>Von Rails automatisch angelegt:</i> Erstellungsdatum des Users
+# * updated_at :datetime -- <i>Vom Rails automatisch angelegt:</i> Letztes Update an den Datenfeldern
+# * name :string -- Nutzername
+# * user_type :boolean -- Adminrechte ja/nein
+# * sex :boolean -- false weiblich, true männlich
+# * address :string -- Straße, Hausnummer
+# * addressN :float -- <i>Von Geocoder benötigt:</i> nördliche Breite der Adresse 
+# * addressE :float -- <i>Von Geocoder benötigt:</i> östliche Länge der Adresse
+# * zipcode :integer -- Postleitzahl
+# * instantmessenger :string -- Instantmessenger
+# * city :string Wohnort
+# * birthday :date -- Geburtsdatum des Users 
+# * phone :string Telephonnummer
+# * business :boolean -- Ist User Gewerbs- oder Privatanbieter
+# * email_notifications -- E-Mail-Benachrichtigungen an- oder ausschalten
+# * visible_phone :boolean -- Sichtbarkeit der Telephonnummer an- oder ausschalten
+# * visible_email :boolean -- Sichtbarkeit der E-Mail an- oder ausschalten
+# * visible_address :boolean -- Sichtbarkeit der Adresse an- oder ausschalten
+# * visible_age :boolean -- Sichtbarkeit des Alter an- oder ausschalten
+# * visible_im :boolean -- Sichtbarkeit des Instantmessenger an- oder ausschalten
+# * visible_cars :boolean -- Sichtbarkeit der Autos an- oder ausschalten
+# * visible_zip :boolean -- Sichtbarkeit der Postleitzahl an- oder ausschalten
+# * visible_city :boolean -- Sichtbarkeit der Stadt an- oder ausschalten
+# * picture_file_name :string -- <i>Von Paperclip gefordert</i> Name des gespeicherten Bildes
+# * picture_content_type :string -- <i>Von Paperclip gefordert</i> Dateityp des Bildes
+# * picture_file_size :integer -- <i>Von Paperclip gefordert </i> Größe des Bildes
+# * picture_updated_at :datetime -- <i>Von Paperclip gefordert </i> letzte Bildänderung
 class User < ActiveRecord::Base
 
   ####################### ==Railsplugin Devise ################################
@@ -123,6 +123,7 @@ class User < ActiveRecord::Base
  
   ################################################### ==Methoden:###################################################
   #toString Methode für User
+  #@return string name
   def to_s
     name
   end
@@ -175,6 +176,8 @@ class User < ActiveRecord::Base
     return erg
   end
 
+  #Liefert alle Trips des Users zurück bei denen er sich um Mitfahrt beworben hat
+  #@return Trip [] erg
   def applied_at
     erg =[]
     self.passengers.each do |p|
@@ -438,8 +441,11 @@ class User < ActiveRecord::Base
     end
     return erg
   end
+  
 
-    def get_latest_messages
+  #Liefert die Anzahl der Nachrichten zurück, die der User noch nicht eingesehen hat.
+  #@return integer count
+  def get_latest_messages
     count = 0
     self.received_messages.each do |m|
       if m.created_at > self.last_delivery
