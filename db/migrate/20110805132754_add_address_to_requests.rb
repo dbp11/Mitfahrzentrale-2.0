@@ -1,4 +1,4 @@
-class AddAddressToTrip < ActiveRecord::Migration
+class AddAddressToRequests < ActiveRecord::Migration
   def up
     remove_column :requests, :address_start, :string
     remove_column :requests, :address_end, :string
