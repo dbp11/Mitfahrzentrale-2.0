@@ -62,7 +62,7 @@ class TripsController < ApplicationController
         tmp = Message.new()
         tmp.writer_id = User.find(@trip.user_id)
         tmp.receiver = current_user
-        tmp.subject = "Ihre Bewerbung"
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
         tmp.message = "Ihre Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" war erfolgreich. <3"        
         tmp.delete_writer = true
         tmp.delete_receiver = false
@@ -70,8 +70,8 @@ class TripsController < ApplicationController
         tmp = Message.new()
         tmp.writer_id = current_user 
         tmp.receiver = User.find(@trip.user_id)
-        tmp.subject = "Ihre Bewerbung"
-        tmp.message = "Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" Nutzer annehmen: HIER LINK"        
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
+        tmp.message = "Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" Nutzer annehmen: [[/trips/"+@trip.id.to_s+"?accept=true&uid="+current_user.id.to_s+"|Hier!]]"        
 
         tmp.delete_writer = true
         tmp.delete_receiver = false
@@ -86,7 +86,7 @@ class TripsController < ApplicationController
         tmp.writer = current_user
         tmp.receiver = temp
         tmp.message = "Sie wurden fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" angenommen!!"
-        tmp.subject = "Ihre Bewerbung"
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
         tmp.delete_writer = true
         tmp.delete_receiver = false
         tmp.save
