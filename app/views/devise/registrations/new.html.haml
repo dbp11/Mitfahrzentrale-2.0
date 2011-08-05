@@ -1,6 +1,6 @@
 %h1 
   Registrieren
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"Formular", :action=>"create"}) do |f|
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"Formular", :onsubmit=>"return zipcheck();"}) do |f|
   = devise_error_messages!
 
   %div 
@@ -14,10 +14,27 @@
           document.getElementById("privat1").style.display='block';
         } 
       }
+
+      function zipcheck() {
+        var plz_field = document.getElementsByName("user[zipcode]")[0];
+        var b = (plz_field.value).search(/[^0-9]+/);
+        if(plz_field.value.length<5){
+          alert('PLZ zu kurz!');
+          plz_field.focus();
+          return false;
+        }
+        if(b>=0){
+          alert('PLZ enthält falsche Zeichen!');
+          plz_field.focus;
+          return false;
+        }
+        return true;
+      }
     = f.label :"Geschäftskunde?"
     = f.check_box:business, :id=>"business" ,:onClick=>"formtest();" 
   %div
     = f.label :"Name*"
+    %br/
     = f.text_field :name
   %div
     = f.label :"E-mail*"
@@ -33,7 +50,6 @@
     = f.password_field :password_confirmation, :required=>"required"
   %div#privat
     = f.label :"Geburtsdatum", :id=>"lbirth"
-    %br/
     = f.date_select :birthday,
                     :start_year => 1900,
                     :end_year => 2011,
@@ -48,9 +64,7 @@
     = f.label :"PLZ*"
     %br
       = f.text_field:zipcode, :required=>"required", :class=>"integer", 
-                              :maxlength=>"5", :size=>"30", :remote=>"true",
-                    :onblur =>" var b = (this.value).search(/[^0-9]+/);if(this.value.length<5){alert('PLZ zu kurz!'); this.focus();} if(b>=0){alert('PLZ enthält falsche Zeichen!'); this.focus;}"
-
+                              :maxlength=>"5", :size=>"30"
 
   %div
     = f.label :"Stadt*"
@@ -60,7 +74,6 @@
   %div#privat1
     %br/
     = f.label :Geschlecht, :id=>"lsex"
-    %br
     = f.select:sex,  options_for_select([["Maennlich","1"], ["Weiblich","0"]]), :id=>"form_table_second"
 
   %div
@@ -74,8 +87,8 @@
     = f.text_field :instantmessenger
 
 
-  %div= f.submit "Anmelden"
-
+  %div
+    = f.submit "Anmelden"
 
   %div
     Mit * gekennzeichnete Felder müssen ausgefüllt werden!

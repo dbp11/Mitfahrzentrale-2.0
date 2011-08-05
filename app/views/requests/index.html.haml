@@ -1,27 +1,20 @@
-%h1 Listing requests
+%h1 Mitfahrgelegenheit
 
-%table
-  %tr
-    %th Starts at
-    %th Ends at
-    %th Start time
-    %th End time
-    %th Baggage
-    %th Comment
-    %th
-    %th
+%table.index_table
+  %tr.index_table_first
+    %th Start
+    %th Ende
+    %th Gepäck
+    %th Anmerkung
     %th
 
   - @requests.each do |request|
-    %tr
-      %td= request.starts_at_N
-      %td= request.starts_at_E
-      %td= request.ends_at_N
-      %td= request.ends_at_E
+    %tr.index_table_second
       %td= request.start_time
       %td= request.end_time
       %td= request.baggage
       %td= request.comment
+
       %td= link_to 'Show', request
       %td= link_to 'Edit', edit_request_path(request)
       %td= link_to 'Destroy', request, :confirm => 'Are you sure?', :method => :delete
