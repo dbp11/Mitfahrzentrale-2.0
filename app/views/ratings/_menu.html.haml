@@ -1,0 +1,10 @@
+-if @latest_ratings
+	-temp = @latest_ratings
+-else
+	-temp = current_user.get_latest_ratings
+-if temp == 0
+	%li
+		= link_to('Bewertungen', url_for(:action => "show", :controller => "ratings", :id => current_user.id))
+-else
+	%li
+		= link_to('Bewertungen ('+temp.to_s+')' , url_for(:action => "show", :controller => "ratings", :id => current_user.id))

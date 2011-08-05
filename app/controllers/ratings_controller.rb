@@ -24,6 +24,13 @@ class RatingsController < ApplicationController
 	@driver_cnt = temp.count_ratings_driver
     @passenger_avg = temp.get_avg_rating_passenger
 	@passenger_cnt = temp.count_ratings_passenger
+	@last_ratings = current_user.last_ratings
+	@latest_ratings = current_user.get_latest_ratings
+	if temp == current_user
+		current_user.last_ratings = Time.now
+		current_user.save
+	end
+
     # Zwei Arrays. eins mit den Ratings als Fahrer, eins als Mitfahrer
 
     respond_to do |format|
