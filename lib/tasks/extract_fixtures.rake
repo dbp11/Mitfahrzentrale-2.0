@@ -15,7 +15,7 @@ task :extract_fixtures => :environment do
     File.open "#{Rails.root}/test/fixtures/#{table_name}.yml", 'w' do |file|
       data = ActiveRecord::Base.connection.select_all sql % table_name
       file.write data.inject({}) { |hash, record|
-        hash["#{table_name}_#{i.succ}"] = record
+        hash["#{table_name}_#{i += 1}"] = record
 	hash
       }.to_yaml
     end
