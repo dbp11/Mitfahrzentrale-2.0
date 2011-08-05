@@ -127,6 +127,9 @@ class User < ActiveRecord::Base
   has_many :written_ratings, :class_name => "Rating", :foreign_key => "author_id", :dependent => :destroy
   has_many :received_ratings, :class_name => "Rating", :foreign_key => "receiver_id", :dependent => :destroy
 
+  ROLES = %w[admin member]
+
+
   ################################################### ==Methoden:###################################################
   #toString Methode für User
   def to_s
@@ -330,27 +333,5 @@ class User < ActiveRecord::Base
         true
       end
   end    
- 
-  def can_rate
-    trips = driven + driven_with
-    persons = []
-    erg = []
-    trips.each do |t|
-      rates = self.written_ratings.where("trip_id = ?",t.id)
-      t.get_committed_passengers.each do |p|
-        persons << p
-      end
-      persons << t.user
-      persons.each do |k|
-        if !rates.include?(k)
-          erg << k
-        end
-      end
-    end
-      return erg
-  end
-  
-  end
-    
 
 end

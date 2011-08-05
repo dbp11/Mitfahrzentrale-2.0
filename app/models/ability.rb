@@ -3,8 +3,7 @@ class Ability
 
   def initialize(user)
     if user.role == "member"
-      can [:index], :all
-      can :create [Car, Message, Request, Trip, User]
+      can [:create, :index], :all
         
       can [:show, :update, :destroy], Car do |car|
         car && car.user == user 
@@ -27,8 +26,6 @@ class Ability
         trip && trip.user == user
       end
 
-      can :create, user.can_rate(driven)
-      can :create, user.can_rate(driven_with)
       can [:show, :update, :destroy], Rating do |rating|
         rating && rating.author == user
       end
@@ -37,7 +34,7 @@ class Ability
       end
 
       can :show, user.get_visible_users
-      can [:show, :update, :destroy], User do |user1|
+      can [:update, :destroy], User do |user1|
         user1 && user1 == user
       end
 
