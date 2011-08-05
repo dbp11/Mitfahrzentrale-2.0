@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
   validate :booleans_not_nil
 
   private def booleans_not_nil 
-    user_role_not_nil
+    user_type_not_nil
     sex_not_nil 
     email_notifications_not_nil 
     visible_phone_not_nil  
@@ -82,9 +82,9 @@ class User < ActiveRecord::Base
     business_not_nil 
   end
 
-  private def user_role_not_nil
-    if self.role_role.nil?
-      errors.add(:field, 'user_role darf nicht nil sein!')
+  private def user_type_not_nil
+    if self.user_type.nil?
+      errors.add(:field, 'user_type darf nicht nil sein!')
     end
   end
 
