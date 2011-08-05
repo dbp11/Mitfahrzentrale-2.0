@@ -56,7 +56,14 @@ class User < ActiveRecord::Base
   has_attached_file :pic, :styles => { :medium =>  "300x300>", 
                                            :thumb => "100x100>"}
 
-
+  before_validation :set_member 
+  #before_save {|user| user.role = "member" if user.role.blank?} 
+  
+  def set_member
+    if (self.role != "admin")
+      self.role = "member"
+    end
+  end
   ############################ ==Validations: #################################
   # Stat. Integrität: Email muss vorhanden, unique und min 8 char lang sein
   # Name, Adresse, Plz, Stadt müssen vorhanden sein
@@ -67,7 +74,6 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :address, :zipcode, :city 
   validate :booleans_not_nil, :role_member_admin
   
-  before_create {|user| user.role = "member" if user.role.blank?} 
 
 
   def booleans_not_nil 
