@@ -1,0 +1,76 @@
+---
+cars_001:
+  id: 1
+  user_id: 1
+  seats: 5
+  licence: '10234'
+  smoker: t
+  created_at: '2011-08-05 12:55:20.015028'
+  updated_at: '2011-08-05 12:55:20.015028'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_002:
+  id: 2
+  user_id: 2
+  seats: 2
+  licence: '40321'
+  smoker: f
+  created_at: '2011-08-05 12:55:20.104183'
+  updated_at: '2011-08-05 12:55:20.104183'
+  description: Kofferraum verfügbar aber kein Platz
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: Mercedes
+  price_km: 6.7
+cars_003:
+  id: 3
+  user_id: 3
+  seats: 3
+  licence: '12345'
+  smoker: t
+  created_at: '2011-08-05 12:55:20.181263'
+  updated_at: '2011-08-05 12:55:20.181263'
+  description: Auto rostet und keine Reifen
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: Ford
+  price_km: 8.9
+cars_004:
+  id: 4
+  user_id: 4
+  seats: 4
+  licence: '54321'
+  smoker: f
+  created_at: '2011-08-05 12:55:20.258190'
+  updated_at: '2011-08-05 12:55:20.258190'
+  description: Test test
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: Porsche
+  price_km: 11.1
+cars_005:
+  id: 5
+  user_id: 5
+  seats: 2
+  licence: '45646'
+  smoker: t
+  created_at: '2011-08-05 12:55:20.335363'
+  updated_at: '2011-08-05 12:55:20.335363'
+  description: aha aha! Hier soll etwas sinnvolles stehen?
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: VW
+  price_km: 20.3
