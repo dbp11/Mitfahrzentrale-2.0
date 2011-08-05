@@ -1,12 +1,11 @@
 class Request < ActiveRecord::Base
 
-#############################   Beziehungen   ############################
-  
-  
-  #Beziehungen
+############################# == Beziehungen   ############################
+ 
+  #Beziehunge
   belongs_to :user
   
-#############################   Validations   ############################
+############################# == Validations   ############################
   
   
   #Validation
