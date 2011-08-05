@@ -67,7 +67,9 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :address, :zipcode, :city 
   validate :booleans_not_nil
 
-  private def booleans_not_nil 
+  private #die Validation-Methoden private
+
+  def booleans_not_nil 
     user_type_not_nil
     sex_not_nil 
     email_notifications_not_nil 
@@ -82,73 +84,73 @@ class User < ActiveRecord::Base
     business_not_nil 
   end
 
-  private def user_type_not_nil
+  def user_type_not_nil
     if self.user_type.nil?
       errors.add(:field, 'user_type darf nicht nil sein!')
     end
   end
 
-  private def sex_not_nil
+  def sex_not_nil
     if self.sex.nil?
       errors.add(:field, 'sex darf nicht nil sein!')
     end
   end
 
-  private def email_notifications_not_nil
+  def email_notifications_not_nil
     if self.email_notifications.nil?
       errors.add(:field, 'email_notifications darf nicht nil sein!')
     end
   end
 
-  private def visible_phone_not_nil
+  def visible_phone_not_nil
     if self.visible_phone.nil?
       errors.add(:field, 'visible_phone darf nicht nil sein!')
     end
   end
 
-  private def visible_email_not_nil
+  def visible_email_not_nil
     if self.visible_email.nil?
       errors.add(:field, 'visible_email darf nicht nil sein!')
     end
   end
 
-  private def visible_address_not_nil
+  def visible_address_not_nil
     if self.visible_address.nil?
       errors.add(:field, 'visible_address darf nicht nil sein!')
     end
   end
 
-  private def visible_age_not_nil
+  def visible_age_not_nil
     if self.visible_age.nil?
       errors.add(:field, 'visible_age darf nicht nil sein!')
     end
   end
 
-  private def visible_im_not_nil
+  def visible_im_not_nil
     if self.visible_im.nil?
       errors.add(:field, 'visible_im darf nicht nil sein!')
     end
   end
 
-  private def visible_cars_not_nil
+  def visible_cars_not_nil
     if self.visible_cars.nil?
       errors.add(:field, 'visible_cars darf nicht nil sein!')
     end
   end
 
-  private def visible_zip_not_nil
+  def visible_zip_not_nil
     if self.visible_zip.nil?
       errors.add(:field, 'visible_zip darf nicht nil sein!')
     end
   end
 
-  private def visible_city_not_nil
+  def visible_city_not_nil
     if self.visible_city.nil?
       errors.add(:field, 'visible_city darf nicht nil sein!')
     end
   end
 
-  private def business_not_nil
+  def business_not_nil
     if self.business.nil?
       errors.add(:field, 'business darf nicht nil sein!')
     end
@@ -196,7 +198,9 @@ class User < ActiveRecord::Base
   has_many :written_messages,  :class_name => "Message", :foreign_key =>"writer_id", :dependent => :destroy
   has_many :written_ratings, :class_name => "Rating", :foreign_key => "author_id", :dependent => :destroy
   has_many :received_ratings, :class_name => "Rating", :foreign_key => "receiver_id", :dependent => :destroy
- 
+
+  public #ab hier wieder public
+
   ################################################### ==Methoden:###################################################
   #toString Methode für User
   #@return Name des Users
