@@ -74,7 +74,7 @@ class User < ActiveRecord::Base
        self.visible_age == nil and self.visible_im == nil and 
        self.visible_cars == nil and self.visible_cip == nil and 
        self.visible_city == nil and self.business == nil)
-      errors.add(:field, 'Irgendein Boolean nimmt den Wert Null ein, und das dar nicht sein, also gar nicht')
+      errors.add(:field, 'Irgennnn')
     end
   end
 

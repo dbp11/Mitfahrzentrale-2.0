@@ -1,25 +1,27 @@
 # =Klasse Trip
 #
-# Modelliert alle Fahrten die ein User als Fahrer oder Mitfahrer begeht. Das Modell hat die 
-# Datenfelder
+# Modelliert alle Fahrten die ein User als Fahrer oder Mitfahrer begeht. 
+# 
+# <b>Das Modell hat die Datenfelder:</b>
+# 
 #
-# *trip_id :integers --<i>Von Rails erstellt</i> ID des Trips
-# *user_id :integers -- ID des Fahrenden Users
-# *car_id :integers -- ID des benutzten Autos des fahrenden Users
-# *starts_at_N :float -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Nördl. Breite
-# *starts_at_E :float -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Östl. Breite
-# *ends_at_N :float -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Nördl. Breite
-# *ends_at_E :float -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Östl. Breite
-# *address_start :string -- Durch den User eingegebene Startadresse 
-# *address_end :string -- Durch den User eingegebene Endadresse
-# *start_time :datetime -- Voraussichtliche Startzeit des Trip
-# *comment :text -- Kommentar zum Text
-# *created_at :datetime -- <i>Von Rails erstellt</i> Erstellungsdatum des Objekts
-# *updated_at :datetime <i>Von Rails erstellt</i> letztes Änderungsdatum des Objekts
-# *baggage :boolean -- Datenfeld ob Gepäck erlaubt ist
-# *free_seats :integer -- Noch freie Sitze des Autos auf der Fahrt
-# *distance :integer -- <i>Bei Erstellung automatisch eingefügt</i> Länge der zu fahrenden Strecke
-# *duration :integer -- <i>Bei Erstellung automatisch eingefügt</i> Dauer der zu fahrenden Strecke
+# * trip_id       :integers -- <i>Von Rails erstellt</i> ID des Trips
+# * user_id       :integers -- ID des <b>fahrenden</b> Users
+# * car_id        :integers -- ID des <b>benutzten</b> Autos des fahrenden Users
+# * starts_at_N   :float    -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Nördl. Breite
+# * starts_at_E   :float    -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Östl. Breite
+# * ends_at_N     :float    -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Nördl. Breite
+# * ends_at_E     :float    -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Östl. Breite
+# * address_start :string   -- Durch den User eingegebene Startadresse 
+# * address_end   :string   -- Durch den User eingegebene Endadresse
+# * start_time    :datetime -- Voraussichtliche Startzeit des Trip
+# * comment       :text     -- Kommentar zum Text
+# * created_at    :datetime -- <i>Von Rails erstellt</i> Erstellungsdatum des Objekts
+# * updated_at    :datetime -- <i>Von Rails erstellt</i> letztes Änderungsdatum des Objekts
+# * baggage       :boolean  -- Datenfeld ob Gepäck erlaubt ist
+# * free_seats    :integer  -- Noch freie Sitze des Autos auf der Fahrt
+# * distance      :integer  -- <i>Bei Erstellung automatisch eingefügt</i> Länge der zu fahrenden Strecke
+# * duration      :integer  -- <i>Bei Erstellung automatisch eingefügt</i> Dauer der zu fahrenden Strecke
 
 
 class Trip < ActiveRecord::Base
