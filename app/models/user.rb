@@ -438,4 +438,16 @@ class User < ActiveRecord::Base
     end
     return erg
   end
+
+    def get_latest_messages
+    count = 0
+    self.received_messages.each do |m|
+      if m.created_at > self.last_delivery
+        count+=1
+      end
+    end
+    count
+  end    
 end
+
+

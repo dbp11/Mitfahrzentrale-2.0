@@ -13,147 +13,97 @@
     - Layout
 
 %h3 Noch kommende Fahrten als Fahrer
-%table.trips_table
+%table.trips_index_table
   - if @future_trips == nil or @future_trips.count <= 0
     %tr
       %td.center
         Es stehen momentan keine Fahrten als Fahrer aus
   - else
     %tr
-      %td#minimal
-      %td#minimal
-      %td.left Adresse
-      %td.center#minimal Datum
-      %td.center#minimal Uhrzeit
+      %td.center Route
+      %td.left Start
+      %td.left Ziel
+      %td.center Datum
+      %td.center Uhrzeit
     - @future_trips.each do |trip|
       %tr
-        %td.number_col#minimal{:rowspan => "2"}= link_to "##{trip.id}", trip, :class => "number_link"
-        %td.left_bold#minimal Abfahrt:
-        %td.left= trip.address_start
-        %td.center#minimal= trip.start_time.strftime("%d.%m.%Y")
-        %td.center#minimal= trip.start_time.strftime("%H.%M")
-      %tr
-        %td.left_bold#minimal Ankunft:
-        %td.left= trip.address_end
-        %td.center#minimal
-        %td.center#minimal
+        %td.number_col= link_to "##{trip.id}", trip, :class => "number_link"
+        %td.left= trip.get_start_city
+        %td.left= trip.get_end_city
+        %td.center= trip.start_time.strftime("%d.%m.%Y")
+        %td.center= trip.start_time.strftime("%H.%M")
 
 %br/
 %br/
 
 %h3 Beendete Fahrten als Fahrer
-%table.trips_table
+%table.trips_index_table
   - if @completed_trips == nil or @completed_trips.count <= 0
     %tr
       %td.center
         Sie haben noch keine Fahrten als Fahrer beendet
   - else
     %tr
-      %td#minimal
-      %td#minimal
-      %td.left Adresse
-      %td.center#minimal Datum
-      %td.center#minimal Uhrzeit
+      %td.center Route
+      %td.left Start
+      %td.left Ziel
+      %td.center Datum
+      %td.center Uhrzeit
     - @completed_trips.each do |trip|
       %tr
-        %td.number_col#minimal{:rowspan => "2"}= link_to "##{trip.id}", trip, :class => "number_link"
-        %td.left_bold#minimal Abfahrt:
-        %td.left
-          -#%input{:type => "text", :readonly => "readonly", :value => trip.address_start}/
-          = trip.address_start
-        %td.center#minimal
-          -#%input{:type => "date", :readonly => "readonly", :value => trip.start_time.to_date}/
-          = trip.start_time.strftime("%d.%m.%Y")
-        %td.center#minimal
-          -#%input{:type => "time", :readonly => "readonly", :value => trip.start_time.to_time}/
-          = trip.start_time.strftime("%H.%M")
-      %tr
-        %td.left_bold#minimal Ankunft:
-        %td.left
-          -#%input{:type => "text", :readonly => "readonly", :value => trip.address_end}/
-          = trip.address_end
-        %td.center#minimal
-          -#%input{:type => "date", :readonly => "readonly", :value => trip.end_time.to_date}/
-        %td.center#minimal
-          -#%input{:type => "time", :readonly => "readonly", :value => trip.end_time.to_time}/
+        %td.number_col= link_to "##{trip.id}", trip, :class => "number_link"
+        %td.left= trip.get_start_city
+        %td.left= trip.get_end_city
+        %td.center= trip.start_time.strftime("%d.%m.%Y")
+        %td.center= trip.start_time.strftime("%H.%M")
 
 %br/
 %br/
 
 %h3 Noch kommende Fahrten als Mitfahrer
-%table.trips_table
+%table.trips_index_table
   - if @future_ridden_trips == nil or @future_ridden_trips.count <= 0
     %tr
       %td.center
         Es stehen momentan keine Fahrten als Mitfahrer aus
   - else
     %tr
-      %td#minimal
-      %td#minimal
-      %td.left Adresse
-      %td.center#minimal Datum
-      %td.center#minimal Uhrzeit
+      %td.center Route
+      %td.left Start
+      %td.left Ziel
+      %td.center Datum
+      %td.center Uhrzeit
     - @future_ridden_trips.each do |trip|
       %tr
-        %td.number_col#minimal{:rowspan => "2"}= link_to "##{trip.id}", trip, :class => "number_link"
-        %td.left_bold#minimal Abfahrt:
-        %td.left
-          -#%input{:type => "text", :readonly => "readonly", :value => trip.address_start}/
-          = trip.address_start
-        %td.center#minimal
-          -#%input{:type => "date", :readonly => "readonly", :value => trip.start_time.to_date}/
-          = trip.start_time.strftime("%d.%m.%Y")
-        %td.center#minimal
-          -#%input{:type => "time", :readonly => "readonly", :value => trip.start_time.to_time}/
-          = trip.start_time.strftime("%H.%M")
-      %tr
-        %td.left_bold#minimal Ankunft:
-        %td.left
-          -#%input{:type => "text", :readonly => "readonly", :value => trip.address_end}/
-          = trip.address_end
-        %td.center#minimal
-          -#%input{:type => "date", :readonly => "readonly", :value => trip.end_time.to_date}/
-        %td.center#minimal
-          -#%input{:type => "time", :readonly => "readonly", :value => trip.end_time.to_time}/
+        %td.number_col= link_to "##{trip.id}", trip, :class => "number_link"
+        %td.left= trip.get_start_city
+        %td.left= trip.get_end_city
+        %td.center= trip.start_time.strftime("%d.%m.%Y")
+        %td.center= trip.start_time.strftime("%H.%M")
 
 %br/
 %br/
 
 %h3 Beendete Fahrten als Mitfahrer
-%table.trips_table
+%table.trips_index_table
   - if @ridden_trips == nil or @ridden_trips.count <= 0
     %tr
       %td.center
         Sie sind noch nirgendwo mitgefahren
   - else
     %tr
-      %td#minimal
-      %td#minimal
-      %td.left Adresse
-      %td.center#minimal Datum
-      %td.center#minimal Uhrzeit
+      %td.center Route
+      %td.left Start
+      %td.left Ziel
+      %td.center Datum
+      %td.center Uhrzeit
     - @ridden_trips.each do |trip|
       %tr
-        %td.number_col#minimal{:rowspan => "2"}= link_to "##{trip.id}", trip, :class => "number_link"
-        %td.left_bold#minimal Abfahrt:
-        %td.left
-          -#%input{:type => "text", :readonly => "readonly", :value => trip.address_start}/
-          = trip.address_start
-        %td.center#minimal
-          -#%input{:type => "date", :readonly => "readonly", :value => trip.start_time.to_date}/
-          = trip.start_time.strftime("%d.%m.%Y")
-        %td.center#minimal
-          -#%input{:type => "time", :readonly => "readonly", :value => trip.start_time.to_time}/
-          = trip.start_time.strftime("%H.%M")
-      %tr
-        %td.left_bold#minimal Ankunft:
-        %td.left
-          -#%input{:type => "text", :readonly => "readonly", :value => trip.address_end}/
-          = trip.address_end
-        %td.center#minimal
-          -#%input{:type => "date", :readonly => "readonly", :value => trip.end_time.to_date}/
-        %td.center#minimal
-          -#%input{:type => "time", :readonly => "readonly", :value => trip.end_time.to_time}/
+        %td.number_col= link_to "##{trip.id}", trip, :class => "number_link"
+        %td.left= trip.get_start_city
+        %td.left= trip.get_end_city
+        %td.center= trip.start_time.strftime("%d.%m.%Y")
+        %td.center= trip.start_time.strftime("%H.%M")
 
 %br/
 %br/
