@@ -58,18 +58,16 @@ class TripsController < ApplicationController
     @occupied_seats = @trip.get_occupied_seats
 
     if params[:request]
-      if @free_seats - @occupied_seats > 0
-        if current_user.bewerben(@trip)
-          tmp = Message.new()
-          tmp.writer_id = User.find(@trip.user_id)
-          tmp.receiver = current_user
-          tmp.subject = "Ihre Bewerbung"
-          tmp.message = "Ihre Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" war erfolgreich"        
-          tmp.delete_writer = false
-          tmp.delete_receiver = false
-          tmp.save
+      if current_user.bewerben(@trip)
+        tmp = Message.new()
+        tmp.writer_id = User.find(@trip.user_id)
+        tmp.receiver = current_user
+        tmp.subject = "Ihre Bewerbung"
+        tmp.message = "Ihre Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" war erfolgreich"        
+        tmp.delete_writer = false
+        tmp.delete_receiver = false
+        tmp.save
         end
-      end
     end
 
     if params[:accept] and @status == @FAHRER
