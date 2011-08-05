@@ -9,19 +9,123 @@ body.trips {
     border: solid 1px;
     width: 100%;
   }
-	.trips_table {
+	.trips_index_table {
 		margin-bottom: 1.5em;
-		border: solid 2px;
-		width: 100%;
+		width: 70%;
+    table-layout: fixed;
+    //border-collapse: separate;
     tr {
-      border: solid 1px;
+      border-left: solid 2px;
+      border-right: solid 2px;
+      border-top: solid 1px;
+      &:nth-child(2n+1) {
+        //background-color: #FFFFFF;
+      }
     }
 		tr:first-child {
 			background-color: #777777;
 			font-weight: bold;
+      border-top: solid 2px;
 		}
+    tr:last-child {
+      border-bottom: solid 2px;
+    }
 		td {
-			/*border: solid 1px;*/
+			border: solid 1px;
+			padding-top: 0.1em;
+			padding-bottom: 0.1em;
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+		}
+    td:first-child {
+      width: 60px;
+    }
+    td:nth-last-child(1) {
+      width: 80px;
+    }
+    td:nth-last-child(2) {
+      width: 90px;
+    }
+
+    a {
+      &:visited {
+        color: #333333;
+      }
+
+      &:link {
+        color: #333333;
+      }
+
+      &:hover {
+        color: #000000;
+      }
+    }
+
+    a.number_link {
+      padding: 5px 15 5 15;
+    }
+
+    #minimal {
+      width: auto;
+    }
+
+    .number_col {
+      &:hover {
+        background-color: #777777;
+      }
+    }
+
+		.left {
+			/*width: 400px;*/
+      text-align: left;
+    }
+
+    .left_bold {
+      text-align: left;
+      font-weight: bold;
+    }
+
+		.right {
+		/*	width: 2em;*/
+			text-align: right;
+		/*	font-weight: bold;*/
+		}
+
+    .center {
+      text-align: center;
+    }
+
+		.comment {
+			padding-top: 0.3em;
+			padding-bottom: 0.3em;
+			background-color: #AAAAAA;
+			border-top: solid 1px;
+		}
+	}
+
+	.trips_show_table {
+		margin-bottom: 1.5em;
+		width: 70%;
+    table-layout: fixed;
+    //border-collapse: separate;
+    tr {
+      border-left: solid 2px;
+      border-right: solid 2px;
+      border-top: solid 1px;
+      &:nth-child(2n+1) {
+        //background-color: #FFFFFF;
+      }
+    }
+		tr:first-child {
+			background-color: #777777;
+			font-weight: bold;
+      border-top: solid 2px;
+		}
+    tr:last-child {
+      border-bottom: solid 2px;
+    }
+		td {
+			border: solid 1px;
 			padding-top: 0.1em;
 			padding-bottom: 0.1em;
 			padding-left: 0.5em;
@@ -42,12 +146,8 @@ body.trips {
       }
     }
 
-    a.number_link {
-      padding: 5px 30 5 30;
-    }
-
     #minimal {
-      width: 1px;
+      width: auto;
     }
 
     .number_col {
