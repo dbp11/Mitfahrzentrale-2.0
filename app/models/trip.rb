@@ -316,4 +316,11 @@ class Trip < ActiveRecord::Base
     return erg
   end
   
+  def get_start_city
+    get_start_address_info[:city]
+  end
+  
+  def get_end_city
+    get_end_address_info[:city]
+  end
 end
