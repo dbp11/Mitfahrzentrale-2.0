@@ -67,14 +67,92 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :address, :zipcode, :city 
   validate :booleans_not_nil
 
+  private #die Validation-Methoden private
+
   def booleans_not_nil 
-    if(self.user_type == nil or self.sex == nil or 
-       self.email_notifications == nil or self.visible_phone == nil or 
-       self.visible_email == nil or self.visible_address == nil or 
-       self.visible_age == nil or self.visible_im == nil or 
-       self.visible_cars == nil or self.visibleccip == nil or 
-       self.visible_city == nil or self.business == nil)
-      errors.add(:field, 'Irgendein Boolean nimmt den Wert Null ein, und das darf nicht sein, also gar nicht')
+    user_type_not_nil
+    sex_not_nil 
+    email_notifications_not_nil 
+    visible_phone_not_nil  
+    visible_email_not_nil 
+    visible_address_not_nil 
+    visible_age_not_nil 
+    visible_im_not_nil 
+    visible_cars_not_nil 
+    visible_zip_not_nil  
+    visible_city_not_nil 
+    business_not_nil 
+  end
+
+  def user_type_not_nil
+    if self.user_type.nil?
+      errors.add(:field, 'user_type darf nicht nil sein!')
+    end
+  end
+
+  def sex_not_nil
+    if self.sex.nil?
+      errors.add(:field, 'sex darf nicht nil sein!')
+    end
+  end
+
+  def email_notifications_not_nil
+    if self.email_notifications.nil?
+      errors.add(:field, 'email_notifications darf nicht nil sein!')
+    end
+  end
+
+  def visible_phone_not_nil
+    if self.visible_phone.nil?
+      errors.add(:field, 'visible_phone darf nicht nil sein!')
+    end
+  end
+
+  def visible_email_not_nil
+    if self.visible_email.nil?
+      errors.add(:field, 'visible_email darf nicht nil sein!')
+    end
+  end
+
+  def visible_address_not_nil
+    if self.visible_address.nil?
+      errors.add(:field, 'visible_address darf nicht nil sein!')
+    end
+  end
+
+  def visible_age_not_nil
+    if self.visible_age.nil?
+      errors.add(:field, 'visible_age darf nicht nil sein!')
+    end
+  end
+
+  def visible_im_not_nil
+    if self.visible_im.nil?
+      errors.add(:field, 'visible_im darf nicht nil sein!')
+    end
+  end
+
+  def visible_cars_not_nil
+    if self.visible_cars.nil?
+      errors.add(:field, 'visible_cars darf nicht nil sein!')
+    end
+  end
+
+  def visible_zip_not_nil
+    if self.visible_zip.nil?
+      errors.add(:field, 'visible_zip darf nicht nil sein!')
+    end
+  end
+
+  def visible_city_not_nil
+    if self.visible_city.nil?
+      errors.add(:field, 'visible_city darf nicht nil sein!')
+    end
+  end
+
+  def business_not_nil
+    if self.business.nil?
+      errors.add(:field, 'business darf nicht nil sein!')
     end
   end
 
@@ -120,10 +198,12 @@ class User < ActiveRecord::Base
   has_many :written_messages,  :class_name => "Message", :foreign_key =>"writer_id", :dependent => :destroy
   has_many :written_ratings, :class_name => "Rating", :foreign_key => "author_id", :dependent => :destroy
   has_many :received_ratings, :class_name => "Rating", :foreign_key => "receiver_id", :dependent => :destroy
- 
+
+  public #ab hier wieder public
+
   ################################################### ==Methoden:###################################################
   #toString Methode für User
-  #@return string name
+  #@return Name des Users
   def to_s
     name
   end
@@ -176,7 +256,7 @@ class User < ActiveRecord::Base
     return erg
   end
 
-  #Liefert alle Trips des Users zurück bei denen er sich um Mitfahrt beworben hat
+  #Liefert alle Trips des Users zurück, bei denen er sich um Mitfahrt beworben hat
   #@return Trip [] erg
   def applied_at
     erg =[]
@@ -207,7 +287,7 @@ class User < ActiveRecord::Base
 
 
   #Methode zur Ermittlung des durchschnittlichen Ratings des Users als Fahrer
-  #@return float 3, wenn User noch keine Bewertungen hat
+  #@return float 3, wenn User noch keine Bewertungen als Fahrer hat
   #@return float Sum(Ratings)/Anz(Ratings)
   def get_avg_rating_driver
     count = count_ratings_driver
@@ -228,7 +308,7 @@ class User < ActiveRecord::Base
   end
 
   #Methode zur Ermittlung des durchschnittlichen Ratings des Users als Mitfahrer
-  #@return float 3, wenn User noch keine Bewertungen hat
+  #@return float 3, wenn User noch keine Bewertungen als Mitfahrer hat
   #@return float Sum(Ratings)/Anz(Ratings)
   def get_avg_rating_passenger
     count = count_ratings_passenger
@@ -249,7 +329,7 @@ class User < ActiveRecord::Base
   end
 
 
-  #Methode die alle Erhaltenen Ratings des Users zählt
+  #Methode, die alle Erhaltenen Ratings des Users zählt
   #@return integer count
   def count_ratings
     self.received_ratings.count
@@ -308,12 +388,12 @@ class User < ActiveRecord::Base
   end
   
   #Methode, die die relative Anzahl an Ignorierungen eines Users zurückliefert
-  #@return float Ignorierungen_des_Users / Alle_User
+  #@return float Ignorierungen_des_Users / Anz(User)
   def get_relative_ignorations
     self.ignoreds.count.to_f / User.all.count.to_f
   end
   
-  #Methode, die alle, für den User sichtbaren Autos zurückliefert.
+  #Methode, die alle für den User sichtbaren Autos zurückliefert.
   #Wenn ein User bei einem Trip Mitfahrer ist, so wird das Auto das Fahrers für ihn sichtbar
   #@return Car Set
   def get_visible_cars
@@ -325,8 +405,9 @@ class User < ActiveRecord::Base
     end
     erg
   end
-  #Methode, die alle, für einen User sichtbaren User zurückliefert
-  #User werden für sichtbar, wenn der Benutzer mit diesen über einen Trip in verbindung gebracht werden kann
+
+  #Methode, die alle für einen User sichtbaren User zurückliefert
+  #User werden sichtbar, wenn der Benutzer mit diesen über einen Trip in verbindung gebracht werden kann
   #@return User [] 
   def get_visible_users
     erg = Array.new
@@ -348,6 +429,7 @@ class User < ActiveRecord::Base
     return erg
   end
   
+  #Methode, die die zurückgelegte Distanz als Mitfahrer in <i>m</i> zurückgibt
   #@return gesammte als aktueller Mitfahrer zurückgelegte Distanz
   def toured_distance_p
     distance = 0
@@ -356,6 +438,8 @@ class User < ActiveRecord::Base
     end
     distance
   end
+
+  #Methode, die die als Mitfahrer gefahrene Zeit in <i>s</i> zurückgibt
   #@return gesammte als aktueller Mitfahrer gefahrene Zeit
   def toured_time_p
     time = 0
@@ -365,7 +449,8 @@ class User < ActiveRecord::Base
     time
   end
   
-  #@return gesammte als aktueller Fahrer zurückgelgete Distanz
+  #Methode, die die als Fahrer zurückgelgte Distanz in <i>m</i> zurückgibt
+  #@return gesammte als Fahrer zurückgelgete Distanz
   def toured_distance_d
     distance = 0
     self.driven.each do |t|
@@ -374,7 +459,8 @@ class User < ActiveRecord::Base
     distance
   end
   
-  #@return gesammte als aktueller Fahrer gefahrene Zeit
+  #Methode, die die asl Fahrer gefahrene Zeit in <i>s</i> zurückgibt
+  #@return gesammte als Fahrer gefahrene Zeit
   def toured_time_d
     time = 0
     self.driven_trips.each do |t|
@@ -384,7 +470,7 @@ class User < ActiveRecord::Base
   end
   
   #Methode die ermittelt, ob der aktuelle User vom übergebenen User zum übergebenen Trip schon bewertet wurde
-  #@param User rateri
+  #@param User rater
   #@param Trip trp
   #@return false, wenn noch keine Bewertung abgegeben wurde
   #@return true, wenn eine Bewertung abgegeben wurde
@@ -415,12 +501,14 @@ class User < ActiveRecord::Base
       end
   end    
  
-  #liefert alle Ratings, die der User erstellt hat sortiert nach Datum
+  #Methode, die alle Ratings liefert, die der User erstellt hat 
+  #@return rating [] sortiert nach Datum
   def get_own_written_ratings
     self.written_ratings.sort{|a,b| b.created_at <=> a.created_at}
   end
 
-  #liefert alle Ratings, die dieser User als Fahrer erhalten hat
+  #Methode, die alle Ratings liefert, die dieser User als Fahrer erhalten hat
+  #@return rating [] sortiert nach Datum
   def get_own_driver_ratings
     erg = []
     self.received_ratings.each do |r|
@@ -428,10 +516,11 @@ class User < ActiveRecord::Base
         erg << r
       end
     end
-    return erg
+    return erg.sort{|a,b| b.created_at <=> a.created_at}
   end
 
-  #lifert alle Ratings, die dieser User als Mitfahrer erhalten hat
+  #Methode, die alle Ratings liefert, die dieser User als Mitfahrer erhalten hat
+  #@return rating [] sortiert nach Datum
   def get_own_passenger_ratings
     erg = []
     self.received_ratings.each do |r|
@@ -439,7 +528,7 @@ class User < ActiveRecord::Base
         erg << r
       end
     end
-    return erg
+    return erg.sort{|a,b| b.created_at <=> a.created_at}
   end
   
 
