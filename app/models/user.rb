@@ -401,7 +401,7 @@ class User < ActiveRecord::Base
   #@param Trip trp um den sich beworben werden soll
   #@return false, wenn der User sich schon auf den Trip beworben hat
   #@return false, wenn eine Validatierung beim Einspeichern des Users eine
-  #               Verletzung der Integrität feststellt
+  #Verletzung der Integrität feststellt
   #@return true, wenn Einspeichern funktioniert hat
   def bewerben (trp)
       if self.passengers.where("user_id = ?", self.id).where("trip_id = ?", trp.id).count > 0
