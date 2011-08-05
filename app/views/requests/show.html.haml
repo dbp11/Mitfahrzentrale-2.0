@@ -19,19 +19,30 @@
   = @request.end_time
 %p
   %b Gepäck:
-  = @request.baggage
+  = @request.baggage? ? "Ja" : "Nein"
 %p
   %b Anmerkungen:
   = @request.comment
-
+%p Dazu passende Trips
 %table
-  %th
-    Passende Trips
+  %td Start
+  %td Ende
+  %td Startzeit
+  %td Endzeit
+  %td Gepäck
   - @sorted_trips.each do |t|
     %tr
       %td 
-        =t[0].address_start
+        = t[0].address_start
+      %td
         = t[0].address_end
+      %td
+        = t[0].start_time
+      %td
+        = t[0].end_time
+      %td
+        = t[0].baggage? ? "Ja" : "Nein"
+      %td
         = link_to 'Zum Trip', "/trips/"+t[0].id.to_s
       %td 
         =t[1]

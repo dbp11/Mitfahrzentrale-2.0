@@ -7,12 +7,12 @@
     %th Gepäck
     %th Anmerkung
     %th
-
   - @requests.each do |request|
     %tr.index_table_second
+      
       %td= request.start_time
       %td= request.end_time
-      %td= request.baggage
+      %td= request.baggage? ? "Ja" : "Nein"
       %td= request.comment
 
       %td= link_to 'Show', request
