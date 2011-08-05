@@ -65,14 +65,14 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true, :presence => true, 
   :length => {:minimum => 8}
   validates_presence_of :name, :address, :zipcode, :city 
-  #validate :booleans_not_nil
+  validate :booleans_not_nil
 
   def booleans_not_nil 
     if(self.user_type == nil or self.sex == nil or 
        self.email_notifications == nil or self.visible_phone == nil or 
        self.visible_email == nil or self.visible_address == nil or 
        self.visible_age == nil or self.visible_im == nil or 
-       self.visible_cars == nil or self.visible_zip == nil or 
+       self.visible_cars == nil or self.visible_cip == nil or 
        self.visible_city == nil or self.business == nil)
       errors.add(:field, 'Irgendein Boolean nimmt den Wert Null ein, und das darf nicht sein, also gar nicht')
     end
@@ -454,6 +454,17 @@ class User < ActiveRecord::Base
     end
     count
   end    
+  
+  #Liefert die Anzahl der Ratings zurück, die der User noch nicht eingesehen hat.
+  #@return integer count
+  def get_latest_ratings
+    count = 0
+    self.received_ratings.each do |m|
+      if m.created_at > self.last_ratings
+        count+=1
+      end
+    end
+    count
+  end    
+
 end
-
-
