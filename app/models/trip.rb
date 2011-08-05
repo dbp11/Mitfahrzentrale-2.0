@@ -205,17 +205,17 @@ class Trip < ActiveRecord::Base
   #@param User
   #@return true, wenn Update erfolgreich; false sonst
   def accept (compared_user)
-    begin
-      if self.passengers.where("user_id = ?", compared_user.id).confirmed?
+    if self.passengers.where("user_id = ?", compared_user.id).first.confirmed?
         false
       else
-        self.passengers.where("user_id = ?", compared_user.id).first.update_attribute(:confirmed, true)
-        true
+        begin
+          self.passengers.where("user_id = ?", compared_user.id).first.update_attribute(:confirmed, true)
+          true
+        rescue Error
+          false
+        end
       end
-    rescue Error
-      false
     end
-  end
   
   #Methode um als Fahrer einen User, der sich um Mitfahrt beworben hat, abzulehnen. Dieser wird hierbei direkt aus 
   #der Mitfahrertabelle (Passengers) gelöscht.
