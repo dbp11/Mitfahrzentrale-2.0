@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
        self.email_notifications == nil or self.visible_phone == nil or 
        self.visible_email == nil or self.visible_address == nil or 
        self.visible_age == nil or self.visible_im == nil or 
-       self.visible_cars == nil or self.visible_cip == nil or 
+       self.visible_cars == nil or self.visibleccip == nil or 
        self.visible_city == nil or self.business == nil)
       errors.add(:field, 'Irgendein Boolean nimmt den Wert Null ein, und das darf nicht sein, also gar nicht')
     end
