@@ -67,14 +67,90 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :address, :zipcode, :city 
   validate :booleans_not_nil
 
-  def booleans_not_nil 
-    if(self.user_type == nil or self.sex == nil or 
-       self.email_notifications == nil or self.visible_phone == nil or 
-       self.visible_email == nil or self.visible_address == nil or 
-       self.visible_age == nil or self.visible_im == nil or 
-       self.visible_cars == nil or self.visible_cip == nil or 
-       self.visible_city == nil or self.business == nil)
-      errors.add(:field, 'Irgendein Boolean nimmt den Wert Null ein, und das darf nicht sein, also gar nicht')
+  private def booleans_not_nil 
+    user_role_not_nil
+    sex_not_nil 
+    email_notifications_not_nil 
+    visible_phone_not_nil  
+    visible_email_not_nil 
+    visible_address_not_nil 
+    visible_age_not_nil 
+    visible_im_not_nil 
+    visible_cars_not_nil 
+    visible_zip_not_nil  
+    visible_city_not_nil 
+    business_not_nil 
+  end
+
+  private def user_role_not_nil
+    if self.role_role.nil?
+      errors.add(:field, 'user_role darf nicht nil sein!')
+    end
+  end
+
+  private def sex_not_nil
+    if self.sex.nil?
+      errors.add(:field, 'sex darf nicht nil sein!')
+    end
+  end
+
+  private def email_notifications_not_nil
+    if self.email_notifications.nil?
+      errors.add(:field, 'email_notifications darf nicht nil sein!')
+    end
+  end
+
+  private def visible_phone_not_nil
+    if self.visible_phone.nil?
+      errors.add(:field, 'visible_phone darf nicht nil sein!')
+    end
+  end
+
+  private def visible_email_not_nil
+    if self.visible_email.nil?
+      errors.add(:field, 'visible_email darf nicht nil sein!')
+    end
+  end
+
+  private def visible_address_not_nil
+    if self.visible_address.nil?
+      errors.add(:field, 'visible_address darf nicht nil sein!')
+    end
+  end
+
+  private def visible_age_not_nil
+    if self.visible_age.nil?
+      errors.add(:field, 'visible_age darf nicht nil sein!')
+    end
+  end
+
+  private def visible_im_not_nil
+    if self.visible_im.nil?
+      errors.add(:field, 'visible_im darf nicht nil sein!')
+    end
+  end
+
+  private def visible_cars_not_nil
+    if self.visible_cars.nil?
+      errors.add(:field, 'visible_cars darf nicht nil sein!')
+    end
+  end
+
+  private def visible_zip_not_nil
+    if self.visible_zip.nil?
+      errors.add(:field, 'visible_zip darf nicht nil sein!')
+    end
+  end
+
+  private def visible_city_not_nil
+    if self.visible_city.nil?
+      errors.add(:field, 'visible_city darf nicht nil sein!')
+    end
+  end
+
+  private def business_not_nil
+    if self.business.nil?
+      errors.add(:field, 'business darf nicht nil sein!')
     end
   end
 
