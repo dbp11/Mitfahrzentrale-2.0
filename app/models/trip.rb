@@ -205,7 +205,13 @@ class Trip < ActiveRecord::Base
   #@param User
   #@return true, wenn Update erfolgreich; false sonst
   def accept (compared_user)
-    t = self.passengers.where("user_id = ?", compared_user.id).first.update_attribute(:confirmed, true)
+    begin
+      self.passengers.where("user_id = ?", compared_user.id).first
+      .update_attribute(:confirmed, true)
+    rescue Error
+      false
+    end
+    true
   end
   
   #Methode um als Fahrer einen User, der sich um Mitfahrt beworben hat, abzulehnen. Dieser wird hierbei direkt aus 
@@ -213,7 +219,12 @@ class Trip < ActiveRecord::Base
   #@param User
   #@return true, wenn Löschvorgang erfolgreich; false sonst
   def declined (compared_user)
-    self.passengers.where("user_id = ?", compared_user.id).first.destroy
+    begin
+      self.passengers.where("user_id = ?", compared_user.id).first.destroy
+    rescue Error
+      false
+    end
+    true
   end
   
   #Methode, die angibt, ob ein Trip schon beendet ist
@@ -237,17 +248,69 @@ class Trip < ActiveRecord::Base
     erg
   end
 
-  #Liefert den im Trip gespeicherten Abfahrtsort abgabd der eingespeicherten Koordinaten
-  #@return string Stadtname
-  def get_start_city
-    Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + self.starts_at_E.to_s + "E", "de")[0][:full_data]["address_components"][2]["long_name"]
+  # Füllt einen Hash mit Adressinformationen der Startadresse.
+  # "get_start_address_info[:street]" um an die Straße zu kommen
+  # "get_start_address_info[:city]" um an den Stadtnamen zu kommen
+  # "get_start_address_info[:plz]" um an die PLZ zu kommen
+  #
+  # @return Hash mit Feldern: Straße, Stadt, PLZ
+  # 
+  def get_start_address_info
+    erg = {}
+    street = ""
+    hausNr = ""
+    infos = Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
+            self.starts_at_E.to_s + "E", "de")[0][:full_data]
+    infos["address_components"].each do |i|
+      if i["types"].include?("postal_code")
+        erg[:plz] = i["long_name"]
+      end
+      if i["types"].include?("locality")
+        erg[:city] = i["long_name"]
+      end
+      if i["types"].include?("route")
+        street = i["long_name"]
+      end
+      if i["types"].include?("street_number")
+        hausNr = i["long_name"]
+      end
+    end
+
+    erg[:street] = street + " " + hausNr
+    
+    return erg
   end
   
-  #Liefert den im Trip gespeicherten Ankunftsort anhand der eingespeicherten Koordinaten
-  #@return string Stadtname
-  def get_end_city
-    Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + self.ends_at_E.to_s + "E", "de")[0][:full_data]["address_components"][2]["long_name"]
+  # Füllt einen Hash mit Adressinformationen der Endadresse.
+  # "get_end_address_info[:street]" um an die Straße zu kommen
+  # "get_end_address_info[:city]" um an den Stadtnamen zu kommen
+  # "get_end_address_info[:plz]" um an die PLZ zu kommen
+  #
+  # @return Hash mit Feldern: Straße, Stadt, PLZ
+  def get_end_address_info
+    erg = {}
+    street = ""
+    hausNr = ""
+    infos = Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
+                                self.ends_at_E.to_s + "E", "de")[0][:full_data]
+    infos["address_components"].each do |i|
+      if i["types"].include?("postal_code")
+        erg[:plz] = i["long_name"]
+      end
+      if i["types"].include?("locality")
+        erg[:city] = i["long_name"]
+      end
+      if i["types"].include?("route")
+        street = i["long_name"]
+      end
+      if i["types"].include?("street_number")
+        hausNr = i["long_name"]
+      end
+    end
+
+    erg[:street] = street + " " + hausNr
+    
+    return erg
   end
-
-
+  
 end

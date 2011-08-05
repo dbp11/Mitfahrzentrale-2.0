@@ -2,6 +2,29 @@ class TripsController < ApplicationController
   before_filter :authenticate_user!
   # GET /trips
   # GET /trips.json
+  def status (trp)
+    @trip = trp
+    @FAHRER = 0
+    @MITFAHRER = 1
+    @POTENTIELLER_MITFAHRER = 2
+    @GAST = 3
+    @user = current_user
+    if current_user == @trip.user
+      flash[:notice] = "FAHRER"
+      @status = @FAHRER
+    elsif @trip.user_committed (current_user)
+      flash[:notice] = "MITFAHRER"
+      @status = @MITFAHRER
+    elsif @trip.user_uncommitted (current_user)
+      flash[:notice] = "POTENTIELLER_MITFAHRER"
+      @status = @POTENTIELLER_MITFAHRER
+    else
+      flash[:notice] = "GAST"
+      @status = @GAST
+    end
+    return @status
+  end
+
   def index
     #Dummy. Wird entfernt
     temp = current_user
@@ -30,31 +53,38 @@ class TripsController < ApplicationController
     @user = current_user
     @trip = Trip.find(params[:id])
 
-    if current_user == @trip.user
-      flash[:notice] = "FAHRER"
-      @status = @FAHRER
-    elsif @trip.user_committed (current_user)
-      flash[:notice] = "MITFAHRER"
-      @status = @MITFAHRER
-    elsif @trip.user_uncommitted (current_user)
-      flash[:notice] = "POTENTIELLER_MITFAHRER"
-      @status = @POTENTIELLER_MITFAHRER
-    else
-      flash[:notice] = "GAST"
-      @status = @GAST
-    end
+    @status = status(@trip)
     @free_seats = @trip.get_free_seats
     @occupied_seats = @trip.get_occupied_seats
 
     if params[:request]
       if @free_seats - @occupied_seats > 0
-        current_user.bewerben(@trip)
+        if current_user.bewerben(@trip)
+          tmp = Message.new()
+          tmp.writer_id = User.find(@trip.user_id)
+          tmp.receiver = current_user
+          tmp.subject = "Ihre Bewerbung"
+          tmp.message = "Ihre Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" war erfolgreich"        
+          tmp.delete_writer = false
+          tmp.delete_receiver = false
+          tmp.save
+        end
       end
     end
 
     if params[:accept] and @status == @FAHRER
       temp = User.find(params[:uid])
-      @trip.accept(temp)
+      if @trip.accept(temp)  
+        tmp = Message.new()
+        tmp.writer = current_user
+        tmp.receiver = temp
+        tmp.message = "Sie wurden fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" angenommen"
+        tmp.subject = "Ihre Bewerbung"
+        tmp.delete_writer = false
+        tmp.delete_receiver = false
+        tmp.save
+        puts "SAVE"
+      end
     end
     
     if params[:decline] and @status != @GAST
