@@ -49,71 +49,121 @@
 - u_passengers = @uncommited_passenger
 - f_seats = @free_seats
 - o_seats = @occupied_seats
+- seats = @trip.free_seats
 - fahrer = @trip.user
 - trip = @trip
 - user = @user
+
+-#%meta{:name => "viewport", :content => "initial-scale=1.0, user-scalable=no"}
+
+%script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
+
+:javascript
+  var directionDisplay;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
+
+  function initialize() {
+    directionsDisplay = new google.maps.DirectionsRenderer();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var myOptions = {
+      zoom:7,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: latlng
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    directionsDisplay.setMap(map);
+  }
+    
+  var start = "#{trip.address_start}";
+  var end = "#{trip.address_end}";
+  var request = {
+    origin:start, 
+    destination:end,
+    travelMode: google.maps.DirectionsTravelMode.DRIVING
+  };
+
+  directionsService.route(request, function(result, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(result);
+    }
+  });
+
+
+
 
 
 %table.trips_base_table
   %tr
     %td
-      %table.trips_table
+      %table.trips_show_info_table
         %tr
           %td.center{:colspan => "4"} Fahrtinformationen
         %tr
-          %td.left_bold#minimal Abfahrt:
+          %td.left_bold Abfahrt:
           %td.left= trip.address_start
-          %td.center#minimal= trip.start_time.strftime("%d.%m.%Y")
-          %td.center#minimal= trip.start_time.strftime("%H:%M")
+          %td.center= trip.start_time.strftime("%d.%m.%Y")
+          %td.center= trip.start_time.strftime("%H:%M")
         %tr
-          %td.left_bold#minimal Ankunft:
+          %td.left_bold Ankunft:
           %td.left= trip.address_end
-          %td.center#minimal
-          %td.center#minimal
+          %td.center
+          %td.center
         %tr
           %td.left_bold#minimal Fahrer:
           %td.left{:colspan => "3"}
             = link_to("#{fahrer.name}", fahrer)
-            = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :uid => fahrer.id, :tid => trip.id)) + " "
-            = link_to("Bewerten", url_for(:action => "new", :controller => "ratings", :uid => fahrer.id, :tid => trip.id))
+            - if @status != @FAHRER
+              = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :uid => fahrer.id, :tid => trip.id)) + " "
+              - if !fahrer.allready_rated(user, trip) and trip.finished
+                = link_to("Bewerten", url_for(:action => "new", :controller => "ratings", :uid => fahrer.id, :tid => trip.id))
         %tr
           %td.left_bold#minimal Auto:
           %td.left{:colspan => "3"}= link_to("#{trip.car.car_type}", trip.car) +" (#{trip.car.description.truncate(60)})"
 
-      %table.trips_table
+      %table.trips_show_passenger_table
         %tr
-          %td.center{:colspan => "4"}= "Mitfahrer (#{o_seats}/#{f_seats})"
+          %td.center{:colspan => "5"}= "Mitfahrer (#{o_seats}/#{seats})"
         - if @status != @FAHRER and @status != @MITFAHRER
           %tr
-            %td.center{:colspan => "3"} Sie haben keine Berechtigung, Mitfahrer zu untersuchen
+            %td.center{:colspan => "4"} Sie haben keine Berechtigung, Mitfahrer anzuzeigen
         - if @status == @FAHRER or @status == @MITFAHRER
           - if c_passengers == nil or c_passengers.count <= 0
             %tr
-              %td.center{:colspan => "3"} keine Mitfahrer vorhanden
+              %td.center{:colspan => "4"} keine Mitfahrer vorhanden
           -else
             %tr
               %td Benutzername
-              %td.left{:colspan => "3"} Rating
+              %td.left{:colspan => "4"} Rating
             - c_passengers.each do |passenger|
               %tr
                 %td= link_to "#{passenger}", passenger
                 %td= "#{passenger.get_avg_rating} (#{passenger.count_ratings})"
                 %td.right
-                  = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :tid => trip.id, :uid => passenger.id))
-                  = link_to "Austragen", passenger
-                  = link_to("Bewerten", url_for(:action => "new", :controller => "ratings", :uid => passenger.id, :tid => trip.id))
-                %td#minimal
+                  - if user != passenger
+                    = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :tid => trip.id, :uid => passenger.id))
+                %td.right
+                  - if !trip.finished and (user == passenger or @status == @FAHRER)
+                    = link_to("Austragen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
+                  - else
+                    - if passenger.allready_rated(user, trip) and user != passenger
+                      = link_to("Bewerten", url_for(:action => "new", :controller => "ratings", :uid => passenger.id, :tid => trip.id))
+                %td
 
-      %table.trips_table
+      %table.trips_show_passenger_table
         %tr
           %td.center{:colspan => "4"}= "Anfragen (#{u_passengers == nil ? "0" : u_passengers.count})"
-        - if u_passengers == nil or u_passengers.count <= 0
+        - if @status == @FAHRER and (u_passengers == nil or u_passengers.count <= 0)
           %tr
             %td.center{:colspan => "3"} keine Bewerbungen vorhanden
         - else
           - if @status != @FAHRER and @status != @POTENTIELLER_MITFAHRER
             %tr
-              %td.center{:colspan => "3"} Sie haben keine Berechtigung, Bewerber zu untersuchen
+              %td.center{:colspan => "3"}
+                - if @status == @MITFAHRER
+                  Sie haben keine Berechtigung, Bewerber anzuzeigen
+                - else
+                  = link_to("Als Mitfahrer bewerben", url_for(:action => "update", :controller => "trips", :request => true))
           - if @status == @FAHRER or @status == @POTENTIELLER_MITFAHRER
             %tr
               %td Benutzername
@@ -124,16 +174,19 @@
                   %td= link_to "#{passenger}", passenger
                   %td= "#{passenger.get_avg_rating} (#{passenger.count_ratings})"
                   - if @status == @FAHRER
-                    %td.right= link_to("annehmen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :accept => true))
-                    %td.right= link_to("ablehnen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
+                    %td.right
+                      = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :uid => passenger.id, :tid => trip.id))
+                      = link_to("annehmen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :accept => true))
+                      = link_to("ablehnen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
                   - else
-                    %td
                     %td.right= link_to("austragen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
-    %td
-      %h2 Hier kommt die Karten hin
-      %br/
-      %h2 (evtl als Miniatur mit
-      %br/
-      %h2 Link zur Gro&szlig;ansicht)
-  %tr
-    %td{:colspan => "2"}= link_to("Bewerben", url_for(:action => "update", :controller => "trips", :request => true))
+                  %td
+      -#= link_to("Bewerben", url_for(:action => "update", :controller => "trips", :request => true))
+
+    %td#map
+      #map_canvas{:style => "width: 100%;"}
+:javascript
+  var b = document.getElementById("map_canvas").offsetWidth;
+  var style = document.getElementById("map_canvas").getAttribute("style");
+  document.getElementById("map_canvas").setAttribute("style",style+"height:"+b,0);
+

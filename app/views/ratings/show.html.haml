@@ -1,21 +1,78 @@
-%p#notice= notice
+%h2
+	= "Bewertungen für"
+	= link_to(@user.name, url_for(@user))
+%div.other_site2
+	= link_to("zurück", "javascript:history.back()")
+	= "|"
+	= link_to("Erstellte Bewertungen", ratings_path)
 
-%p
-  %b Text:
-  = @rating.comment
-%p
-  %b Mark:
-  = @rating.mark
-%p
-  %b Written by:
-  = @rating.author
-%p
-  %b Sent to:
-  = @rating.receiver
-%p
-  %b Trip:
-  = @rating.trip
+%h3
+	= "Bewertungen als Fahrer"
+-if @driver_ratings.empty?
+	%p
+		= "Keine Bewertungen vorhanden."
 
-= link_to 'Edit', edit_rating_path(@rating)
-\|
-= link_to 'Back', ratings_path
+-else
+	%p
+		= "Durchschnittliche Bewertung ("+@driver_cnt.to_s+"):"
+		%span
+			= @driver_avg 
+	- @driver_ratings.each do |rating|
+		%table.rating_table
+			- args = (@user == current_user and @last_ratings < rating.created_at) ? {:class => 'new'} : {}
+			%tr{args}
+				%td.rating_table_left
+					= "Bewertung von"
+					= link_to(rating.author.name, url_for(rating.author))
+					- if @user == current_user and @last_ratings < rating.created_at
+						%span.new
+							= "(NEU)"
+				%td.rating_table_right
+					= rating.created_at.strftime("%d.%m.%y %H:%M")
+			%tr
+				%td.rating_table_left
+					%div
+						= link_to(rating.trip.get_start_city() + " - " + rating.trip.get_end_city() + " " + rating.trip.start_time.strftime("%d.%m.%y"), url_for(rating.trip))
+				%td.rating_table_right
+					%div
+						= "Note:"
+						%span
+							= rating.mark
+			%tr
+				%td.rating_table_both{:colspan => "2"}
+					= rating.comment
+%h3
+	= "Bewertungen als Mitfahrer"
+-if @passenger_ratings.empty?
+	%p
+		= "Keine Bewertungen vorhanden."
+
+-else
+	%p
+		= "Durchschnittliche Bewertung ("+@passenger_cnt.to_s+"):"
+		%span
+			= @passenger_avg 
+	- @passenger_ratings.each do |rating|
+		%table.rating_table
+			- args = (@user == current_user and @last_ratings < rating.created_at) ? {:class => 'new'} : {}
+			%tr{args}
+				%td.rating_table_left
+					= "Bewertung von"
+					= link_to(rating.author.name, url_for(rating.author))
+					- if @user == current_user and @last_ratings < rating.created_at
+						%span.new
+							= "(NEU)"
+				%td.rating_table_right
+					= rating.created_at.strftime("%d.%m.%y %H:%M")
+			%tr
+				%td.rating_table_left
+					%div
+						= link_to(rating.trip.get_start_city() + " - " + rating.trip.get_end_city() + " " + rating.trip.start_time.strftime("%d.%m.%y"), url_for(rating.trip))
+				%td.rating_table_right
+					%div
+						= "Note:"
+						%span
+							= rating.mark
+			%tr
+				%td.rating_table_both{:colspan => "2"}
+					= rating.comment

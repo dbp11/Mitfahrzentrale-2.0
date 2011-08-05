@@ -1,0 +1,46 @@
+---
+ratings_001:
+  id: 1
+  comment: Auto im schlechten Zustand!
+  mark: 6
+  trip_id: 1
+  created_at: '2011-08-05 12:55:52.058450'
+  updated_at: '2011-08-05 12:55:52.058450'
+  receiver_id: 1
+  author_id: 2
+ratings_002:
+  id: 2
+  comment: Benzin?
+  mark: 5
+  trip_id: 2
+  created_at: '2011-08-05 12:55:52.200343'
+  updated_at: '2011-08-05 12:55:52.200343'
+  receiver_id: 2
+  author_id: 3
+ratings_003:
+  id: 3
+  comment: Kam viel zu spät!
+  mark: 4
+  trip_id: 4
+  created_at: '2011-08-05 12:55:52.310681'
+  updated_at: '2011-08-05 12:55:52.310681'
+  receiver_id: 4
+  author_id: 1
+ratings_004:
+  id: 4
+  comment: Befriedigend
+  mark: 3
+  trip_id: 4
+  created_at: '2011-08-05 12:55:52.413580'
+  updated_at: '2011-08-05 12:55:52.413580'
+  receiver_id: 4
+  author_id: 5
+ratings_005:
+  id: 5
+  comment: Ist ganz gut abgelaufen!
+  mark: 2
+  trip_id: 5
+  created_at: '2011-08-05 12:55:52.533961'
+  updated_at: '2011-08-05 12:55:52.533961'
+  receiver_id: 5
+  author_id: 1

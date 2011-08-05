@@ -2,6 +2,29 @@ class TripsController < ApplicationController
   before_filter :authenticate_user!
   # GET /trips
   # GET /trips.json
+  def check (trp)
+    @trip = trp
+    @FAHRER = 0
+    @MITFAHRER = 1
+    @POTENTIELLER_MITFAHRER = 2
+    @GAST = 3
+    @user = current_user
+    if current_user == @trip.user
+      flash[:notice] = "FAHRER"
+      @status = @FAHRER
+    elsif @trip.user_committed (current_user)
+      flash[:notice] = "MITFAHRER"
+      @status = @MITFAHRER
+    elsif @trip.user_uncommitted (current_user)
+      flash[:notice] = "POTENTIELLER_MITFAHRER"
+      @status = @POTENTIELLER_MITFAHRER
+    else
+      flash[:notice] = "GAST"
+      @status = @GAST
+    end
+    return @status
+  end
+
   def index
     #Dummy. Wird entfernt
     temp = current_user
@@ -27,38 +50,70 @@ class TripsController < ApplicationController
     @MITFAHRER = 1
     @POTENTIELLER_MITFAHRER = 2
     @GAST = 3
-
     @user = current_user
-    
     @trip = Trip.find(params[:id])
+
+    @status = check(@trip)
+    @free_seats = @trip.get_free_seats
+    @occupied_seats = @trip.get_occupied_seats
+
     if params[:request]
-      current_user.bewerben(@trip)
+      if current_user.bewerben(@trip)
+        tmp = Message.new()
+        tmp.writer_id = User.find(@trip.user_id)
+        tmp.receiver = current_user
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
+        tmp.message = "Ihre Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" war erfolgreich. <3"        
+        tmp.delete_writer = true
+        tmp.delete_receiver = false
+        tmp.save
+        tmp = Message.new()
+        tmp.writer_id = current_user 
+        tmp.receiver = User.find(@trip.user_id)
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
+        tmp.message = "Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" Nutzer annehmen: [[/trips/"+@trip.id.to_s+"?accept=true&uid="+current_user.id.to_s+"|Hier!]]"        
+
+        tmp.delete_writer = true
+        tmp.delete_receiver = false
+        tmp.save
+        end
     end
+
+    if params[:accept] and @status == @FAHRER
+      temp = User.find(params[:uid])
+      if @trip.accept(temp)  
+        tmp = Message.new()
+        tmp.writer = current_user
+        tmp.receiver = temp
+        tmp.message = "Sie wurden fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" angenommen!!"
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
+        tmp.delete_writer = true
+        tmp.delete_receiver = false
+        tmp.save
+      end
+    end
+    
+    if params[:decline] and @status != @GAST
+      temp = User.find(params[:uid])
+      if @trip.declined(temp)
+        if current_user != temp
+          tmp = Message.new()
+          tmp.writer = current_user
+          tmp.receiver = temp
+          tmp.message = "Sie wurden fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" abgelehnt!!"
+          tmp.subject = "Ihre Bewerbung"
+          tmp.delete_writer = true
+          tmp.delete_receiver = false
+          tmp.save
+        end
+      end
+    end
+
     @commited_passenger = @trip.get_committed_passengers
     @uncommited_passenger = @trip.get_uncommitted_passengers
     @free_seats = @trip.get_free_seats
     @occupied_seats = @trip.get_occupied_seats
-    if current_user == @trip.user
-      flash[:notice] = "FAHRER"
-      @status = @FAHRER
-    elsif @trip.user_committed (current_user)
-      flash[:notice] = "MITFAHRER"
-      @status = @MITFAHRER
-    elsif @trip.user_uncommitted (current_user)
-      flash[:notice] = "POTENTIELLER_MITFAHRER"
-      @status = @POTENTIELLER_MITFAHRER
-    else
-      flash[:notice] = "GAST"
-      @status = @GAST
-    end
-
-    if params[:accept] and @status == @FAHRER
-      #Methdoe
-    end
-    
-    if params[:decline] and @status == @FAHRER
-      #Methode
-    end
+    @status = check(@trip)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -88,8 +143,6 @@ class TripsController < ApplicationController
   def create
     #Die eingehenden Daten empfangen und an eine Methode übergeben, die ein Array an möglichen Orten zurückgeben
     #Redirecten mit Parametern? An die new Action?
-
-    #@trip = Trip.new(params[:trip])
     @trip = Trip.new()
     @trip.user_id = current_user.id
     @trip.car_id = params[:car]
@@ -109,8 +162,11 @@ class TripsController < ApplicationController
       @trip.free_seats = params[:free_seats]
     end
     @trip.set_route
-    @trip.baggage = true
-
+    if params[:baggage] == nil
+      @trip.baggage = false
+    else
+      @trip.baggage = true
+    end
     respond_to do |format|
       if @trip.save
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }

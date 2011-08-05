@@ -1,22 +1,27 @@
-%h1 Listing ratings
-
-- @ratings.each do |rating|
-	%table.rating_table
-		%tr
-			%td.rating_table_left
-				= "Bewertung von"
-				= link_to(rating.author.name, url_for(rating.author))
-			%td.rating_table_right
-				= rating.created_at.strftime("%d.%m.%y %H:%M")
-		%tr
-			%td.rating_table_left
-				%div
-					= link_to(rating.trip.start_time.to_date, url_for(rating.trip))
-			%td.rating_table_right
-				%div
-					= "Note:"
-					%span
-						= rating.mark
-		%tr
-			%td.rating_table_both{:colspan => "2"}
-				= rating.comment
+%h2 Erstellte Bewertungen
+%div.other_site
+	= link_to("Erhaltene Bewertungen", url_for(:action => "show", :controller => "ratings", :id => current_user.id))
+-if @ratings.empty?
+	%p
+		= "Keine Bewertungen erstellt."
+-else
+	- @ratings.each do |rating|
+		%table.rating_table
+			%tr
+				%td.rating_table_left
+					= "Bewertung für"
+					= link_to(rating.author.name, url_for(rating.author))
+				%td.rating_table_right
+					= rating.created_at.strftime("%d.%m.%y %H:%M")
+			%tr
+				%td.rating_table_left
+					%div
+						= link_to(rating.trip.get_start_city() + " - " + rating.trip.get_end_city() + " " + rating.trip.start_time.strftime("%d.%m.%y"), url_for(rating.trip))
+				%td.rating_table_right
+					%div
+						= "Note:"
+						%span
+							= rating.mark
+			%tr
+				%td.rating_table_both{:colspan => "2"}
+					= rating.comment
