@@ -1,0 +1,206 @@
+---
+users_001:
+  id: 1
+  email: dkruempe@uos.com
+  encrypted_password: $2a$10$lSGDRK2CLv9lcnsYD1M6puXgDZOC1f6tFGbxuQ6QZ67hnyF7eVAWu
+  reset_password_token: !!null 
+  reset_password_sent_at: !!null 
+  remember_created_at: !!null 
+  sign_in_count: 0
+  current_sign_in_at: !!null 
+  last_sign_in_at: !!null 
+  current_sign_in_ip: !!null 
+  last_sign_in_ip: !!null 
+  created_at: '2011-08-05 12:55:18.386017'
+  updated_at: '2011-08-05 12:55:18.386017'
+  name: Dominik Krümpelmann
+  user_type: t
+  sex: t
+  address: Großer Esch 20
+  addressN: !!null 
+  addressE: !!null 
+  zipcode: 48496
+  instantmessenger: ! 'icq: 5465465'
+  city: Hopsten
+  email_notifications: t
+  visible_phone: t
+  visible_email: t
+  visible_address: t
+  visible_age: t
+  visible_im: f
+  visible_cars: t
+  birthday: '1989-12-28'
+  visible_zip: t
+  visible_city: t
+  business: f
+  phone: '054571598'
+  pic_file_name: !!null 
+  pic_content_type: !!null 
+  pic_file_size: !!null 
+  pic_updated_at: !!null 
+  last_delivery: '2011-08-05 12:54:34.560780'
+  last_ratings: '2011-08-05 12:54:34.560784'
+users_002:
+  id: 2
+  email: mibloemer@uos.de
+  encrypted_password: $2a$10$1r1Ug8FJhaOQQC9QJneDN.hX7WLLh8RcJdoWqBV4CRhdhGi/PB822
+  reset_password_token: !!null 
+  reset_password_sent_at: !!null 
+  remember_created_at: !!null 
+  sign_in_count: 0
+  current_sign_in_at: !!null 
+  last_sign_in_at: !!null 
+  current_sign_in_ip: !!null 
+  last_sign_in_ip: !!null 
+  created_at: '2011-08-05 12:55:18.468843'
+  updated_at: '2011-08-05 12:55:18.468843'
+  name: Michael Blömer
+  user_type: f
+  sex: t
+  address: Alfred-Delp-Str. 30
+  addressN: !!null 
+  addressE: !!null 
+  zipcode: 49080
+  instantmessenger: ! 'icq: 4564644'
+  city: Osnabrück
+  email_notifications: f
+  visible_phone: t
+  visible_email: f
+  visible_address: f
+  visible_age: t
+  visible_im: f
+  visible_cars: t
+  birthday: '1990-06-06'
+  visible_zip: f
+  visible_city: t
+  business: f
+  phone: '0456465'
+  pic_file_name: !!null 
+  pic_content_type: !!null 
+  pic_file_size: !!null 
+  pic_updated_at: !!null 
+  last_delivery: '2011-08-05 12:54:34.912383'
+  last_ratings: '2011-08-05 12:54:34.912387'
+users_003:
+  id: 3
+  email: ufischer@t-online.de
+  encrypted_password: $2a$10$fPMnOqBjZYlratNgJNbpieRVESrplfII5upo7M3HRAik2dRS1Xc2K
+  reset_password_token: !!null 
+  reset_password_sent_at: !!null 
+  remember_created_at: !!null 
+  sign_in_count: 0
+  current_sign_in_at: !!null 
+  last_sign_in_at: !!null 
+  current_sign_in_ip: !!null 
+  last_sign_in_ip: !!null 
+  created_at: '2011-08-05 12:55:18.557053'
+  updated_at: '2011-08-05 12:55:18.557053'
+  name: Uwe Fischer
+  user_type: t
+  sex: f
+  address: Leipziger Platz 10
+  addressN: !!null 
+  addressE: !!null 
+  zipcode: 10117
+  instantmessenger: ! 'msn: addy@msn.com'
+  city: Berlin
+  email_notifications: t
+  visible_phone: f
+  visible_email: t
+  visible_address: f
+  visible_age: t
+  visible_im: t
+  visible_cars: f
+  birthday: '1880-12-12'
+  visible_zip: t
+  visible_city: t
+  business: f
+  phone: '030206701034'
+  pic_file_name: !!null 
+  pic_content_type: !!null 
+  pic_file_size: !!null 
+  pic_updated_at: !!null 
+  last_delivery: '2011-08-05 12:54:35.010732'
+  last_ratings: '2011-08-05 12:54:35.010734'
+users_004:
+  id: 4
+  email: hotel-am-stadtring@aol.com
+  encrypted_password: $2a$10$hiNjTpxsjS36U5zHMTi/EuKqf083L5JPwire0/wzPeKeico.FBx..
+  reset_password_token: !!null 
+  reset_password_sent_at: !!null 
+  remember_created_at: !!null 
+  sign_in_count: 0
+  current_sign_in_at: !!null 
+  last_sign_in_at: !!null 
+  current_sign_in_ip: !!null 
+  last_sign_in_ip: !!null 
+  created_at: '2011-08-05 12:55:18.667478'
+  updated_at: '2011-08-05 12:55:18.667478'
+  name: Hotel am Stadtring GmbH
+  user_type: t
+  sex: f
+  address: Stadtring 33
+  addressN: !!null 
+  addressE: !!null 
+  zipcode: 48527
+  instantmessenger: ! 'icq: 454654664'
+  city: Lingen
+  email_notifications: t
+  visible_phone: t
+  visible_email: f
+  visible_address: t
+  visible_age: f
+  visible_im: t
+  visible_cars: f
+  birthday: '1454-01-06'
+  visible_zip: f
+  visible_city: t
+  business: t
+  phone: '0592188330'
+  pic_file_name: !!null 
+  pic_content_type: !!null 
+  pic_file_size: !!null 
+  pic_updated_at: !!null 
+  last_delivery: '2011-08-05 12:54:35.108697'
+  last_ratings: '2011-08-05 12:54:35.108699'
+users_005:
+  id: 5
+  email: antenne-bayern-gmbh-&-co.-kg@gmx.com
+  encrypted_password: $2a$10$8fRh5ots5E76HtG1Z.How.X0GBDFmCYE7yMoQnnXIPLQmANMdjD86
+  reset_password_token: !!null 
+  reset_password_sent_at: !!null 
+  remember_created_at: !!null 
+  sign_in_count: 0
+  current_sign_in_at: !!null 
+  last_sign_in_at: !!null 
+  current_sign_in_ip: !!null 
+  last_sign_in_ip: !!null 
+  created_at: '2011-08-05 12:55:18.795780'
+  updated_at: '2011-08-05 12:55:18.795780'
+  name: ! 'Antenne Bayern GmbH & Co. KG '
+  user_type: t
+  sex: f
+  address: Münchener Straße 101C
+  addressN: !!null 
+  addressE: !!null 
+  zipcode: 85737
+  instantmessenger: ''
+  city: Ismaning
+  email_notifications: t
+  visible_phone: f
+  visible_email: t
+  visible_address: f
+  visible_age: t
+  visible_im: f
+  visible_cars: t
+  birthday: '1898-12-12'
+  visible_zip: t
+  visible_city: t
+  business: t
+  phone: '089992770'
+  pic_file_name: !!null 
+  pic_content_type: !!null 
+  pic_file_size: !!null 
+  pic_updated_at: !!null 
+  last_delivery: '2011-08-05 12:54:35.207074'
+  last_ratings: '2011-08-05 12:54:35.207076'
