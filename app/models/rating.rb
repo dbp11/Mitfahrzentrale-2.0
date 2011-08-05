@@ -41,8 +41,9 @@ class Rating < ActiveRecord::Base
   end
   
   def authenticate_rater
-    if !(self.trip.users.include?(author) and self.trip.user == receiver or
-         self.trip.users.include?(receiver) and self.trip.user == author)
+    if !((self.trip.users.include?(receiver) and self.trip.users.include?(author)) or
+        (self.trip.users.include?(receiver) and self.trip.user==author) or 
+        (self.trip.users.include?(author) and self.trip.user==author))
       then errors.add(:field, "Keine Berechtigung diesen User für diese Fahrt zu bewerten!")
     end
   end

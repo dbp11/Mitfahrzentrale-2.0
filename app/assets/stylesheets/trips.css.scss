@@ -103,10 +103,10 @@ body.trips {
 		}
 	}
 
-	.trips_show_table {
+	.trips_show_info_table {
 		margin-bottom: 1.5em;
-		width: 70%;
-    table-layout: fixed;
+		width: 100%;
+    //table-layout: fixed;
     //border-collapse: separate;
     tr {
       border-left: solid 2px;
@@ -124,13 +124,114 @@ body.trips {
     tr:last-child {
       border-bottom: solid 2px;
     }
+
 		td {
-			border: solid 1px;
+			//border: solid 1px;
 			padding-top: 0.1em;
 			padding-bottom: 0.1em;
 			padding-left: 0.5em;
 			padding-right: 0.5em;
 		}
+
+    td:first-child {
+      width: 30px;
+    }
+    td:nth-last-child(1) {
+      width: 35px;
+    }
+    td:nth-last-child(2) {
+      width: 50px;
+    }
+
+    a {
+      &:visited {
+        color: #333333;
+      }
+
+      &:link {
+        color: #333333;
+      }
+
+      &:hover {
+        color: #000000;
+      }
+    }
+
+    #minimal {
+      width: auto;
+    }
+
+    .number_col {
+      &:hover {
+        background-color: #777777;
+      }
+    }
+
+		.left {
+			/*width: 400px;*/
+      text-align: left;
+    }
+
+    .left_bold {
+      text-align: left;
+      font-weight: bold;
+    }
+
+		.right {
+		/*	width: 2em;*/
+			text-align: right;
+		/*	font-weight: bold;*/
+		}
+
+    .center {
+      text-align: center;
+    }
+
+		.comment {
+			padding-top: 0.3em;
+			padding-bottom: 0.3em;
+			background-color: #AAAAAA;
+			border-top: solid 1px;
+		}
+	}
+
+	.trips_show_passenger_table {
+		margin-bottom: 1.5em;
+		width: 100%;
+    //table-layout: fixed;
+    //border-collapse: separate;
+    tr {
+      border-left: solid 2px;
+      border-right: solid 2px;
+      border-top: solid 1px;
+      &:nth-child(2n+1) {
+        //background-color: #FFFFFF;
+      }
+    }
+		tr:first-child {
+			background-color: #777777;
+			font-weight: bold;
+      border-top: solid 2px;
+		}
+    tr:last-child {
+      border-bottom: solid 2px;
+    }
+
+		td {
+			//border: solid 1px;
+			padding-top: 0.1em;
+			padding-bottom: 0.1em;
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+		}
+
+    td:nth-child(1) {
+      width: 200px;
+    }
+
+    td:nth-child(2) {
+      width: 70px;
+    }
 
     a {
       &:visited {
