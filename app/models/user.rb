@@ -397,13 +397,11 @@ class User < ActiveRecord::Base
   #Wenn ein User bei einem Trip Mitfahrer ist, so wird das Auto das Fahrers für ihn sichtbar
   #@return Car Set
   def get_visible_cars
-    erg = Set.new
-    self.passenger_trips.each do |c|
-      if c.passengers.confirmed? and c.start_time > Time.now
-        erg << c.car
-      end
+    erg = []
+    self.passenger_trips.each do |x|
+    erg << x.car
     end
-    erg
+    return erg
   end
 
   #Methode, die alle für einen User sichtbaren User zurückliefert
