@@ -1,67 +1,95 @@
 %h1 
   Registrieren
-= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"Formular", :action=>"create"}) do |f|
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"Formular", :onsubmit=>"return zipcheck();"}) do |f|
   = devise_error_messages!
-  %p
+
+  %div 
+    :javascript
+      function formtest(){
+        if (document.getElementById("business").checked==true){
+          document.getElementById("privat").style.display='none';
+          document.getElementById("privat1").style.display='none';
+        } else {
+          document.getElementById("privat").style.display='block';
+          document.getElementById("privat1").style.display='block';
+        } 
+      }
+
+      function zipcheck() {
+        var plz_field = document.getElementsByName("user[zipcode]")[0];
+        var b = (plz_field.value).search(/[^0-9]+/);
+        if(plz_field.value.length<5){
+          alert('PLZ zu kurz!');
+          plz_field.focus();
+          return false;
+        }
+        if(b>=0){
+          alert('PLZ enthält falsche Zeichen!');
+          plz_field.focus;
+          return false;
+        }
+        return true;
+      }
+    = f.label :"Geschäftskunde?"
+    = f.check_box:business, :id=>"business" ,:onClick=>"formtest();" 
+  %div
     = f.label :"Name*"
     %br/
     = f.text_field :name
-  %p
+  %div
     = f.label :"E-mail*"
     %br/
     = f.email_field :email
-  %p
+  %div
     = f.label :"Passwort*"
     %br/
     = f.password_field :password, :required=>"required"
-  %p
+  %div
     = f.label :"Passwort wiederholen*"
     %br/
     = f.password_field :password_confirmation, :required=>"required"
-  %p
-    = f.label :"Geburtsdatum"
-    %br/
+  %div#privat
+    = f.label :"Geburtsdatum", :id=>"lbirth"
     = f.date_select :birthday,
                     :start_year => 1900,
                     :end_year => 2011,
                     :order => [:day, :month, :year],
                     :use_month_numbers => true
-  %p
+  %div
     = f.label :"Straße und Hausnummer*"
     %br/
     = f.text_field:address, :required=>"required"
 
-  %p
+  %div
     = f.label :"PLZ*"
     %br
       = f.text_field:zipcode, :required=>"required", :class=>"integer", 
-                              :maxlength=>"5", :size=>"30", :remote=>"true",
-                              :onblur => "if(this.value.length<5){alert('PlZ zu kurz'); this.focus();}"
-  %p
+                              :maxlength=>"5", :size=>"30"
+
+  %div
     = f.label :"Stadt*"
     %br/
     = f.text_field:city, :required=>"required"
-
-  %p
+  
+  %div#privat1
     %br/
-    = f.label :Geschlecht
-    %br
-    = f.select:sex,  options_for_select([["Maennlich","1"], ["Weiblich","0"]], @user.sex? ? "Maennlich" : "Weiblich"), :id=>"form_table_second"
+    = f.label :Geschlecht, :id=>"lsex"
+    = f.select:sex,  options_for_select([["Maennlich","1"], ["Weiblich","0"]]), :id=>"form_table_second"
 
-  %p
+  %div
     = f.label :Telefon
     %br/
     = f.phone_field :phone
 
-  %p
+  %div
     = f.label :Instantmessenger
     %br/
     = f.text_field :instantmessenger
 
 
-  %p= f.submit "Anmelden"
+  %div
+    = f.submit "Anmelden"
 
-
-  %p
+  %div
     Mit * gekennzeichnete Felder müssen ausgefüllt werden!
 -#= render :partial => "devise/shared/links"

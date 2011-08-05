@@ -6,35 +6,46 @@
 %p#notice= notice
 
 %p
-  %b Starts at N:
-  = @request.starts_at_N
-%p
-  %b Starts at E:
-  = @request.starts_at_E
-%p
-  %b Ends at N:
-  = @request.ends_at_N
-%p
-  %b Ends at E:
-  = @request.ends_at_E
-%p
-  %b Address Start:
+  %b Startadresse:
   = @request.address_start
 %p
-  %b Address End:
+  %b Zieladresse:
   = @request.address_end
 %p
-  %b Start Time:
+  %b Startzeit:
   = @request.start_time
 %p
-  %b End Time:
+  %b Endzeit:
   = @request.end_time
 %p
-  %b Baggage:
-  = @request.baggage
+  %b Gepäck:
+  = @request.baggage? ? "Ja" : "Nein"
 %p
-  %b Comment:
+  %b Anmerkungen:
   = @request.comment
+%p Dazu passende Trips
+%table
+  %td Start
+  %td Ende
+  %td Startzeit
+  %td Endzeit
+  %td Gepäck
+  - @sorted_trips.each do |t|
+    %tr
+      %td 
+        = t[0].address_start
+      %td
+        = t[0].address_end
+      %td
+        = t[0].start_time
+      %td
+        = t[0].end_time
+      %td
+        = t[0].baggage? ? "Ja" : "Nein"
+      %td
+        = link_to 'Zum Trip', "/trips/"+t[0].id.to_s
+      %td 
+        =t[1]
 
 = link_to 'Edit', edit_request_path(@request)
 \|

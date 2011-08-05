@@ -45,27 +45,28 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     #@request = Request.new(params[:request])
-    start = Geocoder.coordinates(params[:address_start])
-    ende = Geocoder.coordinates(params[:address_end])
-    @request = Request.new()
+    puts params[:request]
+    start = Geocoder.coordinates(params[:request][:address_start])
+    ende = Geocoder.coordinates(params[:request][:address_end])
+    @request = Request.new(params[:request])
     @request.user_id = current_user.id
     @request.starts_at_N = start[0]
     @request.starts_at_E = start[1]
     @request.ends_at_N = ende[0]
     @request.ends_at_E = ende[1]
-    @request.address_start = params[:address_start]
-    @request.address_end = params[:address_end]
-    @request.start_time = params[:date_start]+"T"+params[:time_start]+"Z"
-    @request.end_time = params[:date_end]+"T"+params[:time_end]+"Z"
-    if params[:baggage] == nil
-      @request.baggage = false
-    else
-      @request.baggage = true
-    end
+    #@request.address_start = params[:address_start]
+    #@request.address_end = params[:address_end]
+    #@request.start_time = params[:date_start]+"T"+params[:time_start]+"Z"
+    #@request.end_time = params[:date_end]+"T"+params[:time_end]+"Z"
+    #if params[:baggage] == nil
+      #@request.baggage = false
+    #else
+      #@request.baggage = true
+    #end
     #@request.start_radius = params[:start_radius]
     #@request.end_radius = params[:end_radius]
-    @request.end_radius = 10
-    @request.start_radius = 10
+    #@request.end_radius = 10
+    #@request.start_radius = 10
     #Radius noch implementieren, dann die Dummy Felder rausnehmen
     @request.set_route
     respond_to do |format|

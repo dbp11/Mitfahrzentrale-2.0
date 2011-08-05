@@ -176,8 +176,9 @@
                   - if @status == @FAHRER
                     %td.right
                       = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :uid => passenger.id, :tid => trip.id))
-                      = link_to("annehmen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :accept => true))
-                      = link_to("ablehnen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
+                      - if !trip.finished
+                        = link_to("annehmen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :accept => true))
+                        = link_to("ablehnen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
                   - else
                     %td.right= link_to("austragen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
                   %td

@@ -1,77 +1,59 @@
--#= form_for @request do |f|
--#	-if @request.errors.any?
--#		#error_explanation
--#			%h2= "#{pluralize(@request.errors.count, "error")} prohibited this request from being saved:"
--#			%ul
--#				- @request.errors.full_messages.each do |msg|
--#					%li= msg
--#
--#	.field
--#		= f.label :starts_at_N
--#		= f.text_field :starts_at_N
--#	.field
--#		= f.label :starts_at_E
--#		= f.text_field :starts_at_E
--#	.field
--#		= f.label :ends_at_E
--#		= f.text_field :ends_at_E
--#	.field
--#		= f.label :ends_at_N
--#		= f.text_field :ends_at_N
--#	.field
--#		= f.label :start_time
--#		= f.datetime_select :start_time
--#	.field
--#		= f.label :end_time
--#		= f.datetime_select :end_time
--#	.field
--#		= f.label :baggage
--#		= f.check_box :baggage
--#	.field
--#		= f.label :comment
--#		= f.text_field :comment
--#	.actions
--#		= f.submit 'Save'
--#
-
-= form_tag("create", :method => "post") do
+= form_for @request do |f|
+  -if @request.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@request.errors.count, "error")} prohibited this message from being saved:"
+      %ul
+        - @request.errors.full_messages.each do |msg|
+          %li= msg
+  
   %table
     %tr
-      %td Von
-      -# entweder das textfield unten oder eine select-box
-      %td= text_field_tag(:address_start, nil, :required => "required")
+      %td 
+        =f.label:Von
       %td
-        %select{:name => "start_radius", :required => "required"}
-          %option{:value => "0"} Radius
-          = 10.times do |i|
-            %option{:value => 5*(i+1)}= "bis #{5*(i+1)}km"
+        = f.text_field:address_start, :required=>"required"
+      %td
+        = f.select:start_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
+
     %tr
-      %td Nach
-      -# entweder das textfield unten oder eine select-box
-      %td= text_field_tag(:address_end, nil, :required => "required")
+      %td 
+        = f.label:Nach
       %td
-        %select{:name => "end_radius", :required => "required"}
-          %option{:value => "0"} Radius
-          = 10.times do |i|
-            %option{:value => 5*(i+1)}= "bis #{5*(i+1)}km"
+        = f.text_field:address_end, :required => "required"
+      %td
+        = f.select:end_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
+
+
     %tr
-      %td Start-Datum
+      %td 
+        =f.label:"Startzeit und Startdatum"
       %td
-        %input{:name => "date_start", :required => "required", :type => "date"}/
-      %td Start-Uhrzeit
-      %td
-        %input{:name => "time_start", :required => "required", :type => "time"}/
+        = f.datetime_select:start_time, 
+                           :required => "required",
+                           :order=>[:hour,:day, :month, :year],
+                           :use_month_numbers=>true,
+                           :start_year=>Time.now.year
     %tr
-      %td Ende-Datum
+      %td 
+        = f.label:"Endzeit und Enddatum"
       %td
-        %input{:name => "date_end", :required => "required", :type => "date"}/
-      %td Ende-Uhrzeit
-      %td
-        %input{:name => "time_end", :required => "required", :type => "time"}/
+        = f.datetime_select:end_time, :required => "required",
+                            :order=>[:hour,:day, :month, :year],
+                            :use_month_numbers=>true,
+                            :start_year=>Time.now.year
     %tr
-      %td Gep&auml;ck
-      %td= check_box_tag(:baggage)
+      %td 
+        = f.label:"Gepäck"
+      %td
+        = f.check_box:baggage
     %tr
       %td
-      %td= submit_tag("Erstellen")
+        = f.label:"Anmerkungen"
+      %td
+        = f.text_area:comment, :rows=>"5"
+
+    %tr
+      %td
+      %td
+        = f.submit "Erstellen"
 
