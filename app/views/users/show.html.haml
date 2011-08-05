@@ -16,12 +16,12 @@
             %h4 Email:
           %td.form_table_right
             #{@user.email if @user.email}
-
-        %tr.form_table_row
-          %td.form_table_left
-            %h4 Geschlecht:
-          %td.form_table_right
-            #{@user.sex? ? "Maennlich" : "Weiblich"}
+        - if !@user.business?
+          %tr.form_table_row
+            %td.form_table_left
+              %h4 Geschlecht:
+            %td.form_table_right
+              #{@user.sex? ? "Maennlich" : "Weiblich"}
 
         %tr.form_table_row
           %td.form_table_left
@@ -39,12 +39,13 @@
             %h4 Ort: 
           %td.form_table_right
             #{@user.visible_city? ? @user.city : "versteckt"}
-
-        %tr.form_table_row
-          %td.form_table_left
-            %h4 Geburtsdatum: 
-          %td.form_table_right
-            #{@user.visible_age? ?  @user.birthday : "versteckt"}
+      
+        - if !@user.business?
+          %tr.form_table_row
+            %td.form_table_left
+              %h4 Geburtsdatum: 
+            %td.form_table_right
+              #{@user.visible_age? ?  @user.birthday : "versteckt"}
 
         %tr.form_table_row
           %td.form_table_left
@@ -62,10 +63,13 @@
         %p#box
           - if (@user.pic?)
             = image_tag @user.pic.url(:medium)
-          - else 
-            - if (@user.sex?)
-              = image_tag "../images/user/männlich.jpg"
+          -else
+            - if (@user.business?)
+              = image_tag "../images/user/fabrik.jpg"
             - else 
-              = image_tag "../images/user/weiblich.jpg"
+              - if (@user.sex?)
+                = image_tag "../images/user/männlich.jpg"
+              - else 
+                = image_tag "../images/user/weiblich.jpg"
         
 
