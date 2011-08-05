@@ -28,8 +28,8 @@
     - @future_trips.each do |trip|
       %tr
         %td.number_col= link_to "##{trip.id}", trip, :class => "number_link"
-        %td.left= trip.get_start_city
-        %td.left= trip.get_end_city
+        %td.left= "#{trip.get_start_address_info[:city]}, #{trip.get_start_address_info[:plz]}"
+        %td.left= "#{trip.get_end_address_info[:city]}, #{trip.get_end_address_info[:plz]}"
         %td.center= trip.start_time.strftime("%d.%m.%Y")
         %td.center= trip.start_time.strftime("%H.%M")
 
@@ -52,8 +52,8 @@
     - @completed_trips.each do |trip|
       %tr
         %td.number_col= link_to "##{trip.id}", trip, :class => "number_link"
-        %td.left= trip.get_start_city
-        %td.left= trip.get_end_city
+        %td.left= "#{trip.get_start_address_info[:city]}, #{trip.get_start_address_info[:plz]}"
+        %td.left= "#{trip.get_end_address_info[:city]}, #{trip.get_end_address_info[:plz]}"
         %td.center= trip.start_time.strftime("%d.%m.%Y")
         %td.center= trip.start_time.strftime("%H.%M")
 
@@ -76,8 +76,8 @@
     - @future_ridden_trips.each do |trip|
       %tr
         %td.number_col= link_to "##{trip.id}", trip, :class => "number_link"
-        %td.left= trip.get_start_city
-        %td.left= trip.get_end_city
+        %td.left= "#{trip.get_start_address_info[:city]}, #{trip.get_start_address_info[:plz]}"
+        %td.left= "#{trip.get_end_address_info[:city]}, #{trip.get_end_address_info[:plz]}"
         %td.center= trip.start_time.strftime("%d.%m.%Y")
         %td.center= trip.start_time.strftime("%H.%M")
 
@@ -100,8 +100,8 @@
     - @ridden_trips.each do |trip|
       %tr
         %td.number_col= link_to "##{trip.id}", trip, :class => "number_link"
-        %td.left= trip.get_start_city
-        %td.left= trip.get_end_city
+        %td.left= "#{trip.get_start_address_info[:city]}, #{trip.get_start_address_info[:plz]}"
+        %td.left= "#{trip.get_end_address_info[:city]}, #{trip.get_end_address_info[:plz]}"
         %td.center= trip.start_time.strftime("%d.%m.%Y")
         %td.center= trip.start_time.strftime("%H.%M")
 

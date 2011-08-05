@@ -246,12 +246,26 @@ class Trip < ActiveRecord::Base
   # 
   def get_start_address_info
     erg = {}
+    street = ""
+    hausNr = ""
     infos = Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
             self.starts_at_E.to_s + "E", "de")[0][:full_data]
-    erg[:street] = infos["address_components"][1]["long_name"]
-    erg[:street] = erg[:street] + " " + infos["address_components"][0]["long_name"]
-    erg[:city] = infos["address_components"][2]["long_name"]
-    erg[:plz]  = infos["address_components"][7]["long_name"]
+    infos["address_components"].each do |i|
+      if i["types"].include?("postal_code")
+        erg[:plz] = i["long_name"]
+      end
+      if i["types"].include?("locality")
+        erg[:city] = i["long_name"]
+      end
+      if i["types"].include?("route")
+        street = i["long_name"]
+      end
+      if i["types"].include?("street_number")
+        hausNr = i["long_name"]
+      end
+    end
+
+    erg[:street] = street + " " + hausNr
     
     return erg
   end
@@ -264,12 +278,26 @@ class Trip < ActiveRecord::Base
   # @return Hash mit Feldern: Straße, Stadt, PLZ
   def get_end_address_info
     erg = {}
+    street = ""
+    hausNr = ""
     infos = Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
-            self.ends_at_E.to_s + "E", "de")[0][:full_data]
-    erg[:street] = infos["address_components"][1]["long_name"]
-    erg[:street] = erg[:street] + " " + infos["address_components"][0]["long_name"]
-    erg[:city] = infos["address_components"][2]["long_name"]
-    erg[:plz]  = infos["address_components"][7]["long_name"]
+                                self.ends_at_E.to_s + "E", "de")[0][:full_data]
+    infos["address_components"].each do |i|
+      if i["types"].include?("postal_code")
+        erg[:plz] = i["long_name"]
+      end
+      if i["types"].include?("locality")
+        erg[:city] = i["long_name"]
+      end
+      if i["types"].include?("route")
+        street = i["long_name"]
+      end
+      if i["types"].include?("street_number")
+        hausNr = i["long_name"]
+      end
+    end
+
+    erg[:street] = street + " " + hausNr
     
     return erg
   end
