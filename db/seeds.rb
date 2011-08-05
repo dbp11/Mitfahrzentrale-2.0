@@ -121,12 +121,6 @@ ps8 = Passenger.new :user_id => 1, :trip_id => 3, :confirmed => true
 ps9 = Passenger.new :user_id => 1, :trip_id => 4, :confirmed => true
 ps10 = Passenger.new :user_id => 2, :trip_id => 3, :confirmed => true
 
-#Creates ratings
-ra1 = Rating.new :comment => "Auto im schlechten Zustand!", :mark => 6, :trip_id => 1, :receiver_id => 1, :author_id => 2
-ra2 = Rating.new :comment => "Benzin?", :mark => 5, :trip_id => 2, :receiver_id => 2, :author_id => 3
-ra3 = Rating.new :comment => "Kam viel zu spät!", :mark => 4, :trip_id => 3, :receiver_id => 3, :author_id => 4
-ra4 = Rating.new :comment => "Befriedigend", :mark => 3, :trip_id => 4, :receiver_id => 4, :author_id => 5
-ra5 = Rating.new :comment => "Ist ganz gut abgelaufen!", :mark => 2, :trip_id => 5, :receiver_id => 5, :author_id => 1
 
 #Creates request
 req1 = Request.new :starts_at_N => 48.1391265, :starts_at_E => 11.5801863, :ends_at_N => 52.2766061, :ends_at_E => 7.43844030000001, :address_start => "München", :address_end => "Rheine", :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => 1, :start_radius => 31, :end_radius => 37
@@ -140,16 +134,25 @@ req3.set_route
 req4.set_route
 req5.set_route
 #Creates trips
-tri1 = Trip.new :user_id => 1, :car_id => 1, :starts_at_N => 52.27133, :starts_at_E => 7.4452, :ends_at_E => 8.13409, :ends_at_N => 52.57975, :address_start => "Hafenbahn 10 48431 Rheine", :address_end => "Großer Esch 20 48496 Hopsten", :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => 5
-tri2 = Trip.new :user_id => 2, :car_id => 2, :starts_at_N => 48.1391265, :starts_at_E => 11.5801863, :ends_at_E => 8.807081, :ends_at_N => 53.074981,:address_start => "München" , :address_end => "Bremen" , :start_time => Time.now+1.day, :comment => "Platz für alle :D!", :baggage => true, :free_seats => 4
+tri1 = Trip.new :user_id => 1, :car_id => 1, :starts_at_N => 52.27133, :starts_at_E => 7.4452, :ends_at_E => 8.13409, :ends_at_N => 52.57975, :address_start => "Hafenbahn 10 48431 Rheine", :address_end => "Großer Esch 20 48496 Hopsten", :start_time => Time.now+1.minutes, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => 4
+tri2 = Trip.new :user_id => 2, :car_id => 2, :starts_at_N => 48.1391265, :starts_at_E => 11.5801863, :ends_at_E => 8.807081, :ends_at_N => 53.074981,:address_start => "München", :address_end => "Bremen", :start_time => Time.now+1.minutes, :comment => "Platz für alle :D!", :baggage => true, :free_seats => 4
 tri3 = Trip.new :user_id => 3, :car_id => 3, :starts_at_N => 53.553813, :starts_at_E => 9.991586, :ends_at_E => 13.4113999, :ends_at_N => 52.523401, :address_start => "Hamburg" , :address_end => "Berlin", :start_time => Time.now+1.day, :comment => "Ahoi", :baggage => false, :free_seats => 3
-tri4 = Trip.new :user_id => 4, :car_id => 4, :starts_at_N => 52.2766061, :starts_at_E => 7.43840300000001, :ends_at_E => 7.3237899999999, :ends_at_N => 52.52306, :address_start => "Rheine" , :address_end => "Lingen", :start_time => Time.now+1.day, :comment => "Boom Boom", :baggage => true, :free_seats => 5
-tri5 = Trip.new :user_id => 5, :car_id => 5, :starts_at_N => 52.6875079, :starts_at_E => 7.2911623, :ends_at_E => 8.0531882, :ends_at_N => 52.267281, :address_start => "Meppen" , :address_end => "Osnabrück", :start_time => Time.now+1.day, :comment => "Schnell schnell!", :baggage => false, :free_seats => 4
+tri4 = Trip.new :user_id => 4, :car_id => 4, :starts_at_N => 52.2766061, :starts_at_E => 7.43840300000001, :ends_at_E => 7.3237899999999, :ends_at_N => 52.52306, :address_start => "Rheine" , :address_end => "Lingen", :start_time => Time.now+1.minutes, :comment => "Boom Boom", :baggage => true, :free_seats => 5
+tri5 = Trip.new :user_id => 5, :car_id => 5, :starts_at_N => 52.6875079, :starts_at_E => 7.2911623, :ends_at_E => 8.0531882, :ends_at_N => 52.267281, :address_start => "Meppen" , :address_end => "Osnabrück", :start_time => Time.now+1.minutes, :comment => "Schnell schnell!", :baggage => false, :free_seats => 4
 tri1.set_route
+sleep(10)
 tri2.set_route
+sleep(10)
 tri3.set_route
+sleep(10)
 tri4.set_route
+sleep(10)
 tri5.set_route
+tri1.save!
+tri2.save!
+tri3.save!
+tri4.save!
+tri5.save!
 user1.save!
 user2.save!
 user3.save!
@@ -175,16 +178,6 @@ req2.save!
 req3.save!
 req4.save!
 req5.save!
-tri1.save!
-tri2.save!
-tri3.save!
-tri4.save!
-tri5.save!
-ra1.save!
-ra2.save!
-ra3.save!
-ra4.save!
-ra5.save!
 ps1.save!
 ps2.save!
 ps3.save!
@@ -195,6 +188,19 @@ ps7.save!
 ps8.save!
 ps9.save!
 ps10.save!
+sleep(30)
+#Creates ratings
+ra1 = Rating.new :comment => "Auto im schlechten Zustand!", :mark => 6, :trip_id => 1, :receiver_id => 1, :author_id => 2
+ra2 = Rating.new :comment => "Benzin?", :mark => 5, :trip_id => 2, :receiver_id => 2, :author_id => 3
+ra3 = Rating.new :comment => "Kam viel zu spät!", :mark => 4, :trip_id => 4, :receiver_id => 4, :author_id => 1
+ra4 = Rating.new :comment => "Befriedigend", :mark => 3, :trip_id => 4, :receiver_id => 4, :author_id => 5
+ra5 = Rating.new :comment => "Ist ganz gut abgelaufen!", :mark => 2, :trip_id => 5, :receiver_id => 5, :author_id => 1
+ra1.save!
+ra2.save!
+ra3.save!
+ra4.save!
+ra5.save!
+
 #Creates Assoziations
 user1.ignorings << user2
 user1.ignorings << user3
