@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   def index
     @messages = current_user.get_received_messages
     @last_delivery = current_user.last_delivery
+	@latest_messages = current_user.get_latest_messages
     current_user.last_delivery = Time.now
     current_user.save
 
