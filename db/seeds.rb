@@ -188,6 +188,7 @@ ps7.save!
 ps8.save!
 ps9.save!
 ps10.save!
+
 sleep(30)
 #Creates ratings
 ra1 = Rating.new :comment => "Auto im schlechten Zustand!", :mark => 6, :trip_id => 1, :receiver_id => 1, :author_id => 2

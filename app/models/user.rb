@@ -65,14 +65,14 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true, :presence => true, 
   :length => {:minimum => 8}
   validates_presence_of :name, :address, :zipcode, :city 
-  validate :booleans_not_nil
+  #validate :booleans_not_nil
 
   def booleans_not_nil 
     if(self.user_type == nil or self.sex == nil or 
        self.email_notifications == nil or self.visible_phone == nil or 
        self.visible_email == nil or self.visible_address == nil or 
        self.visible_age == nil or self.visible_im == nil or 
-       self.visible_cars == nil or self.visible_cip == nil or 
+       self.visible_cars == nil or self.visible_zip == nil or 
        self.visible_city == nil or self.business == nil)
       errors.add(:field, 'Irgendein Boolean nimmt den Wert Null ein, und das darf nicht sein, also gar nicht')
     end
@@ -397,12 +397,12 @@ class User < ActiveRecord::Base
     check
   end
    
-  #Lässt einen User sich um eine Mitfahrgelegenheit bewerben<br>
-  #@param Trip trp um den sich beworben werden soll<br>
-  #@return false, wenn der User sich schon auf den Trip beworben hat<br>
+  #Lässt einen User sich um eine Mitfahrgelegenheit bewerben
+  #@param Trip trp um den sich beworben werden soll
+  #@return false, wenn der User sich schon auf den Trip beworben hat
   #@return false, wenn eine Validatierung beim Einspeichern des Users eine
-  #Verletzung der Integrität feststellt<br>
-  #@return true, wenn Einspeichern funktioniert hat<br>
+  #Verletzung der Integrität feststellt
+  #@return true, wenn Einspeichern funktioniert hat
   def bewerben (trp)
       if self.passengers.where("user_id = ?", self.id).where("trip_id = ?", trp.id).count > 0
         false
