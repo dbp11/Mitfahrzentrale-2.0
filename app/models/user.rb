@@ -57,7 +57,6 @@ class User < ActiveRecord::Base
                                            :thumb => "100x100>"}
 
   before_validation :set_member 
-  #before_save {|user| user.role = "member" if user.role.blank?} 
   
   def set_member
     if (self.role != "admin")
