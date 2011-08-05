@@ -115,14 +115,23 @@ class Trip < ActiveRecord::Base
     erg = []
 
     requests.each do |t|
-      start_con = Gmaps4rails.destination({"from" => self.address_start, "to" => t.address_start},{},"pretty")
-      end_con =  Gmaps4rails.destination({"from" => self.address_end, "to" => t.address_end},{},"pretty")
-      
-      start_distance = start_con[0]["distance"]["value"]
-      start_duration = start_con[0]["duration"]["value"]
+     # start_con = Gmaps4rails.destination({"from" => self.address_start, "to" => t.address_start},{},"pretty")
+     # end_con =  Gmaps4rails.destination({"from" => self.address_end, "to" => t.address_end},{},"pretty")
+    
+      start_distance = (Geocoder::Calculations.distance_between [t.starts_at_N, t.starts_at_E], 
+      [self.starts_at_N, self.starts_at_E], :units => :km)
 
-      end_distance = end_con[0]["distance"]["value"]
-      end_duration = end_con[0]["duration"]["value"]
+      end_distance = (Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
+      [self.ends_at_N, self.ends_at_E], :units => :km)
+      
+     # start_distance = start_con[0]["distance"]["value"]
+     # start_duration = start_con[0]["duration"]["value"]
+     
+      start_duration = start_distance / 1000 / 80
+      end_duration = end_distance / 1000 / 80
+
+     # end_distance = end_con[0]["distance"]["value"]
+     # end_duration = end_con[0]["duration"]["value"]
 
       t_rating = t.user.get_avg_rating.to_f / 6
       t_ignors = t.user.get_relative_ignorations
