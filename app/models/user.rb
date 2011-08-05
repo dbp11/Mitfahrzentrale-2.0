@@ -397,12 +397,12 @@ class User < ActiveRecord::Base
     check
   end
    
-  #Lässt einen User sich um eine Mitfahrgelegenheit bewerben<br>
-  #@param Trip trp um den sich beworben werden soll<br>
-  #@return false, wenn der User sich schon auf den Trip beworben hat<br>
+  #Lässt einen User sich um eine Mitfahrgelegenheit bewerben
+  #@param Trip trp um den sich beworben werden soll
+  #@return false, wenn der User sich schon auf den Trip beworben hat
   #@return false, wenn eine Validatierung beim Einspeichern des Users eine
-  #Verletzung der Integrität feststellt<br>
-  #@return true, wenn Einspeichern funktioniert hat<br>
+  #Verletzung der Integrität feststellt
+  #@return true, wenn Einspeichern funktioniert hat
   def bewerben (trp)
       if self.passengers.where("user_id = ?", self.id).where("trip_id = ?", trp.id).count > 0
         false
