@@ -1,9 +1,8 @@
-# =Klasse Trip
 #
 # Modelliert alle Fahrten die ein User als Fahrer oder Mitfahrer begeht. 
 # 
-# <b>Das Modell hat die Datenfelder:</b>
-# 
+# ===Das Modell hat die Datenfelder:
+#
 #
 # * trip_id       :integers -- <i>Von Rails erstellt</i> ID des Trips
 # * user_id       :integers -- ID des <b>fahrenden</b> Users
@@ -22,7 +21,31 @@
 # * free_seats    :integer  -- Noch freie Sitze des Autos auf der Fahrt
 # * distance      :integer  -- <i>Bei Erstellung automatisch eingefügt</i> Länge der zu fahrenden Strecke
 # * duration      :integer  -- <i>Bei Erstellung automatisch eingefügt</i> Dauer der zu fahrenden Strecke
-
+#
+# ===Das Model Trips arbeitet mit folgenden Validations:
+#
+# <b>validates_presence_of</b> (" Datenfelder dürfen nicht Null sein, bzw. müssen beim anlegen eines neuen Trips ausgefüllt werden")
+#
+# * :address_start       
+# * :address_end
+# * :start_time  
+# * :free_seats
+# * :starts_at_N
+# * :starts_at_E
+# * :ends_at_N
+# * :ends_at_E
+# * :duration
+# * :distance
+#
+# <b>validates_inclusion_of</b> ("Datenfelder müssen eine bestimmte Länge aufweisen")
+#  
+# * :free_seats -- " > 1" ("Es macht keinen Sinn eine Fahrt zu erstellen die keine freien Plätze zu Verfügung hat")
+# 
+# <b>validate</b> ("selbstgeschrieben Validation-Methoden, Beschreibungen bei den jeweiligen Methoden")
+# 
+# * :start_time_in_past
+# * :start_address_same_as_end_address
+# * :baggage_not_nil
 
 class Trip < ActiveRecord::Base
   include ActiveModel::Validations
@@ -55,7 +78,7 @@ class Trip < ActiveRecord::Base
   validates_presence_of :address_start, :address_end, :start_time, :free_seats, :starts_at_N, :starts_at_E, :ends_at_N, :ends_at_E, :duration, :distance
   
   #Freie Sitzplätze dürfen nicht negativ sein
-  validates_length_of :free_seats, :minimum => 1
+  validates_inclusion_of :free_seats, :in => 1..200
 
   # Methode prüft ob ein erstellter Trip in der Vergangenheit liegt
   # @throws Error, wenn Startzeit in der Vergangenheit
