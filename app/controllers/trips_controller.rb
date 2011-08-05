@@ -162,8 +162,11 @@ class TripsController < ApplicationController
       @trip.free_seats = params[:free_seats]
     end
     @trip.set_route
-    @trip.baggage = true
-
+    if params[:baggage] == nil
+      @trip.baggage = false
+    else
+      @trip.baggage = true
+    end
     respond_to do |format|
       if @trip.save
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
