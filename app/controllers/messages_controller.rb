@@ -3,9 +3,10 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    temp = User.find(current_user.id)
-    @messages = temp.get_received_messages
-    #Hier Methode einfügen, nur eigene Nachrichten
+    @messages = current_user.get_received_messages
+    @last_delivery = current_user.last_delivery
+    current_user.last_delivery = Time.now
+    current_user.save
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,9 +15,7 @@ class MessagesController < ApplicationController
   end
 
   def outbox
-    temp = User.find(current_user.id)
-    @messages = temp.get_written_messages
-    #Hier Methode, nur empfangene
+    @messages = current_user.get_written_messages
   
     respond_to do |format|
       format.html # index.html.haml
