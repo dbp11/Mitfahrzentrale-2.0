@@ -19,13 +19,13 @@
 			= @driver_avg 
 	- @driver_ratings.each do |rating|
 		%table.rating_table
-			- args = @user == current_user and @last_ratings < rating.created_at ? {:class => 'new'} : {}
+			- args = (@user == current_user and @last_ratings < rating.created_at) ? {:class => 'new'} : {}
 			%tr{args}
 				%td.rating_table_left
 					= "Bewertung von"
 					= link_to(rating.author.name, url_for(rating.author))
 					- if @user == current_user and @last_ratings < rating.created_at
-						%span
+						%span.new
 							= "(NEU)"
 				%td.rating_table_right
 					= rating.created_at.strftime("%d.%m.%y %H:%M")
@@ -54,13 +54,13 @@
 			= @passenger_avg 
 	- @passenger_ratings.each do |rating|
 		%table.rating_table
-			- args = @user == current_user and @last_ratings < rating.created_at ? {:class => 'new'} : {}
+			- args = (@user == current_user and @last_ratings < rating.created_at) ? {:class => 'new'} : {}
 			%tr{args}
 				%td.rating_table_left
 					= "Bewertung von"
 					= link_to(rating.author.name, url_for(rating.author))
 					- if @user == current_user and @last_ratings < rating.created_at
-						%span
+						%span.new
 							= "(NEU)"
 				%td.rating_table_right
 					= rating.created_at.strftime("%d.%m.%y %H:%M")
