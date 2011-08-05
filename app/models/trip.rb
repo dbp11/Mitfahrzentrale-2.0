@@ -1,26 +1,50 @@
-# =Klasse Trip
 #
-# Modelliert alle Fahrten die ein User als Fahrer oder Mitfahrer begeht. Das Modell hat die 
-# Datenfelder
+# Modelliert alle Fahrten die ein User als Fahrer oder Mitfahrer begeht. 
+# 
+# ===Das Modell hat die Datenfelder:
 #
-# * trip_id :integers --<i>Von Rails erstellt</i> ID des Trips
-# * user_id :integers -- ID des Fahrenden Users
-# * car_id :integers -- ID des benutzten Autos des fahrenden Users
-# * starts_at_N :float -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Nördl. Breite
-# * starts_at_E :float -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Östl. Breite
-# * ends_at_N :float -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Nördl. Breite
-# * ends_at_E :float -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Östl. Breite
-# * address_start :string -- Durch den User eingegebene Startadresse 
-# * address_end :string -- Durch den User eingegebene Endadresse
-# * start_time :datetime -- Voraussichtliche Startzeit des Trip
-# * comment :text -- Kommentar zum Text
-# * created_at :datetime -- <i>Von Rails erstellt</i> Erstellungsdatum des Objekts
-# * updated_at :datetime <i>Von Rails erstellt</i> letztes Änderungsdatum des Objekts
-# * baggage :boolean -- Datenfeld ob Gepäck erlaubt ist
-# * free_seats :integer -- Noch freie Sitze des Autos auf der Fahrt
-# * distance :integer -- <i>Bei Erstellung automatisch eingefügt</i> Länge der zu fahrenden Strecke
-# * duration :integer -- <i>Bei Erstellung automatisch eingefügt</i> Dauer der zu fahrenden Strecke
-
+# * trip_id       :integers -- <i>Von Rails erstellt</i> ID des Trips
+# * user_id       :integers -- ID des <b>fahrenden</b> Users
+# * car_id        :integers -- ID des <b>benutzten</b> Autos des fahrenden Users
+# * starts_at_N   :float    -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Nördl. Breite
+# * starts_at_E   :float    -- <i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Östl. Breite
+# * ends_at_N     :float    -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Nördl. Breite
+# * ends_at_E     :float    -- <i>Bei Erstellung automatisch eingefügt</i> Endkoordinate Östl. Breite
+# * address_start :string   -- Durch den User eingegebene Startadresse 
+# * address_end   :string   -- Durch den User eingegebene Endadresse
+# * start_time    :datetime -- Voraussichtliche Startzeit des Trip
+# * comment       :text     -- Kommentar zum Text
+# * created_at    :datetime -- <i>Von Rails erstellt</i> Erstellungsdatum des Objekts
+# * updated_at    :datetime -- <i>Von Rails erstellt</i> letztes Änderungsdatum des Objekts
+# * baggage       :boolean  -- Datenfeld ob Gepäck erlaubt ist
+# * free_seats    :integer  -- Noch freie Sitze des Autos auf der Fahrt
+# * distance      :integer  -- <i>Bei Erstellung automatisch eingefügt</i> Länge der zu fahrenden Strecke
+# * duration      :integer  -- <i>Bei Erstellung automatisch eingefügt</i> Dauer der zu fahrenden Strecke
+#
+# ===Das Model Trips arbeitet mit folgenden Validations:
+#
+# <b>validates_presence_of</b> (" Datenfelder dürfen nicht Null sein, bzw. müssen beim anlegen eines neuen Trips ausgefüllt werden")
+#
+# * :address_start       
+# * :address_end
+# * :start_time  
+# * :free_seats
+# * :starts_at_N
+# * :starts_at_E
+# * :ends_at_N
+# * :ends_at_E
+# * :duration
+# * :distance
+#
+# <b>validates_inclusion_of</b> ("Datenfelder müssen eine bestimmte Länge aufweisen")
+#  
+# * :free_seats -- " > 1" ("Es macht keinen Sinn eine Fahrt zu erstellen die keine freien Plätze zu Verfügung hat")
+# 
+# <b>validate</b> ("selbstgeschrieben Validation-Methoden, Beschreibungen bei den jeweiligen Methoden")
+# 
+# * :start_time_in_past
+# * :start_address_same_as_end_address
+# * :baggage_not_nil
 
 class Trip < ActiveRecord::Base
   include ActiveModel::Validations
@@ -53,7 +77,7 @@ class Trip < ActiveRecord::Base
   validates_presence_of :address_start, :address_end, :start_time, :free_seats, :starts_at_N, :starts_at_E, :ends_at_N, :ends_at_E, :duration, :distance
   
   #Freie Sitzplätze dürfen nicht negativ sein
-  validates_length_of :free_seats, :minimum => 1
+  validates_inclusion_of :free_seats, :in => 1..200
 
   # Methode prüft ob ein erstellter Trip in der Vergangenheit liegt
   # @throws Error, wenn Startzeit in der Vergangenheit
@@ -113,14 +137,23 @@ class Trip < ActiveRecord::Base
     erg = []
 
     requests.each do |t|
-      start_con = Gmaps4rails.destination({"from" => self.address_start, "to" => t.address_start},{},"pretty")
-      end_con =  Gmaps4rails.destination({"from" => self.address_end, "to" => t.address_end},{},"pretty")
-      
-      start_distance = start_con[0]["distance"]["value"]
-      start_duration = start_con[0]["duration"]["value"]
+     # start_con = Gmaps4rails.destination({"from" => self.address_start, "to" => t.address_start},{},"pretty")
+     # end_con =  Gmaps4rails.destination({"from" => self.address_end, "to" => t.address_end},{},"pretty")
+    
+      start_distance = (Geocoder::Calculations.distance_between [t.starts_at_N, t.starts_at_E], 
+      [self.starts_at_N, self.starts_at_E], :units => :km)
 
-      end_distance = end_con[0]["distance"]["value"]
-      end_duration = end_con[0]["duration"]["value"]
+      end_distance = (Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
+      [self.ends_at_N, self.ends_at_E], :units => :km)
+      
+     # start_distance = start_con[0]["distance"]["value"]
+     # start_duration = start_con[0]["duration"]["value"]
+     
+      start_duration = start_distance / 1000 / 80
+      end_duration = end_distance / 1000 / 80
+
+     # end_distance = end_con[0]["distance"]["value"]
+     # end_duration = end_con[0]["duration"]["value"]
 
       t_rating = t.user.get_avg_rating.to_f / 6
       t_ignors = t.user.get_relative_ignorations
