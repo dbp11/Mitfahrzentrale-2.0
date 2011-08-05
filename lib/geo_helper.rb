@@ -23,7 +23,7 @@ class GeoHelper
   #Liefert für Koordinaten die Standorte
   def self.geocode(cord_at_N, cord_at_E)
     if api == :gmaps
-      Gmaps4rails.geocode(cord_at_N.to_s+ "N "+ cord_at_E+"E","de")[0][:full_data]
+      Gmaps4rails.geocode(cord_at_N.to_s+ "N "+ cord_at_E.to_s+"E","de")[0][:full_data]
     elsif api == :geocoder
       Geocoder.address([cord_at_N,cord_at_E])
     end
