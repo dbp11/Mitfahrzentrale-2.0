@@ -205,7 +205,13 @@ class Trip < ActiveRecord::Base
   #@param User
   #@return true, wenn Update erfolgreich; false sonst
   def accept (compared_user)
-    t = self.passengers.where("user_id = ?", compared_user.id).first.update_attribute(:confirmed, true)
+    begin
+      self.passengers.where("user_id = ?", compared_user.id).first
+      .update_attribute(:confirmed, true)
+    rescue Error
+      false
+    end
+    true
   end
   
   #Methode um als Fahrer einen User, der sich um Mitfahrt beworben hat, abzulehnen. Dieser wird hierbei direkt aus 
@@ -213,7 +219,12 @@ class Trip < ActiveRecord::Base
   #@param User
   #@return true, wenn Löschvorgang erfolgreich; false sonst
   def declined (compared_user)
-    self.passengers.where("user_id = ?", compared_user.id).first.destroy
+    begin
+      self.passengers.where("user_id = ?", compared_user.id).first.destroy
+    rescue Error
+      false
+    end
+    true
   end
   
   #Methode, die angibt, ob ein Trip schon beendet ist
