@@ -20,17 +20,22 @@ until x==anzUsers
   users << u
 end
 
+
 #Erstellen von 12000 Cars
+x=0
 cars=[]
 until x==anzcars
+  x=x+1
   c= Car.new :user_id => (rand(anzUser+1)), :seats => 5, :licence => "10234", :price_km => 5.5, :smoker => true, :description => "Kein Kofferraum", :car_type => "BMW"
   cars << c
 end
 
 #Erstellen von 30000 Trips
 
+x=0
 trips=[]
 until x==anztrips
+  x=x+1
   user_id = (rand(anzUsers+1))
   plz_start = @plz_array[rand(24119)]
   begin
@@ -52,8 +57,10 @@ end
 
 #Erstellen von 20000 Requests
 
+x=0
 requests=[]
 until x==20000
+  x=x+1
   user_id = rand(anzUsers)
   plz_start = @plz_array[rand(24119)]
   begin
@@ -76,8 +83,10 @@ end
 
 #Erstellen von 15000 Ratings
 
+x=0
 ratings=[]
 until x==15000
+  x=x+1
   trip_id = rand(30001)
   t = Trip.all[trip_id]
   #Autor und Empfänger bestimmen
@@ -91,8 +100,11 @@ until x==15000
 end
 
 #Erstellen von 15000 Passengers
+
+x=0
 passengers=[]
 until x==15000
+  x=x+1
   trip = Trip.all[rand(30001)]
   user = User.all[rand(10001)]
   confirmed = rand(2)
