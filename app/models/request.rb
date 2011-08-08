@@ -69,17 +69,15 @@ class Request < ActiveRecord::Base
   def get_sorted_trips
     trips = get_available_trips
     erg = []
-
     trips.each do |t|
-     # start_con = Gmaps4rails.destination({"from" => t.address_start, "to" => self.address_start},{},"pretty")
-     # end_con =  Gmaps4rails.destination({"from" => t.address_end, "to" => self.address_end},{},"pretty")
-     
+      #address_start = t.city
+      #address_end = t.city
+      #start_con = Gmaps4rails.destination({"from" => address_start, "to" => self.start_city},{},"pretty")
+      #end_con =  Gmaps4rails.destination({"from" => address_end, "to" =>self.end_city},{},"pretty")
        start_distance = (Geocoder::Calculations.distance_between [t.starts_at_N, t.starts_at_E], 
            [self.starts_at_N, self.starts_at_E], :units => :km)
-
        end_distance = (Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
            [self.ends_at_N, self.ends_at_E], :units => :km)
-
 
      # start_distance = start_con[0]["distance"]["value"]
      # start_duration = start_con[0]["duration"]["value"]
@@ -102,6 +100,8 @@ class Request < ActiveRecord::Base
 
 
   def set_route
+    address_start = self.start_city
+    address_end = self.end_city
     route = Gmaps4rails.destination({"from" =>address_start, "to" =>address_end},{},"pretty")
 
     self.distance = route[0]["distance"]["value"]
