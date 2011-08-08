@@ -107,5 +107,21 @@ class Request < ActiveRecord::Base
     self.distance = route[0]["distance"]["value"]
     self.duration = route[0]["duration"]["value"]
   end
+
+
+  # Berechnet die Zeit die benötigt wird und gibt diese formatiert aus
+  #
+  # @return Zeit ( x Stunden y Minuten)
+  def get_route_duration
+    return duration.div(3600)+"Stunden"+(duration % 60)+ "Minuten" 
+  end
+ 
+  # Berechnet die Distanz die benötigt wird und gibt diese formatiert aus
+  #
+  # @return Distanz ( x Km)
+  def get_route_distance
+    return (distance / 1000).round(3) + "Km"
+  end
+
 end
 
