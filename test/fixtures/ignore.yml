@@ -1,10 +1,7 @@
 ---
 ignore_001:
-  ignoring_id: 2
-  ignored_id: 1
-ignore_002:
   ignoring_id: 3
   ignored_id: 1
-ignore_003:
+ignore_002:
   ignoring_id: 4
   ignored_id: 1
