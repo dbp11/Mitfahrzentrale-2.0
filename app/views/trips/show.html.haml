@@ -104,7 +104,7 @@
           %td.left_bold Abfahrt:
           %td.left
             = "#{tsstreet}"
-            - if !(tsstreet == nil or tsstreet == " ")
+            - if !(tsstreet == nil or tsstreet == "")
               = ", "
             = "#{"#{tsplz} #{tscity}"}"
           %td.center= trip.start_time.strftime("%d.%m.%Y")
@@ -113,7 +113,7 @@
           %td.left_bold Ankunft:
           %td.left
             = "#{testreet}"
-            - if !(testreet == nil or testreet == " ")
+            - if !(testreet == nil or testreet == "")
               = ", "
             = "#{"#{teplz} #{tecity}"}"
           %td.center
