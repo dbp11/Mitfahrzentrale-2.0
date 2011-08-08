@@ -3,7 +3,6 @@
     - @sorted_trips
       Array mit auf den Request passende Fahrten
 
-%p#notice= notice
 
 %h1 
   Meine Anfrage
@@ -11,13 +10,23 @@
   %tr
     %td.left    
       Startadresse:
-    %td.right  
+    %td
+      = @request.start_zipcode
+    %td  
       = @request.start_city
+    %td
+      = @request.start_street
   %tr
     %td.left
       Zieladresse:
-    %td.right
+    %td
+      = @request.end_zipcode
+    %td
       = @request.end_city
+    %td
+      = @request.end_street
+
+
   %tr
     %td.left
       Startzeit:
