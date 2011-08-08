@@ -161,13 +161,13 @@ class TripsController < ApplicationController
     #@trip.start_zipcode = params[:address_start_plz]
     #@trip.start_street = params[:address_start_street]
     #@trip.start_city = params[:address_start_city]
-    temp = Geocoder.coordinates(params[:address_start_plz]+" "+params[:addresss_start_street]+" "+params[:address_start_city])
+    temp = Geocoder.coordinates(params[:address_start])
     @trip.starts_at_N = temp[0]
     @trip.starts_at_E = temp[1]
     #@trip.end_zipcode = params[:address_end_plz]
     #@trip.end_street = params[:address_end_street]
     #@trip.end_city = params[:address_end_city]
-    temp = Geocoder.coordinates(params[:address_end_plz]+" "+params[:addresss_end_street]+" "+params[:address_end_city])
+    temp = Geocoder.coordinates(params[:address_end])
     @trip.ends_at_N = temp[0]
     @trip.ends_at_E = temp[1]
     @trip.comment = params[:comment]
