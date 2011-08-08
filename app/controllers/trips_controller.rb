@@ -170,6 +170,8 @@ class TripsController < ApplicationController
     temp = Geocoder.coordinates(params[:address_end])
     @trip.ends_at_N = temp[0]
     @trip.ends_at_E = temp[1]
+    @trip.set_address_info
+    @trip.set_route
     @trip.comment = params[:comment]
     #Hier Schwierigkeiten View != Model
     @trip.start_time = params[:start_year]+"-"+params[:start_month]+"-"+params[:start_day]+"T"+params[:start_hour]+":"+params[:start_minute]
@@ -179,7 +181,6 @@ class TripsController < ApplicationController
     else
       @trip.free_seats = params[:free_seats]
     end
-    #@trip.set_route
     if params[:baggage] == nil
       @trip.baggage = false
     else
