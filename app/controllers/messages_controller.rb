@@ -2,10 +2,16 @@ class MessagesController < ApplicationController
   before_filter :authenticate_user!
   # GET /messages
   # GET /messages.json
+  # Die IndexAction gibt gibt alle empfangenen Nachrichten des Nutzer aus
+  # Zeitstempel und Anzahl der neuen Nachrichten werden für die Anzeige gebraucht
   def index
+    # Alle empfangenen Nachrichten des Nutzers
     @messages = current_user.get_received_messages
+    # Zeitstempel des letzten Aufrufs
     @last_delivery = current_user.last_delivery
-	@latest_messages = current_user.get_latest_messages
+    # Anzahl der Nachrichten, die der Nutzer noch nicht eingesehen hat
+	  @latest_messages = current_user.get_latest_messages
+    # Den Zeitstempel auf die aktuelle Zeit setzen
     current_user.last_delivery = Time.now
     current_user.save
 
@@ -15,9 +21,10 @@ class MessagesController < ApplicationController
     end
   end
 
+  # Gibt alle geschriebenen Nachrichten des Nutzers aus
   def outbox
     @messages = current_user.get_written_messages
-  
+
     respond_to do |format|
       format.html # index.html.haml
       format.json  { render :json => @messages }
@@ -26,43 +33,36 @@ class MessagesController < ApplicationController
 
   # GET /messages/1
   # GET /messages/1.json
+  # Da wir alle Nachrichten komplett in der Übersicht haben ist es nicht erlaubt, eine Nachricht
+  # im Detail zu betrachten
   def show
-    #@message = Message.find(params[:id])
     redirect_to messages_url
-    #respond_to do |format|
-      #format.html # show.html.erb
-      #format.json { render json: @message }
-    #end
   end
 
   # GET /messages/new
   # GET /messages/new.json
   def new
     @message = Message.new
-	@message.writer = current_user
-	if params[:uid]
-		@message.receiver = User.find(params[:uid])
+	  @message.writer = current_user
+    check = false
+	  if params[:uid]
+		  @message.receiver = User.find(params[:uid])
+      check=true
+    end
 		if params[:tid]
-			# message relatet to a trip
 			temp = Trip.find(params[:tid])
 			@message.subject = "[["+ url_for(temp) + "|" + temp.get_start_city + " - " + temp.get_end_city + " " + temp.start_time.strftime("%d.%m.%y") +"]]"
-		else
-			# new message
-			# all set
-		end
-	elsif params[:mid]
+      check=true
+    end
+	  if params[:mid]
 		# message reply
 		temp = Message.find(params[:mid])
 		@message.receiver = temp.writer
 		@message.subject = "RE: " + temp.subject.to_s
-	else
-		# error
-
-	end
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @message }
+    check=true
+    end
+    if !check
+      redirect_to messages_path
     end
   end
 
