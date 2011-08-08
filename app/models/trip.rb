@@ -381,9 +381,9 @@ class Trip < ActiveRecord::Base
   def get_end_address_info
     
     erg = {}
-    erg[:city] = start_city
-    erg[:plz] = start_zipcode
-    erg[:street] = start_street
+    erg[:city] = end_city
+    erg[:plz] = end_zipcode
+    erg[:street] = end_street
     # street = ""
     # hausNr = ""
     # infos = Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
