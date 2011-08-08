@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, 
     :remember_me, :address, :zipcode, :birthday, :city, :sex, :phone, 
     :instantmessenger, :visible_age, :visible_address, :visible_zip, 
-    :visible_phone, :visible_city, :visible_im, :visible_email, :visible_cars, :last_delivery, :user_type, :email_notifications, :business, :last_ratings 
+    :visible_phone, :visible_city, :visible_im, :visible_email, :visible_cars, :last_delivery, :user_type, :email_notifications, :business, :last_ratings, :role 
   #Von Paperclip gefordertes Statement zum Anhängen von Bildern
   has_attached_file :pic, :styles => { :medium =>  "300x300>", 
                                            :thumb => "100x100>"}
@@ -216,7 +216,7 @@ before_validation :set_member
   ROLES = %w[admin member]
 
   public #ab hier wieder public
- 
+   
   ################################################### ==Methoden:###################################################
   #toString Methode für User
   #@return Name des Users

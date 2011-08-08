@@ -3,8 +3,10 @@ class Ability
 
   def initialize(user)
     if user.role == "member"
-      can [:index, :create], :all
-        
+      can :index, :all
+
+      can :create, :all        
+
       can [:show, :update, :destroy], Car do |car|
         car && car.user == user 
       end
@@ -25,10 +27,7 @@ class Ability
       can [:update, :destroy], Trip do |trip|
         trip && trip.user == user
       end
-
-      can :show, Rating do |rating|
-        rating
-      end
+      
       can [:update, :destroy], Rating do |rating|
         rating && rating.author == user
       end

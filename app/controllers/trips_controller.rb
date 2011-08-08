@@ -7,7 +7,7 @@ class TripsController < ApplicationController
   end
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to trips_url
+    redirect_to root_path
   end
   
   # GET /trips
