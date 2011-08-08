@@ -60,7 +60,7 @@
 
 class Trip < ActiveRecord::Base
   include ActiveModel::Validations
-
+  require 'bing/route'
   ############################== Modellierung der Beziehungen #####################################
 
   #Der aktive Fahrer, zu dem jeweils ein Trip gehört
@@ -168,27 +168,23 @@ class Trip < ActiveRecord::Base
      # address_start = t.start_city
      # address_end = t.end_city
      # start_con = Gmaps4rails.destination({"from" => self.start_city, "to" => address_start},{},"pretty")
-     # end_con =  Gmaps4rails.destination({"from" =>end_city, "to" => address_end},{},"pretty")
-    
-      start_distance = (Geocoder::Calculations.distance_between [t.starts_at_N, t.starts_at_E], 
-      [self.starts_at_N, self.starts_at_E], :units => :km)
-
-      end_distance = (Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
-      [self.ends_at_N, self.ends_at_E], :units => :km)
-      
+     # end_con =  Gmaps4rails.destination({"from" =>end_city, "to" => address_end},{},"pretty") 
      # start_distance = start_con[0]["distance"]["value"]
      # start_duration = start_con[0]["duration"]["value"]
-     
-      start_duration = start_distance / 1000 / 80
-      end_duration = end_distance / 1000 / 80
-
      # end_distance = end_con[0]["distance"]["value"]
      # end_duration = end_con[0]["duration"]["value"]
-
+      bing_information = Bing::Route.find(:waypoints => [self.starts_at_N.to_s+"N "+self.starts_at_E.to_s+"E",
+                                                         t.starts_at_N.to_s + "N "+ t.starts_at_E.to_s+"E",
+                                                         t.ends_at_N.to_s + "N "+ t.ends_at_E.to_s+"E",
+                                                         self.ends_at_N.to_s+"N "+self.ends_at_E.to_s+"E"])[0]
+ 
+      distance= bing_information.total_distance
+      duration = bing_information.total_duration
+      
       t_rating = t.user.get_avg_rating.to_f / 6
       t_ignors = t.user.get_relative_ignorations
-      detour = (t.distance + end_distance + self.distance - start_distance) / start_distance
-      detime = (t.duration + end_duration + self.duration - start_duration) / start_duration
+      detour = (distance - self.distance) / self.distance
+      detime = (duration - self.duration) / self.duration
 
       erg << [t, Math.sqrt(t_rating*t_rating + t_ignors*t_ignors + detour*detour + detime*detime)]
     end
@@ -247,10 +243,10 @@ class Trip < ActiveRecord::Base
 
   # Berechnet die Strecke in Metern und die Zeit in Sekunden, die für diese Strecke benötigt werden und schreibt die Informationen in die passenden Datenfelder der Tabelle
   def set_route
-    route = Gmaps4rails.destination({"from" =>self.starts_at_N.to_s+"N "+self.starts_at_E.to_s+"E", "to" =>self.ends_at_N.to_s+"N "+self.ends_at_E.to_s+"E"},{},"pretty")
-
-    self.distance = route[0]["distance"]["value"]
-    self.duration = route[0]["duration"]["value"]
+    route = Bing::Route.find(:waypoints => [self.starts_at_N.to_s+"N " + self.starts_at_E.to_s + "E",
+                                            self.ends_at_N.to_s+"N " + self.ends_at_E.to_s+"E"])[0]
+    self.distance = route.total_distance
+    self.duration = route.total_duration
   end
   
   # Berechnet die Zeit die benötigt wird und gibt diese formatiert aus
@@ -346,31 +342,33 @@ class Trip < ActiveRecord::Base
   #
   # @return Hash mit Feldern: Straße, Stadt, PLZ
   # 
-  def get_start_address_info
+  def get_start_address_info 
     erg = {}
-    street = ""
-    hausNr = ""
+    erg[:city] = start_city
+    erg[:plz] = start_zipcode
+    erg[:street] = start_street
+    #street = ""
+    #hausNr = ""
     # fülle das infos Array mit allen Informationen, die von gmaps4rails geliefert werden
-    infos = Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
-            self.starts_at_E.to_s + "E", "de")[0][:full_data]
+    #infos = Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
+    #        self.starts_at_E.to_s + "E", "de")[0][:full_data]
     
-    infos["address_components"].each do |i|
-      if i["types"].include?("postal_code")
-        erg[:plz] = i["long_name"]
-      end
-      if i["types"].include?("locality")
-        erg[:city] = i["long_name"]
-      end
-      if i["types"].include?("route")
-        street = i["long_name"]
-      end
-      if i["types"].include?("street_number")
-        hausNr = i["long_name"]
-      end
-    end
-
-    erg[:street] = street + " " + hausNr
-    
+    #infos["address_components"].each do |i|
+    #  if i["types"].include?("postal_code")
+    #    erg[:plz] = i["long_name"]
+    #  end
+    #  if i["types"].include?("locality")
+    #    erg[:city] = i["long_name"]
+    #  end
+    #  if i["types"].include?("route")
+    #    street = i["long_name"]
+    #  end
+    #  if i["types"].include?("street_number")
+    #    hausNr = i["long_name"]
+    # end
+    #end
+    #
+    #erg[:street] = street + " " + hausNr
     return erg
   end
   
@@ -381,27 +379,30 @@ class Trip < ActiveRecord::Base
   #
   # @return Hash mit Feldern: Straße, Stadt, PLZ
   def get_end_address_info
+    
     erg = {}
-    street = ""
-    hausNr = ""
-    infos = Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
-                                self.ends_at_E.to_s + "E", "de")[0][:full_data]
-    infos["address_components"].each do |i|
-      if i["types"].include?("postal_code")
-        erg[:plz] = i["long_name"]
-      end
-      if i["types"].include?("locality")
-        erg[:city] = i["long_name"]
-      end
-      if i["types"].include?("route")
-        street = i["long_name"]
-      end
-      if i["types"].include?("street_number")
-        hausNr = i["long_name"]
-      end
-    end
-
-    erg[:street] = street + " " + hausNr
+    erg[:city] = start_city
+    erg[:plz] = start_zipcode
+    erg[:street] = start_street
+    # street = ""
+    # hausNr = ""
+    # infos = Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
+    #                            self.ends_at_E.to_s + "E", "de")[0][:full_data]
+    # infos["address_components"].each do |i|
+    #   if i["types"].include?("postal_code")
+    #    erg[:plz] = i["long_name"]
+    #  end
+    #  if i["types"].include?("locality")
+    #    erg[:city] = i["long_name"]
+    #  end
+    #  if i["types"].include?("route")
+    #    street = i["long_name"]
+    #  end
+    #  if i["types"].include?("street_number")
+    #    hausNr = i["long_name"]
+    #  end
+    # end
+    # erg[:street] = street + " " + hausNr
     
     return erg
   end
