@@ -5,92 +5,112 @@ requests_001:
   starts_at_E: 11.5801863
   ends_at_N: 52.2766061
   ends_at_E: 7.43844030000001
-  address_start: München
-  address_end: Rheine
-  start_time: '2011-08-06 12:54:35.431460'
-  end_time: '2012-08-04 12:54:35.431645'
+  start_time: '2011-08-09 08:41:19.065520'
+  end_time: '2012-08-07 08:41:19.065654'
   baggage: t
   comment: Hilfe
-  created_at: '2011-08-05 12:55:20.410250'
-  updated_at: '2011-08-05 12:55:20.410250'
+  created_at: '2011-08-08 08:41:21.211763'
+  updated_at: '2011-08-08 08:41:21.211763'
   user_id: 1
   duration: 23719
   distance: 703374
   start_radius: 31
   end_radius: 37
+  start_zipcode: 80539
+  start_street: ''
+  start_city: München
+  end_zipcode: 48431
+  end_street: ''
+  end_city: Rheine
 requests_002:
   id: 2
   starts_at_N: 48.1391265
   starts_at_E: 11.581863
   ends_at_N: 53.074981
   ends_at_E: 8.807081
-  address_start: München
-  address_end: Bremen
-  start_time: '2011-08-06 12:54:35.453291'
-  end_time: '2012-08-04 12:54:35.453452'
+  start_time: '2011-08-09 08:41:19.085791'
+  end_time: '2012-08-07 08:41:19.085897'
   baggage: f
   comment: Hilfe
-  created_at: '2011-08-05 12:55:20.520254'
-  updated_at: '2011-08-05 12:55:20.520254'
+  created_at: '2011-08-08 08:41:21.223427'
+  updated_at: '2011-08-08 08:41:21.223427'
   user_id: 2
   duration: 24639
   distance: 748256
   start_radius: 12
   end_radius: 15
+  start_zipcode: 80539
+  start_street: ''
+  start_city: München
+  end_zipcode: 28195
+  end_street: ''
+  end_city: Bremen
 requests_003:
   id: 3
   starts_at_N: 52.6875079
   starts_at_E: 7.2911623
   ends_at_N: 52.267281
   ends_at_E: 8.0531882
-  address_start: Meppen
-  address_end: Osnabrück
-  start_time: '2011-08-06 12:54:35.454297'
-  end_time: '2012-08-04 12:54:35.454384'
+  start_time: '2011-08-09 08:41:19.086510'
+  end_time: '2012-08-07 08:41:19.086564'
   baggage: t
   comment: Hilfe
-  created_at: '2011-08-05 12:55:20.619234'
-  updated_at: '2011-08-05 12:55:20.619234'
+  created_at: '2011-08-08 08:41:21.233129'
+  updated_at: '2011-08-08 08:41:21.233129'
   user_id: 3
   duration: 4086
   distance: 110766
   start_radius: 43
   end_radius: 22
+  start_zipcode: 49716
+  start_street: ''
+  start_city: Meppen
+  end_zipcode: 49716
+  end_street: ''
+  end_city: Osnabrück
 requests_004:
   id: 4
   starts_at_N: 53.553813
   starts_at_E: 9.91586
   ends_at_N: 52.5234051
   ends_at_E: 13.4113999
-  address_start: Hamburg
-  address_end: Berlin
-  start_time: '2011-08-06 12:54:35.455075'
-  end_time: '2012-08-04 12:54:35.455153'
+  start_time: '2011-08-09 08:41:19.087103'
+  end_time: '2012-08-07 08:41:19.087156'
   baggage: f
   comment: Hilfe
-  created_at: '2011-08-05 12:55:20.718159'
-  updated_at: '2011-08-05 12:55:20.718159'
+  created_at: '2011-08-08 08:41:21.242508'
+  updated_at: '2011-08-08 08:41:21.242508'
   user_id: 4
   duration: 10317
   distance: 288978
   start_radius: 12
   end_radius: 32
+  start_zipcode: 20354
+  start_street: ''
+  start_city: Hamburg
+  end_zipcode: 10178
+  end_street: ''
+  end_city: Berlin
 requests_005:
   id: 5
   starts_at_N: 52.4025974
   starts_at_E: 7.6408948
   ends_at_N: 52.2766061
   ends_at_E: 7.438440300000001
-  address_start: Rheine
-  address_end: Hopsten-Halverde
-  start_time: '2011-08-06 12:54:35.455811'
-  end_time: '2012-08-04 12:54:35.455888'
+  start_time: '2011-08-09 08:41:19.087714'
+  end_time: '2012-08-07 08:41:19.087767'
   baggage: t
   comment: Hilfe
-  created_at: '2011-08-05 12:55:20.828135'
-  updated_at: '2011-08-05 12:55:20.828135'
+  created_at: '2011-08-08 08:41:21.252129'
+  updated_at: '2011-08-08 08:41:21.252129'
   user_id: 5
   duration: 1845
   distance: 24703
   start_radius: 12
   end_radius: 46
+  start_zipcode: 48431
+  start_street: ''
+  start_city: Rheine
+  end_zipcode: 48496
+  end_street: ''
+  end_city: Hopsten-Halverde
