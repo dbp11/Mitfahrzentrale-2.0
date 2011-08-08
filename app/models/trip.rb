@@ -90,9 +90,7 @@ class Trip < ActiveRecord::Base
     puts "hallo da bin ich"
     start_a =  Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
                self.starts_at_E.to_s + "E", "de")[0][:full_data]
-    puts start_a
-    start_s = "" 
-    hausNr = ""
+   
     start_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
         start_zipcode = i["long_name"]
@@ -101,18 +99,12 @@ class Trip < ActiveRecord::Base
         start_city = i["long_name"]
       end
       if i["types"].include?("route")
-         street_s = i["long_name"]
-         puts street_s
+         start_street = i["long_name"]
       end
       if i["types"].include?("street_number")
-        hausNr = i["long_name"]
+        start_street = start_street + " "+ i["long_name"]
       end
      end
-    puts street_s
-    self.start_street = (street_s + " " +  hausNr.to_s)
-
-    
-
     end_a =  Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
                self.ends_at_E.to_s + "E", "de")[0][:full_data]
     
@@ -130,7 +122,7 @@ class Trip < ActiveRecord::Base
         hausNr = i["long_name"]
       end
      end
-    end_street = street.to_s + " " +  hausNr.to_s
+    end_street = (street.to_s + " " +  hausNr.to_s)
 
   end 
 
