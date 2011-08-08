@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "variables";
+
 body.ratings {
 	// Add the ratings class to your body tag
 	// Then, place scoped styles here.
@@ -83,7 +85,7 @@ body.ratings {
 				}
 			}
 			tr:first-child {
-				background-color: #777777;
+				background-color: $table_bg_color0;
 				border-bottom: solid 1px;
 				font-weight: bold;
 				.rating_table_right {
@@ -91,7 +93,7 @@ body.ratings {
 				}
 			}
 			tr:nth-child(2) {
-				background-color: #DDDDDD;
+				background-color: $table_bg_color1;
 				.rating_table_left {
 					padding-right: 0;
 				}
@@ -106,12 +108,12 @@ body.ratings {
 					div {
 						padding-left: 0.5em;
 						padding-right: 0.5em;
-						background-color: #AAAAAA;
+						background-color: $table_bg_color2;
 					}
 				}
 			}
 			tr:nth-child(3) {
-				background-color: #DDDDDD;
+				background-color: $table_bg_color1;
 				td {
 					text-align: justify;
 					padding-top: 0.3em;
