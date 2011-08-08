@@ -1,5 +1,51 @@
 # encoding: utf-8
 
+
+# Modelliert alle Autos, die ein User hat
+#
+# ===Das Model hat die Datenfelder:
+#
+# * car_id      :integer  -- <i>Von Rails erstell.</i> ID des Autos
+# * user_id     :integer  -- ID des Users, der das Auto besitzt
+# * seats       :integer  -- Sitzplätze, die das Auto hat
+# * licence     :string   -- Nummernschild
+# * smoker      :boolean  -- Raucher oder Nichtraucherauto
+# * created_at  :datetime -- <i>Von Rails erstellt.</i> Erstellungsdatum des Objekts
+# * updated_at  :datetime -- <i>Von Rails erstellt.</i> letztes Änderungsdatum des Objekts
+# * description :string   -- Bezeichnung vom Auto. (z.B. Klimaanlage ...)
+# * carpic_file_name :string -- <i>Von Paperclip gefordertes Datenfeld</i>
+# * carpic_content_type :string -- <i>Von Paperclip gefordertes Datenfeld</i>
+# * carpic_file_size :integer -- <i>Von Paperclip gefordertes Datenfeld</i>
+# * carpic_updates_at :datetime -- <i>Von Paperclip gefordertes Datenfeld</i>
+# * car_type :text -- Datenfeld zum Autotyp (z.B BMW 3er, Audi TT ...)
+# * price_km :float -- vom User erwarteter Preis auf 100 Km (kann auch Null sein)
+#
+# ===Das Model Cars hat folgende Validations:
+#
+# <b>validates_presence_of</b> ("Datenfelder dürfen nicht Null sein, bzw. müssen beim Anlegen eines neuen Autos ausgefüllt werden")
+#
+# * :seats
+# * :licence
+# * :car_type
+# * :user_id
+# 
+# <b>validates_numericality_of</b> ("Datenfelder müssen aus Zahlen bestehen, damit sichergestellt wird, dass man mit dieser Angabe weiterrechnen kann")
+# 
+# * :price_km
+# 
+# <b>validates_length_of</b> ("Datenfelder müssen eine bestimmte Länge haben, oder dürfen nicht länger sein als x")
+#
+# * :description -- ("0-160 Zeichen")
+#
+# <b>validates</b> 
+# 
+# * :licence -- <i>uniqueness</i> ("Nummernschild muss einzigartig sein"), <i>presence</i> ("muss vorhanden sein, also nicht Null"), <i>length ("1-10")</i> ("muss Länge zwischen 1 bis 10 haben")
+#
+# ===Beziehungen
+#
+# * belongs_to :user ("ein Auto gehört immer genau zu einem User")
+# * has_many :trips  ("ein Auto kann mehrere Trips fahren")
+
 class Car < ActiveRecord::Base
   
 #############################   Beziehungen   ############################

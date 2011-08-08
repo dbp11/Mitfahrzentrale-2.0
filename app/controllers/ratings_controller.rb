@@ -1,5 +1,10 @@
 class RatingsController < ApplicationController
   before_filter :authenticate_user!
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    flash[:error] = "Dieser Nutzer existiert nicht!"
+    redirect_to "/ratings/"+current_user.id.to_s 
+  end
+  
   # GET /ratings
   # GET /ratings.json
   def index
@@ -17,19 +22,19 @@ class RatingsController < ApplicationController
   # GET /ratings/1.json
   def show
     temp = User.find(params[:id])
-	@user = temp
+	  @user = temp
     @driver_ratings = temp.get_own_driver_ratings
     @passenger_ratings = temp.get_own_passenger_ratings
     @driver_avg = temp.get_avg_rating_driver
-	@driver_cnt = temp.count_ratings_driver
+	  @driver_cnt = temp.count_ratings_driver
     @passenger_avg = temp.get_avg_rating_passenger
-	@passenger_cnt = temp.count_ratings_passenger
-	@last_ratings = current_user.last_ratings
-	@latest_ratings = current_user.get_latest_ratings
-	if temp == current_user
-		current_user.last_ratings = Time.now
-		current_user.save
-	end
+  	@passenger_cnt = temp.count_ratings_passenger
+  	@last_ratings = current_user.last_ratings
+	  @latest_ratings = current_user.get_latest_ratings
+	  if temp == current_user
+		  current_user.last_ratings = Time.now
+		  current_user.save
+	  end
 
     # Zwei Arrays. eins mit den Ratings als Fahrer, eins als Mitfahrer
 
@@ -75,6 +80,7 @@ class RatingsController < ApplicationController
   # PUT /ratings/1
   # PUT /ratings/1.json
   def update
+    authorize! :update, :rating
     @rating = Rating.find(params[:id])
 
     respond_to do |format|
@@ -91,6 +97,7 @@ class RatingsController < ApplicationController
   # DELETE /ratings/1
   # DELETE /ratings/1.json
   def destroy
+    authorize! :destroy, :rating
     @rating = Rating.find(params[:id])
     @rating.destroy
 

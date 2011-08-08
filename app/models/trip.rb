@@ -1,7 +1,7 @@
 #
 # Modelliert alle Fahrten die ein User als Fahrer oder Mitfahrer begeht. 
 # 
-# ===Das Modell hat die Datenfelder:
+# ===Das Model hat die Datenfelder:
 #
 # * trip_id       :integers -- <i>Von Rails erstellt</i> ID des Trips
 # * user_id       :integers -- ID des <b>fahrenden</b> Users
@@ -23,7 +23,7 @@
 #
 # ===Das Model Trips arbeitet mit folgenden Validations:
 #
-# <b>validates_presence_of</b> (" Datenfelder dürfen nicht Null sein, bzw. müssen beim anlegen eines neuen Trips ausgefüllt werden")
+# <b>validates_presence_of</b> (" Datenfelder dürfen nicht Null sein, bzw. müssen beim Anlegen eines neuen Trips ausgefüllt werden")
 #
 # * :address_start       
 # * :address_end
@@ -40,11 +40,23 @@
 #  
 # * :free_seats -- " > 1" ("Es macht keinen Sinn eine Fahrt zu erstellen die keine freien Plätze zu Verfügung hat")
 # 
-# <b>validate</b> ("selbstgeschrieben Validation-Methoden, Beschreibungen bei den jeweiligen Methoden")
+# <b>validates</b> ("selbstgeschrieben Validation-Methoden, Beschreibungen bei den jeweiligen Methoden")
 # 
 # * :start_time_in_past
 # * :start_address_same_as_end_address
 # * :baggage_not_nil
+#
+# <b>Validation der Beziehungen<i>":dependent => :destroy"</i></b>
+# 
+# * has_many :ratings -- Wenn Trip gelöscht, dann auch alle Ratings löschen, die der Trip erhalten hat
+# * has_many :passengers -- Wenn Trip gelöscht, dann auch alle zugehörigen Passagiere löschen
+# 
+# ===Beziehungen
+#
+# * belongs_to :user
+# * belongs_to :car
+# * has_many :users ("as passenger_trip")
+
 
 class Trip < ActiveRecord::Base
   include ActiveModel::Validations
@@ -61,7 +73,7 @@ class Trip < ActiveRecord::Base
   #werden direkt Userobjekte zurückgeliefert, da diese über den Join mit den Fahrten in Verbindung
   #gebracht werden.
   has_many :users, :class_name => "User", :as => "passenger_trip", :through => :passengers, 
-    :source => :user, :dependent => :destroy
+    :source => :user
 
   #Fahrer und Mitfahrer bewerten sich untereinander zu einem bestimmten Trip
   has_many :ratings, :dependent => :destroy
@@ -79,15 +91,18 @@ class Trip < ActiveRecord::Base
   #Freie Sitzplätze dürfen nicht negativ sein
   validates_inclusion_of :free_seats, :in => 1..200
 
-  # Methode prüft ob ein erstellter Trip in der Vergangenheit liegt
-  # @throws Error, wenn Startzeit in der Vergangenheit
+  # Methode prüft, ob ein erstellter Trip in der Vergangenheit liegt
+  #
+  # @throws Error, wenn Startzeit < aktuelle Zeit
   def start_time_in_past
     if start_time < Time.now
       errors.add(:fields, 'Startzeit liegt in der Vergangenheit')
     end
   end
   
-  # Start- und Endaddresse dürfen nicht übereinstimmen
+
+  # Methode prüft, ob Start- gleich Zieladdresse ist 
+  #
   # @throws Error, wenn Startpunkt = Zielpunkt
   def start_address_same_as_end_address
     if (starts_at_N == ends_at_N and starts_at_E == ends_at_E)
@@ -95,13 +110,20 @@ class Trip < ActiveRecord::Base
     end    
   end
 
+
   # Baggage darf nicht Null sein
-  # @throws Error, wenn Baggage nicht ge<i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Nördl. Breitesetzt ist
+  #
+  # @throws Error, wenn Baggage nicht gesetzt ist
   def baggage_not_nil
     if(self.baggage == nil)
       errors.add(:field, 'Baggage ist Null')
     end
   end
+
+
+ ########################## Methoden ########################
+
+
 
   #Methoden:
   #toString Methode für Trips
@@ -110,28 +132,34 @@ class Trip < ActiveRecord::Base
   end
   
 
-  #Methode die alle passenden Requests sucht
-  #@return Array von Requests
+  # Methode die alle passenden Requests sucht, die auf einen Trip zutreffen.
+  # Dazu werden die jeweiligen Startzeiten ("Trip und Request")verglichen und die Entfernung der Start- und Zielorte in einem bestimmten Radius übereinstimmt.
+  # 
+  # @return        -- Array mit passenden Request-Objekten
   def get_available_requests
     start_f =start_time.to_f
     erg = []
-
+    
+    # Hole alle Requests
     Request.all.each do |t|
-      if (start_f.between?(t.start_time.to_f, t.end_time.to_f) and 
+      # prüfe pro Request ob die Startzeiten von Trip und Request übereinstimmen
+      if (start_f.between?(t.start_time.to_f, t.end_time.to_f) and
+        # prüfe ob die Entfernung des Startortes in einem bestimmten Radius übereinstimmt
          ((Geocoder::Calculations.distance_between [t.starts_at_N, t.starts_at_E], 
          [starts_at_N, starts_at_E], :units => :km) <= t.start_radius) and
+        # prüfe ob die Entfernung des Endortes in einem bestimmten Radius übereinstimmt
          ((Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
          [ends_at_N, ends_at_E], :units => :km)  <= t.end_radius)) and
-         !self.user.ignorings.include?(t.user) then 
+        # prüfe ob der User der den Request gestellt hat ignoriert wird
+         !self.user.ignorings.include?(t.user) then
+        # Ergebnisarray mit Requests füllen auf denen diese Eigenschaften zutreffen
         erg << t
       end
     end
     return erg
   end
 
-  #Berechnet Trips, die sich nur geringfügig von dieser Request unterscheiden, und gibt ein Array aus
-  #Wertepaaren zurück. Der erste Wert ist der Trip, der zweite gibt die Länge des Umweges an, den der
-  #Fahrer dieses Trips in Kauf nehmen müsste. Das Array ist absteigend nach Umwegen sortiert.
+  # Methode zur Optimierung der Ergebnismenge aus gestellten Request.
   def get_sorted_requests
     requests = get_available_requests
     erg = []
@@ -168,12 +196,16 @@ class Trip < ActiveRecord::Base
   end
 
 
-  #Liefert die Anzahl freier Sitzplätze, die noch nicht vergeben sind
+  # Liefert die Anzahl freier Sitzplätze, die noch nicht vergeben sind
+  #
+  # @return Anzahl freier Sitzplätze
   def get_free_seats
     return free_seats - get_occupied_seats
   end
   
   # Liefert die Anzahl belegter Sitzpläte des benutzten Autos
+  #
+  # @return s.o.
   def get_occupied_seats
     count = 0
     self.passengers.all.each do |p|
@@ -185,7 +217,9 @@ class Trip < ActiveRecord::Base
   end
 
 
-  #Liefert alle User dieses Trips, die schon committed wurden
+  # Liefert alle User dieses Trips, die schon committed wurden
+  #
+  # @return erg [] -- mit Passengers, die confirmed sind
   def get_committed_passengers
     erg = []
     self.passengers.all.each do |p|
@@ -196,7 +230,9 @@ class Trip < ActiveRecord::Base
     return erg
   end
 
-  #liefert alle user dieses Trips, die (noch) nicht committed wurdeni
+  # liefert alle user dieses Trips, die (noch) nicht committed wurden
+  #
+  # @return erg [] -- mit Passengers, die nicht confirmed sind
   def get_uncommitted_passengers
     erg = []
     self.passengers.all.each do |p|
@@ -207,7 +243,7 @@ class Trip < ActiveRecord::Base
     return erg
   end
 
-  # Berechnet die komplette Route mit allen Zwischenziele
+  # Berechnet die Strecke in Metern und die Zeit in Sekunden, die für diese Strecke benötigt werden und schreibt die Informationen in die passenden Datenfelder der Tabelle
   def set_route
     route = Gmaps4rails.destination({"from" =>address_start, "to" =>address_end},{},"pretty")
 
@@ -215,28 +251,43 @@ class Trip < ActiveRecord::Base
     self.duration = route[0]["duration"]["value"]
   end
   
-  # Berechnet die Entfernung in Metern
+  # Berechnet die Zeit die benötigt wird und gibt diese formatiert aus
+  #
+  # @return Zeit ( x Stunden y Minuten)
   def get_route_duration
-    return duration.div(3600)+"Stunden"+(duration % 60)+ "Minuten" 
+    return duration.div(3600).to_s+" Stunden "+(duration % 60).to_s+ " Minuten" 
   end
  
-  # Berechnet die benötigte Zeit in Sekunden
+  # Berechnet die Distanz die benötigt wird und gibt diese formatiert aus
+  #
+  # @return Distanz ( x Km)
   def get_route_distance
-    return (distance / 1000).round(3) + "Km"
+    return (distance / 1000).round(3).to_s + "km"
   end
 
+  # Gibt aus ob ein übergeben User für den Trip akzeptiert wurde
+  # 
+  # @param compared_user -- User der vom controller übergeben wird
+  #
+  # @return (true, falls angenommen; false sonst)
   def user_uncommitted (compared_user)
     get_uncommitted_passengers.include?(compared_user)
   end
   
+  # Gibt aus ob ein übergebender User für deine Trip noch nicht akzeptiert wurde
+  # 
+  # @param compared_user -- User der vom controller übergeben wird
+  #
+  # @return (true, falls (noch) nicht angenommen; false sonst)
   def user_committed (compared_user)
     get_committed_passengers.include?(compared_user)
   end
   
-  #Methode um als Fahrer einen User, der sich um Mitfahrt beworben hat, anzunehmen. Dabei wird das Datenfeld confirmed
-  #in der Tabelle Passengers auf true gesetzt
-  #@param User
-  #@return true, wenn Update erfolgreich; false sonst
+  # Methode um als Fahrer einen User, der sich um Mitfahrt beworben hat, anzunehmen. Dabei wird das Datenfeld confirmed in der Tabelle Passengers auf true gesetzt
+  #
+  # @param compared_user -- User der vom controller übergeben wird
+  #
+  # @return true, wenn Update erfolgreich; false sonst
   def accept (compared_user)
     if self.passengers.where("user_id = ?", compared_user.id).first.confirmed?
         false
@@ -250,10 +301,11 @@ class Trip < ActiveRecord::Base
       end
     end
   
-  #Methode um als Fahrer einen User, der sich um Mitfahrt beworben hat, abzulehnen. Dieser wird hierbei direkt aus 
-  #der Mitfahrertabelle (Passengers) gelöscht.
-  #@param User
-  #@return true, wenn Löschvorgang erfolgreich; false sonst
+  # Methode um als Fahrer einen User, der sich um Mitfahrt beworben hat, abzulehnen. Dieser wird hierbei direkt aus der Mitfahrertabelle (Passengers) gelöscht.
+  #
+  # @param compared_user -- User der vom controller übergeben wird
+  #
+  # @return true, wenn Löschvorgang erfolgreich; false sonst
   def declined (compared_user)
     begin
       self.passengers.where("user_id = ?", compared_user.id).first.destroy
@@ -263,9 +315,9 @@ class Trip < ActiveRecord::Base
     true
   end
   
-  #Methode, die angibt, ob ein Trip schon beendet ist
-  #@return true, wenn zu überprüfender Trip in der Vergangenheit liegt
-  #@return false, wenn zu überprüfender Trip in der Zukunft liegt
+  # Methode, die angibt, ob ein Trip schon beendet ist
+  #
+  # @return true, wenn der Trip in der Vergangenheit liegt; false sonst
   def finished
     if self.start_time < Time.now 
       true
@@ -274,8 +326,9 @@ class Trip < ActiveRecord::Base
     end
   end
   
-  #Liefert alle Mitfahrer dieses Trips
-  #@return User [] erg
+  # Liefert alle Mitfahrer des Trips
+  #
+  # @return User [] erg
   def get_passengers
     erg = []
     self.passengers.all.each do |p|
@@ -295,8 +348,10 @@ class Trip < ActiveRecord::Base
     erg = {}
     street = ""
     hausNr = ""
+    # fülle das infos Array mit allen Informationen, die von gmaps4rails geliefert werden
     infos = Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
             self.starts_at_E.to_s + "E", "de")[0][:full_data]
+    
     infos["address_components"].each do |i|
       if i["types"].include?("postal_code")
         erg[:plz] = i["long_name"]

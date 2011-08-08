@@ -1,11 +1,19 @@
 class RequestsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Zugriff verweigert!"
+    redirect_to requests_url
+  end
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    flash[:error] = "Zugriff verweigert!"
+    redirect_to requests_url
+  end
+
   # GET /requests
   # GET /requests.json
   def index
-    temp = current_user.id
-    # Auf Methode warten, nur noch offene, in der Zukunft liegende Requests 
-    @requests = Request.all
+    @requests = current_user.get_own_requests
 
     respond_to do |format|
       format.html # index.html.erb
@@ -54,20 +62,6 @@ class RequestsController < ApplicationController
     @request.starts_at_E = start[1]
     @request.ends_at_N = ende[0]
     @request.ends_at_E = ende[1]
-    #@request.address_start = params[:address_start]
-    #@request.address_end = params[:address_end]
-    #@request.start_time = params[:date_start]+"T"+params[:time_start]+"Z"
-    #@request.end_time = params[:date_end]+"T"+params[:time_end]+"Z"
-    #if params[:baggage] == nil
-      #@request.baggage = false
-    #else
-      #@request.baggage = true
-    #end
-    #@request.start_radius = params[:start_radius]
-    #@request.end_radius = params[:end_radius]
-    #@request.end_radius = 10
-    #@request.start_radius = 10
-    #Radius noch implementieren, dann die Dummy Felder rausnehmen
     @request.set_route
     respond_to do |format|
       if @request.save
