@@ -91,6 +91,6 @@ class Message < ActiveRecord::Base
 
   # to_String Methode für Message
   def to_s  
-    writer+ " an " +receiver+ ": " +message
+    writer.to_s+ " an " +receiver.to_s+ ": " +message
   end
 end
