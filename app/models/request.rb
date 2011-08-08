@@ -1,4 +1,5 @@
 class Request < ActiveRecord::Base
+  require "bing/route"
 
 ############################# == Beziehungen   ############################
  
@@ -70,40 +71,39 @@ class Request < ActiveRecord::Base
     trips = get_available_trips
     erg = []
     trips.each do |t|
-      #address_start = t.city
-      #address_end = t.city
-      #start_con = Gmaps4rails.destination({"from" => address_start, "to" => self.start_city},{},"pretty")
-      #end_con =  Gmaps4rails.destination({"from" => address_end, "to" =>self.end_city},{},"pretty")
-       start_distance = (Geocoder::Calculations.distance_between [t.starts_at_N, t.starts_at_E], 
-           [self.starts_at_N, self.starts_at_E], :units => :km)
-       end_distance = (Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
-           [self.ends_at_N, self.ends_at_E], :units => :km)
-
-     # start_distance = start_con[0]["distance"]["value"]
-     # start_duration = start_con[0]["duration"]["value"]
-       start_duration = start_distance / 1000 / 80
-     # end_distance = end_con[0]["distance"]["value"]
-     # end_duration = end_con[0]["duration"]["value"]
-       end_duration = end_distance / 1000 / 80
+      # address_start = t.city
+      # address_end = t.city
+      # start_con = Gmaps4rails.destination({"from" => address_start, "to" => self.start_city},{},"pretty")
+      # end_con =  Gmaps4rails.destination({"from" => address_end, "to" =>self.end_city},{},"pretty")
+      # start_distance = start_con[0]["distance"]["value"]
+      # start_duration = start_con[0]["duration"]["value"]
+      # end_distance = end_con[0]["distance"]["value"]
+      # end_duration = end_con[0]["duration"]["value"]
+      bing_information = Bing::Route.find(:waypoints => [t.starts_at_N.to_s+"N "+t.starts_at_E.to_s+"E",
+                                                         self.starts_at_N.to_s + "N "+self.starts_at_E.to_s+"E",
+                                                         self.ends_at_N.to_s + "N "+self.ends_at_E.to_s+"E",
+                                                         t.ends_at_N.to_s+"N "+t.ends_at_E.to_s+"E"])[0]
+      distance= bing_information.total_distance
+      duration = bing_information.total_duration
 
       t_rating = t.user.get_avg_rating.to_f / 6
       t_ignors = t.user.get_relative_ignorations
-      detour = (start_distance + end_distance + self.distance - t.distance) / t.distance
-      detime = (start_duration + end_duration + self.duration - t.duration) / t.duration
+      detour = (distance - t.distance) / t.distance
+      detime = (duration - t.duration) / t.duration
 
       erg << [t, Math.sqrt(t_rating*t_rating + t_ignors*t_ignors + detour*detour + detime*detime)]
     end
 
-    erg.sort{|a,b| a[1] <=> b[1]}
+    return erg.sort{|a,b| a[1] <=> b[1]}
     
   end
 
 
   def set_route
-    route = Gmaps4rails.destination({"from" =>self.starts_at_N.to_s+"N "+self.starts_at_E.to_s+"E", "to" =>self.ends_at_N.to_s+"N "+self.ends_at_E.to_s+"E"},{},"pretty")
-
-    self.distance = route[0]["distance"]["value"]
-    self.duration = route[0]["duration"]["value"]
+    route = Bing::Route.find(:waypoints => [self.starts_at_N.to_s+"N " + self.starts_at_E.to_s + "E",
+                                            self.ends_at_N.to_s+"N " + self.ends_at_E.to_s+"E"])[0]
+    self.distance = route.total_distance
+    self.duration = route.total_duration
   end
 
 

@@ -9,24 +9,36 @@
   %table
     %tr
       %td 
-        =f.label:Von
+        = f.label:Start
+    %tr
+      %td
+      %td
+        = f.label:start_street, "Straße"
+      %td
+        =f.text_field:start_street, :placeholder=>"optional"
+    %tr 
+      %td
+      %td
+        = f.label:start_zipcode, "PLZ"
+      %td
+        = f.text_field:start_zipcode, :maxlength=>"5", :size=>"30", :placeholder=>"optional"
+    %tr
+      %td
+      %td 
+        =f.label:start_city, "Ort"
       %td
         = f.text_field:start_city, :required=>"required"
+    %tr
+      %td
+      %td
+        = f.label:start_radius, "Radius"
       %td
         = f.select:start_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
 
     %tr
-      %td 
-        = f.label:Nach
       %td
-        = f.text_field:end_city, :required => "required"
-      %td
-        = f.select:end_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
-
-
-    %tr
       %td 
-        =f.label:"Startzeit und Startdatum"
+        =f.label:start_time, "Datum und Zeit"
       %td
         = f.datetime_select:start_time, 
                            :required => "required",
@@ -34,25 +46,64 @@
                            :use_month_numbers=>true,
                            :start_year=>Time.now.year
     %tr
+      %td
+    %tr
+      %td
+        = f.label:Ziel
+    %tr
+      %td
+      %td
+        =f.label:end_street, "Straße"
+      %td
+        = f.text_field:end_street, :placeholder=>"optional"
+    %tr
+      %td
+      %td
+        = f.label:end_zipcode, "PLZ"
+      %td
+        = f.text_field:end_zipcode, :maxlength=>"5", :size=>"30", :placeholder=>"optional"
+    %tr
+      %td
       %td 
-        = f.label:"Endzeit und Enddatum"
+        = f.label:end_city, "Ort"
+      %td
+        = f.text_field:end_city, :required => "required"
+    %tr
+      %td
+      %td
+        = f.label:end_radius, "Radius"
+      %td
+        = f.select:end_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
+
+
+    %tr
+      %td
+      %td 
+        = f.label:end_time, "Datum und Zeit"
       %td
         = f.datetime_select:end_time, :required => "required",
                             :order=>[:hour,:day, :month, :year],
                             :use_month_numbers=>true,
                             :start_year=>Time.now.year
+
     %tr
       %td 
-        = f.label:"Gepäck"
+        = f.label:"Details"
+    %tr
+      %td
+      %td 
+        = f.label:baggage, "Gepäck"
       %td
         = f.check_box:baggage
     %tr
       %td
-        = f.label:"Anmerkungen"
+      %td
+        = f.label:comment, "Anmerkungen"
       %td
         = f.text_area:comment, :rows=>"5"
 
     %tr
+      %td
       %td
       %td
       %td

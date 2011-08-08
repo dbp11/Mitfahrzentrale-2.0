@@ -42,7 +42,7 @@ class RegistrationController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    redirect_to user_url(current_user.id)
+    redirect_to trips_path 
   end
 
   def redirect_location(scope, resource)
