@@ -3,17 +3,17 @@ requests_001:
   id: 1
   starts_at_N: 48.1391265
   starts_at_E: 11.5801863
-  ends_at_N: 52.2766061
-  ends_at_E: 7.43844030000001
-  start_time: '2011-08-09 11:22:07.555146'
-  end_time: '2012-08-07 11:22:07.555289'
+  ends_at_N: 53.074981
+  ends_at_E: 8.807081
+  start_time: '2011-08-08 14:04:57.873579'
+  end_time: '2012-08-07 14:03:57.873601'
   baggage: t
   comment: Hilfe
-  created_at: '2011-08-08 11:22:09.365951'
-  updated_at: '2011-08-08 11:22:09.365951'
+  created_at: '2011-08-08 14:04:07.776096'
+  updated_at: '2011-08-08 14:04:07.776096'
   user_id: 1
-  duration: 24639
-  distance: 748256
+  duration: 22426
+  distance: 749
   start_radius: 31
   end_radius: 37
   start_zipcode: 80539
@@ -28,15 +28,15 @@ requests_002:
   starts_at_E: 11.581863
   ends_at_N: 53.074981
   ends_at_E: 8.807081
-  start_time: '2011-08-09 11:22:07.606044'
-  end_time: '2012-08-07 11:22:07.606168'
+  start_time: '2011-08-08 14:04:57.923357'
+  end_time: '2012-08-07 14:03:57.923375'
   baggage: f
   comment: Hilfe
-  created_at: '2011-08-08 11:22:09.377594'
-  updated_at: '2011-08-08 11:22:09.377594'
+  created_at: '2011-08-08 14:04:07.787753'
+  updated_at: '2011-08-08 14:04:07.787753'
   user_id: 2
-  duration: 10317
-  distance: 288978
+  duration: 22460
+  distance: 749
   start_radius: 12
   end_radius: 15
   start_zipcode: 80539
@@ -51,15 +51,15 @@ requests_003:
   starts_at_E: 7.2911623
   ends_at_N: 52.267281
   ends_at_E: 8.0531882
-  start_time: '2011-08-09 11:22:07.606816'
-  end_time: '2012-08-07 11:22:07.606870'
+  start_time: '2011-08-08 14:04:57.924036'
+  end_time: '2012-08-07 14:03:57.924045'
   baggage: t
   comment: Hilfe
-  created_at: '2011-08-08 11:22:09.387075'
-  updated_at: '2011-08-08 11:22:09.387075'
+  created_at: '2011-08-08 14:04:07.797846'
+  updated_at: '2011-08-08 14:04:07.797846'
   user_id: 3
-  duration: 4086
-  distance: 110766
+  duration: 3824
+  distance: 93
   start_radius: 43
   end_radius: 22
   start_zipcode: 49716
@@ -74,15 +74,15 @@ requests_004:
   starts_at_E: 9.91586
   ends_at_N: 52.5234051
   ends_at_E: 13.4113999
-  start_time: '2011-08-09 11:22:07.607411'
-  end_time: '2012-08-07 11:22:07.607465'
+  start_time: '2011-08-08 14:04:57.924587'
+  end_time: '2012-08-07 14:03:57.924596'
   baggage: f
   comment: Hilfe
-  created_at: '2011-08-08 11:22:09.396581'
-  updated_at: '2011-08-08 11:22:09.396581'
+  created_at: '2011-08-08 14:04:07.807967'
+  updated_at: '2011-08-08 14:04:07.807967'
   user_id: 4
-  duration: 2162
-  distance: 33046
+  duration: 10339
+  distance: 302
   start_radius: 12
   end_radius: 32
   start_zipcode: 20354
@@ -97,15 +97,15 @@ requests_005:
   starts_at_E: 7.6408948
   ends_at_N: 52.2766061
   ends_at_E: 7.438440300000001
-  start_time: '2011-08-09 11:22:07.608001'
-  end_time: '2012-08-07 11:22:07.608054'
+  start_time: '2011-08-08 14:04:57.925131'
+  end_time: '2012-08-07 14:03:57.925140'
   baggage: t
   comment: Hilfe
-  created_at: '2011-08-08 11:22:09.406066'
-  updated_at: '2011-08-08 11:22:09.406066'
+  created_at: '2011-08-08 14:04:07.818086'
+  updated_at: '2011-08-08 14:04:07.818086'
   user_id: 5
-  duration: 1845
-  distance: 24703
+  duration: 1606
+  distance: 21
   start_radius: 12
   end_radius: 46
   start_zipcode: 48431

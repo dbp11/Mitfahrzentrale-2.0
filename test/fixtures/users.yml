@@ -2,7 +2,7 @@
 users_001:
   id: 1
   email: dkruempe@uos.com
-  encrypted_password: $2a$10$BN.s9nfJyecD4Hhbw08WGescRHp7Mp8d/cOf8HNw4DWkD.NB.Lmp2
+  encrypted_password: $2a$10$B5204x.Xd.Evye4Px4QVZeA.7OuIO0mJ.d5zvYE6kpY0B0UDfL3/S
   reset_password_token: !!null 
   reset_password_sent_at: !!null 
   remember_created_at: !!null 
@@ -11,8 +11,8 @@ users_001:
   last_sign_in_at: !!null 
   current_sign_in_ip: !!null 
   last_sign_in_ip: !!null 
-  created_at: '2011-08-08 11:22:09.105154'
-  updated_at: '2011-08-08 11:22:09.105154'
+  created_at: '2011-08-08 14:04:07.514728'
+  updated_at: '2011-08-08 14:04:07.514728'
   name: Dominik Krümpelmann
   user_type: t
   sex: t
@@ -38,13 +38,13 @@ users_001:
   pic_content_type: !!null 
   pic_file_size: !!null 
   pic_updated_at: !!null 
-  last_delivery: '2011-08-08 11:22:06.934198'
-  last_ratings: '2011-08-08 11:22:06.934199'
+  last_delivery: '2011-08-08 14:03:57.236846'
+  last_ratings: '2011-08-08 14:03:57.236847'
   role: admin
 users_002:
   id: 2
   email: mibloemer@uos.de
-  encrypted_password: $2a$10$udX2S84hguDI1VIxG3e3.OHksd6eunKp3R3wF.F1.0yO87rRptm4K
+  encrypted_password: $2a$10$UdhFbv/Tq79yggo3qLH4sumI0RUNAkA7zgmSy9QDIvuN5LxgZiSr2
   reset_password_token: !!null 
   reset_password_sent_at: !!null 
   remember_created_at: !!null 
@@ -53,8 +53,8 @@ users_002:
   last_sign_in_at: !!null 
   current_sign_in_ip: !!null 
   last_sign_in_ip: !!null 
-  created_at: '2011-08-08 11:22:09.121193'
-  updated_at: '2011-08-08 11:22:09.121193'
+  created_at: '2011-08-08 14:04:07.530969'
+  updated_at: '2011-08-08 14:04:07.530969'
   name: Michael Blömer
   user_type: f
   sex: t
@@ -80,13 +80,13 @@ users_002:
   pic_content_type: !!null 
   pic_file_size: !!null 
   pic_updated_at: !!null 
-  last_delivery: '2011-08-08 11:22:07.167596'
-  last_ratings: '2011-08-08 11:22:07.167598'
+  last_delivery: '2011-08-08 14:03:57.468058'
+  last_ratings: '2011-08-08 14:03:57.468060'
   role: member
 users_003:
   id: 3
   email: ufischer@t-online.de
-  encrypted_password: $2a$10$jdjclj3EZiHJwX14mu/48.w6WmuY17CXo/bfW6sX8W6NH2hI3o7r2
+  encrypted_password: $2a$10$vMOr6B0tthkoV8ICA7ZXWO/vXalTMUo8mhQ7t.AV1e4CYmI56tKwi
   reset_password_token: !!null 
   reset_password_sent_at: !!null 
   remember_created_at: !!null 
@@ -95,8 +95,8 @@ users_003:
   last_sign_in_at: !!null 
   current_sign_in_ip: !!null 
   last_sign_in_ip: !!null 
-  created_at: '2011-08-08 11:22:09.136489'
-  updated_at: '2011-08-08 11:22:09.136489'
+  created_at: '2011-08-08 14:04:07.546579'
+  updated_at: '2011-08-08 14:04:07.546579'
   name: Uwe Fischer
   user_type: t
   sex: f
@@ -122,13 +122,13 @@ users_003:
   pic_content_type: !!null 
   pic_file_size: !!null 
   pic_updated_at: !!null 
-  last_delivery: '2011-08-08 11:22:07.240764'
-  last_ratings: '2011-08-08 11:22:07.240765'
+  last_delivery: '2011-08-08 14:03:57.541275'
+  last_ratings: '2011-08-08 14:03:57.541276'
   role: member
 users_004:
   id: 4
   email: hotel-am-stadtring@aol.com
-  encrypted_password: $2a$10$hENdfoaESEmcXYbfLcE06uP5RiUpEdtpwB6qIEe4jpvbaq4lmLl8m
+  encrypted_password: $2a$10$kFjnKx42B5ChL/go9b6GheOQQ3M4AjZUYTOpRemDC6xMtuxtApr7m
   reset_password_token: !!null 
   reset_password_sent_at: !!null 
   remember_created_at: !!null 
@@ -137,8 +137,8 @@ users_004:
   last_sign_in_at: !!null 
   current_sign_in_ip: !!null 
   last_sign_in_ip: !!null 
-  created_at: '2011-08-08 11:22:09.152426'
-  updated_at: '2011-08-08 11:22:09.152426'
+  created_at: '2011-08-08 14:04:07.561883'
+  updated_at: '2011-08-08 14:04:07.561883'
   name: Hotel am Stadtring GmbH
   user_type: t
   sex: f
@@ -164,13 +164,13 @@ users_004:
   pic_content_type: !!null 
   pic_file_size: !!null 
   pic_updated_at: !!null 
-  last_delivery: '2011-08-08 11:22:07.313766'
-  last_ratings: '2011-08-08 11:22:07.313766'
+  last_delivery: '2011-08-08 14:03:57.614240'
+  last_ratings: '2011-08-08 14:03:57.614241'
   role: member
 users_005:
   id: 5
   email: antenne-bayern-gmbh-&-co.-kg@gmx.com
-  encrypted_password: $2a$10$qyKzEXS9KC6XFyoDLRQKbut9DXoRA9P/Mh6c5YCxBkHbzsKjZucqC
+  encrypted_password: $2a$10$DfhUgodEDrMbkNMeeD/c6O2dUp4ZpyESq0QHqNyh6eGDnROkq5crS
   reset_password_token: !!null 
   reset_password_sent_at: !!null 
   remember_created_at: !!null 
@@ -179,8 +179,8 @@ users_005:
   last_sign_in_at: !!null 
   current_sign_in_ip: !!null 
   last_sign_in_ip: !!null 
-  created_at: '2011-08-08 11:22:09.171793'
-  updated_at: '2011-08-08 11:22:09.171793'
+  created_at: '2011-08-08 14:04:07.580325'
+  updated_at: '2011-08-08 14:04:07.580325'
   name: ! 'Antenne Bayern GmbH & Co. KG '
   user_type: t
   sex: f
@@ -206,6 +206,6 @@ users_005:
   pic_content_type: !!null 
   pic_file_size: !!null 
   pic_updated_at: !!null 
-  last_delivery: '2011-08-08 11:22:07.386753'
-  last_ratings: '2011-08-08 11:22:07.386754'
+  last_delivery: '2011-08-08 14:03:57.687386'
+  last_ratings: '2011-08-08 14:03:57.687386'
   role: member

@@ -44,7 +44,7 @@ class Rating < ActiveRecord::Base
   validates_presence_of :trip_id, :receiver_id, :author_id
   validates_numericality_of :mark, :only_interger => true, :message => "Note kann nur ganze Zahl sein"
   validates_inclusion_of :mark, :in => 1..6, :message => "Note kann nur von 1 bis 6 verteilt werden"
-  validate :no_double_rating, :no_future_rating, :no_self_rating
+  validate :no_double_rating, :no_future_rating, :no_self_rating, :authenticate_rater
 
 
   # Validation, die vor Erstellung überprüft, ob schon ein Rating mit der übergebenen Trip-, Receiver- und Author-Id 
@@ -85,7 +85,7 @@ class Rating < ActiveRecord::Base
   def authenticate_rater
     if !((self.trip.users.include?(self.receiver) and self.trip.users.include?(self.author)) or
         (self.trip.users.include?(self.receiver) and self.trip.user==self.author) or 
-        (self.trip.users.include?(self.author) and self.trip.user==self.author))
+        (self.trip.users.include?(self.author) and self.trip.user==self.receiver))
       then errors.add(:field, "Keine Berechtigung diesen User für diese Fahrt zu bewerten!")
     end
   end

@@ -102,12 +102,20 @@
           %td.center{:colspan => "4"} Fahrtinformationen
         %tr
           %td.left_bold Abfahrt:
-          %td.left= "#{tsstreet}, #{"#{tsplz} #{tscity}"}"
+          %td.left
+            = "#{tsstreet}"
+            - if !(tsstreet == nil or tsstreet == "")
+              = ", "
+            = "#{"#{tsplz} #{tscity}"}"
           %td.center= trip.start_time.strftime("%d.%m.%Y")
           %td.center= trip.start_time.strftime("%H:%M")
         %tr
           %td.left_bold Ankunft:
-          %td.left= "#{testreet}, #{"#{teplz} #{tecity}"}"
+          %td.left
+            = "#{testreet}"
+            - if !(testreet == nil or testreet == "")
+              = ", "
+            = "#{"#{teplz} #{tecity}"}"
           %td.center
           %td.center
         %tr
@@ -188,8 +196,11 @@
                   zum Bewerben anzeigen
                 - if @status == @MITFAHRER
                   Sie haben keine Berechtigung, Bewerber anzuzeigen
-                - else
-                  = link_to("Als Mitfahrer bewerben", url_for(:action => "update", :controller => "trips", :request => true))
+                - if @status == @GAST
+                  - if !trip.finished
+                    = link_to("Als Mitfahrer bewerben", url_for(:action => "update", :controller => "trips", :request => true))
+                  - else
+                    Sie haben keine Berechtigung, Bewerber anzuzeigen
           -#Wenn aktueller Benutzer Fahrer oder Bewerber ist,....
           - if @status == @FAHRER or @status == @POTENTIELLER_MITFAHRER
             %tr

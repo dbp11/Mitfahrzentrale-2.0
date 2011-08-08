@@ -9,18 +9,18 @@ class GeoHelper
   end
   
   #Berechnet die Route 
-  def self.destination(start_end, options = {}, output = "pretty") 
+  def self.destination(start_end, waypoints) 
     puts "GeoHelper#destination"
     if api == :gmaps
-      Gmaps4Rails.destination(start_end, options, output)      
+      Gmaps4Rails.destination(start_end, {"waypoints" => waypoints}, "pretty")      
     elsif api == :geocoder
       puts start_end[:from]
       puts start_end[:to]
       Geocoder::Calculations.distance_between(start_end[:from],start_end[:to],{:units => :km})
     elsif api == :bing
-      Bing::Route.find(:waypoints => [start_end[:from],start_end[:to],start_end[:to]], :distance_unit => 'km')[0] 
+      Bing::Route.find(:waypoints => [start_end[:from], waypoints[0], waypoints[1],start_end[:to], :distance_unit => 'km')[0] 
     end
-  end
+  end  t[0] =   ["Münster", "hallo"]
   
 
   #Liefert für Koordinaten die Standorte
@@ -28,11 +28,9 @@ class GeoHelper
     if api == :gmaps
       Gmaps4rails.geocode(cord_at_N.to_s+ "N "+ cord_at_E.to_s+"E","de")[0][:full_data]
     elsif api == :geocoder
-      Geocoder.address([cord_at_N,cord_at_E])
+      Geocoder.address([cord_at_N,cord_at_E])#
     elsif api == :yahoo
-
-    elsif api == :bin
-
+      Ym4r::YahooMaps::BuildingBlock::Geocoding.get(:city => )
     end
   end
 end
