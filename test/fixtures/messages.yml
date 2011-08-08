@@ -18,8 +18,8 @@ messages_001:
 '
   writer_id: 1
   receiver_id: 2
-  created_at: '2011-08-08 08:52:49.596800'
-  updated_at: '2011-08-08 08:52:49.596800'
+  created_at: '2011-08-08 11:22:09.183397'
+  updated_at: '2011-08-08 11:22:09.183397'
   delete_writer: f
   delete_receiver: f
   subject: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -55,8 +55,8 @@ messages_002:
     hergestellt werden. Mehrere Bandidos wurden später zu Freiheitsstrafen verurteilt.'
   writer_id: 1
   receiver_id: 2
-  created_at: '2011-08-08 08:52:49.610510'
-  updated_at: '2011-08-08 08:52:49.610510'
+  created_at: '2011-08-08 11:22:09.197382'
+  updated_at: '2011-08-08 11:22:09.197382'
   delete_writer: t
   delete_receiver: f
   subject: dfbbbbbbbbbbbbbbbbbbbbbb
@@ -88,8 +88,8 @@ messages_003:
 '
   writer_id: 2
   receiver_id: 1
-  created_at: '2011-08-08 08:52:49.623331'
-  updated_at: '2011-08-08 08:52:49.623331'
+  created_at: '2011-08-08 11:22:09.210458'
+  updated_at: '2011-08-08 11:22:09.210458'
   delete_writer: f
   delete_receiver: t
   subject: fffffffffffffffffff
@@ -112,8 +112,8 @@ messages_004:
     unverletzt und erholten sich auch recht schnell von dem Schreck.'
   writer_id: 3
   receiver_id: 1
-  created_at: '2011-08-08 08:52:49.634894'
-  updated_at: '2011-08-08 08:52:49.634894'
+  created_at: '2011-08-08 11:22:09.222050'
+  updated_at: '2011-08-08 11:22:09.222050'
   delete_writer: f
   delete_receiver: f
   subject: fedfe
@@ -138,8 +138,8 @@ messages_005:
     VON MARTIN KALITSCHKE, MÜNSTER'
   writer_id: 4
   receiver_id: 1
-  created_at: '2011-08-08 08:52:49.646672'
-  updated_at: '2011-08-08 08:52:49.646672'
+  created_at: '2011-08-08 11:22:09.234654'
+  updated_at: '2011-08-08 11:22:09.234654'
   delete_writer: t
   delete_receiver: f
   subject: feffe
@@ -174,8 +174,8 @@ messages_006:
     halten sie für überflüssig, dagegen ist sie für 85 Prozent der Befragten wichtig. '
   writer_id: 5
   receiver_id: 1
-  created_at: '2011-08-08 08:52:49.658568'
-  updated_at: '2011-08-08 08:52:49.658568'
+  created_at: '2011-08-08 11:22:09.245760'
+  updated_at: '2011-08-08 11:22:09.245760'
   delete_writer: t
   delete_receiver: f
   subject: ! 'Prominente Bankdrücker bei Bayer '
@@ -203,8 +203,8 @@ messages_007:
     Wahrscheinlich sind die Ränge eins bis drei. Am Ende wird Bayer Dritter.'
   writer_id: 1
   receiver_id: 3
-  created_at: '2011-08-08 08:52:49.671168'
-  updated_at: '2011-08-08 08:52:49.671168'
+  created_at: '2011-08-08 11:22:09.257819'
+  updated_at: '2011-08-08 11:22:09.257819'
   delete_writer: t
   delete_receiver: f
   subject: Wie schafft Robini
@@ -259,8 +259,8 @@ messages_008:
     Michel Massing'
   writer_id: 1
   receiver_id: 4
-  created_at: '2011-08-08 08:52:49.683734'
-  updated_at: '2011-08-08 08:52:49.683734'
+  created_at: '2011-08-08 11:22:09.270546'
+  updated_at: '2011-08-08 11:22:09.270546'
   delete_writer: t
   delete_receiver: f
   subject: Das tapfere Schneiderlein gab die Vorlage zum Duell zwischen Eintracht
@@ -298,8 +298,8 @@ messages_009:
 '
   writer_id: 1
   receiver_id: 5
-  created_at: '2011-08-08 08:52:49.695225'
-  updated_at: '2011-08-08 08:52:49.695225'
+  created_at: '2011-08-08 11:22:09.282204'
+  updated_at: '2011-08-08 11:22:09.282204'
   delete_writer: t
   delete_receiver: f
   subject: Somit gab es keine neue Pokalsensation und
@@ -329,8 +329,8 @@ messages_010:
     l'
   writer_id: 2
   receiver_id: 1
-  created_at: '2011-08-08 08:52:49.707284'
-  updated_at: '2011-08-08 08:52:49.707284'
+  created_at: '2011-08-08 11:22:09.294311'
+  updated_at: '2011-08-08 11:22:09.294311'
   delete_writer: t
   delete_receiver: f
   subject: ! 'Somit  '

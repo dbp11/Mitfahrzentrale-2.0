@@ -4,68 +4,68 @@ passengers_001:
   user_id: 2
   trip_id: 1
   confirmed: t
-  created_at: '2011-08-08 08:52:49.982330'
-  updated_at: '2011-08-08 08:52:49.982330'
+  created_at: '2011-08-08 11:22:09.576665'
+  updated_at: '2011-08-08 11:22:09.576665'
 passengers_002:
   id: 2
   user_id: 3
   trip_id: 2
   confirmed: f
-  created_at: '2011-08-08 08:52:49.997678'
-  updated_at: '2011-08-08 08:52:49.997678'
+  created_at: '2011-08-08 11:22:09.592766'
+  updated_at: '2011-08-08 11:22:09.592766'
 passengers_003:
   id: 3
   user_id: 4
   trip_id: 3
   confirmed: t
-  created_at: '2011-08-08 08:52:50.011638'
-  updated_at: '2011-08-08 08:52:50.011638'
+  created_at: '2011-08-08 11:22:09.606453'
+  updated_at: '2011-08-08 11:22:09.606453'
 passengers_004:
   id: 4
   user_id: 5
   trip_id: 4
   confirmed: f
-  created_at: '2011-08-08 08:52:50.025382'
-  updated_at: '2011-08-08 08:52:50.025382'
+  created_at: '2011-08-08 11:22:09.619620'
+  updated_at: '2011-08-08 11:22:09.619620'
 passengers_005:
   id: 5
   user_id: 1
   trip_id: 5
   confirmed: t
-  created_at: '2011-08-08 08:52:50.038671'
-  updated_at: '2011-08-08 08:52:50.038671'
+  created_at: '2011-08-08 11:22:09.632940'
+  updated_at: '2011-08-08 11:22:09.632940'
 passengers_006:
   id: 6
   user_id: 3
   trip_id: 4
   confirmed: t
-  created_at: '2011-08-08 08:52:50.053671'
-  updated_at: '2011-08-08 08:52:50.053671'
+  created_at: '2011-08-08 11:22:09.647435'
+  updated_at: '2011-08-08 11:22:09.647435'
 passengers_007:
   id: 7
   user_id: 1
   trip_id: 2
   confirmed: t
-  created_at: '2011-08-08 08:52:50.068433'
-  updated_at: '2011-08-08 08:52:50.068433'
+  created_at: '2011-08-08 11:22:09.661688'
+  updated_at: '2011-08-08 11:22:09.661688'
 passengers_008:
   id: 8
   user_id: 1
   trip_id: 3
   confirmed: t
-  created_at: '2011-08-08 08:52:50.082949'
-  updated_at: '2011-08-08 08:52:50.082949'
+  created_at: '2011-08-08 11:22:09.675913'
+  updated_at: '2011-08-08 11:22:09.675913'
 passengers_009:
   id: 9
   user_id: 1
   trip_id: 4
   confirmed: t
-  created_at: '2011-08-08 08:52:50.098504'
-  updated_at: '2011-08-08 08:52:50.098504'
+  created_at: '2011-08-08 11:22:09.691205'
+  updated_at: '2011-08-08 11:22:09.691205'
 passengers_010:
   id: 10
   user_id: 2
   trip_id: 3
   confirmed: t
-  created_at: '2011-08-08 08:52:50.114629'
-  updated_at: '2011-08-08 08:52:50.114629'
+  created_at: '2011-08-08 11:22:09.706455'
+  updated_at: '2011-08-08 11:22:09.706455'

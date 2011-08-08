@@ -7,10 +7,10 @@ trips_001:
   starts_at_E: 7.4452
   ends_at_E: 8.13409
   ends_at_N: 52.57975
-  start_time: '2011-08-08 08:53:48.815995'
+  start_time: '2011-08-08 11:23:08.443221'
   comment: Biete eine Fahrt an!
-  created_at: '2011-08-08 08:52:49.334263'
-  updated_at: '2011-08-08 08:52:49.334263'
+  created_at: '2011-08-08 11:22:08.915174'
+  updated_at: '2011-08-08 11:22:08.915174'
   baggage: t
   free_seats: 4
   distance: 0
@@ -29,10 +29,10 @@ trips_002:
   starts_at_E: 11.5801863
   ends_at_E: 8.807081
   ends_at_N: 53.074981
-  start_time: '2011-08-08 08:53:48.835690'
+  start_time: '2011-08-08 11:23:08.463157'
   comment: Platz für alle :D!
-  created_at: '2011-08-08 08:52:49.364359'
-  updated_at: '2011-08-08 08:52:49.364359'
+  created_at: '2011-08-08 11:22:08.946565'
+  updated_at: '2011-08-08 11:22:08.946565'
   baggage: t
   free_seats: 4
   distance: 0
@@ -51,10 +51,10 @@ trips_003:
   starts_at_E: 9.991586
   ends_at_E: 13.4113999
   ends_at_N: 52.523401
-  start_time: '2011-08-09 08:52:48.836228'
+  start_time: '2011-08-09 11:22:08.463711'
   comment: Ahoi
-  created_at: '2011-08-08 08:52:49.375747'
-  updated_at: '2011-08-08 08:52:49.375747'
+  created_at: '2011-08-08 11:22:08.958384'
+  updated_at: '2011-08-08 11:22:08.958384'
   baggage: f
   free_seats: 3
   distance: 0
@@ -73,10 +73,10 @@ trips_004:
   starts_at_E: 7.43840300000001
   ends_at_E: 7.3237899999999
   ends_at_N: 52.52306
-  start_time: '2011-08-08 08:53:48.836806'
+  start_time: '2011-08-08 11:23:08.464295'
   comment: Boom Boom
-  created_at: '2011-08-08 08:52:49.387167'
-  updated_at: '2011-08-08 08:52:49.387167'
+  created_at: '2011-08-08 11:22:08.970054'
+  updated_at: '2011-08-08 11:22:08.970054'
   baggage: t
   free_seats: 5
   distance: 0
@@ -95,10 +95,10 @@ trips_005:
   starts_at_E: 7.2911623
   ends_at_E: 8.0531882
   ends_at_N: 52.267281
-  start_time: '2011-08-08 08:53:48.837295'
+  start_time: '2011-08-08 11:23:08.464756'
   comment: Schnell schnell!
-  created_at: '2011-08-08 08:52:49.399171'
-  updated_at: '2011-08-08 08:52:49.399171'
+  created_at: '2011-08-08 11:22:08.982041'
+  updated_at: '2011-08-08 11:22:08.982041'
   baggage: f
   free_seats: 4
   distance: 0

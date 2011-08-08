@@ -9,7 +9,7 @@ class Request < ActiveRecord::Base
   
   
   #Validation
-  validates_presence_of :duration, :distance, :starts_at_N, :starts_at_E, :ends_at_N, :ends_at_E, :start_time, :end_time, :start_radius, :end_radius, :user_id
+  validates_presence_of :duration, :distance, :starts_at_N, :starts_at_E, :ends_at_N, :ends_at_E, :start_time, :end_time, :start_radius, :end_radius, :user_id, :start_city, :end_city
   
   validate :start_time_in_past, :end_time_bigger_start_time, :baggage_not_nil, :start_address_same_as_end_address
 
@@ -100,9 +100,7 @@ class Request < ActiveRecord::Base
 
 
   def set_route
-    address_start = self.start_city
-    address_end = self.end_city
-    route = Gmaps4rails.destination({"from" =>address_start, "to" =>address_end},{},"pretty")
+    route = Gmaps4rails.destination({"from" =>self.starts_at_N.to_s+"N "+self.starts_at_E.to_s+"E", "to" =>self.ends_at_N.to_s+"N "+self.ends_at_E.to_s+"E"},{},"pretty")
 
     self.distance = route[0]["distance"]["value"]
     self.duration = route[0]["duration"]["value"]
