@@ -2,27 +2,35 @@
   Übergebene Variablen:
   - @fahrzeuge [Array aller Fahrzeuge des aktuellen Benutzers]
 
-  to do:
-  - Zusammenspiel mit Controller absprechen
-    # Erster Schritt: Nutzer gibt Daten ein
-    # Zweiter Schritt: Nutzer bekommt Formular mit Dropdown-Boxen
-      für Start und Ziel (enthalten sind alle Matches für die Eingaben).
-      Nutzer wählt den gewünschten Startpunkt und das gewünschte Ziel.
-
 = form_tag("create", :method => "post") do
   %table
     %tr
-      %td Start-Ort
-      -# entweder das textfield unten oder eine select-box
       %td
-        = text_field_tag(:address_start, nil, :required => "required")
-    %tr
-      %td Ziel-Ort
-      -# entweder das textfield unten oder eine select-box
+        Start-Ort
+        %br/
+        &nbsp;
       %td
-        = text_field_tag(:address_end, nil, :required => "required")
+        = text_field_tag(:address_start_street, nil, :placeholder => "Str. + Hausnr. (Optional)")
+        = text_field_tag(:address_start_plz, nil, :placeholder => "Postleitzahl (Optional)")
+        = text_field_tag(:address_start_city, nil, :placeholder => "Stadt (Pflichtfeld)", :required => "required")
+        %br/
+        &nbsp;
     %tr
-      %td Abfahrt-Zeit
+      %td
+        Ziel-Ort
+        %br/
+        &nbsp;
+      %td
+        = text_field_tag(:address_end_street, nil, :placeholder => "Str. + Hausnr. (Optional)")
+        = text_field_tag(:address_end_plz, nil, :placeholder => "Postleitzahl (Optional)")
+        = text_field_tag(:address_end_city, nil, :placeholder => "Stadt (Pflichtfeld)", :required => "required")
+        %br/
+        &nbsp;
+    %tr
+      %td
+        Abfahrt-Zeit
+        %br/
+        &nbsp;
       %td
         %select{:name => "start_day", :required => "required"}
           - 31.times do |i|
@@ -80,28 +88,47 @@
                 %option{:value => (i+1).to_s, :selected => "selected"}= "#{(i+1)}"
               - else
                 %option{:value => (i+1).to_s}= "#{(i+1)}"
+        %br/
+        &nbsp;
     %tr
-      %td Fahrzeug
+      %td
+        Fahrzeug
+        %br/
+        &nbsp;
       %td
         %select{:name => "car", :required => "required"}
           - @fahrzeuge.each do |f|
             %option{:value => f.id}= "#{f.car_type} (#{f.seats} Sitzplätze)"
+        %br/
+        &nbsp;
     %tr
-      %td Sitzplätze 
+      %td
+        Sitzplätze 
+        %br/
+        &nbsp;
       %td
         %select{:name => "free_seats"}
           %option{:value => ""} keine Änderung
           - 10.times do |i|
             %option{:value => (i+1)}= (i+1)
+        %br/
+        &nbsp;
     %tr
-      %td Gep&auml;ck
-      %td= check_box_tag(:baggage)
+      %td
+        Gep&auml;ck
+        %br/
+        &nbsp;
+      %td
+        = check_box_tag(:baggage)
+        %br/
+        &nbsp;
     %tr
       %td Hinweise
       %td
         %textarea{:name => "comment", :rows => "5", :wrap => "physical"}
     %tr
       %td
+        %br/
         = submit_tag("Erstellen")
 
 

@@ -48,6 +48,12 @@
 - seats = @trip.free_seats
 - fahrer = @trip.user
 - trip = @trip
+- tsstreet = trip.get_start_address_info[:street]
+- tsplz = trip.get_start_address_info[:plz]
+- tscity = trip.get_start_address_info[:city]
+- testreet = trip.get_end_address_info[:street]
+- teplz = trip.get_end_address_info[:plz]
+- tecity = trip.get_end_address_info[:city]
 - user = @user
 
 -#%meta{:name => "viewport", :content => "initial-scale=1.0, user-scalable=no"}
@@ -74,8 +80,8 @@
     directionsDisplay.setMap(map);
   }
     
-  var start = "#{trip.address_start}";
-  var end = "#{trip.address_end}";
+  var start = "#{tsstreet} #{tsplz} #{tscity}";
+  var end = "#{testreet} #{teplz} #{tecity}";
   var request = {
     origin:start, 
     destination:end,
@@ -88,10 +94,6 @@
     }
   });
 
-
-
-
-
 %table.trips_base_table
   %tr
     %td
@@ -100,12 +102,12 @@
           %td.center{:colspan => "4"} Fahrtinformationen
         %tr
           %td.left_bold Abfahrt:
-          %td.left= trip.address_start
+          %td.left= "#{tsstreet}, #{"#{tsplz} #{tscity}"}"
           %td.center= trip.start_time.strftime("%d.%m.%Y")
           %td.center= trip.start_time.strftime("%H:%M")
         %tr
           %td.left_bold Ankunft:
-          %td.left= trip.address_end
+          %td.left= "#{testreet}, #{"#{teplz} #{tecity}"}"
           %td.center
           %td.center
         %tr
