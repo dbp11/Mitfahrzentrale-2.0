@@ -130,7 +130,7 @@ class Request < ActiveRecord::Base
   #
   # @return Distanz ( x Km)
   def get_route_distance
-    return (distance / 1000).round(3).to_s + "Km"
+    return distance.to_s + "Km"
   end
 
 end
