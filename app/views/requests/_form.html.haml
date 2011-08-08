@@ -1,4 +1,4 @@
-= form_for @request, :html=>{:onsubmit=>"return zipcheck();"} do |f|
+= form_for @request do |f|
   -if @request.errors.any?
     #error_explanation
       %h2= "#{pluralize(@request.errors.count, "error")} prohibited this message from being saved:"
@@ -7,66 +7,38 @@
           %li= msg
   
   %table
-    :javascript
-      function zipcheck() {
-        var plz_field = document.getElementsByName("request[start_zipcode]")[0];
-        var b = (plz_field.value).search(/[^0-9]+/);
-        if(plz_field.value.length<5){
-          alert('Start PLZ zu kurz!');
-          plz_field.focus();
-          return false;
-        }
-        if(b>=0){
-          alert('Start PLZ enthält falsche Zeichen!');
-          plz_field.focus;
-          return false;
-        }
-        var plz_field = document.getElementsByName("request[end_zipcode]")[0];
-        var b = (plz_field.value).search(/[^0-9]+/);
-        if(plz_field.value.length<5){
-          alert('End PLZ zu kurz!');
-          plz_field.focus();
-          return false;
-        }
-        if(b>=0){
-          alert('End PLZ enthält falsche Zeichen!');
-          plz_field.focus;
-          return false;
-        }
-        return true;
-      }
     %tr
       %td 
         = f.label:Start
     %tr
       %td
       %td
-        = f.label:"Straße"
+        = f.label:start_street, "Straße"
       %td
-        =f.text_field:start_street
+        =f.text_field:start_street, :placeholder=>"optional"
     %tr 
       %td
       %td
-        = f.label:Plz
+        = f.label:start_zipcode, "PLZ"
       %td
-        = f.text_field:start_zipcode, :required=>"required", :maxlength=>"5"
+        = f.text_field:start_zipcode, :maxlength=>"5", :size=>"30", :placeholder=>"optional"
     %tr
       %td
       %td 
-        =f.label:Ort
+        =f.label:start_city, "Ort"
       %td
         = f.text_field:start_city, :required=>"required"
     %tr
       %td
       %td
-        = f.label:Radius
+        = f.label:start_radius, "Radius"
       %td
         = f.select:start_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
 
     %tr
       %td
       %td 
-        =f.label:"Datum und Zeit"
+        =f.label:start_time, "Datum und Zeit"
       %td
         = f.datetime_select:start_time, 
                            :required => "required",
@@ -81,25 +53,25 @@
     %tr
       %td
       %td
-        =f.label:"Straße"
+        =f.label:end_street, "Straße"
       %td
-        = f.text_field:end_street
+        = f.text_field:end_street, :placeholder=>"optional"
     %tr
       %td
       %td
-        = f.label:"Plz"
+        = f.label:end_zipcode, "PLZ"
       %td
-        = f.text_field:end_zipcode, :required=>"required", :maxlength=>"5"
+        = f.text_field:end_zipcode, :maxlength=>"5", :size=>"30", :placeholder=>"optional"
     %tr
       %td
       %td 
-        = f.label:Ort
+        = f.label:end_city, "Ort"
       %td
         = f.text_field:end_city, :required => "required"
     %tr
       %td
       %td
-        = f.label:Radius
+        = f.label:end_radius, "Radius"
       %td
         = f.select:end_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
 
@@ -107,7 +79,7 @@
     %tr
       %td
       %td 
-        = f.label:"Datum und Zeit"
+        = f.label:end_time, "Datum und Zeit"
       %td
         = f.datetime_select:end_time, :required => "required",
                             :order=>[:hour,:day, :month, :year],
@@ -120,13 +92,13 @@
     %tr
       %td
       %td 
-        = f.label:"Gepäck"
+        = f.label:baggage, "Gepäck"
       %td
         = f.check_box:baggage
     %tr
       %td
       %td
-        = f.label:"Anmerkungen"
+        = f.label:comment, "Anmerkungen"
       %td
         = f.text_area:comment, :rows=>"5"
 
