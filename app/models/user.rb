@@ -605,5 +605,13 @@ before_validation :set_member
   def get_own_requests
     self.requests
   end
+  
+  def ignore (usr)
+    self.ignorings << usr
+  end
 
+  def unignore (usr)
+    self.ignorings.delete(usr)
+  end
+  
 end
