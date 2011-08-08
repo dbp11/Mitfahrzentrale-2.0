@@ -255,14 +255,14 @@ class Trip < ActiveRecord::Base
   #
   # @return Zeit ( x Stunden y Minuten)
   def get_route_duration
-    return duration.div(3600)+"Stunden"+(duration % 60)+ "Minuten" 
+    return duration.div(3600).to_s+" Stunden "+(duration % 60).to_s+ " Minuten" 
   end
  
   # Berechnet die Distanz die benötigt wird und gibt diese formatiert aus
   #
   # @return Distanz ( x Km)
   def get_route_distance
-    return (distance / 1000).round(3) + "Km"
+    return (distance / 1000).round(3).to_s + "km"
   end
 
   # Gibt aus ob ein übergeben User für den Trip akzeptiert wurde

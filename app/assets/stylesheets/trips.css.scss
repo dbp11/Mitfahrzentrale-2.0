@@ -16,6 +16,20 @@ body.trips {
     }
   }
 
+  .trips_map_table {
+    width: 100%;
+    
+		.left {
+			/*width: 400px;*/
+      text-align: left;
+    }
+
+    .left_bold {
+      text-align: left;
+      font-weight: bold;
+    }
+  }
+
 
 	.trips_index_table {
 		margin-bottom: 1.5em;

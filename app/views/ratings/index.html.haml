@@ -10,7 +10,7 @@
 			%tr
 				%td.rating_table_left
 					= "Bewertung für"
-					= link_to(rating.author.name, url_for(rating.author))
+					= link_to(rating.receiver.name, url_for(rating.receiver))
 				%td.rating_table_right
 					= rating.created_at.strftime("%d.%m.%y %H:%M")
 			%tr
