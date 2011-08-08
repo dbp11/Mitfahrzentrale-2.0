@@ -247,9 +247,7 @@ class Trip < ActiveRecord::Base
 
   # Berechnet die Strecke in Metern und die Zeit in Sekunden, die für diese Strecke benötigt werden und schreibt die Informationen in die passenden Datenfelder der Tabelle
   def set_route
-    address_start = self.end_zipcode.to_s
-    address_end = self.end_zipcode.to_s
-    route = Gmaps4rails.destination({"from" =>address_start, "to" =>address_end},{},"pretty")
+    route = Gmaps4rails.destination({"from" =>self.starts_at_N.to_s+"N "+self.starts_at_E.to_s+"E", "to" =>self.ends_at_N.to_s+"N "+self.ends_at_E.to_s+"E"},{},"pretty")
 
     self.distance = route[0]["distance"]["value"]
     self.duration = route[0]["duration"]["value"]
