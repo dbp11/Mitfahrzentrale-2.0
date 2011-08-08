@@ -100,7 +100,7 @@ class Request < ActiveRecord::Base
 
 
   def set_route
-    route = Gmaps4rails.destination({"from" =>self.starts_at_N+"N "+self.starts_at_E+"E", "to" =>self.ends_at_N+"N "+self.ends_at_e+"E"},{},"pretty")
+    route = Gmaps4rails.destination({"from" =>self.starts_at_N.to_s+"N "+self.starts_at_E.to_s+"E", "to" =>self.ends_at_N.to_s+"N "+self.ends_at_E.to_s+"E"},{},"pretty")
 
     self.distance = route[0]["distance"]["value"]
     self.duration = route[0]["duration"]["value"]
