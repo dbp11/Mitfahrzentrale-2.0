@@ -1,15 +1,13 @@
 = stylesheet_link_tag :cars
+%h2 Fahrzeugdetails
+%div.other_site
+  Fahrzeug Hinzuf&uuml;gen  
+  = link_to image_tag( '/images/cars/car_button_add_high.png', :alt => "Neues Fahrzeug", :size => "40x40"), new_car_path 
+
 %table.cars_index_table
   %tr
     %td
       %table.cars_index_top
-        %td Fahrzeugdetails
-        %td= link_to image_tag( '/images/cars/car_button_add_high.png', :alt => "Neues Fahrzeug", :size => "40x40"), new_car_path        
-        %td 
-          %b Fahrzeug hinzuf&uuml;gen
-
-
-  
   %tr
     %td
       %table.cars_index_bot
@@ -28,7 +26,7 @@
             - if car.carpic?
               %td= image_tag car.carpic.url(:thumb)
             - else
-              %td= image_tag( '/images/cars/Default_car_icon.png', :size => "60x60") 
+              %td= image_tag( '/images/cars/Default_car_icon2.png', :height => "50px") 
             %td= link_to car.car_type, car
             %td= car.seats
             %td= car.price_km
@@ -40,5 +38,4 @@
             %td= link_to image_tag( '/images/cars/car_button_delete_high.png', :alt => "Löschen",:size => "40x40"), car, :confirm => 'Bist du sicher?', :method => :delete
   %tr
     %td
-      *Angaben nicht richtig
 
