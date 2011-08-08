@@ -35,15 +35,11 @@
       gibt aus, wie oft der Benutzer bewertet wurde
 
   to do:
-    - Bedingte Ausgabe für die einzelnen Benutzer-Status implementieren
-    - Senden von Nachrichten an angezeitge Benutzer implementieren
-    - Anzeigen des Fahrers
-    - Anzeigen des Autos
-    - Anzeigen der Karte
-    - Annehmen/Ablehnen von Bewerbungen für Fahrer
-    - Austragen von Mitfahrern (für Fahrer) oder sich selbst
+    - "Fahrt löschen"-Link für Fahrer??
 
--# Die Tabelle hat zwei Spalten: Eine für den die Tabelle der Mitfahrer etc, eine für die Map
+-#Die Tabelle hat zwei Spalten: Eine für den die Tabelle der Fahrtinformationen, Mitfahrer,
+  Bewerber (nur für Fahrer und eigener Datensatz des Bewerbers sichtbar) und eine für die Map
+  (inkl. Fahrtdauer und -entfernung)
 
 - c_passengers = @commited_passenger
 - u_passengers = @uncommited_passenger
@@ -56,6 +52,9 @@
 
 -#%meta{:name => "viewport", :content => "initial-scale=1.0, user-scalable=no"}
 
+-#Java-Script für die Map. Eingefügt wird sie in einem DIV mit der Klasse "map_canvas"
+  Der Code wurde 1:1 von Google übernommen (teilweise in HAML umgeschrieben) und als Start-
+  und Zielpunkte die Start- und Zieladressen eingefügt.
 %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
 
 :javascript
@@ -113,21 +112,32 @@
           %td.left_bold#minimal Fahrer:
           %td.left{:colspan => "3"}
             = link_to("#{fahrer.name}", fahrer)
+            = " #{fahrer.get_avg_rating_driver} (#{fahrer.count_ratings_driver})"
+            -#Nur andere als der Fahrer sollen ihm Nachrichten schicken können
             - if @status != @FAHRER
               = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :uid => fahrer.id, :tid => trip.id)) + " "
+              -#Wenn Fahrer vom aktuellen Benutzer noch nicht bewertet wurde und die Fahrt beendet ist, dann
+                Bewerten-Link anzeigen
               - if !fahrer.allready_rated(user, trip) and trip.finished
                 = link_to("Bewerten", url_for(:action => "new", :controller => "ratings", :uid => fahrer.id, :tid => trip.id))
         %tr
           %td.left_bold#minimal Auto:
           %td.left{:colspan => "3"}= link_to("#{trip.car.car_type}", trip.car) +" (#{trip.car.description.truncate(60)})"
-
+        %tr
+          %td.left_bold Hinweise:
+          %td.left{:colspan => "3"}= trip.comment
+      -#Tabelle mit Mitfahrern
       %table.trips_show_passenger_table
         %tr
           %td.center{:colspan => "5"}= "Mitfahrer (#{o_seats}/#{seats})"
+        -#Wenn der aktuelle Benutzer weder Fahrer noch Mitfahrer ist, so darf er die Mitfahrer nicht sehen
+          (Hinweis wird ausgegeben)
         - if @status != @FAHRER and @status != @MITFAHRER
           %tr
             %td.center{:colspan => "4"} Sie haben keine Berechtigung, Mitfahrer anzuzeigen
+        -#Wenn aktueller Benutzer Fahrer oder Mitfahrer ist, so sollen die Mitfahrer angezeigt werden
         - if @status == @FAHRER or @status == @MITFAHRER
+          -#Wenn keine Mitfahrer vorhanden, dann Hinweis ausgeben, ansonsten Mitfahrer ausgeben
           - if c_passengers == nil or c_passengers.count <= 0
             %tr
               %td.center{:colspan => "4"} keine Mitfahrer vorhanden
@@ -135,56 +145,96 @@
             %tr
               %td Benutzername
               %td.left{:colspan => "4"} Rating
+            -#Über alle Mitfahrer iterieren
             - c_passengers.each do |passenger|
               %tr
                 %td= link_to "#{passenger}", passenger
-                %td= "#{passenger.get_avg_rating} (#{passenger.count_ratings})"
+                %td= "#{passenger.get_avg_rating_passenger} (#{passenger.count_ratings_passenger})"
                 %td.right
+                  -#Wenn der aktuelle Benutzer nicht der Mitfahrer ist, über den gerade iteriert wird,
+                    dann gib den "Nachricht schicken"-Link aus
                   - if user != passenger
                     = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :tid => trip.id, :uid => passenger.id))
                 %td.right
+                  -#Wenn die Fahrt noch nicht beendet ist UND der aktuelle Benutzer der Fahrer ODER der
+                    Mitfahrer ist, über den gerade iteriert wird, DANN gib den Link zum Austragen aus
                   - if !trip.finished and (user == passenger or @status == @FAHRER)
                     = link_to("Austragen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
-                  - else
-                    - if passenger.allready_rated(user, trip) and user != passenger
-                      = link_to("Bewerten", url_for(:action => "new", :controller => "ratings", :uid => passenger.id, :tid => trip.id))
+                  -#Wenn die Fahrt beendet ist UND der aktuelle Benutzer NICHT der Mitfahrer ist, über den
+                    gerade iteriert wird UND der aktuelle Benutzer den iterierten für diese Fahrt noch
+                    NICHT bewertet hat, DANN zeige den "Bewerten"-Link an.
+                  - if trip.finished and user != passenger and !passenger.allready_rated(user, trip)
+                    = link_to("Bewerten", url_for(:action => "new", :controller => "ratings", :uid => passenger.id, :tid => trip.id))
                 %td
-
+      -#Tabelle mit Mitfahr-Anfragen
       %table.trips_show_passenger_table
         %tr
+          -#Jeder darf sehen, wieviele offene Bewerbungen es gibt (somit kann jeder selbst entscheiden,
+            ob er eine Bewerbung für fruchtbar hält)
           %td.center{:colspan => "4"}= "Anfragen (#{u_passengers == nil ? "0" : u_passengers.count})"
+        -#Die Bewerbungen selbst darf aber nur der Fahrer sehen (und ein Bewerber seine eigene, um
+          sie zurücknehmen zu können). Wenn keine Bewerbungen vorhanden, dann Hinweis ausgeben
         - if @status == @FAHRER and (u_passengers == nil or u_passengers.count <= 0)
           %tr
             %td.center{:colspan => "3"} keine Bewerbungen vorhanden
         - else
+          -#Wenn aktueller Benutzer weder Fahrer noch Bewerber ist,...
           - if @status != @FAHRER and @status != @POTENTIELLER_MITFAHRER
             %tr
               %td.center{:colspan => "3"}
+                -#Wenn aktueller Benutzer Mitfahrer ist, dann Ansicht verweigern, ansonsten Link
+                  zum Bewerben anzeigen
                 - if @status == @MITFAHRER
                   Sie haben keine Berechtigung, Bewerber anzuzeigen
                 - else
                   = link_to("Als Mitfahrer bewerben", url_for(:action => "update", :controller => "trips", :request => true))
+          -#Wenn aktueller Benutzer Fahrer oder Bewerber ist,....
           - if @status == @FAHRER or @status == @POTENTIELLER_MITFAHRER
             %tr
               %td Benutzername
               %td.left{:colspan => "3"} Rating
+            -#Über alle Bewerber iterieren
             - u_passengers.each do |passenger|
+              -#Für den Fahrer alle Bewerber ausgeben, für Bewerber noch sich selbst
               - if @status == @FAHRER or passenger == user
                 %tr
                   %td= link_to "#{passenger}", passenger
                   %td= "#{passenger.get_avg_rating} (#{passenger.count_ratings})"
+                  -#Wenn aktueller Benutzer Fahrer ist, dann Link anzeigen zum Nachrichtenschicken,
+                    Annehmen und Ablehnen der Bewerbung, ansonsten Link anzeigen, um Bewerbung
+                    zurück zu nehmen.
                   - if @status == @FAHRER
                     %td.right
                       = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :uid => passenger.id, :tid => trip.id))
-                      = link_to("annehmen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :accept => true))
-                      = link_to("ablehnen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
+                      - if !trip.finished
+                        = link_to("annehmen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :accept => true))
+                        = link_to("ablehnen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
                   - else
-                    %td.right= link_to("austragen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
+                    -#Wenn Fahrt noch nicht zuende, dann "austragen"-Link anzeigen, ansonsten schließende
+                      Tabellenspalte einfügen (sonst Layout-Fehler)
+                    - if !trip.finished
+                      %td.right= link_to("austragen", url_for(:action => "update", :controller => "trips", :uid => passenger.id, :decline => true))
+                    - else
+                      %td
                   %td
       -#= link_to("Bewerben", url_for(:action => "update", :controller => "trips", :request => true))
 
     %td#map
-      #map_canvas{:style => "width: 100%;"}
+      %table.trips_map_table
+        %tr
+          %td{:colspan => "2"}
+            #map_canvas{:style => "width: 100%;"}
+        %tr
+          %td.left_bold Entfernung:
+          %td.left= trip.get_route_distance
+        %tr
+          %td.left_bold ca. Dauer:
+          %td.left= trip.get_route_duration
+
+
+-#Sorgt dafür, dass die Karte immer nur so hoch, wie breit ist (Breite abhängig vom Bildschirm,
+  Höhe könnte durch größere Tabellen mir Mitfahrern, etc. wachsen => Seitenverhältniss und damit die
+  Größe der ganzen Karte würde verändert)
 :javascript
   var b = document.getElementById("map_canvas").offsetWidth;
   var style = document.getElementById("map_canvas").getAttribute("style");

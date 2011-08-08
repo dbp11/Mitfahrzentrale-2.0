@@ -10,6 +10,13 @@ body.users {
 
   .head{
     text-decoration: underline;
+    padding-top: 10px; 
+    padding-bottom: 20px;
+    padding-left: 10px;
+  }
+
+  .form_arround{
+    padding-left: 10px;
   }
 
   .form_table_right{
@@ -18,5 +25,13 @@ body.users {
 
   .form_table_left{
     width: 200px;
+  }
+
+  #box{
+    background-image: url(../images/user/rahmen8.jpg);
+    background-size: 350px 360px;
+    background-position: center;
+    padding: 30px;
+
   }
 }

@@ -1,43 +1,43 @@
 = stylesheet_link_tag :cars
-%table.cars_base_table
+%table.cars_index_table
   %tr
     %td
-      %table.cars_table_top
-        %td.head Fahrzeugdetails
-        %td.cars_top_link= link_to image_tag( '/images/cars/car_button_add_high.png', :alt => "Neues Fahrzeug", :size => "50x50"), new_car_path        
-        %td.cars_top 
+      %table.cars_index_top
+        %td Fahrzeugdetails
+        %td= link_to image_tag( '/images/cars/car_button_add_high.png', :alt => "Neues Fahrzeug", :size => "40x40"), new_car_path        
+        %td 
           %b Fahrzeug hinzuf&uuml;gen
 
 
   
   %tr
     %td
-      %table.cars_table_bot
+      %table.cars_index_bot
         %tr
-          %th.cars Bild
-          %th.cars Modell
-          %th.cars Sitzpl&auml;tze
-          %th.cars Preis/km
-          %th.cars Raucher
-          %th.cars Kennzeichen
-          %th.cars Beschreibung
-          %th.cars Editieren
-          %th.cars Löschen
+          %td Bild
+          %td Modell
+          %td Sitzpl&auml;tze
+          %td Preis/km
+          %td Raucher
+          %td Kennzeichen
+          %td Beschreibung
+          %td Editieren
+          %td Löschen
         - @cars.each do |car|
           %tr
             - if car.carpic?
-              %td.cars_1= image_tag car.carpic.url(:thumb)
+              %td= image_tag car.carpic.url(:thumb)
             - else
-              %td.cars_1= image_tag( '/images/cars/Default_car_icon.png', :size => "60x60") 
-            %td.cars_2= link_to car.car_type, car
-            %td.cars_1= car.seats
-            %td.cars_2= car.price_km
-            %td.cars_1
+              %td= image_tag( '/images/cars/Default_car_icon.png', :size => "60x60") 
+            %td= link_to car.car_type, car
+            %td= car.seats
+            %td= car.price_km
+            %td
               = car.smoker? ? "Ja" : "Nein"
-            %td.cars_2= car.licence
-            %td.cars_1= car.description
-            %td.cars_2= link_to image_tag( '/images/cars/car_button_edit_high.png', :alt => "Editieren", :size => "40x40"), edit_car_path(car)
-            %td.cars_1= link_to image_tag( '/images/cars/car_button_delete_high.png', :alt => "Löschen",:size => "40x40"), car, :confirm => 'Bist du sicher?', :method => :delete
+            %td= car.licence
+            %td= car.description
+            %td= link_to image_tag( '/images/cars/car_button_edit_high.png', :alt => "Editieren", :size => "40x40"), edit_car_path(car)
+            %td= link_to image_tag( '/images/cars/car_button_delete_high.png', :alt => "Löschen",:size => "40x40"), car, :confirm => 'Bist du sicher?', :method => :delete
   %tr
     %td
       *Angaben nicht richtig

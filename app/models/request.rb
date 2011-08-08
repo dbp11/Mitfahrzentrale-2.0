@@ -71,14 +71,22 @@ class Request < ActiveRecord::Base
     erg = []
 
     trips.each do |t|
-      start_con = Gmaps4rails.destination({"from" => t.address_start, "to" => self.address_start},{},"pretty")
-      end_con =  Gmaps4rails.destination({"from" => t.address_end, "to" => self.address_end},{},"pretty")
-      
-      start_distance = start_con[0]["distance"]["value"]
-      start_duration = start_con[0]["duration"]["value"]
+     # start_con = Gmaps4rails.destination({"from" => t.address_start, "to" => self.address_start},{},"pretty")
+     # end_con =  Gmaps4rails.destination({"from" => t.address_end, "to" => self.address_end},{},"pretty")
+     
+       start_distance = (Geocoder::Calculations.distance_between [t.starts_at_N, t.starts_at_E], 
+           [self.starts_at_N, self.starts_at_E], :units => :km)
 
-      end_distance = end_con[0]["distance"]["value"]
-      end_duration = end_con[0]["duration"]["value"]
+       end_distance = (Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
+           [self.ends_at_N, self.ends_at_E], :units => :km)
+
+
+     # start_distance = start_con[0]["distance"]["value"]
+     # start_duration = start_con[0]["duration"]["value"]
+       start_duration = start_distance / 1000 / 80
+     # end_distance = end_con[0]["distance"]["value"]
+     # end_duration = end_con[0]["duration"]["value"]
+       end_duration = end_distance / 1000 / 80
 
       t_rating = t.user.get_avg_rating.to_f / 6
       t_ignors = t.user.get_relative_ignorations
@@ -99,5 +107,21 @@ class Request < ActiveRecord::Base
     self.distance = route[0]["distance"]["value"]
     self.duration = route[0]["duration"]["value"]
   end
+
+
+  # Berechnet die Zeit die benötigt wird und gibt diese formatiert aus
+  #
+  # @return Zeit ( x Stunden y Minuten)
+  def get_route_duration
+    return duration.div(3600)+"Stunden"+(duration % 60)+ "Minuten" 
+  end
+ 
+  # Berechnet die Distanz die benötigt wird und gibt diese formatiert aus
+  #
+  # @return Distanz ( x Km)
+  def get_route_distance
+    return (distance / 1000).round(3) + "Km"
+  end
+
 end
 

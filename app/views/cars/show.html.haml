@@ -1,32 +1,36 @@
-%p#notice= notice
+%table.cars_show_index
+  %tr.head 
+    %td.head Fahrzeugdeails
+    %td.head= link_to image_tag( '/images/cars/car_button_edit_high.png', :alt => "Editieren", :size => "40x40"), edit_car_path(@car)
+  %tr 
+    %td
+      %table.cars_show_left
+        %tr
+          %td Modell
+          %td= @car.car_type
+        %tr 
+          %td Sitzpl&auml;tze
+          %td= @car.seats
+        %tr
+          %td Fahrtkosten
+          %td= @car.price_km
 
-%p
-  %b Bild des Fahrzeuges:
-  %br
-  - if @car.carpic? 
-    = image_tag @car.carpic.url(:medium)
-  - else 
-    = "Kein Bild hochgeladen"
-%p
-  %b Modell:
-  = @car.car_type
-%p
-  %b Sitzpl&auml;tze:
-  = @car.seats
-%p
-  %b Verbrauch:
-  = @car.price_km
-%p
-  %b Raucherwagen:
-  = @car.smoker? ? "ja" : "nein"
-%p
-  %b Nummernschild:
-  = @car.licence
+        %tr
+          %td Raucherwagen
+          %td= @car.smoker? ? "ja" :"nein"
+        %tr
+          %td Nummernschild
+          %td= @car.licence
+        %tr
+          %td Beschreibung
+          %td= @car.description
+    %td.cars_show_right
+      - if @car.carpic?
+        = image_tag @car.carpic.url(:medium)
+      - else
+        = "noch kein bild"
 
-%p
-  %b Beschreibung:
-  = @car.description
-//= link_to 'Bearbeiten', edit_car_path(@car)
-= link_to image_tag( '/images/cars/car_button_edit_high.png', :alt => "Editieren", :size => "40x40"), edit_car_path(@car)
-\|
+
+
+
 = link_to 'Zurück', cars_path
