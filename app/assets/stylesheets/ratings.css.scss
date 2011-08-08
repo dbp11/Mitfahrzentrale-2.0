@@ -61,6 +61,7 @@ body.ratings {
 			margin-left: 0.5em;
 		}
 		.rating_table {
+			border: solid 2px;
 			table-layout: fixed;
 			margin: 0;
 			margin-bottom: 1.5em;
@@ -123,7 +124,6 @@ body.ratings {
 				}
 			}
 			tr:last-child {
-				text-align: right;
 			}
 		}
 	}

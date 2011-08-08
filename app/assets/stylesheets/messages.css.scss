@@ -55,7 +55,12 @@ body.messages {
 					color: red;
 				}
 			}
+			tr {
+				border-left: solid 2px;
+				border-right: solid 2px;
+			}
 			tr:first-child {
+				border-top: solid 2px;
 				background-color: $table_bg_color0;
 				border-bottom: solid 1px;
 				font-weight: bold;
@@ -92,6 +97,8 @@ body.messages {
 			}
 			tr:last-child {
 				text-align: right;
+				border: none;
+				border-top: solid 2px;
 			}
 		}
 	}
