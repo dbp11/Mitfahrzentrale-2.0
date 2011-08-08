@@ -1,7 +1,7 @@
 #
 # Modelliert alle Fahrten die ein User als Fahrer oder Mitfahrer begeht. 
 # 
-# ===Das Modell hat die Datenfelder:
+# ===Das Model hat die Datenfelder:
 #
 #
 # * trip_id       :integers -- <i>Von Rails erstellt</i> ID des Trips
@@ -24,7 +24,7 @@
 #
 # ===Das Model Trips arbeitet mit folgenden Validations:
 #
-# <b>validates_presence_of</b> (" Datenfelder dürfen nicht Null sein, bzw. müssen beim anlegen eines neuen Trips ausgefüllt werden")
+# <b>validates_presence_of</b> (" Datenfelder dürfen nicht Null sein, bzw. müssen beim Anlegen eines neuen Trips ausgefüllt werden")
 #
 # * :address_start       
 # * :address_end
@@ -41,7 +41,7 @@
 #  
 # * :free_seats -- " > 1" ("Es macht keinen Sinn eine Fahrt zu erstellen die keine freien Plätze zu Verfügung hat")
 # 
-# <b>validate</b> ("selbstgeschrieben Validation-Methoden, Beschreibungen bei den jeweiligen Methoden")
+# <b>validates</b> ("selbstgeschrieben Validation-Methoden, Beschreibungen bei den jeweiligen Methoden")
 # 
 # * :start_time_in_past
 # * :start_address_same_as_end_address
