@@ -196,12 +196,12 @@ class Trip < ActiveRecord::Base
          [starts_at_N, starts_at_E], :units => :km) <= t.start_radius) and
         # prüfe ob die Entfernung des Endortes in einem bestimmten Radius übereinstimmt
          ((Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
-         [ends_at_N, ends_at_E], :units => :km)  <= t.end_radius)) and
+         [ends_at_N, ends_at_E], :units => :km)  <= t.end_radius) and
         # prüfe ob der User der den Request gestellt hat ignoriert wird
-         !self.user.ignorings.include?(t.user) then
-        # Ergebnisarray mit Requests füllen auf denen diese Eigenschaften zutreffen
-        erg << t
+         !self.user.ignorings.include?(t.user) and (!self.baggage and !t.baggage or self.baggage) and 
+         self.get_free_seats >= 1) then erg << t
       end
+        # Ergebnisarray mit Requests füllen auf denen diese Eigenschaften zutreffen
     end
     return erg
   end
@@ -307,7 +307,7 @@ class Trip < ActiveRecord::Base
   #
   # @return Distanz ( x Km)
   def get_route_distance
-    return (distance / 1000).round(3).to_s + "km"
+    return distance.to_s + " km"
   end
 
   # Gibt aus ob ein übergeben User für den Trip akzeptiert wurde

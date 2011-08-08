@@ -14,7 +14,7 @@
   - @requests.each do |request|
     %tr.index_table_second
       
-      %td= request.start_zipcode.to_s + " " + request.start_city
+      %td= request.start_zipcode.to_s + " " + request.start_city + " " 
       %td= request.end_zipcode.to_s + " " + request.end_city
       %td= request.start_time.strftime("%d.%m.%Y %H:%M")
       %td= request.get_route_duration
@@ -26,6 +26,6 @@
       %td= link_to 'Löschen', request, :confirm => 'Are you sure?', :method => :delete
 
 %br
-*Verkehrsbehinderungen werden nicht berücksichtigt
+*Verkehrsbehinderungen werden beid er berechnung der Fahrzeit nicht berücksichtigt
 %br
 = link_to 'Neue Anfrage', new_request_path
