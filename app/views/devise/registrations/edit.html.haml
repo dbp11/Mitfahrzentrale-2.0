@@ -1,4 +1,4 @@
-%h1.head
+%h2.head
   Profil bearbeiten
 %p.under
   Mit * gekennzeichnete Felder müssen ausgefüllt sein
@@ -56,9 +56,9 @@
         = f.check_box:visible_address 
           
     %tr.form_table_row
-      %td.form_table_right
-        = f.label :"PLZ*"
       %td.form_table_left
+        = f.label :"PLZ*"
+      %td.form_table_right
         :javascript
           function zipcheck() {
             var plz_field = document.getElementsByName("user[zipcode]")[0];
@@ -117,8 +117,6 @@
         = f.label :pic, "Bild hochladen"
       %td.form_table_right
         = f.file_field :pic
-      %td.form_table_middle
-        %td.form_table_end
     %tr.form_table_row
       %td.form_table_left
         = f.label :"Passwort*"

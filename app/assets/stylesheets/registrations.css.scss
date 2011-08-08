@@ -5,4 +5,13 @@
 body.registrations {
   // Add the registrations class to your body tag
   // Then, place scoped styles here.
+
+  .form_table_left{
+    width: 210px;
+  }
+  
+  .form_table_right{
+    text-align: left;
+  }
+
 }
