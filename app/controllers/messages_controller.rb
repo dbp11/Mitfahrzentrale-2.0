@@ -67,9 +67,11 @@ class MessagesController < ApplicationController
 	  if params[:mid]
 		# message reply
 		temp = Message.find(params[:mid])
-		@message.receiver = temp.writer
-		@message.subject = "RE: " + temp.subject.to_s
-    check=true
+      if temp.receiver == current_user
+		    @message.receiver = temp.writer
+		    @message.subject = "RE: " + temp.subject.to_s
+        check=true
+      end
     end
     if !check
       redirect_to messages_path
