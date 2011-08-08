@@ -99,13 +99,13 @@ class Trip < ActiveRecord::Base
         start_city = i["long_name"]
       end
       if i["types"].include?("route")
-         street = i["long_name"]
+         omma = i["long_name"]
       end
       if i["types"].include?("street_number")
         hausNr = i["long_name"]
       end
      end
-    start_street = street.to_s + " " +  hausNr.to_s
+    start_street = (omma.to_s + " " +  hausNr.to_s)
     
 
     end_a =  Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
@@ -125,7 +125,7 @@ class Trip < ActiveRecord::Base
         hausNr = i["long_name"]
       end
      end
-    end_street = street.to_s + " " +  hausNr.to_s
+    end_street = (street.to_s + " " +  hausNr.to_s)
 
   end 
 
