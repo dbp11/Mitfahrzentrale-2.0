@@ -480,7 +480,9 @@ class User < ActiveRecord::Base
     end
     check
   end
-   
+  
+  
+
   #Lässt einen User sich um eine Mitfahrgelegenheit bewerben
   #@param Trip trp um den sich beworben werden soll
   #@return false, wenn der User sich schon auf den Trip beworben hat
