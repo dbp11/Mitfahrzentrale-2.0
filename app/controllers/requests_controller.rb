@@ -1,5 +1,15 @@
 class RequestsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Zugriff verweigert!"
+    redirect_to requests_url
+  end
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    flash[:error] = "Zugriff verweigert!"
+    redirect_to requests_url
+  end
+
   # GET /requests
   # GET /requests.json
   def index

@@ -1,37 +1,8 @@
-// Place all the styles related to the users controller here.
+// Place all the styles related to the registrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body.registrations {
-  // Place scoped styles here
-
-
-  .form_table_left{
-    padding: 10px;
-    vertical-align: top;
-    width: 250px;
-    text-align: left;
-
-  }
-
-  .form_table_right{
-    padding: 10px;
-    vertical-align: top;
-    text-align: left;
-
-
-  }
-
-  .head{
-    text-decoration: underline;
-    padding:10px;
-  }
-
-  .under{
-    padding-left:10px;
-  }
-
-
-
-
+  // Add the registrations class to your body tag
+  // Then, place scoped styles here.
 }
