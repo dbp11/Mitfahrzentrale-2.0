@@ -2,23 +2,30 @@
 
 %table.index_table
   %tr.index_table_first
-    %th Start
-    %th Ende
-    %th Gepäck
-    %th Anmerkung
-    %th
+    %td Von
+    %td Bis
+    %td Startzeit
+    %td Fahrzeit*
+    %td Gepäck
+    %td Anmerkung
+    %td Anzeigen
+    %td Editieren
+    %td Löschen
   - @requests.each do |request|
     %tr.index_table_second
       
-      %td= request.start_time
-      %td= request.end_time
+      %td= request.address_start
+      %td= request.address_end
+      %td= request.start_time.strftime("%d.%m.%Y %H:%M")
+      %td= request.get_route_duration
       %td= request.baggage? ? "Ja" : "Nein"
       %td= request.comment
 
-      %td= link_to 'Show', request
-      %td= link_to 'Edit', edit_request_path(request)
-      %td= link_to 'Destroy', request, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Anzeige', request
+      %td= link_to 'Editieren', edit_request_path(request)
+      %td= link_to 'Löschen', request, :confirm => 'Are you sure?', :method => :delete
 
 %br
-
-= link_to 'New Request', new_request_path
+*Verkehrsbehinderungen werden nicht berücksichtigt
+%br
+= link_to 'Neue Anfrage', new_request_path
