@@ -3,21 +3,30 @@
     - @sorted_trips
       Array mit auf den Request passende Fahrten
 
-%p#notice= notice
 
-%h4 Meine Anfrage
+%h2 Meine Anfrage
 
 %table
   %tr
     %td.left    
       Startadresse:
-    %td.right  
+    %td
+      = @request.start_zipcode
+    %td  
       = @request.start_city
+    %td
+      = @request.start_street
   %tr
     %td.left
       Zieladresse:
-    %td.right
+    %td
+      = @request.end_zipcode
+    %td
       = @request.end_city
+    %td
+      = @request.end_street
+
+
   %tr
     %td.left
       Startzeit:
@@ -41,27 +50,28 @@
 
 
 %h4 Dazu passende Trips:
-%table
-  %td.kopf
-    Start
-  %td.kopf
-    Ende
-  %td.kopf
-    Startzeit
-  %td.kopf
-    Endzeit
-  %td.kopf
-    Fahrtzeit
-  %td.kopf
-    Strecke
-  %td.kopf
-    Gepäck
-  %td.kopf
-    link
-  %td.kopf
-    Bewertung
+%table.index_table
+  %tr.index_table_first
+    %td
+      Startort
+    %td
+      Zielort
+    %td
+      Startzeit
+    %td
+      Endzeit
+    %td
+      Fahrtzeit
+    %td
+      Strecke
+    %td
+      Gepäck
+    %td
+      link
+    %td
+      Bewertung
   - @sorted_trips.each do |t|
-    %tr
+    %tr.index_table_second
       %td 
         = t[0].start_city
       %td
