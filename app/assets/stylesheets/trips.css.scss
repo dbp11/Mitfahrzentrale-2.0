@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "variables";
+
 body.trips {
   // Add the trips class to your body tag
   // Then, place scoped styles here.
@@ -40,12 +42,15 @@ body.trips {
       border-left: solid 2px;
       border-right: solid 2px;
       border-top: solid 1px;
-      &:nth-child(2n+1) {
-        //background-color: #FFFFFF;
+      &:nth-child(2n) {
+        background-color: $table_bg_color1;
       }
+	  &:nth-child(2n+1) {
+		  background-color: $table_bg_color2;
+	  }
     }
 		tr:first-child {
-			background-color: #777777;
+			background-color: $table_bg_color0;
 			font-weight: bold;
       border-top: solid 2px;
 		}
@@ -93,7 +98,7 @@ body.trips {
 
     .number_col {
       &:hover {
-        background-color: #777777;
+        background-color: $table_bg_color0;
       }
     }
 
@@ -139,7 +144,7 @@ body.trips {
       }
     }
 		tr:first-child {
-			background-color: #777777;
+			background-color: $table_bg_color0;
 			font-weight: bold;
       border-top: solid 2px;
 		}
@@ -185,7 +190,7 @@ body.trips {
 
     .number_col {
       &:hover {
-        background-color: #777777;
+        background-color: $table_bg_color0;
       }
 
     }
@@ -232,7 +237,7 @@ body.trips {
       }
     }
 		tr:first-child {
-			background-color: #777777;
+			background-color: $table_bg_color0;
 			font-weight: bold;
       border-top: solid 2px;
 		}
@@ -276,7 +281,7 @@ body.trips {
 
     .number_col {
       &:hover {
-        background-color: #777777;
+        background-color: $table_bg_color0;
       }
     }
 

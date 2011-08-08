@@ -1,4 +1,5 @@
 class GeoHelper
+  require 'bing/route'
   def self.api
     @api ||= :gmaps
   end
@@ -16,6 +17,8 @@ class GeoHelper
       puts start_end[:from]
       puts start_end[:to]
       Geocoder::Calculations.distance_between(start_end[:from],start_end[:to],{:units => :km})
+    elsif api == :bing
+      Bing::Route.find(:waypoints => [start_end[:from],start_end[:to],start_end[:to]], :distance_unit => 'km')[0] 
     end
   end
   
@@ -26,6 +29,10 @@ class GeoHelper
       Gmaps4rails.geocode(cord_at_N.to_s+ "N "+ cord_at_E.to_s+"E","de")[0][:full_data]
     elsif api == :geocoder
       Geocoder.address([cord_at_N,cord_at_E])
+    elsif api == :yahoo
+
+    elsif api == :bin
+
     end
   end
 end
