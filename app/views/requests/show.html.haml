@@ -40,7 +40,7 @@
       = @request.comment
 
 
-%h4 Dazu passende Trips
+%h4 Dazu passende Trips:
 %table
   %td.kopf
     Start
@@ -81,6 +81,6 @@
       %td 
         =t[1]
 
-= link_to 'Edit', edit_request_path(@request)
+= link_to 'Bearbeiten', edit_request_path(@request)
 \|
-= link_to 'Back', requests_path
+= link_to 'zurück', requests_path

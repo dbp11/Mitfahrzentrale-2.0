@@ -26,11 +26,6 @@
         = f.label :"Neues Passwort wiederholen"
       %td.form_table_right
         = f.password_field :password_confirmation
-    %tr.form_table_row
-      %td.form_table_left
-        = f.label :"Passwort*"
-      %td.form_table_right
-        = f.password_field :current_password, :required=>"required"
     - if !@user.business? 
       %tr.form_table_row
         %td.form_table_left
@@ -123,7 +118,12 @@
       %td.form_table_right
         = f.file_field :pic
       %td.form_table_middle
-      %td.form_table_end
+        %td.form_table_end
+    %tr.form_table_row
+      %td.form_table_left
+        = f.label :"Passwort*"
+      %td.form_table_right
+        = f.password_field :current_password, :required=>"required"
 
     %tr.form_table_row
       %td
