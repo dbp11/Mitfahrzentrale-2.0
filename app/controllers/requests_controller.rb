@@ -53,7 +53,6 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     #@request = Request.new(params[:request])
-    puts params[:request]
     start = Geocoder.coordinates(params[:request][:address_start])
     ende = Geocoder.coordinates(params[:request][:address_end])
     @request = Request.new(params[:request])

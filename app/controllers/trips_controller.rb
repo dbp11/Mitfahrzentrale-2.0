@@ -66,22 +66,24 @@ class TripsController < ApplicationController
     @status = check(@trip)
     @free_seats = @trip.get_free_seats
     @occupied_seats = @trip.get_occupied_seats
-
+    puts "stirb"
     if params[:request]
       if current_user.bewerben(@trip)
+        puts "HIER"
         tmp = Message.new()
-        tmp.writer_id = User.find(@trip.user_id)
+        tmp.writer = User.find(@trip.user_id)
         tmp.receiver = current_user
-        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
-        tmp.message = "Ihre Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" war erfolgreich. <3"        
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.start_city+" - "+@trip.end_city+"]]"
+        tmp.message = "Ihre Bewerbung fuer den Trip von "+@trip.start_city+" nach "+@trip.end_city+" war erfolgreich. <3"        
         tmp.delete_writer = true
         tmp.delete_receiver = false
+        puts tmp.to_s
         tmp.save
         tmp = Message.new()
-        tmp.writer_id = current_user 
+        tmp.writer = current_user 
         tmp.receiver = User.find(@trip.user_id)
-        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
-        tmp.message = "Bewerbung fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" Nutzer annehmen: [[/trips/"+@trip.id.to_s+"?accept=true&uid="+current_user.id.to_s+"|Hier!]]"        
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.start_city+" - "+@trip.end_city+"]]"
+        tmp.message = "Bewerbung fuer den Trip von "+@trip.start_city+" nach "+@trip.end_city+".\n Nutzer annehmen: [[/trips/"+@trip.id.to_s+"?accept=true&uid="+current_user.id.to_s+"|Hier!]]"        
 
         tmp.delete_writer = true
         tmp.delete_receiver = false
@@ -95,8 +97,8 @@ class TripsController < ApplicationController
         tmp = Message.new()
         tmp.writer = current_user
         tmp.receiver = temp
-        tmp.message = "Sie wurden fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" angenommen!!"
-        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.address_start+" - "+@trip.address_end+"]]"
+        tmp.message = "Sie wurden fuer den Trip von "+@trip.start_city+" nach "+@trip.end_city+" angenommen!!"
+        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.start_city+" - "+@trip.end_city+"]]"
         tmp.delete_writer = true
         tmp.delete_receiver = false
         tmp.save
@@ -110,7 +112,7 @@ class TripsController < ApplicationController
           tmp = Message.new()
           tmp.writer = current_user
           tmp.receiver = temp
-          tmp.message = "Sie wurden fuer den Trip von "+@trip.address_start+" nach "+@trip.address_end+" abgelehnt!!"
+          tmp.message = "Sie wurden fuer den Trip von "+@trip.start_city+" nach "+@trip.end_city+" abgelehnt!!"
           tmp.subject = "Ihre Bewerbung"
           tmp.delete_writer = true
           tmp.delete_receiver = false
@@ -156,15 +158,21 @@ class TripsController < ApplicationController
     @trip = Trip.new()
     @trip.user_id = current_user.id
     @trip.car_id = params[:car]
-    temp = Geocoder.coordinates(params[:address_start])
+    @trip.start_zipcode = params[:address_start_plz]
+    @trip.start_street = params[:address_start_street]
+    @trip.start_city = params[:address_start_city]
+    temp = Geocoder.coordinates(@trip.start_street+" "+@trip.start_zipcode.to_s+" "+@trip.start_city)
     @trip.starts_at_N = temp[0]
     @trip.starts_at_E = temp[1]
-    temp = Geocoder.coordinates(params[:address_end])
+    @trip.end_zipcode = params[:address_end_plz]
+    @trip.end_street = params[:address_end_street]
+    @trip.end_city = params[:address_end_city]
+    temp = Geocoder.coordinates(@trip.end_street+" "+@trip.end_zipcode.to_s+" "+@trip.end_city)
     @trip.ends_at_N = temp[0]
     @trip.ends_at_E = temp[1]
-    @trip.address_start = params[:address_start]
-    @trip.address_end = params[:address_end]
-    @trip.start_time = params[:date_start]+"T"+params[:time_start]+"Z"
+    @trip.comment = params[:comment]
+    #Hier Schwierigkeiten View != Model
+    @trip.start_time = params[:start_year]+"-"+params[:start_month]+"-"+params[:start_day]+"T"+params[:start_hour]+":"+params[:start_minute]
     temp = Car.find(params[:car])
     if params[:free_seats] == ""
       @trip.free_seats = temp.seats
