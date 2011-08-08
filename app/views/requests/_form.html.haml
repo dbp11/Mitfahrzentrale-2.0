@@ -12,18 +12,6 @@
         = f.label:Start
     %tr
       %td
-      %td
-        = f.label:start_street, "Straße"
-      %td
-        =f.text_field:start_street, :placeholder=>"optional"
-    %tr 
-      %td
-      %td
-        = f.label:start_zipcode, "PLZ"
-      %td
-        = f.text_field:start_zipcode, :maxlength=>"5", :size=>"30", :placeholder=>"optional"
-    %tr
-      %td
       %td 
         =f.label:start_city, "Ort"
       %td
@@ -50,18 +38,6 @@
     %tr
       %td
         = f.label:Ziel
-    %tr
-      %td
-      %td
-        =f.label:end_street, "Straße"
-      %td
-        = f.text_field:end_street, :placeholder=>"optional"
-    %tr
-      %td
-      %td
-        = f.label:end_zipcode, "PLZ"
-      %td
-        = f.text_field:end_zipcode, :maxlength=>"5", :size=>"30", :placeholder=>"optional"
     %tr
       %td
       %td 
