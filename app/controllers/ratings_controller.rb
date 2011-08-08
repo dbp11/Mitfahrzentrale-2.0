@@ -42,14 +42,19 @@ class RatingsController < ApplicationController
   # GET /ratings/new
   # GET /ratings/new.json
   def new
-    @rating = Rating.new
-	  @rating.receiver = User.find(params[:uid])
-	  @rating.trip = Trip.find(params[:tid])
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @rating }
+    usr = User.find(params[:uid])
+    trp = Trip.find(params[:tid])
+    if current_user.allowed_to_rate(usr, trp)
+      @rating = Rating.new
+      @rating.receiver = User.find(params[:uid])
+	    @rating.trip = Trip.find(params[:tid])
+    else
+      redirect_to root_path, notice: "Du kannst den Nutzer nicht bewerten!"
     end
+    #respond_to do |format|
+      #format.html # new.html.erb
+      #format.json { render json: @rating }
+    #end
   end
 
   # GET /ratings/1/edit
