@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "variables";
+
 body.messages {
   // Add the messages class to your body tag
   // Then, place scoped styles here.
@@ -53,8 +55,13 @@ body.messages {
 					color: red;
 				}
 			}
+			tr {
+				border-left: solid 2px;
+				border-right: solid 2px;
+			}
 			tr:first-child {
-				background-color: #777777;
+				border-top: solid 2px;
+				background-color: $table_bg_color0;
 				border-bottom: solid 1px;
 				font-weight: bold;
 				.message_table_right {
@@ -62,7 +69,7 @@ body.messages {
 				}
 			}
 			tr:nth-child(2) {
-				background-color: #DDDDDD;
+				background-color: $table_bg_color1;
 				td {
 					padding-left: 0.5em;
 					padding-right: 0.5em;
@@ -71,7 +78,7 @@ body.messages {
 					div {
 						padding-left: 0.5em;
 						padding-right: 0.5em;
-						background-color: #AAAAAA;
+						background-color: $table_bg_color2;
 						span {
 							font-weight: bold;
 						}
@@ -79,7 +86,7 @@ body.messages {
 				}
 			}
 			tr:nth-child(3) {
-				background-color: #DDDDDD;
+				background-color: $table_bg_color1;
 				td {
 					text-align: justify;
 					padding-top: 0.3em;
@@ -90,6 +97,8 @@ body.messages {
 			}
 			tr:last-child {
 				text-align: right;
+				border: none;
+				border-top: solid 2px;
 			}
 		}
 	}

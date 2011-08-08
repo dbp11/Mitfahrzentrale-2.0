@@ -506,13 +506,29 @@ before_validation :set_member
     end
     check
   end
+
+  # Methode, die ermittelt, ob dieser User den übergebenen User usr bezüglich des 
+  # übergebenen Trips trp bewerten darf
+  # @param User usr
+  # @param Trip trp
+  # @return true, wenn er bewerten darf, false sonst
+  def allowed_to_rate (usr, trp)
+    !usr.nil? and !trp.nil? and trp.finished and 
+    (trp.users.include? self or trp.user == self) and
+    (trp.users.include? usr or trp.user == usr) and
+    self != usr and
+    Rating.where("trip_id = ?", trp.id).where("author_id = ?", self.id).where("receiver_id = ?", usr.id).empty?
+  end
    
-  # Lässt einen User sich um eine Mitfahrgelegenheit bewerben
-  # @param Trip trp um den sich beworben werden soll
-  # @return false, wenn der User sich schon auf den Trip beworben hat
-  # @return false, wenn eine Validatierung beim Einspeichern des Users eine
-  # Verletzung der Integrität feststellt
-  # @return true, wenn Einspeichern funktioniert hat
+  
+  
+
+  #Lässt einen User sich um eine Mitfahrgelegenheit bewerben
+  #@param Trip trp um den sich beworben werden soll
+  #@return false, wenn der User sich schon auf den Trip beworben hat
+  #@return false, wenn eine Validatierung beim Einspeichern des Users eine
+  #Verletzung der Integrität feststellt
+  #@return true, wenn Einspeichern funktioniert hat
   def bewerben (trp)
       if self.passengers.where("user_id = ?", self.id).where("trip_id = ?", trp.id).count > 0
         false
