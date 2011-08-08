@@ -607,11 +607,20 @@ before_validation :set_member
   end
   
   def ignore (usr)
-    self.ignorings << usr
+    if !self.ignorings.include?(usr) and self != usr
+      self.ignorings << usr
+      true
+    else
+      false
+    end
   end
 
   def unignore (usr)
-    self.ignorings.delete(usr)
+    if !self.ignorings.include?(usr)
+      self.ignorings.delete(usr)
+      true
+    end
+    false
   end
   
 end
