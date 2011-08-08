@@ -11,7 +11,7 @@
       %td 
         =f.label:Von
       %td
-        = f.text_field:address_start, :required=>"required"
+        = f.text_field:start_city, :required=>"required"
       %td
         = f.select:start_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
 
@@ -19,7 +19,7 @@
       %td 
         = f.label:Nach
       %td
-        = f.text_field:address_end, :required => "required"
+        = f.text_field:end_city, :required => "required"
       %td
         = f.select:end_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
 
