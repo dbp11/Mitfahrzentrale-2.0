@@ -17,4 +17,6 @@ gem "shoulda-matchers", :group => :test
 gem "geocoder"
 gem "paperclip"
 gem "gmaps4rails"
+gem "ym4r"
+gem "bing"
 #gem "metric_fu"
