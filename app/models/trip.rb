@@ -260,7 +260,7 @@ class Trip < ActiveRecord::Base
   #
   # @return Distanz ( x Km)
   def get_route_distance
-    return (distance / 1000).round(3).to_s + "km"
+    return distance.to_s + " km"
   end
 
   # Gibt aus ob ein übergeben User für den Trip akzeptiert wurde

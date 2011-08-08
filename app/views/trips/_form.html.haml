@@ -2,33 +2,29 @@
   Übergebene Variablen:
   - @fahrzeuge [Array aller Fahrzeuge des aktuellen Benutzers]
 
-= form_tag("create", :method => "post") do
+= form_tag("Erstellen", :method => "post") do
   %table
     %tr
       %td
-        Start-Ort
+        Startadresse
         %br/
         &nbsp;
       %td
-        = text_field_tag(:address_start_street, nil, :placeholder => "Str. + Hausnr. (Optional)")
-        = text_field_tag(:address_start_plz, nil, :placeholder => "Postleitzahl (Optional)")
-        = text_field_tag(:address_start_city, nil, :placeholder => "Stadt (Pflichtfeld)", :required => "required")
-        %br/
-        &nbsp;
-    %tr
-      %td
-        Ziel-Ort
-        %br/
-        &nbsp;
-      %td
-        = text_field_tag(:address_end_street, nil, :placeholder => "Str. + Hausnr. (Optional)")
-        = text_field_tag(:address_end_plz, nil, :placeholder => "Postleitzahl (Optional)")
-        = text_field_tag(:address_end_city, nil, :placeholder => "Stadt (Pflichtfeld)", :required => "required")
+        = text_field_tag(:address_start_street, nil, :placeholder => "Stadt (pflicht), PLZ (optional), Str.  Hausnr. (Optional)", :size => "50", :required => "required")
         %br/
         &nbsp;
     %tr
       %td
-        Abfahrt-Zeit
+        Zieladresse
+        %br/
+        &nbsp;
+      %td
+        = text_field_tag(:address_end_street, nil, :placeholder => "Stadt (pflicht), PLZ (optional), Str.  Hausnr. (Optional)", :size => "50", :required => "required")
+        %br/
+        &nbsp;
+    %tr
+      %td
+        Abfahrtszeit
         %br/
         &nbsp;
       %td
@@ -103,7 +99,7 @@
         &nbsp;
     %tr
       %td
-        Sitzplätze 
+        Sitzpl&auml;tze 
         %br/
         &nbsp;
       %td
