@@ -45,7 +45,7 @@
             %td.form_table_left
               %h4 Geburtsdatum: 
             %td.form_table_right
-              #{@user.visible_age? ?  @user.birthday : "versteckt"}
+              #{@user.visible_age? ?  @user.birthday.strftime("%d.%m.%Y") : "versteckt"}
 
         %tr.form_table_row
           %td.form_table_left

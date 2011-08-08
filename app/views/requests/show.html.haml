@@ -5,31 +5,61 @@
 
 %p#notice= notice
 
-%p
-  %b Startadresse:
-  = @request.address_start
-%p
-  %b Zieladresse:
-  = @request.address_end
-%p
-  %b Startzeit:
-  = @request.start_time
-%p
-  %b Endzeit:
-  = @request.end_time
-%p
-  %b Gepäck:
-  = @request.baggage? ? "Ja" : "Nein"
-%p
-  %b Anmerkungen:
-  = @request.comment
-%p Dazu passende Trips
+%h1 
+  Meine Anfrage
 %table
-  %td Start
-  %td Ende
-  %td Startzeit
-  %td Endzeit
-  %td Gepäck
+  %tr
+    %td.left    
+      Startadresse:
+    %td.right  
+      = @request.address_start
+  %tr
+    %td.left
+      Zieladresse:
+    %td.right
+      = @request.address_end
+  %tr
+    %td.left
+      Startzeit:
+    %td.right
+      = @request.start_time.strftime("%d.%m.%Y %H:%M")
+  %tr
+    %td.left
+      Endzeit:
+    %td.right
+      = @request.end_time.strftime("%d.%m.%Y %H:%M")
+  %tr
+    %td.left 
+      Gepäck:
+    %td.right
+      = @request.baggage? ? "Ja" : "Nein"
+  %tr
+    %td.left 
+      Anmerkungen:
+    %td.right  
+      = @request.comment
+
+
+%h4 Dazu passende Trips:
+%table
+  %td.kopf
+    Start
+  %td.kopf
+    Ende
+  %td.kopf
+    Startzeit
+  %td.kopf
+    Endzeit
+  %td.kopf
+    Fahrtzeit
+  %td.kopf
+    Strecke
+  %td.kopf
+    Gepäck
+  %td.kopf
+    link
+  %td.kopf
+    Bewertung
   - @sorted_trips.each do |t|
     %tr
       %td 
@@ -37,9 +67,13 @@
       %td
         = t[0].address_end
       %td
-        = t[0].start_time
+        = t[0].start_time.strftime("%d.%m.%Y %H:%M")
       %td
-        = t[0].end_time
+        = t[0].end_time.strftime("%d.%m.%Y %H:%M")
+      %td
+        = t[0].get_route_distance
+      %td
+        = t[0].get_route_duration
       %td
         = t[0].baggage? ? "Ja" : "Nein"
       %td
@@ -47,6 +81,6 @@
       %td 
         =t[1]
 
-= link_to 'Edit', edit_request_path(@request)
+= link_to 'Bearbeiten', edit_request_path(@request)
 \|
-= link_to 'Back', requests_path
+= link_to 'zurück', requests_path
