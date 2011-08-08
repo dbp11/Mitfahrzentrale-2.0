@@ -217,12 +217,12 @@ class Trip < ActiveRecord::Base
   
   # Berechnet die Entfernung in Metern
   def get_route_duration
-    return duration.div(3600)+"Stunden"+(duration % 60)+ "Minuten" 
+    return duration.div(3600).to_s+" Stunden "+(duration % 60).to_s+ " Minuten" 
   end
  
   # Berechnet die benötigte Zeit in Sekunden
   def get_route_distance
-    return (distance / 1000).round(3) + "Km"
+    return (distance / 1000).round(3).to_s + "km"
   end
 
   def user_uncommitted (compared_user)
