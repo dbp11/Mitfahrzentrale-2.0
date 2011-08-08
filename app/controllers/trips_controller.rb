@@ -186,6 +186,13 @@ class TripsController < ApplicationController
     else
       @trip.baggage = true
     end
+    puts @trip.start_city
+    puts @trip.end_city
+    puts @trip.start_time
+    puts @trip.free_seats
+    puts @trip.duration
+    puts @trip.distance
+
     respond_to do |format|
       if @trip.save
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
