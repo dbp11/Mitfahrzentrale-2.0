@@ -61,6 +61,7 @@
 class Trip < ActiveRecord::Base
   include ActiveModel::Validations
   require 'bing/route'
+  require 'bing/location'
   ############################== Modellierung der Beziehungen #####################################
 
   #Der aktive Fahrer, zu dem jeweils ein Trip gehört
@@ -81,6 +82,52 @@ class Trip < ActiveRecord::Base
   #Direkte Beziehung zur Join-Entität Passengers
   has_many :passengers, :dependent => :destroy
   
+
+  before_save :set_address_info, :set_route
+
+  def set_address_info
+    
+    start_a =  Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
+               self.starts_at_E.to_s + "E", "de")[0][:full_data]
+    
+    start_a["address_components"].each do |i|
+      if i["types"].include?("postal_code")
+        start_zipcode = i["long_name"]
+      end
+      if i["types"].include?("locality")
+        start_city = i["long_name"]
+      end
+      if i["types"].include?("route")
+         street = i["long_name"]
+      end
+      if i["types"].include?("street_number")
+        hausNr = i["long_name"]
+      end
+     end
+    start_street = street.to_s + " " +  hausNr.to_s
+    
+
+    end_a =  Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
+               self.ends_at_E.to_s + "E", "de")[0][:full_data]
+    
+    end_a["address_components"].each do |i|
+      if i["types"].include?("postal_code")
+        end_zipcode = i["long_name"]
+      end
+      if i["types"].include?("locality")
+        end_city = i["long_name"]
+      end
+      if i["types"].include?("route")
+         street = i["long_name"]
+      end
+      if i["types"].include?("street_number")
+        hausNr = i["long_name"]
+      end
+     end
+    end_street = street.to_s + " " +  hausNr.to_s
+
+  end 
+
 
   #Validation, eine Fahrt muss ein Datum, Startort, Zielort, freie Sitzplätze haben
 

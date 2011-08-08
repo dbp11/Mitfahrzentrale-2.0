@@ -184,10 +184,10 @@ before_validation :set_member
   # Beziehung vom Modell User zu Trip über die Joinrelation Passengers 
   # (:through => Passengers) als passenger_trips
   has_many :passenger_trips, :class_name => "Trip", :through => :passengers, 
-    :source => :trip 
+    :source => :trip
   # Beziehung vom User zu Trip, wobei der User hier, anders als bei
   # Passenger_Trips nicht Mitfahrer, sondern Fahrer ist
-  has_many :driver_trips, :class_name => "Trip", :foreign_key => "user_id"
+  has_many :driver_trips, :class_name => "Trip", :foreign_key => "user_id" 
   has_many :cars, :dependent => :destroy
   # Beziehung von User zur Jointable Passengers - Diese Relation ist notwendig 
   # um zu überprüfen, ob ein User als Mitfahrer akzeptiert oder abgelehnt wurde
@@ -288,7 +288,8 @@ before_validation :set_member
   end
 
   # Methode zur Ermittlung des durchschnittlichen Ratings des Users 
-  # @return float 3, wenn User noch keine Bewertungen hat
+  # @return float 3, wenn User noch keine
+  # Bewertungen hat
   # @return float Sum(Ratings)/Anz(Ratings)
   def get_avg_rating
     count = count_ratings
