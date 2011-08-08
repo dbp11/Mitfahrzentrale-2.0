@@ -5,19 +5,19 @@
 
 %p#notice= notice
 
-%h1 
-  Meine Anfrage
+%h4 Meine Anfrage
+
 %table
   %tr
     %td.left    
       Startadresse:
     %td.right  
-      = @request.address_start
+      = @request.start_city
   %tr
     %td.left
       Zieladresse:
     %td.right
-      = @request.address_end
+      = @request.end_city
   %tr
     %td.left
       Startzeit:
@@ -63,9 +63,9 @@
   - @sorted_trips.each do |t|
     %tr
       %td 
-        = t[0].address_start
+        = t[0].start_city
       %td
-        = t[0].address_end
+        = t[0].end_city
       %td
         = t[0].start_time.strftime("%d.%m.%Y %H:%M")
       %td
