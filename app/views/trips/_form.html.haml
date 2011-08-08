@@ -67,27 +67,27 @@
           - 24.times do |i|
             - if (i+1) < 10
               - if (i+1) == Time.now.hour
-                %option{:value => "0"+(i+1).to_s, :selected => "selected"}= "0#{(i+1)}"
+                %option{:value => "0"+i.to_s, :selected => "selected"}= "0#{i}"
               - else
-                %option{:value => "0"+(i+1).to_s}= "0#{(i+1)}"
+                %option{:value => "0"+i.to_s}= "0#{i}"
             - else
               - if (i+1) == Time.now.hour
-                %option{:value => (i+1).to_s, :selected => "selected"}= "#{(i+1)}"
+                %option{:value => i.to_s, :selected => "selected"}= "#{i}"
               - else
-                %option{:value => (i+1).to_s}= "#{(i+1)}"
+                %option{:value => i.to_s}= "#{i}"
         =":"
         %select{:name => "start_minute", :required => "required"}
           - 60.times do |i|
             - if (i+1) < 10
               - if (i+1) == Time.now.min
-                %option{:value => "0"+(i+1).to_s, :selected => "selected"}= "0#{(i+1)}"
+                %option{:value => "0"+i.to_s, :selected => "selected"}= "0#{i}"
               - else
-                %option{:value => "0"+(i+1).to_s}= "0#{(i+1)}"
+                %option{:value => "0"+i.to_s}= "0#{i}"
             - else
               - if (i+1) == Time.now.min
-                %option{:value => (i+1).to_s, :selected => "selected"}= "#{(i+1)}"
+                %option{:value => i.to_s, :selected => "selected"}= "#{i}"
               - else
-                %option{:value => (i+1).to_s}= "#{(i+1)}"
+                %option{:value => i.to_s}= "#{i}"
         %br/
         &nbsp;
     %tr
