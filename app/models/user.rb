@@ -196,8 +196,7 @@ class User < ActiveRecord::Base
   has_many :received_ratings, :class_name => "Rating", :foreign_key => "receiver_id", :dependent => :destroy
 
   public #ab hier wieder public
-
-  ################################################### ==Methoden:###################################################
+  # == Methoden
   #toString Methode für User
   #@return Name des Users
   def to_s
