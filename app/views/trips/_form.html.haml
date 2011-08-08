@@ -15,12 +15,12 @@
       %td Start-Ort
       -# entweder das textfield unten oder eine select-box
       %td
-        = text_field_tag(:address_start, nil, :required => "required")
+        = text_field_tag(:start_code.to_s + " " + :start_city + " " + :start_street , nil, :required => "required")
     %tr
       %td Ziel-Ort
       -# entweder das textfield unten oder eine select-box
       %td
-        = text_field_tag(:address_end, nil, :required => "required")
+        = text_field_tag(:end_code.to_s + " " + :end_city + " " + :end_street , nil, :required => "required")
     %tr
       %td Abfahrt-Datum
       %td
