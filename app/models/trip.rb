@@ -46,6 +46,18 @@
 # * :start_time_in_past
 # * :start_address_same_as_end_address
 # * :baggage_not_nil
+#
+# <b>Validation der Beziehungen<i>":dependent => :destroy"</i></b>
+# 
+# * has_many :ratings -- Wenn Trip gelöscht, dann auch alle Ratings löschen, die der Trip erhalten hat
+# * has_many :passengers -- Wenn Trip gelöscht, dann auch alle zugehörigen Passagiere löschen
+# 
+# ===Beziehungen
+#
+# * belongs_to :user
+# * belongs_to :car
+# * has_many :users ("as passenger_trip")
+
 
 class Trip < ActiveRecord::Base
   include ActiveModel::Validations
@@ -62,7 +74,7 @@ class Trip < ActiveRecord::Base
   #werden direkt Userobjekte zurückgeliefert, da diese über den Join mit den Fahrten in Verbindung
   #gebracht werden.
   has_many :users, :class_name => "User", :as => "passenger_trip", :through => :passengers, 
-    :source => :user, :dependent => :destroy
+    :source => :user
 
   #Fahrer und Mitfahrer bewerten sich untereinander zu einem bestimmten Trip
   has_many :ratings, :dependent => :destroy
@@ -80,15 +92,18 @@ class Trip < ActiveRecord::Base
   #Freie Sitzplätze dürfen nicht negativ sein
   validates_inclusion_of :free_seats, :in => 1..200
 
-  # Methode prüft ob ein erstellter Trip in der Vergangenheit liegt
-  # @throws Error, wenn Startzeit in der Vergangenheit
+  # Methode prüft, ob ein erstellter Trip in der Vergangenheit liegt
+  #
+  # @throws Error, wenn Startzeit < aktuelle Zeit
   def start_time_in_past
     if start_time < Time.now
       errors.add(:fields, 'Startzeit liegt in der Vergangenheit')
     end
   end
   
-  # Start- und Endaddresse dürfen nicht übereinstimmen
+
+  # Methode prüft, ob Start- gleich Zieladdresse ist 
+  #
   # @throws Error, wenn Startpunkt = Zielpunkt
   def start_address_same_as_end_address
     if (starts_at_N == ends_at_N and starts_at_E == ends_at_E)
@@ -96,13 +111,20 @@ class Trip < ActiveRecord::Base
     end    
   end
 
+
   # Baggage darf nicht Null sein
-  # @throws Error, wenn Baggage nicht ge<i>Bei Erstellung automatisch eingefügt</i> Startkoordinate Nördl. Breitesetzt ist
+  #
+  # @throws Error, wenn Baggage nicht gesetzt ist
   def baggage_not_nil
     if(self.baggage == nil)
       errors.add(:field, 'Baggage ist Null')
     end
   end
+
+
+ ########################## Methoden ########################
+
+
 
   #Methoden:
   #toString Methode für Trips
@@ -111,28 +133,39 @@ class Trip < ActiveRecord::Base
   end
   
 
-  #Methode die alle passenden Requests sucht
-  #@return Array von Requests
+  # Methode die alle passenden Requests sucht, die auf einen Trip zutreffen.
+  # Dazu werden die jeweiligen Startzeiten ("Trip und Request")verglichen und die Entfernung der Start- und Zielorte in einem bestimmten Radius übereinstimmt.
+  #
+  # @param start_f -- Startzeit als float
+  # @param erg     -- Ergebnisarray
+  # 
+  # @return        -- Array mit passenden Request-Objekten
   def get_available_requests
     start_f =start_time.to_f
     erg = []
-
+    
+    # Hole alle Requests
     Request.all.each do |t|
-      if (start_f.between?(t.start_time.to_f, t.end_time.to_f) and 
+      # prüfe pro Request ob die Startzeiten von Trip und Request übereinstimmen
+      if (start_f.between?(t.start_time.to_f, t.end_time.to_f) and
+        # prüfe ob die Entfernung des Startortes in einem bestimmten Radius übereinstimmt
          ((Geocoder::Calculations.distance_between [t.starts_at_N, t.starts_at_E], 
          [starts_at_N, starts_at_E], :units => :km) <= t.start_radius) and
+        # prüfe ob die Entfernung des Endortes in einem bestimmten Radius übereinstimmt
          ((Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
          [ends_at_N, ends_at_E], :units => :km)  <= t.end_radius)) and
-         !self.user.ignorings.include?(t.user) then 
+        # prüfe ob der User der den Request gestellt hat ignoriert wird
+         !self.user.ignorings.include?(t.user) then
+        # Ergebnisarray mit Requests füllen auf denen diese Eigenschaften zutreffen
         erg << t
       end
     end
     return erg
   end
 
-  #Berechnet Trips, die sich nur geringfügig von dieser Request unterscheiden, und gibt ein Array aus
-  #Wertepaaren zurück. Der erste Wert ist der Trip, der zweite gibt die Länge des Umweges an, den der
-  #Fahrer dieses Trips in Kauf nehmen müsste. Das Array ist absteigend nach Umwegen sortiert.
+  # Methode zur Optimierung der Ergebnismenge aus gestellten Request.
+  #
+  # @param requests -- Alle 
   def get_sorted_requests
     requests = get_available_requests
     erg = []
