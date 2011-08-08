@@ -86,7 +86,7 @@ class Trip < ActiveRecord::Base
 
   validate :start_time_in_past, :start_address_same_as_end_address, :baggage_not_nil
 
-  validates_presence_of :start_city, :start_zipcode, :end_city, :end_zipcode, :start_time, :free_seats, :starts_at_N, :starts_at_E, :ends_at_N, :ends_at_E, :duration, :distance
+  validates_presence_of :start_city, :end_city, :start_time, :free_seats, :starts_at_N, :starts_at_E, :ends_at_N, :ends_at_E, :duration, :distance
   
   #Freie Sitzplätze dürfen nicht negativ sein
   validates_inclusion_of :free_seats, :in => 1..200
