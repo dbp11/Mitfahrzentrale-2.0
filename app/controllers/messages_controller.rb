@@ -24,21 +24,11 @@ class MessagesController < ApplicationController
     # Den Zeitstempel auf die aktuelle Zeit setzen
     current_user.last_delivery = Time.now
     current_user.save
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @messages }
-    end
   end
 
   # Gibt alle geschriebenen Nachrichten des Nutzers aus
   def outbox
     @messages = current_user.get_written_messages
-
-    respond_to do |format|
-      format.html # index.html.haml
-      format.json  { render :json => @messages }
-    end
   end
 
   # GET /messages/1
@@ -90,15 +80,10 @@ class MessagesController < ApplicationController
     @message.delete_receiver = false
     @message.delete_writer = false
 
-
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to messages_path, notice: 'Message was successfully created.' }
-        format.json { render json: @message, status: :created, location: @message }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+    if @message.save
+      redirect_to messages_path, notice: 'Message was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -115,17 +100,12 @@ class MessagesController < ApplicationController
 	  if @message.delete_receiver and @message.delete_writer
   	   @message.destroy
   	end
-    respond_to do |format|
-      if params[:who] == "writer"
-        format.html { redirect_to "/messages/outbox", notice: 'Message was successfully deleted.' }
-        format.json { head :ok }
-      elsif params[:who] == "receiver"
-        format.html { redirect_to messages_url, notice: 'Message was successfully deleted.' }
-        format.json { head :ok }
-      else
-        format.html { redirect_to messages_url, failure: 'Message could not be deleted.' }
-        format.json { head :ok }
-	    end
+    if params[:who] == "writer"
+      redirect_to "/messages/outbox", notice: 'Message was successfully deleted.'
+    elsif params[:who] == "receiver"
+      redirect_to messages_url, notice: 'Message was successfully deleted.'
+    elsif
+      redirect_to messages_url, failure: 'Message could not be deleted.'
     end
   end
 
@@ -134,10 +114,6 @@ class MessagesController < ApplicationController
   def destroy
     @message = Message.find(params[:id])
     @message.destroy
-
-    respond_to do |format|
-      format.html { redirect_to messages_url }
-      format.json { head :ok }
-    end
+    redirect_to messages_url
   end
 end

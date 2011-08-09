@@ -610,6 +610,12 @@ before_validation :set_member, :set_last_delivery
     self.requests
   end
   
+  # Fügt einen übergebenen User in die User ignores User Relation ein. D.h.der User wird vom System ab sofort als
+  # ignoriert gewertet
+  #
+  # @param User, der ignoriert werden soll
+  # @return true, wenn Einfügen in Ignorerelation geklappt hat
+  # @return false, sonst
   def ignore (usr)
     if !self.ignorings.include?(usr) and self != usr
       self.ignorings << usr
@@ -618,7 +624,13 @@ before_validation :set_member, :set_last_delivery
       false
     end
   end
-
+  
+  # Methode, um einen bereits ignorierten User wieder aus der Ignorerelation herauszunehmen, d.h. er wird nicht
+  # ignoriert
+  #
+  # @param User, der nicht mehr ignoriert werden soll
+  # @return true, wenn Löschen aus der Relation geklappt hat
+  # @return false, sonst
   def unignore (usr)
     if self.ignorings.include?(usr)
       self.ignorings.delete(usr)
@@ -627,5 +639,18 @@ before_validation :set_member, :set_last_delivery
       false
     end
   end
-  
+ 
+  # Überprüft, ob User bereits ignoriert wird
+  #
+  # @param User, von dem der "Ignorestatus" überprüft werden soll
+  # @return true, wenn User bereits ignoriert wird
+  # @return false, wenn User nicht ignoriert wird
+  def is_ignored (usr)
+    if self.ignorings.include?(usr)
+      true
+    else
+      false
+    end
+  end
+
 end
