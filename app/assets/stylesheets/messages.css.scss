@@ -22,19 +22,10 @@ body.messages {
 				text-align: right;
 			}
 		}
-		.other_site {
-			width: 70%;
-			text-align: right;
-			margin-top: -2em;
-			margin-bottom: 1em;
-			a {
-				margin-right: 0.5em;
-			}
-		}
 		.message_table {
 			table-layout: fixed;
 			margin: 0;
-			margin-bottom: 1.5em;
+			margin-top: 1.5em;
 			width: 70%;
 			word-wrap: break-word;
 			td {

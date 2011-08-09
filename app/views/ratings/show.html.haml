@@ -1,22 +1,28 @@
 %h2
-	= "Bewertungen für"
-	= link_to(@user.name, url_for(@user))
-%div.other_site2
+	= "Bewertungen"
+%div.other_site
 	= link_to("zurück", "javascript:history.back()")
 	= "|"
 	= link_to("Erstellte Bewertungen", ratings_path)
 
+%p
+	= link_to(@user.name, url_for(@user))
 %h3
 	= "Bewertungen als Fahrer"
 -if @driver_ratings.empty?
 	%p
 		= "Keine Bewertungen vorhanden."
-
 -else
 	%p
-		= "Durchschnittliche Bewertung ("+@driver_cnt.to_s+"):"
+		= "Insgesammt"
 		%span
-			= @driver_avg 
+			= @driver_cnt.to_s
+		- if @driver_cnt == 1
+			= "Bewertung erhalten mit einer Durchschnittsnote von"
+		- else
+			= "Bewertungen erhalten mit einer Durchschnittsnote von"
+		:plain
+			<span>#{"%.1f" % @driver_avg}</span>.
 	- @driver_ratings.each do |rating|
 		%table.rating_table
 			- args = (@user == current_user and @last_ratings < rating.created_at) ? {:class => 'new'} : {}
@@ -46,12 +52,17 @@
 -if @passenger_ratings.empty?
 	%p
 		= "Keine Bewertungen vorhanden."
-
 -else
 	%p
-		= "Durchschnittliche Bewertung ("+@passenger_cnt.to_s+"):"
+		= "Insgesammt"
 		%span
-			= @passenger_avg 
+			= @passenger_cnt.to_s
+		- if @passenger_cnt == 1
+			= "Bewertung erhalten mit einer Durchschnittsnote von"
+		- else
+			= "Bewertungen erhalten mit einer Durchschnittsnote von"
+		:plain
+			<span>#{"%.1f" % @passenger_avg}</span>.
 	- @passenger_ratings.each do |rating|
 		%table.rating_table
 			- args = (@user == current_user and @last_ratings < rating.created_at) ? {:class => 'new'} : {}
