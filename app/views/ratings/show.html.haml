@@ -2,9 +2,8 @@
 	= "Bewertungen für"
 	= link_to(@user.name, url_for(@user))
 %div.other_site2
-	= link_to("zurück", "javascript:history.back()")
-	= "|"
-	= link_to("Erstellte Bewertungen", ratings_path)
+	= link_to(image_tag( '/images/Button_back.png', :alt => "Zurück", :height => "20"), "javascript:history.back()")
+	= link_to(image_tag( '/images/Button_created_rating.png', :alt => "Erstellte Bewertungen", :height => "20"), ratings_path)
 
 %h3
 	= "Bewertungen als Fahrer"

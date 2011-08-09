@@ -35,6 +35,6 @@
 				= f.text_area(:comment, :required => "required")
 		%tr
 			%td.form_table_left
-				= link_to('Zurück', "javascript:history.back()")
+				= link_to(image_tag( '/images/Button_back.png', :alt => "Zurück", :height => "20"), "javascript:history.back()")
 			%td.form_table_right
-				= f.submit 'Bewerten'
+				= image_submit_tag "/images/Button_rate"
