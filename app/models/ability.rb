@@ -15,9 +15,6 @@ class Ability
       can [:outbox, :show, :update], Message do |message|
         message && message.writer == user
       end
-     # can :update, Message do |message|
-     #   message && message.receiver == user 
-     # end
       can [:show, :update], Message do |message|
         message && message.receiver == user
       end
