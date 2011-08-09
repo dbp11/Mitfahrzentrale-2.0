@@ -16,33 +16,18 @@ class CarsController < ApplicationController
   def index
     temp = current_user
     @cars = temp.cars
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @cars }
-    end
   end
 
   # GET /cars/1
   # GET /cars/1.json
   def show
     @car = Car.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @car }
-    end
   end
 
   # GET /cars/new
   # GET /cars/new.json
   def new
     @car = Car.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @car }
-    end
   end
 
   # GET /cars/1/edit
@@ -58,14 +43,10 @@ class CarsController < ApplicationController
     temp = current_user.id
     @car.user_id = temp
 
-    respond_to do |format|
-      if @car.save
-        format.html { redirect_to @car, notice: 'Car was successfully created.' }
-        format.json { render json: @car, status: :created, location: @car }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
+    if @car.save
+      redirect_to @car, notice: 'Car was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -73,15 +54,10 @@ class CarsController < ApplicationController
   # PUT /cars/1.json
   def update
     @car = Car.find(params[:id])
-
-    respond_to do |format|
-      if @car.update_attributes(params[:car])
-        format.html { redirect_to @car, notice: 'Car was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @car.errors, status: :unprocessable_entity }
-      end
+    if @car.update_attributes(params[:car])
+      redirect_to @car, notice: 'Car was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -90,10 +66,6 @@ class CarsController < ApplicationController
   def destroy
     @car = Car.find(params[:id])
     @car.destroy
-
-    respond_to do |format|
-      format.html { redirect_to cars_url }
-      format.json { head :ok }
-    end
+    redirect_to cars_url
   end
 end
