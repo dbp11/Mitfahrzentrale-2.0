@@ -6,9 +6,9 @@ class UpdateRequests < ActiveRecord::Migration
     add_column :requests, :end_radius, :integer
   end
   def down
-    remove_column :requests, :duration, :integer
-    remove_column :requests, :distance, :integer
-    remove_column :requests, :start_radius, :integer
-    remove_column :requests, :end_radius, :integer
+    remove_column :requests, :duration
+    remove_column :requests, :distance
+    remove_column :requests, :start_radius
+    remove_column :requests, :end_radius
   end
 end

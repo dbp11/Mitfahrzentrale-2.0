@@ -4,7 +4,7 @@ class ChangeAttributesUsers < ActiveRecord::Migration
   end
 
   def down 
-    remove_column :users, :role, :string
+    remove_column :users, :role
   end
 end
 

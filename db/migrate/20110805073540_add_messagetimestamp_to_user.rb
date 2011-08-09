@@ -4,6 +4,6 @@ class AddMessagetimestampToUser < ActiveRecord::Migration
   end
 
   def down
-    remove_column :messages, :last_delivery, :datetime
+    remove_column :messages, :last_delivery
   end
 end

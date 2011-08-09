@@ -1,6 +1,6 @@
 class DropTrunkFromCars < ActiveRecord::Migration
   def up
-    remove_column :cars, :trunk, :string
+    remove_column :cars, :trunk
   end
 
   def down
