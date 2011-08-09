@@ -2,93 +2,80 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "variables";
-.cars {
-  .cars_index_table {
-    width: 100%;
-  }		
-  .other_site {
-    width: 100%;
-    text-align: right;
-    margin-top: -2em;
-    margin-bottom: 1em;
-    a {
-      margin-right: 0.5em;
+body.cars {
+  #main{
+    .cars_index_table {
+      width: 100%;
+    }		
+    .other-site {
+      width: 100%;
     }
-  }
-
-  .cars_index_top {
-    tr:first-child {
-      td {
-        width: 100%;
-      }
-      td:first-child{
-        text-align: left;
-        font-size: 20pt;
-      }
-      td:last-child{
-        text-align: left;
-        padding-right: 5px;
-        width: 10px;
+    .cars_index_top {
+      tr:first-child {
+        td {
+          width: 100%;
+        }
+        td:first-child{
+          text-align: left;
+          font-size: 20pt;
+        }
+        td:last-child{
+          text-align: left;
+          padding-right: 5px;
+          width: 10px;
+        }
       }
     }
-  }
-  .cars_index_bot {
-    table-layout: fixed;
-    width: 100%;
-    text-overflow: ellipsis;
-    tr {
+    .cars_index_bot {
+      table-layout: fixed;
+      width: 100%;
+      text-overflow: ellipsis;
+      tr {
+        background-color: $table_bg_color1;
+        td {
+          
+          text-align: center;
+          border-style: solid;
+          padding: 0.1em 0.5em 0.1em 0.5em;
+        }
+      }
+      tr:nth-child(2n+1) {
+        background-color: $table_bg_color2;
+      }
+      tr:first-child {
+        background-color: $table_bg_color0;
+        font-weight: bold;
+        border-bottom: 1px solid;
+      }
+    }
+    .cars_show_index {
+      td{
+        vertical-align: top;
+      }
+      width: 100%;
+      td:first-child {
+        width: 65%;
+      }
+    }
+    .cars_show_left {
+      table-layout: fixed;
       background-color: $table_bg_color1;
-      td {
-        
-        text-align: center;
-        border-style: solid;
-        padding: 0.1em 0.5em 0.1em 0.5em;
+      width: 100%;
+      word-wrap: break-word;
+      tr:nth-child(2n+1){
+        background-color: $table_bg_color2;
+      }
+      td:first-child {
+        width: 30%;
+        text-align: left;
+        font-weight: bold;
+      }
+      td:last-child {
+        text-align: left;
       }
     }
-    tr:nth-child(2n+1) {
-      background-color: $table_bg_color2;
+    .cars_show_right {
+      text-align: center;
     }
-    tr:first-child {
-      background-color: $table_bg_color0;
-      font-weight: bold;
-      border-bottom: 1px solid;
-    }
-  }
-  .cars_show_index {
-    td{
-      vertical-align: top;
-    }
-    width: 100%;
-    td:first-child {
-      width: 65%;
-    }
-  }
-  .cars_show_left {
-    table-layout: fixed;
-    background-color: $table_bg_color1;
-    width: 100%;
-    word-wrap: break-word;
-    tr:nth-child(2n+1){
-      background-color: $table_bg_color2;
-    }
-    td:first-child {
-      width: 30%;
-      text-align: left;
-      font-weight: bold;
-    }
-    td:last-child {
-      text-align: left;
-    }
-  }
-  .cars_show_right {
-    text-align: center;
   }
 }
-
-@-webkit-keyframes resize {
-  from{ height: 40px; width: 40px;}
-  to{ height: 40px; width: 40px;}
-} 
-
-
-

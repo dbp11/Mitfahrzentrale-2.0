@@ -93,12 +93,18 @@
     }
   });
 
+%div.other-site#other-site
+  - if @status == @FAHRER and !trip.finished
+    = link_to(image_tag('/images/Button_delete.png', :alt => "Löschen"), trip, :confirm => "Sind Sie sicher, dass Sie diese Fahrt löschen wollen?", :method => :delete)
+  = link_to(image_tag('/images/Button_back.png', :alt => "Zurück"), "javascript:history.back()")
+%h2 Fahrtdetails
+
 %table.trips_base_table
   %tr
     %td
       %table.trips_show_info_table
         %tr
-          %td.center{:colspan => "4"} Fahrtinformationen
+          %td.left{:colspan => "4"} Fahrtinformationen
         %tr
           %td.left_bold Abfahrt:
           %td.left
@@ -133,12 +139,19 @@
           %td.left_bold#minimal Auto:
           %td.left{:colspan => "3"}= link_to("#{trip.car.car_type}", trip.car) +" (#{trip.car.description.truncate(60)})"
         %tr
+          %td.left_bold#minimal Gep&auml;ck:
+          %td.left{:colspan => "3"}
+            = trip.baggage ? "Es kann Gepäck mitgenommen werden" : "Es kann kein Gepäck mitgenommen werden"
+        %tr
           %td.left_bold Hinweise:
           %td.left{:colspan => "3"}= trip.comment
+
       -#Tabelle mit Mitfahrern
       %table.trips_show_passenger_table
         %tr
-          %td.center{:colspan => "5"}= "Mitfahrer (#{o_seats}/#{seats})"
+          %td.left= "Mitfahrer (#{o_seats}/#{seats})"
+          %td.left= "Bewertung"
+          %td{:colspan => "3"}
         -#Wenn der aktuelle Benutzer weder Fahrer noch Mitfahrer ist, so darf er die Mitfahrer nicht sehen
           (Hinweis wird ausgegeben)
         - if @status != @FAHRER and @status != @MITFAHRER
@@ -149,16 +162,16 @@
           -#Wenn keine Mitfahrer vorhanden, dann Hinweis ausgeben, ansonsten Mitfahrer ausgeben
           - if c_passengers == nil or c_passengers.count <= 0
             %tr
-              %td.center{:colspan => "4"} keine Mitfahrer vorhanden
+              %td.left{:colspan => "4"} keine Mitfahrer vorhanden
           -else
-            %tr
+            -#%tr
               %td Benutzername
               %td.left{:colspan => "4"} Bewertung
             -#Über alle Mitfahrer iterieren
             - c_passengers.each do |passenger|
               %tr
                 %td= link_to "#{passenger}", passenger
-                %td= "#{passenger.get_avg_rating_passenger} (#{passenger.count_ratings_passenger})"
+                %td.center= "%.1f (#{passenger.count_ratings_passenger})" % passenger.get_avg_rating_passenger
                 %td.right
                   -#Wenn der aktuelle Benutzer nicht der Mitfahrer ist, über den gerade iteriert wird,
                     dann gib den "Nachricht schicken"-Link aus
@@ -180,12 +193,14 @@
         %tr
           -#Jeder darf sehen, wieviele offene Bewerbungen es gibt (somit kann jeder selbst entscheiden,
             ob er eine Bewerbung für fruchtbar hält)
-          %td.center{:colspan => "4"}= "Anfragen (#{u_passengers == nil ? "0" : u_passengers.count})"
+          %td.left= "Bewerber (#{u_passengers == nil ? "0" : u_passengers.count})"
+          %td.left= "Bewertung"
+          %td
         -#Die Bewerbungen selbst darf aber nur der Fahrer sehen (und ein Bewerber seine eigene, um
           sie zurücknehmen zu können). Wenn keine Bewerbungen vorhanden, dann Hinweis ausgeben
         - if @status == @FAHRER and (u_passengers == nil or u_passengers.count <= 0)
           %tr
-            %td.center{:colspan => "3"} keine Bewerbungen vorhanden
+            %td.left{:colspan => "3"} keine Bewerbungen vorhanden
         - else
           -#Wenn aktueller Benutzer weder Fahrer noch Bewerber ist,...
           - if @status != @FAHRER and @status != @POTENTIELLER_MITFAHRER
@@ -210,8 +225,8 @@
               -#Für den Fahrer alle Bewerber ausgeben, für Bewerber noch sich selbst
               - if @status == @FAHRER or passenger == user
                 %tr
-                  %td= link_to "#{passenger}", passenger
-                  %td= "#{passenger.get_avg_rating} (#{passenger.count_ratings})"
+                  %td.left= link_to "#{passenger}", passenger
+                  %td.center= "%.1f (#{passenger.count_ratings})" % passenger.get_avg_rating
                   -#Wenn aktueller Benutzer Fahrer ist, dann Link anzeigen zum Nachrichtenschicken,
                     Annehmen und Ablehnen der Bewerbung, ansonsten Link anzeigen, um Bewerbung
                     zurück zu nehmen.
@@ -250,4 +265,3 @@
   var b = document.getElementById("map_canvas").offsetWidth;
   var style = document.getElementById("map_canvas").getAttribute("style");
   document.getElementById("map_canvas").setAttribute("style",style+"height:"+b,0);
-

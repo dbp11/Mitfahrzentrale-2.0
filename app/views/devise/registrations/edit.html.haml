@@ -130,8 +130,14 @@
       %td
         = image_submit_tag "/images/Button_save.png"
   %h3.links
+<<<<<<< HEAD
     #{link_to image_tag( '/images/Button_delete_account.png', :alt => "Account Löschen", :height => "20"), registration_path(resource_name), :confirm => "Sind sie sicher?", :method => :delete}
 
+=======
+    #{link_to image_tag( '/images/Button_delete_account.png', :alt => "Account Löschen"), registration_path(resource_name), :confirm => "Sind sie sicher?", :method => :delete}
+  %p.links
+    = link_to image_tag( '/images/Button_back.png', :alt => "zurück"), :back
+>>>>>>> 8629b64fa9d3cb3a6d2b63dda714ea3d8fd0e75b
 
 
 
