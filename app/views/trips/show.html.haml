@@ -121,7 +121,7 @@
           %td.left_bold#minimal Fahrer:
           %td.left{:colspan => "3"}
             = link_to("#{fahrer.name}", fahrer)
-            = " #{fahrer.get_avg_rating_driver} (#{fahrer.count_ratings_driver})"
+            = " %.1f (#{fahrer.count_ratings_driver})" % fahrer.get_avg_rating_driver
             -#Nur andere als der Fahrer sollen ihm Nachrichten schicken können
             - if @status != @FAHRER
               = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :uid => fahrer.id, :tid => trip.id)) + " "
