@@ -81,6 +81,6 @@
         = t[0].user_id.get_own_driver_rating.to_s
         = "(" + t[0].user.count_ratings.to_s + ")"
 
-= link_to 'Bearbeiten', edit_request_path(@request)
+= link_to image_tag( '/images/Button_edit.png', :alt => "Bearbeiten", :height => "20"), edit_request_path(@request)
 \|
-= link_to 'zurück', requests_path
+= link_to image_tag( '/images/Button_back.png', :alt => "Zurück", :height => "20"), requests_path

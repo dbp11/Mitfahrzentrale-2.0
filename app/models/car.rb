@@ -84,8 +84,9 @@ class Car < ActiveRecord::Base
     "Nummernschild: " + licence + "\n" +
     "Raucher: " + smoker? ? "ja" : "nein"
   end
+  
 
-  #Methode gibt true zurück, wenn dieses Auto in einem noch kommenden Trip verwendet werd,
+  #Methode gibt true zurück, wenn dieses Auto in einem noch kommenden Trip verwendet wird,
   #false sonst
   def is_used
     self.user.to_drive.each do |d|
