@@ -12,22 +12,10 @@
         = f.label:Start
     %tr
       %td
-      %td
-        = f.label:start_street, "Straße"
-      %td
-        =f.text_field:start_street, :placeholder=>"optional"
-    %tr 
-      %td
-      %td
-        = f.label:start_zipcode, "PLZ"
-      %td
-        = f.text_field:start_zipcode, :maxlength=>"5", :size=>"30", :placeholder=>"optional"
-    %tr
-      %td
       %td 
-        =f.label:start_city, "Ort"
+        =f.label:start_city, "Startort"
       %td
-        = f.text_field:start_city, :required=>"required"
+        = f.text_field:start_city, :required=>"required", :placeholder=>"Ort(pflicht), PLZ(optional), Straße(optional)", :size=>"38"
     %tr
       %td
       %td
@@ -38,13 +26,23 @@
     %tr
       %td
       %td 
-        =f.label:start_time, "Datum und Zeit"
+        =f.label:start_time, "Losfahren von:"
       %td
         = f.datetime_select:start_time, 
                            :required => "required",
                            :order=>[:hour,:day, :month, :year],
                            :use_month_numbers=>true,
                            :start_year=>Time.now.year
+                           
+    %tr
+      %td
+      %td 
+        = f.label:end_time, "Bis"
+      %td
+        = f.datetime_select:end_time, :required => "required",
+                            :order=>[:hour,:day, :month, :year],
+                            :use_month_numbers=>true,
+                            :start_year=>Time.now.year
     %tr
       %td
     %tr
@@ -52,22 +50,10 @@
         = f.label:Ziel
     %tr
       %td
-      %td
-        =f.label:end_street, "Straße"
-      %td
-        = f.text_field:end_street, :placeholder=>"optional"
-    %tr
-      %td
-      %td
-        = f.label:end_zipcode, "PLZ"
-      %td
-        = f.text_field:end_zipcode, :maxlength=>"5", :size=>"30", :placeholder=>"optional"
-    %tr
-      %td
       %td 
-        = f.label:end_city, "Ort"
+        = f.label:end_city, "Zielort"
       %td
-        = f.text_field:end_city, :required => "required"
+        = f.text_field:end_city, :required => "required", :placeholder=>"Ort(pflicht), PLZ(optional), Straße(optional)", :size=>"38"
     %tr
       %td
       %td
@@ -76,15 +62,6 @@
         = f.select:end_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
 
 
-    %tr
-      %td
-      %td 
-        = f.label:end_time, "Datum und Zeit"
-      %td
-        = f.datetime_select:end_time, :required => "required",
-                            :order=>[:hour,:day, :month, :year],
-                            :use_month_numbers=>true,
-                            :start_year=>Time.now.year
 
     %tr
       %td 
@@ -107,5 +84,5 @@
       %td
       %td
       %td
-        = f.submit "Erstellen"
+        = image_submit_tag "/images/Button_create.png"
 
