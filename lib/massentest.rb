@@ -42,19 +42,17 @@ until x==anztrips
   puts "Trips "+x.to_s
   user_id = (rand(anzusers)+1)
   car_id = (rand(anzcars)+1)
+  #start_koordinaten    
   plz_start = @plz_array[rand(24119)]
-  begin
-    plz_ende = @plz_array[rand(24119)]
-  end while plz_start==plz_ende
-  #start_koordinaten
+  start=Geocoder.coordinates(plz_start.to_s+",Deutschland")
+  puts "Nil start" if start.nil?
+  sleep(0.5)
+  #end_koordinaten
+  plz_ende = @plz_array[rand(24119)]
+  ende = Geocoder.coordinates(plz_ende.to_s+",Deutschland")
+  sleep(0.5) 
   puts "PLZ-Start:"+plz_start.to_s + " PLZ-Ende:" + plz_ende.to_s
-  sleep(0.5)
-  start=Geocoder.coordinates(plz_start.to_s)
-  sleep(0.5)
-  puts "start ist nil geworden" if start.nil?
   puts "Start-Kord: "+start[0].to_s+"N "+start[1].to_s+"E"
-  #end_koordinaten 
-  ende=Geocoder.coordinates(plz_ende.to_s)
   puts "End-Kord: "+ende[0].to_s+"N "+ende[1].to_s+"E"
 
   t=Trip.new :user_id => user_id, :car_id => car_id, :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_E => ende[0].to_f, :ends_at_N => ende[1].to_f, :start_zipcode => start, :end_zipcode => ende, :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => rand(6)
@@ -69,15 +67,19 @@ until x==anzrequests
   x=x+1
   puts "Request "+x.to_s
   user_id = rand(anzusers)
-  plz_start = @plz_array[rand(24119)]
+  #start_koordinaten
+  begin
+    plz_start = @plz_array[rand(24119)]
+    start=Geocoder.coordinates(plz_start.to_s+",Deutschland")
+  end while(start.nil?)
+  #end_koordinaten 
   begin
     plz_ende = @plz_array[rand(24119)]
-  end while plz_start==plz_ende
-  #start_koordinaten
-  start=Geocoder.coordinates(plz_start.to_s)
-
-  #end_koordinaten 
-  ende=Geocoder.coordinates(plz_ende.to_s)
+    ende = Geocoder.coordinates(plz_ende.to_s+",Deutschland")
+  end while (plz_start==plz_ende or ende.nil?)
+  puts "PLZ-Start:"+plz_start.to_s + " PLZ-Ende:" + plz_ende.to_s
+  puts "Start-Kord: "+start[0].to_s+"N "+start[1].to_s+"E"
+  puts "End-Kord: "+ende[0].to_s+"N "+ende[1].to_s+"E"
 
   r = Request.new :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_N => ende[0].to_f, :ends_at_E => ende[1].to_f, :start_zipcode => start, :end_zipcode => ende, :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => user_id, :start_radius => rand(51), :end_radius => rand(51)
   requests << r
