@@ -13,10 +13,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if params[:ignore] == "1"
-      puts "IGNORIEREN"
       current_user.ignore(@user)
     elsif params[:ignore] == "0"
-      puts "NICHT MEHR IGNORIEREN"
       current_user.unignore(@user)
     end
   end
