@@ -8,8 +8,8 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
-    temp = current_user
-    @ratings = temp.get_own_written_ratings
+    @ratings = current_user.get_own_written_ratings
+    @new_ratings = current_user.get_waiting_ratings
     #Meine erstellten Ratings --> Methode
   end
 
