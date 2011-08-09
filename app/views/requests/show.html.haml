@@ -42,45 +42,52 @@
 
 
 %h4 Dazu passende Trips:
-%table.index_table
-  %tr.index_table_first
-    %td
-      Startort
-    %td
-      Zielort
-    %td
-      Startzeit
-    %td
-      Fahrtzeit
-    %td
-      Strecke
-    %td
-      Gepäck
-    %td
-      link
-    %td
-      Bewertung
-  - @sorted_trips.each do |t|
-    %tr.index_table_second
-      %td 
-        = t[0].start_zipcode.to_s 
-        = t[0].start_city 
+-if @sorted_trips == nil or @sorted_trips.count <= 0
+  %table.index_table
+    %tr
+      %td= "Keine Übereinstimmungen gefunden"
+  %br
+-else
+  %table.index_table
+    %tr.index_table_first
       %td
-        = t[0].end_zipcode.to_s + " " + t[0].end_city
+        Startort
       %td
-        = t[0].start_time.strftime("%d.%m.%Y %H:%M")
+        Zielort
       %td
-        = t[0].get_route_duration
+        Startzeit
       %td
-        = t[0].get_route_distance
+        Fahrtzeit
       %td
-        = t[0].baggage? ? "Ja" : "Nein"
+        Strecke
       %td
-        = link_to 'Zur Fahrt', "/trips/"+t[0].id.to_s
+        Gepäck
       %td
-        = t[0].user.get_own_driver_ratings.to_s
-        = "(" + t[0].user.count_ratings.to_s + ")"
-
+        link
+      %td
+        Bewertung
+    - @sorted_trips.each do |t|
+      %tr.index_table_second
+        %td 
+          = t[0].start_zipcode.to_s 
+          = t[0].start_city 
+        %td
+          = t[0].end_zipcode.to_s + " " + t[0].end_city
+        %td
+          = t[0].start_time.strftime("%d.%m.%Y %H:%M")
+        %td
+          = t[0].get_route_distance
+        %td
+          = t[0].get_route_duration
+        %td
+          = t[0].baggage? ? "Ja" : "Nein"
+        %td
+          = link_to 'Zur Fahrt', "/trips/"+t[0].id.to_s
+        %td
+          = "%.1f" % t[0].user.get_avg_driver_ratings
+          = "(" + t[0].user.count_ratings.to_s + ")"
+%br
 = link_to image_tag( '/images/Button_edit.png', :alt => "Bearbeiten", :height => "20"), edit_request_path(@request)
-
+%br
+%br
 = link_to image_tag( '/images/Button_back.png', :alt => "Zurück", :height => "20"), requests_path

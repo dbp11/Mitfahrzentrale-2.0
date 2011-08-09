@@ -72,7 +72,7 @@ class CarsController < ApplicationController
   def destroy
     @car = Car.find(params[:id])
     if @car.is_used
-      redirect_to trips_path, notice: 'Das Auto wird fuer eine Pfad genutzt und kann deshalb nicht entfernt werden.'
+      redirect_to trips_path, notice: 'Das Auto wird fuer eine Fahrt genutzt und kann deshalb nicht entfernt werden.'
     else
       @car.destroy
       redirect_to cars_url
