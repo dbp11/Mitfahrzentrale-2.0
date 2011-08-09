@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
   # Zeitstempel und Anzahl der neuen Nachrichten werden für die Anzeige gebraucht
   def index
     # Alle empfangenen Nachrichten des Nutzers
+
     @messages = current_user.get_received_messages
     # Zeitstempel des letzten Aufrufs
     @last_delivery = current_user.last_delivery

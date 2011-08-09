@@ -85,4 +85,13 @@ class Car < ActiveRecord::Base
     "Raucher: " + smoker? ? "ja" : "nein"
   end
 
+  def is_used
+    self.user.to_drive.each do |d|
+      if d.car == self
+        return true
+      end
+    end
+    return false
+  end
+
 end
