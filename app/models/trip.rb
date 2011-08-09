@@ -94,39 +94,43 @@ class Trip < ActiveRecord::Base
 
     start_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
-        start_zipcode = i["long_name"]
+        self.start_zipcode = i["long_name"]
       end
       if i["types"].include?("locality")
-        start_city = i["long_name"]
+        self.start_city = i["long_name"]
       end
       if i["types"].include?("route")
-         start_street = i["long_name"]
+         self.start_street = i["long_name"]
       end
       if i["types"].include?("street_number")
-        if start_street != nil
-          start_street = start_street + " "+ i["long_name"]
+        if self.start_street != nil
+          self.start_street = self.start_street + " "+ i["long_name"]
         end
         end
      end
     end_a =  Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
                self.ends_at_E.to_s + "E", "de")[0][:full_data]
     
+
+    puts "da bin ich nochmal"
     end_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
-        end_zipcode = i["long_name"]
+        self.end_zipcode = i["long_name"]
       end
       if i["types"].include?("locality")
-        end_city = i["long_name"]
+        self.end_city = i["long_name"]
       end
       if i["types"].include?("route")
-         end_street = i["long_name"]
+         self.end_street = i["long_name"]
       end
       if i["types"].include?("street_number")
-        if end_street != nil
-          end_street = end_street + " " + i["long_name"]
+        if self.end_street != nil
+          self.end_street = end_street + " " + i["long_name"]
         end
       end
      end
+    puts "also wenn dieser text kommt dann ist die methode durchgelaufen, dann isses ein controller problem"
+    return self
   end 
 
 
@@ -308,7 +312,7 @@ class Trip < ActiveRecord::Base
   #
   # @return Distanz ( x Km)
   def get_route_distance
-    return (distance / 1000).round(3).to_s + "km"
+    return distance.to_s + "Km"
   end
 
   # Gibt aus ob ein übergeben User für den Trip akzeptiert wurde
