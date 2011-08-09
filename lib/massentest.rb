@@ -13,71 +13,83 @@ anzpassenger = 200
 #Erstellen von  Users
 x=0
 users=[]
+puts "User Erstellen"
 until x==anzusers
   x=x+1
+  puts "User "+x.to_s
   plz=@plz_array[rand(24119)]
   u=User.new :email => "Test"+x.to_s+"@uos.com", :password => "dkruempe",:password_confirmation => "dkruempe", :name => "Dominik Krümpelmann", :user_type => true, :sex => true, :address => "Großer Esch 20", :addressN => "effse", :addressE => "fsefsf", :zipcode => plz, :phone => "054571598"+x.to_s, :instantmessenger => "icq: 5465465"+x.to_s, :city => "Hopsten", :email_notifications => true, :visible_phone => true, :visible_email => true, :visible_address => true, :visible_age => true, :visible_im => true, :visible_cars => true, :birthday => Date.new(1989,12,28), :visible_zip => true, :user_type => false, :visible_city => true, :business => false, :last_delivery => Time.now, :last_ratings => Time.now, :role => "member"
   users << u
 end
 
 #Erstellen von  Cars
+x=0
 cars=[]
+puts "Cars Erstellen"
 until x==anzcars
+  x=x+1
+  puts "Cars "+x.to_s
     c= Car.new :user_id => (rand(anzusers+1)), :seats => 5, :licence => "10234", :price_km => 5.5, :smoker => true, :description => "Kein Kofferraum", :car_type => "BMW"
   cars << c
 end
 
 #Erstellen von  Trips
-
+x=0
 trips=[]
+puts "Trips Erstellen"
 until x==anztrips
-  user_id = (rand(anzusers+1))
+  x=x+1
+  puts "Trips "+x.to_s
+  user_id = (rand(anzusers)+1)
+  car_id = (rand(anzcars)+1)
   plz_start = @plz_array[rand(24119)]
   begin
     plz_ende = @plz_array[rand(24119)]
-  end while plz_start=plz_ende
+  end while plz_start==plz_ende
   #start_koordinaten
-  start=Geocoder.coordinates(plz_start)
-  start[0]=starts_N
-  start[1]=starts_E
-
+  puts "PLZ-Start:"+plz_start.to_s + " PLZ-Ende:" + plz_ende.to_s
+  sleep(0.5)
+  start=Geocoder.coordinates(plz_start.to_s)
+  sleep(0.5)
+  puts "start ist nil geworden" if start.nil?
+  puts "Start-Kord: "+start[0].to_s+"N "+start[1].to_s+"E"
   #end_koordinaten 
-  ende=Geocoder.coordinates(plz_ende)
-  ende[0]=ends_N
-  ende[1]=ends_E
-  t=Trip.new :user_id => user_id, :car_id => User.all[user_id], :starts_at_N => start_N, :starts_at_E => starts_E, :ends_at_E => ends_E, :ends_at_N => ends_N, :start_zipcode => start, :address_zipcode => ende, :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => 5
-  t.set_routes
+  ende=Geocoder.coordinates(plz_ende.to_s)
+  puts "End-Kord: "+ende[0].to_s+"N "+ende[1].to_s+"E"
+
+  t=Trip.new :user_id => user_id, :car_id => car_id, :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_E => ende[0].to_f, :ends_at_N => ende[1].to_f, :start_zipcode => start, :end_zipcode => ende, :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => rand(6)
   trips << t
 end
 
 #Erstellen von  Requests
-
+x=0
 requests=[]
+puts "Requests Erstellen"
 until x==anzrequests
-  user_id = rand(anzUsers)
+  x=x+1
+  puts "Request "+x.to_s
+  user_id = rand(anzusers)
   plz_start = @plz_array[rand(24119)]
   begin
     plz_ende = @plz_array[rand(24119)]
-  end while plz_start=plz_ende
+  end while plz_start==plz_ende
   #start_koordinaten
-  start=Geocoder.coordinates(plz_start)
-  start[0]=starts_N
-  start[1]=starts_E
+  start=Geocoder.coordinates(plz_start.to_s)
 
   #end_koordinaten 
-  ende=Geocoder.coordinates(plz_ende)
-  ende[0]=ends_N
-  ende[1]=ends_E
+  ende=Geocoder.coordinates(plz_ende.to_s)
 
-  r = Request.new :starts_at_N => starts_N, :starts_at_E => starts_E, :ends_at_N => ends_N, :ends_at_E => ends_E, :start_zipcode => start, :end_zipcode => ende, :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => user_id, :start_radius => rand(51), :end_radius => rand(51)
-  r.set_routes
+  r = Request.new :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_N => ende[0].to_f, :ends_at_E => ende[1].to_f, :start_zipcode => start, :end_zipcode => ende, :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => user_id, :start_radius => rand(51), :end_radius => rand(51)
   requests << r
 end
 
 #Erstellen von  Ratings
-
+x=0
 ratings=[]
+puts "Ratings Erstellen"
 until x==anzratings
+  x=x+1
+  puts "Ratings "+x.to_s
   trip_id = rand(anztrips+1)
   t = Trip.all[trip_id]
   #Autor und Empfänger bestimmen
@@ -90,11 +102,15 @@ until x==anzratings
   rarings << ra
 end
 
-#Erstellen von 15000 Passengers
+#Erstellen von Passengers
+x=0
 passengers=[]
+puts "Passengers Erstellen"
 until x==anzpassenger
-  trip = Trip.all[rand(anztrips+1)]
-  user = User.all[rand(anzusers+1)]
+  x=x+1
+  puts "Passengers "+x.to_s
+  trip = Trip.all[rand(anztrips)+1]
+  user = User.all[rand(anzusers)+1]
   confirmed = rand(2)
   con=false
   if confirmed==0
@@ -115,11 +131,13 @@ end
 
 trips.each do |t|
   t.set_address_info
+  t.set_route
   t.save!
 end
 
 requests.each do |t|
   t.set_address_info
+  t.set_route
   t.save!
 end
 
