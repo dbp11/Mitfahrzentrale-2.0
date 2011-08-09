@@ -17,7 +17,6 @@
           %td Preis/km
           %td Raucher
           %td Kennzeichen
-          %td Beschreibung
           %td Editieren
           %td Löschen
         - @cars.each do |car|
@@ -32,7 +31,6 @@
             %td
               = car.smoker? ? "Ja" : "Nein"
             %td= car.licence
-            %td= car.description
             %td= link_to image_tag( '/images/Button_edit.png', :alt => "Editieren", :height => "20"), edit_car_path(car)
             %td= link_to image_tag( '/images/Button_delete.png', :alt => "Löschen",:height => "20"), car, :confirm => 'Bist du sicher?', :method => :delete
   %tr
