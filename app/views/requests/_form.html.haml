@@ -13,9 +13,9 @@
     %tr
       %td
       %td 
-        =f.label:start_city, "Ort"
+        =f.label:start_city, "Startort"
       %td
-        = f.text_field:start_city, :required=>"required"
+        = f.text_field:start_city, :required=>"required", :placeholder=>"Ort(pflicht), PLZ(optional), Straße(optional)", :size=>"38"
     %tr
       %td
       %td
@@ -51,9 +51,9 @@
     %tr
       %td
       %td 
-        = f.label:end_city, "Ort"
+        = f.label:end_city, "Zielort"
       %td
-        = f.text_field:end_city, :required => "required"
+        = f.text_field:end_city, :required => "required", :placeholder=>"Ort(pflicht), PLZ(optional), Straße(optional)", :size=>"38"
     %tr
       %td
       %td
