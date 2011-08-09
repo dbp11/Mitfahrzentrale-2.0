@@ -3,31 +3,31 @@
 en:
   errors:
     messages:
-      expired: "has expired, please request a new one"
-      not_found: "not found"
+      expired: "abgelaufen, bitte einen neuen anlegen"
+      not_found: "nicht gefunden"
       already_confirmed: "was already confirmed, please try signing in"
-      not_locked: "was not locked"
+      not_locked: "nicht gespeichert"
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
 
   devise:
     failure:
-      already_authenticated: 'You are already signed in.'
-      unauthenticated: 'You need to sign in or sign up before continuing.'
+      already_authenticated: 'Sie sind eingeloggt.'
+      unauthenticated: 'Sie müssen sich an oder abmelden, um fortzufahren'
       unconfirmed: 'You have to confirm your account before continuing.'
-      locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
-      invalid_token: 'Invalid authentication token.'
-      timeout: 'Your session expired, please sign in again to continue.'
-      inactive: 'Your account was not activated yet.'
+      locked: 'Ihr Account wurde gespeichert.'
+      invalid: 'Ungültige E-Mail oder Password.'
+      invalid_token: 'Ungültige Authentifizierung.'
+      timeout: 'Ihre Sitzung wurde beendet, bitte loggen sie sich zum fortfahren erneut ein.'
+      inactive: 'Account ist inaktiv.'
     sessions:
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
+      signed_in: 'Eingeloggt'
+      signed_out: 'Ausgeloggt.'
     passwords:
-      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
-      send_paranoid_instructions: "If your e-mail exists on our database, you will receive a password recovery link on your e-mail"
+      send_instructions: 'Sie werden in wenigen Minuten eine E-Mail mit instrucktionen zum ändern ihres Passwords bekommen.'
+      updated: 'Ihr Password wurde erfolgreich geändert. Sie sind eingeloggt.'
+      send_paranoid_instructions: "Wenn ihre E-Mail bereits in der Datenbank existiert, werden sie eine Password Wiederherrstellungsmail bekommen"
     confirmations:
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
