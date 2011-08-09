@@ -3,6 +3,6 @@ class AddVisiblezipToUser < ActiveRecord::Migration
     add_column :users, :visible_zip, :boolean
   end
   def down
-    remove_column :users, :visible_zip, :boolean
+    remove_column :users, :visible_zip
   end
 end

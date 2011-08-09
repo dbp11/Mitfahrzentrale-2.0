@@ -4,6 +4,6 @@ class AddSubjectMessages < ActiveRecord::Migration
   end
 
   def down
-    remove_column :messages, :subject, :string
+    remove_column :messages, :subject
   end
 end
