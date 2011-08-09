@@ -243,7 +243,7 @@ before_validation :set_member, :set_last_delivery_ratings
        then erg = erg << x
      end
    end
-   return erg
+   return erg.sort{|a,b| b.start_time <=> a.start_time}
   end
 
   # Noch nicht vergangene angebotene Trips des Users
@@ -255,7 +255,7 @@ before_validation :set_member, :set_last_delivery_ratings
         then erg = erg << x
       end
     end
-    return erg
+    return erg.sort{|a,b| a.start_time <=> b.start_time}
   end
 
   # Vergangene Suchen des Users
@@ -267,7 +267,7 @@ before_validation :set_member, :set_last_delivery_ratings
         then erg = erg << x
       end
     end
-    return erg
+    return erg.sort{|a,b| b.start_time <=> a.start_time}
   end
 
   # Noch laufende Suchen des Users
@@ -279,7 +279,7 @@ before_validation :set_member, :set_last_delivery_ratings
         then erg = erg << x
       end
     end
-    return erg
+    return erg.sort{|a,b| a.start_time <=> b.start_time}
   end
 
   # Liefert alle Trips des Users zurück, bei denen er sich um Mitfahrt
