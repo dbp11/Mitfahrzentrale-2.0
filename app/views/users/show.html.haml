@@ -1,11 +1,9 @@
-%h2 
-  Profil
 %div.other_site
-  = link_to 'Bewertungen', "/ratings/"+@user.id.to_s
+  = link_to image_tag( '/images/Button_recieved_rating.png', :alt => "Bearbeiten"), "/ratings/"+@user.id.to_s
   -if current_user == @user
     = link_to(image_tag( '/images/Button_edit.png', :alt => "Bearbeiten"), edit_user_registration_path)
   -else
-    - if current_user.is_ignored(@user) == true
+    - if current_user.is_ignored(@user) != true
       = link_to(image_tag( '/images/Button_ignore.png', :alt => "ignorieren"), url_for(:action=>"update", :controller=>"users", :ignore=>"1") ) 
     - else
       = link_to(image_tag( '/images/Button_ignore_not.png', :alt => "ignorieren aufheben"), url_for(:action=>"update", :controller=>"users", :ignore=>"0") )
