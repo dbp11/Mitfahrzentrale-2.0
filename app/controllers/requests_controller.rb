@@ -38,14 +38,15 @@ class RequestsController < ApplicationController
   # POST /requests.json
   def create
     #@request = Request.new(params[:request])
-    start = Geocoder.coordinates(params[:request][:start_street]+" "+params[:request][:start_zipcode]+" "+params[:request][:start_city])
-    ende= Geocoder.coordinates(params[:request][:end_street]+" "+params[:request][:end_zipcode]+" "+params[:request][:end_city])
+    start = Geocoder.coordinates(params[:request][:start_city])
+    ende= Geocoder.coordinates(params[:request][:end_city])
     @request = Request.new(params[:request])
     @request.user_id = current_user.id
     @request.starts_at_N = start[0]
     @request.starts_at_E = start[1]
     @request.ends_at_N = ende[0]
     @request.ends_at_E = ende[1]
+    @request = @request.set_address_info 
     @request.set_route
 
     if @request.save

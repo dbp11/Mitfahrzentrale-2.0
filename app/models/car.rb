@@ -71,10 +71,10 @@ class Car < ActiveRecord::Base
   
   
 
-  #Von Paperclip gefordertes Statement zum Anhängen von Bildern
+  # Von Paperclip gefordertes Statement zum Anhängen von Bildern
   has_attached_file :carpic, :styles => { :medium =>  "400x400>", :thumb => "100x100>"}
 
-  #to String Methode für Cars
+  # to String Methode für Cars
   def to_s
     "Besitzer: " + user + "\n" +
     "Typ:" + description + "\n" +
@@ -84,9 +84,11 @@ class Car < ActiveRecord::Base
     "Nummernschild: " + licence + "\n" +
     "Raucher: " + smoker? ? "ja" : "nein"
   end
+  
 
-  #Methode gibt true zurück, wenn dieses Auto in einem noch kommenden Trip verwendet werd,
-  #false sonst
+  # Methode gibt true zurück, wenn dieses Auto in einem noch kommenden Trip
+  # verwendet wird,
+  # false sonst
   def is_used
     self.user.to_drive.each do |d|
       if d.car == self
