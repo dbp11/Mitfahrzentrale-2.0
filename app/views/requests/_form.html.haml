@@ -1,3 +1,5 @@
+- t = Time.now
+- t + (60 * 15)
 = form_for @request do |f|
   -if @request.errors.any?
     #error_explanation
@@ -15,7 +17,7 @@
       %td 
         =f.label:start_city, "Startort"
       %td
-        = f.text_field:start_city, :required=>"required", :placeholder=>"Ort(pflicht), PLZ(optional), Straße(optional)", :size=>"38", :autofocus=>"autofocus"
+        = f.text_field:start_city, :required=>"required", :placeholder=>"Ort(pflicht), PLZ(optional), Straße(optional)", :size=>"46", :autofocus=>"autofocus"
     %tr
       %td
       %td
@@ -26,23 +28,31 @@
     %tr
       %td
       %td 
-        =f.label:start_time, "Losfahren von:"
+        =f.label:start_time, "Startzeit:"
       %td
-        = f.datetime_select:start_time, 
-                           :required => "required",
-                           :order=>[:hour,:day, :month, :year],
-                           :use_month_numbers=>true,
-                           :start_year=>Time.now.year
+        - bla = 15.minutes.from_now
+        - bla = bla - (bla.min*60) + (bla.min/5 *5)*60
+        = f.datetime_select :start_time, 
+                            :required => "required",
+                            :default => bla,
+                            :minute_step => 5,
+                            :order=>[:hour,:day, :month, :year],
+                            :start_year=>t.year
+
                            
     %tr
       %td
       %td 
-        = f.label:end_time, "Bis"
+        = f.label:end_time, "Endzeit:"
       %td
-        = f.datetime_select:end_time, :required => "required",
+        = f.datetime_select :end_time, 
+                            :required => "required",
+                            :default => bla,
+                            :minute_step => 5,
                             :order=>[:hour,:day, :month, :year],
-                            :use_month_numbers=>true,
-                            :start_year=>Time.now.year
+                            :use_month_names=> %w(Januar Februar März April Mai Juni Juli August September Oktober November Dezember),
+                            :start_year=>t.year
+                            
     %tr
       %td
     %tr
@@ -53,7 +63,7 @@
       %td 
         = f.label:end_city, "Zielort"
       %td
-        = f.text_field:end_city, :required => "required", :placeholder=>"Ort(pflicht), PLZ(optional), Straße(optional)", :size=>"38"
+        = f.text_field:end_city, :required => "required", :placeholder=>"Ort(pflicht), PLZ(optional), Straße(optional)", :size=>"46"
     %tr
       %td
       %td
@@ -77,7 +87,7 @@
       %td
         = f.label:comment, "Anmerkungen"
       %td
-        = f.text_area:comment, :rows=>"5"
+        = f.text_area:comment, :rows=>"4", :cols => "48"
 
     %tr
       %td
