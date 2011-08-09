@@ -5,8 +5,8 @@ cars_001:
   seats: 5
   licence: '10234'
   smoker: t
-  created_at: '2011-08-08 11:22:09.309728'
-  updated_at: '2011-08-08 11:22:09.309728'
+  created_at: '2011-08-08 14:04:07.719225'
+  updated_at: '2011-08-08 14:04:07.719225'
   description: Kein Kofferraum
   carpic_file_name: !!null 
   carpic_content_type: !!null 
@@ -20,8 +20,8 @@ cars_002:
   seats: 2
   licence: '40321'
   smoker: f
-  created_at: '2011-08-08 11:22:09.323430'
-  updated_at: '2011-08-08 11:22:09.323430'
+  created_at: '2011-08-08 14:04:07.732958'
+  updated_at: '2011-08-08 14:04:07.732958'
   description: Kofferraum verfügbar aber kein Platz
   carpic_file_name: !!null 
   carpic_content_type: !!null 
@@ -35,8 +35,8 @@ cars_003:
   seats: 3
   licence: '12345'
   smoker: t
-  created_at: '2011-08-08 11:22:09.334693'
-  updated_at: '2011-08-08 11:22:09.334693'
+  created_at: '2011-08-08 14:04:07.744274'
+  updated_at: '2011-08-08 14:04:07.744274'
   description: Auto rostet und keine Reifen
   carpic_file_name: !!null 
   carpic_content_type: !!null 
@@ -50,8 +50,8 @@ cars_004:
   seats: 4
   licence: '54321'
   smoker: f
-  created_at: '2011-08-08 11:22:09.345953'
-  updated_at: '2011-08-08 11:22:09.345953'
+  created_at: '2011-08-08 14:04:07.755851'
+  updated_at: '2011-08-08 14:04:07.755851'
   description: Test test
   carpic_file_name: !!null 
   carpic_content_type: !!null 
@@ -65,8 +65,8 @@ cars_005:
   seats: 2
   licence: '45646'
   smoker: t
-  created_at: '2011-08-08 11:22:09.357476'
-  updated_at: '2011-08-08 11:22:09.357476'
+  created_at: '2011-08-08 14:04:07.767387'
+  updated_at: '2011-08-08 14:04:07.767387'
   description: aha aha! Hier soll etwas sinnvolles stehen?
   carpic_file_name: !!null 
   carpic_content_type: !!null 

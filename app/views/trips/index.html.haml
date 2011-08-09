@@ -11,8 +11,11 @@
 
   to do:
     - Layout
-
+%h2 Übersicht Fahrten
 %h3 Noch kommende Fahrten als Fahrer
+
+.other_site= link_to 'Neue Fahrt erstellen', new_trip_path
+%br
 %table.trips_index_table
   - if @future_trips == nil or @future_trips.count <= 0
     %tr
@@ -109,4 +112,3 @@
 %br/
 
 
-= link_to 'Neue Fahrt erstellen', new_trip_path

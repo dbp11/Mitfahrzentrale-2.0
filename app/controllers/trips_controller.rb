@@ -158,18 +158,20 @@ class TripsController < ApplicationController
     @trip = Trip.new()
     @trip.user_id = current_user.id
     @trip.car_id = params[:car]
-    @trip.start_zipcode = params[:address_start_plz]
-    @trip.start_street = params[:address_start_street]
-    @trip.start_city = params[:address_start_city]
-    temp = Geocoder.coordinates(@trip.start_street+" "+@trip.start_zipcode.to_s+" "+@trip.start_city)
+    #@trip.start_zipcode = params[:address_start_plz]
+    #@trip.start_street = params[:address_start_street]
+    #@trip.start_city = params[:address_start_city]
+    temp = Geocoder.coordinates(params[:address_start])
     @trip.starts_at_N = temp[0]
     @trip.starts_at_E = temp[1]
-    @trip.end_zipcode = params[:address_end_plz]
-    @trip.end_street = params[:address_end_street]
-    @trip.end_city = params[:address_end_city]
-    temp = Geocoder.coordinates(@trip.end_street+" "+@trip.end_zipcode.to_s+" "+@trip.end_city)
+    #@trip.end_zipcode = params[:address_end_plz]
+    #@trip.end_street = params[:address_end_street]
+    #@trip.end_city = params[:address_end_city]
+    temp = Geocoder.coordinates(params[:address_end])
     @trip.ends_at_N = temp[0]
     @trip.ends_at_E = temp[1]
+    @trip.set_address_info
+    @trip.set_route
     @trip.comment = params[:comment]
     #Hier Schwierigkeiten View != Model
     @trip.start_time = params[:start_year]+"-"+params[:start_month]+"-"+params[:start_day]+"T"+params[:start_hour]+":"+params[:start_minute]
@@ -179,12 +181,18 @@ class TripsController < ApplicationController
     else
       @trip.free_seats = params[:free_seats]
     end
-    @trip.set_route
     if params[:baggage] == nil
       @trip.baggage = false
     else
       @trip.baggage = true
     end
+    puts @trip.start_city
+    puts @trip.end_city
+    puts @trip.start_time
+    puts @trip.free_seats
+    puts @trip.duration
+    puts @trip.distance
+
     respond_to do |format|
       if @trip.save
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }

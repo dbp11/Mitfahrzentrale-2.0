@@ -1,8 +1,10 @@
 %h2 
   Profil
--if current_user == @user
-  %div.other_site
+%div.other_site
+  -if current_user == @user
     = link_to("bearbeiten", edit_user_registration_path)
+  -else
+    = link_to("ignorieren", url_for(:action=>"update", :controller=>"users", :ignore=>true) )
 
 %table.form_arround
   %tr.form_arround_row
@@ -74,5 +76,6 @@
                 = image_tag "../images/user/männlich.jpg"
               - else 
                 = image_tag "../images/user/weiblich.jpg"
+
         
 

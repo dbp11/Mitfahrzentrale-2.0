@@ -12,7 +12,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
+    if params[:ignore]
+      current_user.ignore(@user)
+    end
   end
 
   #GET /users/1/edit_profil

@@ -7,14 +7,14 @@ trips_001:
   starts_at_E: 7.4452
   ends_at_E: 8.13409
   ends_at_N: 52.57975
-  start_time: '2011-08-08 11:23:08.443221'
+  start_time: '2011-08-08 14:05:05.548384'
   comment: Biete eine Fahrt an!
-  created_at: '2011-08-08 11:22:08.915174'
-  updated_at: '2011-08-08 11:22:08.915174'
+  created_at: '2011-08-08 14:04:07.321368'
+  updated_at: '2011-08-08 14:04:07.321368'
   baggage: t
   free_seats: 4
-  distance: 0
-  duration: 0
+  distance: 82
+  duration: 3144
   start_zipcode: 48431
   start_street: Hafenbahn 10
   start_city: Rheine
@@ -29,14 +29,14 @@ trips_002:
   starts_at_E: 11.5801863
   ends_at_E: 8.807081
   ends_at_N: 53.074981
-  start_time: '2011-08-08 11:23:08.463157'
+  start_time: '2011-08-09 14:04:05.567816'
   comment: Platz für alle :D!
-  created_at: '2011-08-08 11:22:08.946565'
-  updated_at: '2011-08-08 11:22:08.946565'
+  created_at: '2011-08-08 14:04:07.384031'
+  updated_at: '2011-08-08 14:04:07.384031'
   baggage: t
   free_seats: 4
-  distance: 0
-  duration: 0
+  distance: 749
+  duration: 22426
   start_zipcode: 80539
   start_street: ''
   start_city: München
@@ -51,14 +51,14 @@ trips_003:
   starts_at_E: 9.991586
   ends_at_E: 13.4113999
   ends_at_N: 52.523401
-  start_time: '2011-08-09 11:22:08.463711'
+  start_time: '2011-08-09 14:04:05.568475'
   comment: Ahoi
-  created_at: '2011-08-08 11:22:08.958384'
-  updated_at: '2011-08-08 11:22:08.958384'
+  created_at: '2011-08-08 14:04:07.396383'
+  updated_at: '2011-08-08 14:04:07.396383'
   baggage: f
   free_seats: 3
-  distance: 0
-  duration: 0
+  distance: 296
+  duration: 9741
   start_zipcode: 20354
   start_street: ''
   start_city: Hamburg
@@ -73,14 +73,14 @@ trips_004:
   starts_at_E: 7.43840300000001
   ends_at_E: 7.3237899999999
   ends_at_N: 52.52306
-  start_time: '2011-08-08 11:23:08.464295'
+  start_time: '2011-08-08 14:05:05.568996'
   comment: Boom Boom
-  created_at: '2011-08-08 11:22:08.970054'
-  updated_at: '2011-08-08 11:22:08.970054'
+  created_at: '2011-08-08 14:04:07.408492'
+  updated_at: '2011-08-08 14:04:07.408492'
   baggage: t
   free_seats: 5
-  distance: 0
-  duration: 0
+  distance: 33
+  duration: 1997
   start_zipcode: 48431
   start_street: ''
   start_city: Rheine
@@ -95,14 +95,14 @@ trips_005:
   starts_at_E: 7.2911623
   ends_at_E: 8.0531882
   ends_at_N: 52.267281
-  start_time: '2011-08-08 11:23:08.464756'
+  start_time: '2011-08-08 14:05:05.569473'
   comment: Schnell schnell!
-  created_at: '2011-08-08 11:22:08.982041'
-  updated_at: '2011-08-08 11:22:08.982041'
+  created_at: '2011-08-08 14:04:07.420033'
+  updated_at: '2011-08-08 14:04:07.420033'
   baggage: f
   free_seats: 4
-  distance: 0
-  duration: 0
+  distance: 93
+  duration: 3824
   start_zipcode: 49716
   start_street: ''
   start_city: Meppen

@@ -6,29 +6,25 @@
   %table
     %tr
       %td
-        Start-Ort
+        Startadresse
         %br/
         &nbsp;
       %td
-        = text_field_tag(:address_start_street, nil, :placeholder => "Str. + Hausnr. (Optional)")
-        = text_field_tag(:address_start_plz, nil, :placeholder => "Postleitzahl (Optional)")
-        = text_field_tag(:address_start_city, nil, :placeholder => "Stadt (Pflichtfeld)", :required => "required")
-        %br/
-        &nbsp;
-    %tr
-      %td
-        Ziel-Ort
-        %br/
-        &nbsp;
-      %td
-        = text_field_tag(:address_end_street, nil, :placeholder => "Str. + Hausnr. (Optional)")
-        = text_field_tag(:address_end_plz, nil, :placeholder => "Postleitzahl (Optional)")
-        = text_field_tag(:address_end_city, nil, :placeholder => "Stadt (Pflichtfeld)", :required => "required")
+        = text_field_tag(:address_start, nil, :placeholder => "Stadt (pflicht), PLZ (optional), Str.  Hausnr. (Optional)", :size => "50", :required => "required")
         %br/
         &nbsp;
     %tr
       %td
-        Abfahrt-Zeit
+        Zieladresse
+        %br/
+        &nbsp;
+      %td
+        = text_field_tag(:address_end, nil, :placeholder => "Stadt (pflicht), PLZ (optional), Str.  Hausnr. (Optional)", :size => "50", :required => "required")
+        %br/
+        &nbsp;
+    %tr
+      %td
+        Abfahrtszeit
         %br/
         &nbsp;
       %td
@@ -65,26 +61,26 @@
         &nbsp;-&nbsp;
         %select{:name => "start_hour", :required => "required"}
           - 24.times do |i|
-            - if (i+1) < 10
-              - if (i+1) == Time.now.hour
+            - if i < 10
+              - if i == Time.now.hour
                 %option{:value => "0"+i.to_s, :selected => "selected"}= "0#{i}"
               - else
                 %option{:value => "0"+i.to_s}= "0#{i}"
             - else
-              - if (i+1) == Time.now.hour
+              - if i == Time.now.hour
                 %option{:value => i.to_s, :selected => "selected"}= "#{i}"
               - else
                 %option{:value => i.to_s}= "#{i}"
         =":"
         %select{:name => "start_minute", :required => "required"}
           - 60.times do |i|
-            - if (i+1) < 10
-              - if (i+1) == Time.now.min
+            - if i < 10
+              - if i == Time.now.min
                 %option{:value => "0"+i.to_s, :selected => "selected"}= "0#{i}"
               - else
                 %option{:value => "0"+i.to_s}= "0#{i}"
             - else
-              - if (i+1) == Time.now.min
+              - if i == Time.now.min
                 %option{:value => i.to_s, :selected => "selected"}= "#{i}"
               - else
                 %option{:value => i.to_s}= "#{i}"
@@ -103,7 +99,7 @@
         &nbsp;
     %tr
       %td
-        Sitzplätze 
+        Sitzpl&auml;tze 
         %br/
         &nbsp;
       %td

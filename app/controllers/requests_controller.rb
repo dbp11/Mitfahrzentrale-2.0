@@ -62,6 +62,7 @@ class RequestsController < ApplicationController
     @request.ends_at_N = ende[0]
     @request.ends_at_E = ende[1]
     @request.set_route
+
     respond_to do |format|
       if @request.save
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
