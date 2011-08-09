@@ -55,10 +55,15 @@ class User < ActiveRecord::Base
   has_attached_file :pic, :styles => { :medium =>  "300x300>", 
                                            :thumb => "100x100>"}
 
-before_validation :set_member, :set_last_delivery 
+before_validation :set_member, :set_last_delivery_ratings 
   #before_save {|user| user.role = "member" if user.role.blank?} 
-  def set_last_delivery
-    self.last_delivery = Time.now
+  def set_last_delivery_ratings
+    if last_delivery.nil?
+      self.last_delivery = Time.now
+    end
+    if self.last_ratings.nil?
+      self.last_ratings = Time.now
+    end
   end
 
   def set_member
@@ -194,7 +199,7 @@ before_validation :set_member, :set_last_delivery
   has_many :cars, :dependent => :destroy
   # Beziehung von User zur Jointable Passengers - Diese Relation ist notwendig 
   # um zu überprüfen, ob ein User als Mitfahrer akzeptiert oder abgelehnt wurde
-  has_many :passengers, :dependent => :destroy
+  has_many :passengers, :dependent => :nullify
   # Beziehung vom User zu Requests. Requests stellen die Gesuche dar, also
   # Strecken, die man als Nutzer gerne als Mitfahrer begehen würde. 
   has_many :requests, :dependent => :destroy
@@ -215,8 +220,8 @@ before_validation :set_member, :set_last_delivery
   # die Klassen Message und Rating funktionieren als "Joinentitäten" für die
   # Klasse User.
   has_many :received_messages, :class_name => "Message", :foreign_key =>"receiver_id", :dependent => :destroy
-  has_many :written_messages,  :class_name => "Message", :foreign_key =>"writer_id", :dependent => :destroy
-  has_many :written_ratings, :class_name => "Rating", :foreign_key => "author_id", :dependent => :destroy
+  has_many :written_messages,  :class_name => "Message", :foreign_key =>"writer_id", :dependent => :nullify
+  has_many :written_ratings, :class_name => "Rating", :foreign_key => "author_id", :dependent => :nullify
   has_many :received_ratings, :class_name => "Rating", :foreign_key => "receiver_id", :dependent => :destroy
 
   ROLES = %w[admin member]
@@ -583,7 +588,7 @@ before_validation :set_member, :set_last_delivery
   def get_latest_messages
     count = 0
     self.received_messages.each do |m|
-      if m.created_at > self.last_delivery
+      if m.created_at >  self.last_delivery
         count+=1
       end
     end
