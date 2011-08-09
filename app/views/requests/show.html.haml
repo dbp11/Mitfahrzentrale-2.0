@@ -84,7 +84,7 @@
         %td
           = link_to 'Zur Fahrt', "/trips/"+t[0].id.to_s
         %td
-          = "%.1f" % t[0].user.get_avg_driver_ratings
+          = "%.1f" % t[0].user.get_avg_rating_driver
           = "(" + t[0].user.count_ratings.to_s + ")"
 %br
 = link_to image_tag( '/images/Button_edit.png', :alt => "Bearbeiten", :height => "20"), edit_request_path(@request)

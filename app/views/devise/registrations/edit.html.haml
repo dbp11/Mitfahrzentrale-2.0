@@ -1,5 +1,6 @@
 %h2.head
   Profil bearbeiten
+  = link_to image_tag( '/images/Button_back.png', :alt => "zurück", :height => "20"), :back
 %p.under
   Mit * gekennzeichnete Felder müssen ausgefüllt sein
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :name=>"Formular", :onsubmit => "return zipcheck();" }) do |f|
@@ -44,7 +45,7 @@
         %td.form_table_left
           = f.label :sex, "Geschlecht"
         %td.form_table_right 
-          = f.select:sex,  options_for_select([["Maennlich","1"], ["Weiblich","0"]], @user.sex? ? "1" : "0")
+          = f.select:sex,  options_for_select([["Männlich","1"], ["Weiblich","0"]], @user.sex? ? "1" : "0")
 
     %tr.form_table_row
       %td.form_table_left
@@ -130,8 +131,7 @@
         = image_submit_tag "/images/Button_save.png"
   %h3.links
     #{link_to image_tag( '/images/Button_delete_account.png', :alt => "Account Löschen", :height => "20"), registration_path(resource_name), :confirm => "Sind sie sicher?", :method => :delete}
-  %p.links
-    = link_to image_tag( '/images/Button_back.png', :alt => "zurück", :height => "20"), :back
+
 
 
 
