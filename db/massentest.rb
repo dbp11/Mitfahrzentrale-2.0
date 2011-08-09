@@ -3,35 +3,35 @@
 load "plzliste.rb"
 
 #Anzahl der zu erstellenden Entities
-anzUsers = 10000
-anzTrips = 30000
-anzcars = 12000
-anzrequests = 20000
-anzratings = 15000
-anzpassenger = 15000
+anzusers = 100
+anztrips = 400
+anzcars = 120
+anzrequests = 400
+anzratings = 150
+anzpassenger = 200
 
-#Erstellen von 10000 Users
+#Erstellen von  Users
 x=0
 users=[]
-until x==anzUsers
+until x==anzusers
   x=x+1
   plz=@plz_array[rand(24119)]
-  u=User.new :email => "Test"+x.to_s+"@uos.com", :password => "dkruempe",:password_confirmation => "dkruempe", :name => "Dominik Krümpelmann", :user_type => true, :sex => true, :address => "Großer Esch 20", :addressN => Geocoder.coordinates(plz)[0], :addressE => Geocoder.coordinates(plz)[1], :zipcode => plz, :phone => "054571598"+x.to_s, :instantmessenger => "icq: 5465465"+x.to_s, :city => "Hopsten", :email_notifications => true, :visible_phone => true, :visible_email => true, :visible_address => true, :visible_age => true, :visible_im => true, :visible_cars => true, :birthday => Date.new(1989,12,28), :visible_zip => true, :user_type => false, :visible_city => true, :business => false
+  u=User.new :email => "Test"+x.to_s+"@uos.com", :password => "dkruempe",:password_confirmation => "dkruempe", :name => "Dominik Krümpelmann", :user_type => true, :sex => true, :address => "Großer Esch 20", :addressN => "effse", :addressE => "fsefsf", :zipcode => plz, :phone => "054571598"+x.to_s, :instantmessenger => "icq: 5465465"+x.to_s, :city => "Hopsten", :email_notifications => true, :visible_phone => true, :visible_email => true, :visible_address => true, :visible_age => true, :visible_im => true, :visible_cars => true, :birthday => Date.new(1989,12,28), :visible_zip => true, :user_type => false, :visible_city => true, :business => false
   users << u
 end
 
-#Erstellen von 12000 Cars
+#Erstellen von  Cars
 cars=[]
 until x==anzcars
   c= Car.new :user_id => (rand(anzUser+1)), :seats => 5, :licence => "10234", :price_km => 5.5, :smoker => true, :description => "Kein Kofferraum", :car_type => "BMW"
   cars << c
 end
 
-#Erstellen von 30000 Trips
+#Erstellen von  Trips
 
 trips=[]
 until x==anztrips
-  user_id = (rand(anzUsers+1))
+  user_id = (rand(anzusers+1))
   plz_start = @plz_array[rand(24119)]
   begin
     plz_ende = @plz_array[rand(24119)]
@@ -50,10 +50,10 @@ until x==anztrips
   trips << t
 end
 
-#Erstellen von 20000 Requests
+#Erstellen von  Requests
 
 requests=[]
-until x==20000
+until x==anzrequests
   user_id = rand(anzUsers)
   plz_start = @plz_array[rand(24119)]
   begin
@@ -74,11 +74,11 @@ until x==20000
   requests << r
 end
 
-#Erstellen von 15000 Ratings
+#Erstellen von  Ratings
 
 ratings=[]
-until x==15000
-  trip_id = rand(30001)
+until x==anzratings
+  trip_id = rand(anztrips+1)
   t = Trip.all[trip_id]
   #Autor und Empfänger bestimmen
   random = t.users.count
@@ -92,9 +92,9 @@ end
 
 #Erstellen von 15000 Passengers
 passengers=[]
-until x==15000
-  trip = Trip.all[rand(30001)]
-  user = User.all[rand(10001)]
+until x==anzpassenger
+  trip = Trip.all[rand(anztrips+1)]
+  user = User.all[rand(anzusers+1)]
   confirmed = rand(2)
   con=false
   if confirmed==0
