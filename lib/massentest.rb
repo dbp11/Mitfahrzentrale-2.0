@@ -84,24 +84,6 @@ until x==anzrequests
   requests << r
 end
 
-#Erstellen von  Ratings
-x=0
-ratings=[]
-puts "Ratings Erstellen"
-until x==anzratings
-  x=x+1
-  puts "Ratings "+x.to_s
-  trip_id = rand(anztrips+1)
-  t = Trip.all[trip_id]
-  #Autor und Empfänger bestimmen
-  random = t.users.count
-  author = User.all[rand(random)]
-  begin
-    receiver = User.all[rand(random)]
-  end while(author.id = receiver.id)
-  ra = Rating.new :comment => "Auto im schlechten Zustand!", :mark => rand(6), :trip_id => trip_id, :receiver_id => receiver.id, :author_id => author.id
-  rarings << ra
-end
 
 #Erstellen von Passengers
 x=0
@@ -120,6 +102,25 @@ until x==anzpassenger
   ps = Passenger.new :user_id => user, :trip_id => trip, :confirmed => con
   passengers << ps
 end
+
+#Erstellen von  Ratings
+#x=0
+#ratings=[]
+#puts "Ratings Erstellen"
+#until x==anzratings
+  #x=x+1
+  #puts "Ratings "+x.to_s
+  #trip_id = rand(anztrips+1)
+  #t = Trip.all[trip_id]
+  #Autor und Empfänger bestimmen
+  #random = t.users.count
+  #author = User.all[rand(random)]
+  #begin
+    #receiver = User.all[rand(random)]
+  #end while(author.id = receiver.id)
+  #ra = Rating.new :comment => "Auto im schlechten Zustand!", :mark => rand(6), :trip_id => trip_id, :receiver_id => receiver.id, :author_id => author.id
+  #rarings << ra
+#end
 
 #Erstellen der Daten
 users.each  do |t|
@@ -146,6 +147,6 @@ passengers.each do |t|
   t.save!
 end
 
-ratings.each do |t|
-  r.save!
-end
+#ratings.each do |t|
+  #r.save!
+#end
