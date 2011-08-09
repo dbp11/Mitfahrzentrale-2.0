@@ -1,6 +1,171 @@
 %h2 Neue Fahrt erstellen
 
-= render 'form'
-%br/
-= link_to image_tag( '/images/Button_back.png', :alt => "Zurück", :height => "20"), trips_path
+-#
+  Übergebene Variablen:
+  - @fahrzeuge [Array aller Fahrzeuge des aktuellen Benutzers]
+
+:javascript
+  var autos = new Array();
+
+- @fahrzeuge.each do |i|
+  :javascript
+    autos.push(#{i.seats});
+
+:javascript
+  function carDropDown(){
+    document.getElementById("freeseats").options.length = 0;
+    document.getElementById("freeseats").options[0] = new Option("keine Änderung", "");
+    for (i = 0; i < autos[document.getElementById("car").selectedIndex]-1; i++){
+      document.getElementById("freeseats").options[document.getElementById("freeseats").length] = new Option((i+1),(i+1),false,false);
+    }
+  }
+
+:javascript
+  function cmt(){
+    document.getElementById("cmthinweis").firstChild.nodeValue = "Noch " + (document.getElementById("comment").maxLength - document.getElementById("comment").value.length) + " Zeichen";
+  }
+
+= form_tag("create", :method => "post") do
+  %table
+    %tr
+      %td
+        Startadresse*
+        %br/
+        &nbsp;
+      %td
+        = text_field_tag(:address_start, nil, :maxlength => "120", :autofocus => "autofocus", :required => "required", :class => "text_input")
+        %br/
+        &nbsp;
+    %tr
+      %td
+        Zieladresse*
+        %br/
+        &nbsp;
+      %td
+        = text_field_tag(:address_end, nil, :maxlength => "120", :required => "required", :class => "text_input")
+        %br/
+        &nbsp;
+    %tr
+      %td
+        Abfahrtszeit*
+        %br/
+        &nbsp;
+      %td
+        %select{:name => "start_day", :required => "required"}
+          - 31.times do |i|
+            - if (i+1) < 10
+              - if (i+1) == Time.now.day
+                %option{:value => "0"+(i+1).to_s, :selected => "selected"}= "0#{(i+1)}"
+              - else
+                %option{:value => "0"+(i+1).to_s}= "0#{(i+1)}"
+            - else
+              - if (i+1) == Time.now.day
+                %option{:value => (i+1).to_s, :selected => "selected"}= "#{(i+1)}"
+              - else
+                %option{:value => (i+1).to_s}= "#{(i+1)}"
+        = "."
+        %select{:name => "start_month", :required => "required"}
+          - 12.times do |i|
+            - if (i+1) < 10
+              - if (i+1) == Time.now.month
+                %option{:value => "0"+(i+1).to_s, :selected => "selected"}= "0#{(i+1)}"
+              - else
+                %option{:value => "0"+(i+1).to_s}= "0#{(i+1)}"
+            - else
+              - if (i+1) == Time.now.month
+                %option{:value => (i+1).to_s, :selected => "selected"}= "#{(i+1)}"
+              - else
+                %option{:value => (i+1).to_s}= "#{(i+1)}"
+        = "."
+        %select{:name => "start_year", :required => "required"}
+          %option{:value => Time.now.year, :selected => "selected"}= "#{Time.now.year}"
+          - 4.times do |i|
+            %option{:value => Time.now.year+(i+1)}= "#{Time.now.year+i+1}"
+        &nbsp;-&nbsp;
+        %select{:name => "start_hour", :required => "required"}
+          - 24.times do |i|
+            - if i < 10
+              - if i == Time.now.hour
+                %option{:value => "0"+i.to_s, :selected => "selected"}= "0#{i}"
+              - else
+                %option{:value => "0"+i.to_s}= "0#{i}"
+            - else
+              - if i == Time.now.hour
+                %option{:value => i.to_s, :selected => "selected"}= "#{i}"
+              - else
+                %option{:value => i.to_s}= "#{i}"
+        =":"
+        %select{:name => "start_minute", :required => "required"}
+          - 12.times do |i|
+            - if i*5 < 10
+              - if i*5 > Time.now.min and (i-1)*5 <= Time.now.min
+                %option{:value => "0"+(i*5).to_s, :selected => "selected"}= "0#{i*5}"
+              - else
+                %option{:value => "0"+(i*5).to_s}= "0#{i*5}"
+            - else
+              - if i*5 > Time.now.min and (i-1)*5 <= Time.now.min
+                %option{:value => (i*5).to_s, :selected => "selected"}= "#{i*5}"
+              - else
+                %option{:value => (i*5).to_s}= "#{i*5}"
+        -#%select{:name => "start_minute", :required => "required"}
+          - 60.times do |i|
+            - if i < 10
+              - if i == Time.now.min
+                %option{:value => "0"+i.to_s, :selected => "selected"}= "0#{i}"
+              - else
+                %option{:value => "0"+i.to_s}= "0#{i}"
+            - else
+              - if i == Time.now.min
+                %option{:value => i.to_s, :selected => "selected"}= "#{i}"
+              - else
+                %option{:value => i.to_s}= "#{i}"
+        %br/
+        &nbsp;
+    %tr
+      %td
+        Fahrzeug*
+        %br/
+        &nbsp;
+      %td
+        %select#car{:name => "car", :required => "required", :onchange => "carDropDown()"}
+          - @fahrzeuge.each do |f|
+            %option{:value => f.id}= "#{f.car_type} (#{f.seats} Sitzplätze)"
+        %br/
+        &nbsp;
+    %tr
+      %td
+        Sitzpl&auml;tze 
+        %br/
+        &nbsp;
+      %td
+        %select#freeseats{:name => "free_seats"}
+          %option{:value => ""} keine Änderung
+          - (@fahrzeuge.first.seats - 1).times do |i|
+            %option{:value => (i+1)}= (i+1)
+        %br/
+        &nbsp;
+    %tr
+      %td
+        Gep&auml;ck
+        %br/
+        &nbsp;
+      %td
+        = check_box_tag(:baggage)
+        %br/
+        &nbsp;
+    %tr
+      %td Hinweise
+      %td
+        %textarea#comment{:name => "comment", :maxlength => "160", :wrap => "physical", :onkeydown => "cmt()", :onkeyup => "cmt()", :onkeypress => "cmt()"} 
+        #cmthinweis
+          %script cmt();
+    %tr
+      %td
+        %br/
+        = "* = Pflichtfeld"
+    %tr
+      %td
+        = link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), trips_path
+      %td.form_table_right
+        = image_submit_tag("/images/Button_create.png")
 

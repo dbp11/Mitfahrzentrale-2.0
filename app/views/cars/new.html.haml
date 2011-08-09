@@ -1,5 +1,6 @@
 = stylesheet_link_tag :cars
-%h1 Neues Fahrzeug hinzuf&uuml;gen
+%h2
+  = "Neues Fahrzeug hinzufügen"
 
 = form_for :car, :url => "/cars/create", :html => { :multipart => true } do |f|
   -if @car.errors.any?
@@ -41,4 +42,4 @@
   
     = image_submit_tag "/images/Button_add.png"
     Mit * gekennzeichnete Felder sind Pflichtfelder
-= link_to image_tag( '/images/Button_back.png', :alt => "Zurück", :height => "20"), cars_path
+= link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), cars_path

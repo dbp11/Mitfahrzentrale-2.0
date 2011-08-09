@@ -11,11 +11,13 @@
 
   to do:
     - Layout
-%h2 Übersicht Fahrten
+.other-site
+  = link_to image_tag( '/images/Button_new_trip.png', :alt => "Neue Fahrt", :height => "20"), new_trip_path
+%h2
+  ="Übersicht Fahrten"
+
 %h3 Noch kommende Fahrten als Fahrer
 
-.other_site= link_to image_tag( '/images/Button_new_trip.png', :alt => "Neue Fahrt", :height => "20"), new_trip_path
-%br
 %table.trips_index_table
   - if @future_trips == nil or @future_trips.count <= 0
     %tr
@@ -35,9 +37,6 @@
         %td.left= "#{trip.get_end_address_info[:city]}, #{trip.get_end_address_info[:plz]}"
         %td.center= trip.start_time.strftime("%d.%m.%Y")
         %td.center= trip.start_time.strftime("%H:%M")
-
-%br/
-%br/
 
 %h3 Beendete Fahrten als Fahrer
 %table.trips_index_table
@@ -60,9 +59,6 @@
         %td.center= trip.start_time.strftime("%d.%m.%Y")
         %td.center= trip.start_time.strftime("%H:%M")
 
-%br/
-%br/
-
 %h3 Noch kommende Fahrten als Mitfahrer
 %table.trips_index_table
   - if @future_ridden_trips == nil or @future_ridden_trips.count <= 0
@@ -84,9 +80,6 @@
         %td.center= trip.start_time.strftime("%d.%m.%Y")
         %td.center= trip.start_time.strftime("%H:%M")
 
-%br/
-%br/
-
 %h3 Beendete Fahrten als Mitfahrer
 %table.trips_index_table
   - if @ridden_trips == nil or @ridden_trips.count <= 0
@@ -107,8 +100,3 @@
         %td.left= "#{trip.get_end_address_info[:city]}, #{trip.get_end_address_info[:plz]}"
         %td.center= trip.start_time.strftime("%d.%m.%Y")
         %td.center= trip.start_time.strftime("%H:%M")
-
-%br/
-%br/
-
-

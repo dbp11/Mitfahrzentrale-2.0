@@ -94,17 +94,17 @@
                 %option{:value => i.to_s}= "#{i}"
         =":"
         %select{:name => "start_minute", :required => "required"}
-          - 60.times do |i|
-            - if i < 10
-              - if i == Time.now.min
-                %option{:value => "0"+i.to_s, :selected => "selected"}= "0#{i}"
+          - 12.times do |i|
+            - if i*5 < 10
+              - if i*5 >= Time.now.min and (i-1)*5 < Time.now.min
+                %option{:value => "0"+(i*5).to_s, :selected => "selected"}= "0#{i*5}"
               - else
-                %option{:value => "0"+i.to_s}= "0#{i}"
+                %option{:value => "0"+(i*5).to_s}= "0#{i*5}"
             - else
-              - if i == Time.now.min
-                %option{:value => i.to_s, :selected => "selected"}= "#{i}"
+              - if i*5 >= Time.now.min and (i-1)*5 < Time.now.min
+                %option{:value => (i*5).to_s, :selected => "selected"}= "#{i*5}"
               - else
-                %option{:value => i.to_s}= "#{i}"
+                %option{:value => (i*5).to_s}= "#{i*5}"
         %br/
         &nbsp;
     %tr
