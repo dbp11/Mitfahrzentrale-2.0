@@ -1,6 +1,6 @@
 %h2 Fahrzeugdetails
 %div.other_site
-  = link_to image_tag( '/images/cars/car_button_edit_high.png', :alt => "Editieren", :size => "40x40"), edit_car_path(@car)
+  = link_to image_tag( '/images/Button_edit.png', :alt => "Editieren", :height => "20"), edit_car_path(@car)
 %table.cars_show_index
   %tr 
     %td
@@ -31,6 +31,7 @@
         = image_tag ('/images/cars/Default_car_icon2.png')
 
 
+%br
+%br
 
-
-= link_to 'Zurück', cars_path
+= link_to image_tag( '/images/Button_back.png', :alt => "Zurück", :height => "20"), cars_path
