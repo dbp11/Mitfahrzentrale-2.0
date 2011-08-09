@@ -3,12 +3,12 @@
 require "plzliste"
 
 #Anzahl der zu erstellenden Entities
-anzusers = 100
-anztrips = 400
-anzcars = 120
-anzrequests = 400
-anzratings = 150
-anzpassenger = 200
+anzusers = 10
+anztrips = 20
+anzcars = 12
+anzrequests = 20
+anzratings = 15
+anzpassenger = 20
 
 #Erstellen von  Users
 x=0
@@ -29,7 +29,7 @@ puts "Cars Erstellen"
 until x==anzcars
   x=x+1
   puts "Cars "+x.to_s
-    c= Car.new :user_id => (rand(anzusers+1)), :seats => 5, :licence => "10234", :price_km => 5.5, :smoker => true, :description => "Kein Kofferraum", :car_type => "BMW"
+    c= Car.new :user_id => (rand(anzusers+1)), :seats => 5, :licence => "10234"+x.to_s, :price_km => 5.5, :smoker => true, :description => "Kein Kofferraum", :car_type => "BMW"
   cars << c
 end
 
@@ -84,24 +84,6 @@ until x==anzrequests
   requests << r
 end
 
-#Erstellen von  Ratings
-x=0
-ratings=[]
-puts "Ratings Erstellen"
-until x==anzratings
-  x=x+1
-  puts "Ratings "+x.to_s
-  trip_id = rand(anztrips+1)
-  t = Trip.all[trip_id]
-  #Autor und Empfänger bestimmen
-  random = t.users.count
-  author = User.all[rand(random)]
-  begin
-    receiver = User.all[rand(random)]
-  end while(author.id = receiver.id)
-  ra = Rating.new :comment => "Auto im schlechten Zustand!", :mark => rand(6), :trip_id => trip_id, :receiver_id => receiver.id, :author_id => author.id
-  rarings << ra
-end
 
 #Erstellen von Passengers
 x=0
@@ -120,6 +102,25 @@ until x==anzpassenger
   ps = Passenger.new :user_id => user, :trip_id => trip, :confirmed => con
   passengers << ps
 end
+
+#Erstellen von  Ratings
+#x=0
+#ratings=[]
+#puts "Ratings Erstellen"
+#until x==anzratings
+  #x=x+1
+  #puts "Ratings "+x.to_s
+  #trip_id = rand(anztrips+1)
+  #t = Trip.all[trip_id]
+  #Autor und Empfänger bestimmen
+  #random = t.users.count
+  #author = User.all[rand(random)]
+  #begin
+    #receiver = User.all[rand(random)]
+  #end while(author.id = receiver.id)
+  #ra = Rating.new :comment => "Auto im schlechten Zustand!", :mark => rand(6), :trip_id => trip_id, :receiver_id => receiver.id, :author_id => author.id
+  #ratings << ra
+#end
 
 #Erstellen der Daten
 users.each  do |t|
@@ -146,6 +147,6 @@ passengers.each do |t|
   t.save!
 end
 
-ratings.each do |t|
-  r.save!
-end
+#ratings.each do |t|
+  #r.save!
+#end
