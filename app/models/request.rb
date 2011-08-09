@@ -96,7 +96,7 @@ class Request < ActiveRecord::Base
     erg = []
 
     Trip.all.each do |t|
-      if t.get_free_seats >= 1 and t.start_time.to_f.between?(start_f, end_f) and 
+      if t.start_time.to_f.between?(start_f, end_f) and 
           ((Geocoder::Calculations.distance_between [t.starts_at_N, t.starts_at_E], 
            [starts_at_N, starts_at_E], :units => :km) <= self.start_radius) and
           ((Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
