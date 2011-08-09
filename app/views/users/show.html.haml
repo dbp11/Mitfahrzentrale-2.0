@@ -1,13 +1,13 @@
-%h2 
-  Profil
 %div.other-site
   -if current_user == @user
-    = link_to(image_tag( '/images/Button_edit.png', :alt => "Bearbeiten", :height => "20"), edit_user_registration_path)
+    = link_to(image_tag( '/images/Button_edit.png', :alt => "Bearbeiten"), edit_user_registration_path)
   -else
     - if current_user.is_ignored(@user) == true
-      = link_to(image_tag( '/images/Button_ignore.png', :alt => "ignorieren", :height => "20"), url_for(:action=>"update", :controller=>"users", :ignore=>true) ) 
+      = link_to(image_tag( '/images/Button_ignore.png', :alt => "ignorieren"), url_for(:action=>"update", :controller=>"users", :ignore=>true) ) 
     - else
-      = link_to(image_tag( '/images/Button_ignore_not.png', :alt => "ignorieren aufheben", :height => "20"), url_for(:action=>"update", :controller=>"users", :ignore=>false) )
+      = link_to(image_tag( '/images/Button_ignore_not.png', :alt => "ignorieren aufheben"), url_for(:action=>"update", :controller=>"users", :ignore=>false) )
+%h2 
+  Profil
 
 %table.form_arround
   %tr.form_arround_row
