@@ -77,17 +77,16 @@ class Trip < ActiveRecord::Base
     :source => :user
 
   #Fahrer und Mitfahrer bewerten sich untereinander zu einem bestimmten Trip
-  has_many :ratings, :dependent => :destroy
+  has_many :ratings, :dependent => :nullify
 
   #Direkte Beziehung zur Join-Entität Passengers
-  has_many :passengers, :dependent => :destroy
+  has_many :passengers
   
 
  # before_save :set_address_info, :set_route
 
   def set_address_info
     
-    puts "hallo da bin ich"
     start_a =  Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
                self.starts_at_E.to_s + "E", "de")[0][:full_data]
     
@@ -112,7 +111,6 @@ class Trip < ActiveRecord::Base
                self.ends_at_E.to_s + "E", "de")[0][:full_data]
     
 
-    puts "da bin ich nochmal"
     end_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
         self.end_zipcode = i["long_name"]
@@ -129,7 +127,6 @@ class Trip < ActiveRecord::Base
         end
       end
      end
-    puts "also wenn dieser text kommt dann ist die methode durchgelaufen, dann isses ein controller problem"
     return self
   end 
 
@@ -305,14 +302,14 @@ class Trip < ActiveRecord::Base
   #
   # @return Zeit ( x Stunden y Minuten)
   def get_route_duration
-    return duration.div(3600).to_s+" Stunden "+(duration % 60).to_s+ " Minuten" 
-  end
- 
+   # return duration
+   return (duration / 3600).to_s + " Stunden "+ ((duration - duration / 3600 *3600)/60).to_s + " Minuten" 
+  end 
   # Berechnet die Distanz die benötigt wird und gibt diese formatiert aus
   #
   # @return Distanz ( x Km)
   def get_route_distance
-    return distance.to_s + "Km"
+    return distance.to_s + "km"
   end
 
   # Gibt aus ob ein übergeben User für den Trip akzeptiert wurde
