@@ -2,14 +2,5 @@
 
 = render 'form'
 %br
-Aktuelles Bild:
 %br
-- if @car.carpic?
-  = image_tag @car.carpic.url(:medium)
-- else
-  = "kein bild"
-%br
-%br
-= link_to 'Anzeigen', @car
-\|
-= link_to 'Zurück', cars_path
+= link_to image_tag( '/images/Button_back.png', :alt => "zurück", :height => "20"), cars_path

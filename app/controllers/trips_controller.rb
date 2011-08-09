@@ -9,10 +9,10 @@ class TripsController < ApplicationController
     flash[:error] = "Zugriff verweigert!"
     redirect_to trips_path
   end
-  rescue_from Exception::StandardError do |exception|
-    flash[:error] = "WRONG!"
-    redirect_to trips_path
-  end
+  #rescue_from Exception::StandardError do |exception|
+   # flash[:error] = "WRONG!"
+    #redirect_to trips_path
+  #end
 
   # GET /trips
   # GET /trips.json
@@ -131,8 +131,12 @@ class TripsController < ApplicationController
   # GET /trips/new
   # GET /trips/new.json
   def new
-    @trip = Trip.new
-    @fahrzeuge = current_user.cars
+    if current_user.cars != nil
+      @trip = Trip.new
+      @fahrzeuge = current_user.cars
+    else
+      redirect_to root_path, notice: "Bitte erst Auto anmelden!"
+    end
   end
 
   # GET /trips/1/edit
@@ -148,20 +152,13 @@ class TripsController < ApplicationController
     @trip = Trip.new()
     @trip.user_id = current_user.id
     @trip.car_id = params[:car]
-    #@trip.start_zipcode = params[:address_start_plz]
-    #@trip.start_street = params[:address_start_street]
-    #@trip.start_city = params[:address_start_city]
     temp = Geocoder.coordinates(params[:address_start])
     @trip.starts_at_N = temp[0]
     @trip.starts_at_E = temp[1]
-    #@trip.end_zipcode = params[:address_end_plz]
-    #@trip.end_street = params[:address_end_street]
-    #@trip.end_city = params[:address_end_city]
     temp = Geocoder.coordinates(params[:address_end])
     @trip.ends_at_N = temp[0]
     @trip.ends_at_E = temp[1]
     @trip = @trip.set_address_info
-    puts @trip.end_city
     @trip.set_route
     @trip.comment = params[:comment]
     #Hier Schwierigkeiten View != Model
@@ -177,12 +174,6 @@ class TripsController < ApplicationController
     else
       @trip.baggage = true
     end
-    puts @trip.start_city
-    puts @trip.end_city
-    puts @trip.start_time
-    puts @trip.free_seats
-    puts @trip.duration
-    puts @trip.distance
 
     if @trip.save
       redirect_to @trip, notice: 'Trip was successfully created.'
