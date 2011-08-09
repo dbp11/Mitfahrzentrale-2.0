@@ -35,7 +35,10 @@
           %td.form_table_left
             %h4 Adresse: 
           %td.form_table_right
-            #{@user.visible_address? ? @user.address: "versteckt"}
+            - if current_user==@user
+              #(@user.address)
+            - else
+              #{@user.visible_address? ? @user.address: "versteckt"}
 
         %tr.form_table_row
           %td.form_table_left
