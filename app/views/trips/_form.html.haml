@@ -18,29 +18,34 @@
     }
   }
 
+:javascript
+  function cmt(){
+    document.getElementById("cmthinweis").firstChild.nodeValue = "Noch " + (document.getElementById("comment").maxLength - document.getElementById("comment").value.length) + " Zeichen";
+  }
+
 = form_tag("create", :method => "post") do
   %table
     %tr
       %td
-        Startadresse
+        Startadresse*
         %br/
         &nbsp;
       %td
-        = text_field_tag(:address_start, nil, :placeholder => "Stadt (pflicht), PLZ (optional), Str.  Hausnr. (Optional)", :size => "50", :required => "required")
-        %br/
-        &nbsp;
-    %tr
-      %td
-        Zieladresse
-        %br/
-        &nbsp;
-      %td
-        = text_field_tag(:address_end, nil, :placeholder => "Stadt (pflicht), PLZ (optional), Str.  Hausnr. (Optional)", :size => "50", :required => "required")
+        = text_field_tag(:address_start, nil, :size => "50", :autofocus => "autofocus", :required => "required")
         %br/
         &nbsp;
     %tr
       %td
-        Abfahrtszeit
+        Zieladresse*
+        %br/
+        &nbsp;
+      %td
+        = text_field_tag(:address_end, nil, :size => "50", :required => "required")
+        %br/
+        &nbsp;
+    %tr
+      %td
+        Abfahrtszeit*
         %br/
         &nbsp;
       %td
@@ -104,7 +109,7 @@
         &nbsp;
     %tr
       %td
-        Fahrzeug
+        Fahrzeug*
         %br/
         &nbsp;
       %td
@@ -137,12 +142,17 @@
     %tr
       %td Hinweise
       %td
-        %textarea{:name => "comment", :rows => "5", :cols => "40", :wrap => "physical"}
+        %textarea#comment{:name => "comment", :rows => "5", :cols => "40", :maxlength => "160", :wrap => "physical", :onkeydown => "cmt()", :onkeyup => "cmt()", :onkeypress => "cmt()"} 
+        #cmthinweis Noch 160 Zeichen
     %tr
       %td
         %br/
+        = "* = Pflichtfeld"
+        %br/
+        %br/
+        %br/
+        %br/
         = image_submit_tag("/images/Button_create.png")
-
 
 
 
