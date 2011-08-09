@@ -93,15 +93,17 @@ class TripsController < ApplicationController
 
     if params[:accept] and @status == @FAHRER
       temp = User.find(params[:uid])
-      if @trip.accept(temp)  
-        tmp = Message.new()
-        tmp.writer = current_user
-        tmp.receiver = temp
-        tmp.message = "Sie wurden fuer den Trip von "+@trip.start_city+" nach "+@trip.end_city+" angenommen!!"
-        tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.start_city+" - "+@trip.end_city+"]]"
-        tmp.delete_writer = true
-        tmp.delete_receiver = false
-        tmp.save
+      if @trip.get_free_seats > 0
+        if @trip.accept(temp)
+          tmp = Message.new()
+          tmp.writer = current_user
+          tmp.receiver = temp
+          tmp.message = "Sie wurden fuer den Trip von "+@trip.start_city+" nach "+@trip.end_city+" angenommen!!"
+          tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.start_city+" - "+@trip.end_city+"]]"
+          tmp.delete_writer = true
+          tmp.delete_receiver = false
+          tmp.save
+        end
       end
     end
     
