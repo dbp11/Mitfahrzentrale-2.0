@@ -13,24 +13,27 @@ class CarsController < ApplicationController
 
   # GET /cars
   # GET /cars.json
+  #@cars Liefert die Autos des aktuellen Nutzers
   def index
-    temp = current_user
-    @cars = temp.cars
+    @cars = current_user.cars
   end
 
   # GET /cars/1
   # GET /cars/1.json
+  #@car Liefert das Auto mit der entsprechenden ID in Detailansicht
   def show
     @car = Car.find(params[:id])
   end
 
   # GET /cars/new
   # GET /cars/new.json
+  # @car Neues Car-Objekt
   def new
     @car = Car.new
   end
 
   # GET /cars/1/edit
+  #@car Auto mit der passenden id finden zum editieren
   def edit
     @car = Car.find(params[:id])
   end
@@ -38,10 +41,10 @@ class CarsController < ApplicationController
 
   # POST /cars
   # POST /cars.json
+  #@car Neues Car-Objekt wird mit den empfangenen Parametern befüllt
   def create
     @car = Car.new(params[:car])
-    temp = current_user.id
-    @car.user_id = temp
+    @car.user_id = current_user.id
 
     if @car.save
       redirect_to @car, notice: 'Car was successfully created.'
@@ -52,8 +55,10 @@ class CarsController < ApplicationController
 
   # PUT /cars/1
   # PUT /cars/1.json
+  # @car Car-Objekt wird mit den empfangenen Parametern geupdated
   def update
     @car = Car.find(params[:id])
+
     if @car.update_attributes(params[:car])
       redirect_to @car, notice: 'Car was successfully updated.'
     else
@@ -63,6 +68,7 @@ class CarsController < ApplicationController
 
   # DELETE /cars/1
   # DELETE /cars/1.json
+  # Car-Obkekt mit der passenden id löschen
   def destroy
     @car = Car.find(params[:id])
     if @car.is_used
