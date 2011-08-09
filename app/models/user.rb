@@ -310,7 +310,7 @@ before_validation :set_member, :set_last_delivery_ratings
         erg = erg + x.mark
     end
 
-      return erg.to_f / count_ratings
+      return (erg.to_f / count_ratings).round(1)
   end
 
 
@@ -332,7 +332,7 @@ before_validation :set_member, :set_last_delivery_ratings
       end
     end
     
-    return erg.to_f / count
+    return (erg.to_f / count).round(1)
   end
 
   # Methode zur Ermittlung des durchschnittlichen Ratings des Users als
@@ -354,7 +354,7 @@ before_validation :set_member, :set_last_delivery_ratings
       end
     end
     
-    return erg.to_f / count
+    return (erg.to_f / count).round(1)
   end
 
 
