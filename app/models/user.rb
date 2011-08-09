@@ -534,7 +534,7 @@ before_validation :set_member, :set_last_delivery_ratings
     erg = []
     trps = driven_with + driven
     trps.each do |t|
-      t.users.each do |u|
+      t.get_committed_passengers.each do |u|
         if allowed_to_rate u, t
           erg << [u, t]
         end
