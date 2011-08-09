@@ -12,8 +12,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if params[:ignore]
+    if params[:ignore] == "1"
+      puts "IGNORIEREN"
       current_user.ignore(@user)
+    elsif params[:ignore] == "0"
+      puts "NICHT MEHR IGNORIEREN"
+      current_user.unignore(@user)
     end
   end
 
@@ -32,14 +36,10 @@ class UsersController < ApplicationController
   # PUT /users/1
   def update
     @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-      format.html { redirect_to @user, notice: 'User was successfully updated.' }
-      format.json { head :ok }
+    if @user.update_attributes(params[:user])
+      redirect_to @user, notice: 'User was successfully updated.'
     else
       render action: "edit" 
-    end
     end
   end
 end

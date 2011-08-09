@@ -27,14 +27,12 @@
     %br
     = f.check_box :smoker
   .field
-    = f.label :description, "Beschreibung"
+    = f.label :description, "Beschreibung (maximal 100 Zeichen)"
     %br
-    = f.text_field :description
+    = f.text_area :description, :maxlength => 100, :placeholder => "Großer Kofferraum, Keine Türen", :resize => "none"
   .field
     = f.label :carpic, "Bild hochladen"
-    %br    
+    %br   
+    %br
     = f.file_field :carpic
-
-  .actions
-    %b
-      =f.image_submit_tag('/images/Button_add.png', { :name => nil, :id => "submit" })
+  %br

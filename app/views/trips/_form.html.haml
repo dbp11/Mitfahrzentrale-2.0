@@ -2,29 +2,50 @@
   Übergebene Variablen:
   - @fahrzeuge [Array aller Fahrzeuge des aktuellen Benutzers]
 
+:javascript
+  var autos = new Array();
+
+- @fahrzeuge.each do |i|
+  :javascript
+    autos.push(#{i.seats});
+
+:javascript
+  function carDropDown(){
+    document.getElementById("freeseats").options.length = 0;
+    document.getElementById("freeseats").options[0] = new Option("keine Änderung", "");
+    for (i = 0; i < autos[document.getElementById("car").selectedIndex]-1; i++){
+      document.getElementById("freeseats").options[document.getElementById("freeseats").length] = new Option((i+1),(i+1),false,false);
+    }
+  }
+
+:javascript
+  function cmt(){
+    document.getElementById("cmthinweis").firstChild.nodeValue = "Noch " + (document.getElementById("comment").maxLength - document.getElementById("comment").value.length) + " Zeichen";
+  }
+
 = form_tag("create", :method => "post") do
   %table
     %tr
       %td
-        Startadresse
+        Startadresse*
         %br/
         &nbsp;
       %td
-        = text_field_tag(:address_start, nil, :placeholder => "Stadt (pflicht), PLZ (optional), Str.  Hausnr. (Optional)", :size => "50", :required => "required")
-        %br/
-        &nbsp;
-    %tr
-      %td
-        Zieladresse
-        %br/
-        &nbsp;
-      %td
-        = text_field_tag(:address_end, nil, :placeholder => "Stadt (pflicht), PLZ (optional), Str.  Hausnr. (Optional)", :size => "50", :required => "required")
+        = text_field_tag(:address_start, nil, :size => "50", :autofocus => "autofocus", :required => "required")
         %br/
         &nbsp;
     %tr
       %td
-        Abfahrtszeit
+        Zieladresse*
+        %br/
+        &nbsp;
+      %td
+        = text_field_tag(:address_end, nil, :size => "50", :required => "required")
+        %br/
+        &nbsp;
+    %tr
+      %td
+        Abfahrtszeit*
         %br/
         &nbsp;
       %td
@@ -88,11 +109,11 @@
         &nbsp;
     %tr
       %td
-        Fahrzeug
+        Fahrzeug*
         %br/
         &nbsp;
       %td
-        %select{:name => "car", :required => "required"}
+        %select#car{:name => "car", :required => "required", :onchange => "carDropDown()"}
           - @fahrzeuge.each do |f|
             %option{:value => f.id}= "#{f.car_type} (#{f.seats} Sitzplätze)"
         %br/
@@ -103,9 +124,9 @@
         %br/
         &nbsp;
       %td
-        %select{:name => "free_seats"}
+        %select#freeseats{:name => "free_seats"}
           %option{:value => ""} keine Änderung
-          - 10.times do |i|
+          - (@fahrzeuge.first.seats - 1).times do |i|
             %option{:value => (i+1)}= (i+1)
         %br/
         &nbsp;
@@ -121,12 +142,17 @@
     %tr
       %td Hinweise
       %td
-        %textarea{:name => "comment", :rows => "5", :wrap => "physical"}
+        %textarea#comment{:name => "comment", :rows => "5", :cols => "40", :maxlength => "160", :wrap => "physical", :onkeydown => "cmt()", :onkeyup => "cmt()", :onkeypress => "cmt()"} 
+        #cmthinweis Noch 160 Zeichen
     %tr
       %td
         %br/
-        = submit_tag("Erstellen")
-
+        = "* = Pflichtfeld"
+        %br/
+        %br/
+        %br/
+        %br/
+        = image_submit_tag("/images/Button_create.png")
 
 
 

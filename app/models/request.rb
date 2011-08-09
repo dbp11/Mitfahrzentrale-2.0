@@ -42,6 +42,51 @@ class Request < ActiveRecord::Base
 
 ########################   Methoden für Controller   #######################
   
+  def set_address_info
+    
+    start_a =  Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
+               self.starts_at_E.to_s + "E", "de")[0][:full_data]
+    
+
+    start_a["address_components"].each do |i|
+      if i["types"].include?("postal_code")
+        self.start_zipcode = i["long_name"]
+      end
+      if i["types"].include?("locality")
+        self.start_city = i["long_name"]
+      end
+      if i["types"].include?("route")
+         self.start_street = i["long_name"]
+      end
+      if i["types"].include?("street_number")
+        if self.start_street != nil
+          self.start_street = self.start_street + " "+ i["long_name"]
+        end
+        end
+     end
+    end_a =  Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
+               self.ends_at_E.to_s + "E", "de")[0][:full_data]
+    
+
+    end_a["address_components"].each do |i|
+      if i["types"].include?("postal_code")
+        self.end_zipcode = i["long_name"]
+      end
+      if i["types"].include?("locality")
+        self.end_city = i["long_name"]
+      end
+      if i["types"].include?("route")
+         self.end_street = i["long_name"]
+      end
+      if i["types"].include?("street_number")
+        if self.end_street != nil
+          self.end_street = end_street + " " + i["long_name"]
+        end
+      end
+     end
+    return self
+  end
+
 
   #Methode die alle zum Radius des suchenden Users die passenden Trips sucht
   #@return Array von Trips
@@ -89,8 +134,11 @@ class Request < ActiveRecord::Base
       t_rating = t.user.get_avg_rating.to_f / 6
       t_ignors = t.user.get_relative_ignorations
       detour = (distance - t.distance) / t.distance
-      detime = (duration - t.duration) / t.duration
-
+      if t.duration == 0
+        detime = 0
+      else
+        detime = (duration - t.duration) / t.duration
+      end
       erg << [t, Math.sqrt(t_rating*t_rating + t_ignors*t_ignors + detour*detour + detime*detime)]
     end
 

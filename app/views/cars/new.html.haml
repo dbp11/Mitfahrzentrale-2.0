@@ -29,7 +29,7 @@
     %br
     = f.check_box :smoker
   .field
-    = f.label :description, "Beschreibung (max. 160 Zeichen)"
+    = f.label :description, "Beschreibung (max. 100 Zeichen)"
     %br
     = f.text_area :description, :maxlength => 100, :placeholder => "Großer Kofferraum, Keine Türen", :resize => "none"
   .field
@@ -38,6 +38,7 @@
     = f.file_field :carpic
     
   .actions
-    = f.submit 'Hinzufügen'
-  Mit * gekennzeichnete Felder sind Pflichtfelder
-= link_to 'Zurück', cars_path
+  
+    = image_submit_tag "/images/Button_add.png"
+    Mit * gekennzeichnete Felder sind Pflichtfelder
+= link_to image_tag( '/images/Button_back.png', :alt => "Zurück", :height => "20"), cars_path

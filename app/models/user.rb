@@ -55,9 +55,17 @@ class User < ActiveRecord::Base
   has_attached_file :pic, :styles => { :medium =>  "300x300>", 
                                            :thumb => "100x100>"}
 
-before_validation :set_member 
+before_validation :set_member, :set_last_delivery_ratings 
   #before_save {|user| user.role = "member" if user.role.blank?} 
-  
+  def set_last_delivery_ratings
+    if last_delivery.nil?
+      self.last_delivery = Time.now
+    end
+    if self.last_ratings.nil?
+      self.last_ratings = Time.now
+    end
+  end
+
   def set_member
     if (self.role != "admin")
       self.role = "member"
@@ -191,7 +199,7 @@ before_validation :set_member
   has_many :cars, :dependent => :destroy
   # Beziehung von User zur Jointable Passengers - Diese Relation ist notwendig 
   # um zu überprüfen, ob ein User als Mitfahrer akzeptiert oder abgelehnt wurde
-  has_many :passengers, :dependent => :destroy
+  has_many :passengers, :dependent => :nullify
   # Beziehung vom User zu Requests. Requests stellen die Gesuche dar, also
   # Strecken, die man als Nutzer gerne als Mitfahrer begehen würde. 
   has_many :requests, :dependent => :destroy
@@ -212,8 +220,8 @@ before_validation :set_member
   # die Klassen Message und Rating funktionieren als "Joinentitäten" für die
   # Klasse User.
   has_many :received_messages, :class_name => "Message", :foreign_key =>"receiver_id", :dependent => :destroy
-  has_many :written_messages,  :class_name => "Message", :foreign_key =>"writer_id", :dependent => :destroy
-  has_many :written_ratings, :class_name => "Rating", :foreign_key => "author_id", :dependent => :destroy
+  has_many :written_messages,  :class_name => "Message", :foreign_key =>"writer_id", :dependent => :nullify
+  has_many :written_ratings, :class_name => "Rating", :foreign_key => "author_id", :dependent => :nullify
   has_many :received_ratings, :class_name => "Rating", :foreign_key => "receiver_id", :dependent => :destroy
 
   ROLES = %w[admin member]
@@ -580,7 +588,7 @@ before_validation :set_member
   def get_latest_messages
     count = 0
     self.received_messages.each do |m|
-      if m.created_at > self.last_delivery
+      if m.created_at >  self.last_delivery
         count+=1
       end
     end
@@ -607,6 +615,12 @@ before_validation :set_member
     self.requests
   end
   
+  # Fügt einen übergebenen User in die User ignores User Relation ein. D.h.der User wird vom System ab sofort als
+  # ignoriert gewertet
+  #
+  # @param User, der ignoriert werden soll
+  # @return true, wenn Einfügen in Ignorerelation geklappt hat
+  # @return false, sonst
   def ignore (usr)
     if !self.ignorings.include?(usr) and self != usr
       self.ignorings << usr
@@ -615,7 +629,13 @@ before_validation :set_member
       false
     end
   end
-
+  
+  # Methode, um einen bereits ignorierten User wieder aus der Ignorerelation herauszunehmen, d.h. er wird nicht
+  # ignoriert
+  #
+  # @param User, der nicht mehr ignoriert werden soll
+  # @return true, wenn Löschen aus der Relation geklappt hat
+  # @return false, sonst
   def unignore (usr)
     if self.ignorings.include?(usr)
       self.ignorings.delete(usr)
@@ -624,5 +644,18 @@ before_validation :set_member
       false
     end
   end
-  
+ 
+  # Überprüft, ob User bereits ignoriert wird
+  #
+  # @param User, von dem der "Ignorestatus" überprüft werden soll
+  # @return true, wenn User bereits ignoriert wird
+  # @return false, wenn User nicht ignoriert wird
+  def is_ignored (usr)
+    if self.ignorings.include?(usr)
+      true
+    else
+      false
+    end
+  end
+
 end
