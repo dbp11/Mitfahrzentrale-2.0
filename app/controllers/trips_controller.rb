@@ -9,10 +9,10 @@ class TripsController < ApplicationController
     flash[:error] = "Zugriff verweigert!"
     redirect_to trips_path
   end
-  rescue_from Exception::StandardError do |exception|
-    flash[:error] = "WRONG!"
-    redirect_to trips_path
-  end
+  #rescue_from Exception::StandardError do |exception|
+   # flash[:error] = "WRONG!"
+    #redirect_to trips_path
+  #end
 
   # GET /trips
   # GET /trips.json
