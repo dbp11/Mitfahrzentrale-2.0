@@ -132,7 +132,10 @@ cars.each do |t|
 end
 
 trips.each do |t|
-  puts t
+  puts t.starts_at_N
+  puts t.starts_at_E
+  puts t.ends_at_N
+  puts t.ends_at_E
   t.set_address_info
   t.set_route
   t.save!
