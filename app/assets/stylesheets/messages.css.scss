@@ -90,6 +90,9 @@ body.messages {
 				text-align: right;
 				border: none;
 				border-top: solid 2px;
+				td {
+					padding-top: 0.3em;
+				}
 			}
 		}
 	}

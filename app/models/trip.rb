@@ -200,7 +200,8 @@ class Trip < ActiveRecord::Base
          ((Geocoder::Calculations.distance_between [t.ends_at_N, t.ends_at_E], 
          [ends_at_N, ends_at_E], :units => :km)  <= t.end_radius)) and
         # prüfe ob der User der den Request gestellt hat ignoriert wird
-         !self.user.ignorings.include?(t.user) then
+         !self.user.ignorings.include?(t.user) and
+         (!t.baggage and !self.baggage or self.baggage) then
         # Ergebnisarray mit Requests füllen auf denen diese Eigenschaften zutreffen
         erg << t
       end

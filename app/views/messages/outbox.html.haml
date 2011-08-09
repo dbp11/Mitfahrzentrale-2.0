@@ -1,6 +1,6 @@
-%h2 Gesendete Nachrichten
 %div.other-site
-	= link_to image_tag( '/images/Button_inbox.png', :alt => "Posteingang", :height => "20"), url_for(:action => "index", :controller => "messages")
+	= link_to image_tag( '/images/Button_inbox.png', :alt => "Posteingang"), url_for(:action => "index", :controller => "messages")
+%h2 Gesendete Nachrichten
 
 - @messages.each do |message|
 	%table.message_table
@@ -20,5 +20,5 @@
 				= raw(h(message.message).gsub(/\[\[([^\|]*)\|([^\]]*)\]\]/,'<a href=\1>\2</a>').gsub(/[\n]/,"<br />"))
 		%tr
 			%td.message_table_both{:colspan => "2"}
-				=link_to image_tag( '/images/Button_new_message.png', :alt => "Neue Nachricht", :height => "20"), url_for(:action => "new", :controller => "messages", :uid => message.receiver.id)
-				= link_to image_tag( '/images/Button_delete_message.png', :alt => "Löschen", :height => "20"), url_for(:action => "update", :controller => "messages", :id => message.id, :who => "writer"), :method => :put
+				=link_to image_tag( '/images/Button_new_message.png', :alt => "Neue Nachricht"), url_for(:action => "new", :controller => "messages", :uid => message.receiver.id)
+				= link_to image_tag( '/images/Button_delete_message.png', :alt => "Löschen"), url_for(:action => "update", :controller => "messages", :id => message.id, :who => "writer"), :method => :put
