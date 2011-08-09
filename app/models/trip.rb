@@ -87,7 +87,6 @@ class Trip < ActiveRecord::Base
 
   def set_address_info
     
-    puts "hallo da bin ich"
     start_a =  Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
                self.starts_at_E.to_s + "E", "de")[0][:full_data]
     
@@ -112,7 +111,6 @@ class Trip < ActiveRecord::Base
                self.ends_at_E.to_s + "E", "de")[0][:full_data]
     
 
-    puts "da bin ich nochmal"
     end_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
         self.end_zipcode = i["long_name"]
@@ -129,7 +127,6 @@ class Trip < ActiveRecord::Base
         end
       end
      end
-    puts "also wenn dieser text kommt dann ist die methode durchgelaufen, dann isses ein controller problem"
     return self
   end 
 
