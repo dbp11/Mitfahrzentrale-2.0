@@ -84,7 +84,7 @@ class Car < ActiveRecord::Base
     "Nummernschild: " + licence + "\n" +
     "Raucher: " + smoker? ? "ja" : "nein"
   end
-
+  
   def is_used
     self.user.to_drive.each do |d|
       if d.car == self
