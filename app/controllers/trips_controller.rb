@@ -24,16 +24,12 @@ class TripsController < ApplicationController
     @GAST = 3
     @user = current_user
     if current_user == @trip.user
-      flash[:notice] = "FAHRER"
       @status = @FAHRER
-    elsif @trip.user_committed (current_user)
-      flash[:notice] = "MITFAHRER"
+    elsif @trip.user_committed(current_user)
       @status = @MITFAHRER
-    elsif @trip.user_uncommitted (current_user)
-      flash[:notice] = "POTENTIELLER_MITFAHRER"
+    elsif @trip.user_uncommitted(current_user)
       @status = @POTENTIELLER_MITFAHRER
     else
-      flash[:notice] = "GAST"
       @status = @GAST
     end
     return @status
@@ -137,7 +133,7 @@ class TripsController < ApplicationController
       @trip = Trip.new
       @fahrzeuge = current_user.cars
     else
-      redirect_to trips_url, notice: "Bitte erst Auto anmelden!"
+      redirect_to trips_url, :notice => "Bitte erst Auto anmelden!"
     end
   end
 
@@ -178,7 +174,7 @@ class TripsController < ApplicationController
     end
 
     if @trip.save
-      redirect_to @trip, notice: 'Trip was successfully created.'
+      redirect_to @trip, :notice => 'Trip was successfully created.'
     else
       redirect_to trips_path
     end
@@ -192,9 +188,9 @@ class TripsController < ApplicationController
       current_user.bewerben(@trip)
     end
     if @trip.update_attributes(params[:trip])
-      redirect_to @trip, notice: 'Trip was successfully updated.'
+      redirect_to @trip, :notice => 'Trip was successfully updated.'
     else
-      render action: "edit"
+      render :action => "edit"
     end
   end
 
@@ -206,7 +202,7 @@ class TripsController < ApplicationController
       @trip.destroy
       redirect_to trips_url
     else
-      redirect_to trips_url, notice: "Vergangene Trips koennen nicht geloescht werden"
+      redirect_to trips_url, :notice => "Vergangene Trips koennen nicht geloescht werden"
     end
   end
 end

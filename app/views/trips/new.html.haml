@@ -80,7 +80,7 @@
         %select{:name => "start_year", :required => "required"}
           %option{:value => Time.now.year, :selected => "selected"}= "#{Time.now.year}"
           - 4.times do |i|
-            %option{:value => Time.now.year+(i+1)}= "#{Time.now.year+i}"
+            %option{:value => Time.now.year+(i+1)}= "#{Time.now.year+i+1}"
         &nbsp;-&nbsp;
         %select{:name => "start_hour", :required => "required"}
           - 24.times do |i|
@@ -96,6 +96,18 @@
                 %option{:value => i.to_s}= "#{i}"
         =":"
         %select{:name => "start_minute", :required => "required"}
+          - 12.times do |i|
+            - if i*5 < 10
+              - if i*5 > Time.now.min and (i-1)*5 <= Time.now.min
+                %option{:value => "0"+(i*5).to_s, :selected => "selected"}= "0#{i*5}"
+              - else
+                %option{:value => "0"+(i*5).to_s}= "0#{i*5}"
+            - else
+              - if i*5 > Time.now.min and (i-1)*5 <= Time.now.min
+                %option{:value => (i*5).to_s, :selected => "selected"}= "#{i*5}"
+              - else
+                %option{:value => (i*5).to_s}= "#{i*5}"
+        -#%select{:name => "start_minute", :required => "required"}
           - 60.times do |i|
             - if i < 10
               - if i == Time.now.min
