@@ -56,11 +56,8 @@
 - tecity = trip.get_end_address_info[:city]
 - user = @user
 
--#%meta{:name => "viewport", :content => "initial-scale=1.0, user-scalable=no"}
-
 -#Java-Script für die Map. Eingefügt wird sie in einem DIV mit der Klasse "map_canvas"
-  Der Code wurde 1:1 von Google übernommen (teilweise in HAML umgeschrieben) und als Start-
-  und Zielpunkte die Start- und Zieladressen eingefügt.
+  Der Code wurde leicht angepasst aus der Google Maps API übernommen.
 %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
 
 :javascript
@@ -70,18 +67,20 @@
 
   function initialize() {
     directionsDisplay = new google.maps.DirectionsRenderer();
-    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    //var latlng = new google.maps.LatLng(-34.397, 150.644);
     var myOptions = {
       zoom:7,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      center: latlng
+      mapTypeId: google.maps.MapTypeId.ROADMAP//,
+      //center: latlng
     }
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     directionsDisplay.setMap(map);
   }
-    
-  var start = "#{tsstreet} #{tsplz} #{tscity}";
-  var end = "#{testreet} #{teplz} #{tecity}";
+  
+  //var start = "#{tsstreet} #{tsplz} #{tscity}";
+  //var end = "#{testreet} #{teplz} #{tecity}";
+  var start = new google.maps.LatLng(#{trip.starts_at_N}, #{trip.starts_at_E}, true);
+  var end = new google.maps.LatLng(#{trip.ends_at_N}, #{trip.ends_at_E}, true);
   var request = {
     origin:start, 
     destination:end,
@@ -244,9 +243,8 @@
           %td.left_bold ca. Dauer:
           %td.left= trip.get_route_duration
 
-
 -#Sorgt dafür, dass die Karte immer nur so hoch, wie breit ist (Breite abhängig vom Bildschirm,
-  Höhe könnte durch größere Tabellen mir Mitfahrern, etc. wachsen => Seitenverhältniss und damit die
+  Höhe könnte durch größere Tabellen mit Mitfahrern, etc. wachsen => Seitenverhältniss und damit die
   Größe der ganzen Karte würde verändert)
 :javascript
   var b = document.getElementById("map_canvas").offsetWidth;
