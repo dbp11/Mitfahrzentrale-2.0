@@ -530,6 +530,22 @@ before_validation :set_member, :set_last_delivery_ratings
   end
    
   
+  def get_waiting_ratings
+    erg = []
+    trps = driven_with + driven
+    trps.each do |t|
+      t.users.each do |u|
+        if allowed_to_rate u, t
+          erg << [u, t]
+        end
+      end
+      if allowed_to_rate t.user, t
+        erg << [t.user, t]
+      end
+    end
+
+    erg
+  end
   
 
   #Lässt einen User sich um eine Mitfahrgelegenheit bewerben
