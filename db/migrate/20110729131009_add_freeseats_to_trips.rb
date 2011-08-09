@@ -3,7 +3,7 @@ class AddFreeseatsToTrips < ActiveRecord::Migration
     add_column :trips, :free_seats, :integer
   end
   def down
-    remove_column :trips, :free_seats, :integer
+    remove_column :trips, :free_seats
   end
 
 end

@@ -7,9 +7,9 @@ class AddPictureToUser < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column :users, :picture_file_name, :string
-    remove_column :users, :picture_content_type, :string
-    remove_column :users, :picture_file_size, :integer
-    remove_column :users, :picture_updated_at, :datetime
+    remove_column :users, :picture_file_name
+    remove_column :users, :picture_content_type
+    remove_column :users, :picture_file_size
+    remove_column :users, :picture_updated_at
   end
 end

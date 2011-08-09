@@ -16,7 +16,6 @@ class MessagesController < ApplicationController
   # Zeitstempel und Anzahl der neuen Nachrichten werden für die Anzeige gebraucht
   def index
     # Alle empfangenen Nachrichten des Nutzers
-
     @messages = current_user.get_received_messages
     # Zeitstempel des letzten Aufrufs
     @last_delivery = current_user.last_delivery
@@ -28,12 +27,12 @@ class MessagesController < ApplicationController
   end
 
   # Gibt alle geschriebenen Nachrichten des Nutzers aus
+  # @params Geschrieben Nachrichten des Nutzers
   def outbox
     @messages = current_user.get_written_messages
   end
 
   # GET /messages/1
-  # GET /messages/1.json
   # Da wir alle Nachrichten komplett in der Übersicht haben ist es nicht erlaubt, eine Nachricht
   # im Detail zu betrachten
   def show
@@ -41,22 +40,25 @@ class MessagesController < ApplicationController
   end
 
   # GET /messages/new
-  # GET /messages/new.json
+  # Neue Nachricht soll erstellt werden
   def new
+    #Neues Message Objekt, ich als Writer gesetzt, check auf default
     @message = Message.new
 	  @message.writer = current_user
     check = false
+    #UserID wird aus Parameter gelesen und gesetzt, check auf true
 	  if params[:uid]
 		  @message.receiver = User.find(params[:uid])
       check=true
     end
+    #Wenn tid mitgegeben wird, wird der Nachrichtenbetreff automatisch befuellt, check auf true
 		if params[:tid]
 			temp = Trip.find(params[:tid])
 			@message.subject = "[["+ url_for(temp) + "|" + temp.get_start_city + " - " + temp.get_end_city + " " + temp.start_time.strftime("%d.%m.%y") +"]]"
       check=true
     end
+    # Wir schreiben eine reply Nachricht, die wir empfangen haben, check true
 	  if params[:mid]
-		# message reply
 		temp = Message.find(params[:mid])
       if temp.receiver == current_user
 		    @message.receiver = temp.writer
@@ -64,18 +66,21 @@ class MessagesController < ApplicationController
         check=true
       end
     end
+    # Wenn check noch false ist, ist was falsch gelaufen und wir werden redirected
     if !check
       redirect_to messages_path
     end
   end
 
   # GET /messages/1/edit
+  # Nachricht soll editiert werden
+  # @params id die die Nachricht identifiziert
   def edit
     @message = Message.find(params[:id])
   end
 
   # POST /messages
-  # POST /messages.json
+  # Neue Nachricht wird erstellt
   def create
     @message = Message.new(params[:message])
     @message.delete_receiver = false
@@ -89,29 +94,34 @@ class MessagesController < ApplicationController
   end
 
   # PUT /messages/1
-  # PUT /messages/1.json
+  # Message wird geupdated
   def update
     @message = Message.find(params[:id])
+    # "Loescht" der Empfaenger eine Nachricht, wird sie fuer ihn invisible
   	if params[:who] == "receiver"
 	  	@message.delete_receiver = true
+    # "Loescht" der Schreiber eine Nachricht, wird sie fuer ihn invisible
   	elsif params[:who] == "writer"
 	  	@message.delete_writer = true
   	end
     @message.save
+    # Haben Autor und Empfaenger einer Nachricht sie "geloescht" wird sie auch richtig aus der DB entfernt
 	  if @message.delete_receiver and @message.delete_writer
   	   @message.destroy
   	end
+    # Redirect je nachdem, "wer" wir sind
     if params[:who] == "writer"
       redirect_to "/messages/outbox", notice: 'Message was successfully deleted.'
     elsif params[:who] == "receiver"
       redirect_to messages_url, notice: 'Message was successfully deleted.'
     elsif
-      redirect_to messages_url, failure: 'Message could not be deleted.'
+      redirect_to messages_url, notice: 'Message could not be deleted.'
     end
   end
 
   # DELETE /messages/1
-  # DELETE /messages/1.json
+  # Nachricht loeschen
+  # @params id der zu loeschenden Nachricht
   def destroy
     @message = Message.find(params[:id])
     @message.destroy
