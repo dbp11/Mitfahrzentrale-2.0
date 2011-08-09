@@ -1,8 +1,7 @@
 = stylesheet_link_tag :cars
 %h2 Fahrzeugdetails
 %div.other_site
-  Fahrzeug Hinzuf&uuml;gen  
-  = link_to image_tag( '/images/cars/car_button_add_high.png', :alt => "Neues Fahrzeug", :size => "40x40"), new_car_path 
+  = link_to image_tag( '/images/Button_add.png', :alt => "Neues Fahrzeug", :height => "20"), new_car_path 
 
 %table.cars_index_table
   %tr
@@ -34,8 +33,8 @@
               = car.smoker? ? "Ja" : "Nein"
             %td= car.licence
             %td= car.description
-            %td= link_to image_tag( '/images/cars/car_button_edit_high.png', :alt => "Editieren", :size => "40x40"), edit_car_path(car)
-            %td= link_to image_tag( '/images/cars/car_button_delete_high.png', :alt => "Löschen",:size => "40x40"), car, :confirm => 'Bist du sicher?', :method => :delete
+            %td= link_to image_tag( '/images/Button_edit.png', :alt => "Editieren", :height => "20"), edit_car_path(car)
+            %td= link_to image_tag( '/images/Button_delete.png', :alt => "Löschen",:height => "20"), car, :confirm => 'Bist du sicher?', :method => :delete
   %tr
     %td
 
