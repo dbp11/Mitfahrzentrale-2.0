@@ -12,10 +12,16 @@ class Ability
       end
       can :show, user.get_visible_cars
 
-      can [:outbox, :show, :update, :destroy], Message do |message|
+      can [:outbox, :show, :update], Message do |message|
         message && message.writer == user
       end
-      can [:show, :destroy], Message do |message|
+     # can :update, Message do |message|
+     #   message && message.receiver == user 
+     # end
+      can [:show, :update], Message do |message|
+        message && message.receiver == user
+      end
+      cannot [:edit], Message do |message|
         message && message.receiver == user
       end
 
