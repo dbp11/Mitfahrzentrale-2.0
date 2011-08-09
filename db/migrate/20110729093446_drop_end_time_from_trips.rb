@@ -1,6 +1,6 @@
 class DropEndTimeFromTrips < ActiveRecord::Migration
   def up
-    remove_column :trips, :end_time, :datetime
+    remove_column :trips, :end_time
   end
 
   def down
