@@ -11,6 +11,10 @@ class CarsController < ApplicationController
     redirect_to cars_path
   end  
 
+  ##########################cars-controller####################################
+  # Alles kommentiert
+  # Ver. 1.0
+
   # GET /cars
   # Liefert die Autos des aktuellen Nutzers
   def index
@@ -53,6 +57,7 @@ class CarsController < ApplicationController
   end
 
   # PUT /cars/1
+  # Car wird geupdated
   # @params Car-Objekt wird mit den empfangenen Parametern geupdated
   def update
     @car = Car.find(params[:id])
