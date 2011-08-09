@@ -44,8 +44,8 @@ class Request < ActiveRecord::Base
   
   def set_address_info
     
-    start_a =  Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
-               self.starts_at_E.to_s + "E", "de")[0][:full_data]
+    start_a =  Gmaps4rails.geocode(self.starts_at_N.to_s + " " + 
+               self.starts_at_E.to_s, "de")[0][:full_data]
     
 
     start_a["address_components"].each do |i|
@@ -64,8 +64,8 @@ class Request < ActiveRecord::Base
         end
         end
      end
-    end_a =  Gmaps4rails.geocode(self.ends_at_N.to_s  + "N " + 
-               self.ends_at_E.to_s + "E", "de")[0][:full_data]
+    end_a =  Gmaps4rails.geocode(self.ends_at_N.to_s + " " +
+               self.ends_at_E.to_s, "de")[0][:full_data]
     
 
     end_a["address_components"].each do |i|
@@ -124,10 +124,10 @@ class Request < ActiveRecord::Base
       # start_duration = start_con[0]["duration"]["value"]
       # end_distance = end_con[0]["distance"]["value"]
       # end_duration = end_con[0]["duration"]["value"]
-      bing_information = Bing::Route.find(:waypoints => [t.starts_at_N.to_s+"N "+t.starts_at_E.to_s+"E",
-                                                         self.starts_at_N.to_s + "N "+self.starts_at_E.to_s+"E",
-                                                         self.ends_at_N.to_s + "N "+self.ends_at_E.to_s+"E",
-                                                         t.ends_at_N.to_s+"N "+t.ends_at_E.to_s+"E"])[0]
+      bing_information = Bing::Route.find(:waypoints => [t.starts_at_N.to_s + " " + t.starts_at_E.to_s + " ",
+                                                         self.starts_at_N.to_s + " " + self.starts_at_E.to_s + " ",
+                                                         self.ends_at_N.to_s + " " + self.ends_at_E.to_s + " ",
+                                                         t.ends_at_N.to_s + " " + t.ends_at_E.to_s + " "])[0]
       distance= bing_information.total_distance
       duration = bing_information.total_duration
 
@@ -148,8 +148,8 @@ class Request < ActiveRecord::Base
 
 
   def set_route
-    route = Bing::Route.find(:waypoints => [self.starts_at_N.to_s+"N " + self.starts_at_E.to_s + "E",
-                                            self.ends_at_N.to_s+"N " + self.ends_at_E.to_s+"E"])[0]
+    route = Bing::Route.find(:waypoints => [self.starts_at_N.to_s + " " + self.starts_at_E.to_s + " ",
+                                            self.ends_at_N.to_s + " " + self.ends_at_E.to_s+" "])[0]
     self.distance = route.total_distance
     self.duration = route.total_duration
   end
