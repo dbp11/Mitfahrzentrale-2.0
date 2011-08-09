@@ -1,6 +1,6 @@
 # encoding: utf-8
 # Massentest für die Datenbank, d.h. hier werden die dafür benötigten Daten erstellt
-load "plzliste.rb"
+require "plzliste"
 
 #Anzahl der zu erstellenden Entities
 anzusers = 100
@@ -16,14 +16,14 @@ users=[]
 until x==anzusers
   x=x+1
   plz=@plz_array[rand(24119)]
-  u=User.new :email => "Test"+x.to_s+"@uos.com", :password => "dkruempe",:password_confirmation => "dkruempe", :name => "Dominik Krümpelmann", :user_type => true, :sex => true, :address => "Großer Esch 20", :addressN => "effse", :addressE => "fsefsf", :zipcode => plz, :phone => "054571598"+x.to_s, :instantmessenger => "icq: 5465465"+x.to_s, :city => "Hopsten", :email_notifications => true, :visible_phone => true, :visible_email => true, :visible_address => true, :visible_age => true, :visible_im => true, :visible_cars => true, :birthday => Date.new(1989,12,28), :visible_zip => true, :user_type => false, :visible_city => true, :business => false
+  u=User.new :email => "Test"+x.to_s+"@uos.com", :password => "dkruempe",:password_confirmation => "dkruempe", :name => "Dominik Krümpelmann", :user_type => true, :sex => true, :address => "Großer Esch 20", :addressN => "effse", :addressE => "fsefsf", :zipcode => plz, :phone => "054571598"+x.to_s, :instantmessenger => "icq: 5465465"+x.to_s, :city => "Hopsten", :email_notifications => true, :visible_phone => true, :visible_email => true, :visible_address => true, :visible_age => true, :visible_im => true, :visible_cars => true, :birthday => Date.new(1989,12,28), :visible_zip => true, :user_type => false, :visible_city => true, :business => false, :last_delivery => Time.now, :last_ratings => Time.now, :role => "member"
   users << u
 end
 
 #Erstellen von  Cars
 cars=[]
 until x==anzcars
-  c= Car.new :user_id => (rand(anzUser+1)), :seats => 5, :licence => "10234", :price_km => 5.5, :smoker => true, :description => "Kein Kofferraum", :car_type => "BMW"
+    c= Car.new :user_id => (rand(anzusers+1)), :seats => 5, :licence => "10234", :price_km => 5.5, :smoker => true, :description => "Kein Kofferraum", :car_type => "BMW"
   cars << c
 end
 
@@ -45,7 +45,7 @@ until x==anztrips
   ende=Geocoder.coordinates(plz_ende)
   ende[0]=ends_N
   ende[1]=ends_E
-  t=Trip.new :user_id => user_id, :car_id => User.all[user_id], :starts_at_N => start_N, :starts_at_E => starts_E, :ends_at_E => ends_E, :ends_at_N => ends_N, :address_start => Gmaps4rails.geocode(starts_N.to_s +"N "+starts_E.to_s+"E","de")[0][:full_data]['address_component'][2]['long_name'], :address_end => Gmaps4rails.geocode(ends_N.to_s +"N "+ends_E.to_s+"E","de")[0][:full_data]['address_component'][2]['long_name'], :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => 5
+  t=Trip.new :user_id => user_id, :car_id => User.all[user_id], :starts_at_N => start_N, :starts_at_E => starts_E, :ends_at_E => ends_E, :ends_at_N => ends_N, :start_zipcode => start, :address_zipcode => ende, :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => 5
   t.set_routes
   trips << t
 end
@@ -69,7 +69,7 @@ until x==anzrequests
   ende[0]=ends_N
   ende[1]=ends_E
 
-  r = Request.new :starts_at_N => starts_N, :starts_at_E => starts_E, :ends_at_N => ends_N, :ends_at_E => ends_E, :address_start => Gmaps4rails.geocode(starts_N.to_s +"N "+starts_E.to_s+"E","de")[0][:full_data]['address_component'][2]['long_name'], :address_end => Gmaps4rails.geocode(ends_N.to_s +"N "+ends_E.to_s+"E","de")[0][:full_data]['address_component'][2]['long_name'], :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => user_id, :start_radius => rand(51), :end_radius => rand(51)
+  r = Request.new :starts_at_N => starts_N, :starts_at_E => starts_E, :ends_at_N => ends_N, :ends_at_E => ends_E, :start_zipcode => start, :end_zipcode => ende, :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => user_id, :start_radius => rand(51), :end_radius => rand(51)
   r.set_routes
   requests << r
 end
@@ -114,10 +114,12 @@ cars.each do |t|
 end
 
 trips.each do |t|
+  t.set_address_info
   t.save!
 end
 
 requests.each do |t|
+  t.set_address_info
   t.save!
 end
 
