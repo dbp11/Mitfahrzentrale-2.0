@@ -77,10 +77,10 @@ class Trip < ActiveRecord::Base
     :source => :user
 
   #Fahrer und Mitfahrer bewerten sich untereinander zu einem bestimmten Trip
-  has_many :ratings, :dependent => :destroy
+  has_many :ratings, :dependent => :nullify
 
   #Direkte Beziehung zur Join-Entität Passengers
-  has_many :passengers, :dependent => :destroy
+  has_many :passengers
   
 
  # before_save :set_address_info, :set_route
@@ -312,7 +312,7 @@ class Trip < ActiveRecord::Base
   #
   # @return Distanz ( x Km)
   def get_route_distance
-    return distance.to_s + "Km"
+    return distance.to_s + "km"
   end
 
   # Gibt aus ob ein übergeben User für den Trip akzeptiert wurde
