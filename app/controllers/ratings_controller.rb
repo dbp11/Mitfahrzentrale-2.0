@@ -11,11 +11,6 @@ class RatingsController < ApplicationController
     temp = current_user
     @ratings = temp.get_own_written_ratings
     #Meine erstellten Ratings --> Methode
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @ratings }
-    end
   end
 
   # GET /ratings/1
@@ -37,11 +32,6 @@ class RatingsController < ApplicationController
 	  end
 
     # Zwei Arrays. eins mit den Ratings als Fahrer, eins als Mitfahrer
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @rating }
-    end
   end
 
   # GET /ratings/new
@@ -54,7 +44,7 @@ class RatingsController < ApplicationController
       @rating.receiver = User.find(params[:uid])
 	    @rating.trip = Trip.find(params[:tid])
     else
-      redirect_to root_path, notice: "Du kannst den Nutzer nicht bewerten!"
+      redirect_to ratings_path, notice: "Du kannst den Nutzer nicht bewerten!"
     end
     #respond_to do |format|
       #format.html # new.html.erb
@@ -71,14 +61,10 @@ class RatingsController < ApplicationController
   # POST /ratings.json
   def create
     @rating = Rating.new(params[:rating])
-    respond_to do |format|
 	  if @rating.save
-        format.html { redirect_to ratings_path, notice: 'Rating was successfully created.' }
-        format.json { render json: @rating, status: :created, location: @rating }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @rating.errors, status: :unprocessable_entity }
-      end
+      redirect_to ratings_path, notice: 'Rating was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -88,14 +74,10 @@ class RatingsController < ApplicationController
     authorize! :update, :rating
     @rating = Rating.find(params[:id])
 
-    respond_to do |format|
-      if @rating.update_attributes(params[:rating])
-        format.html { redirect_to @rating, notice: 'Rating was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @rating.errors, status: :unprocessable_entity }
-      end
+    if @rating.update_attributes(params[:rating])
+      redirect_to @rating, notice: 'Rating was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -105,10 +87,6 @@ class RatingsController < ApplicationController
     authorize! :destroy, :rating
     @rating = Rating.find(params[:id])
     @rating.destroy
-
-    respond_to do |format|
-      format.html { redirect_to ratings_url }
-      format.json { head :ok }
-    end
+    redirect_to ratings_url
   end
 end

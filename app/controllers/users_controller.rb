@@ -3,11 +3,11 @@ class UsersController < ApplicationController
   load_and_authorize_resource 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to trips_url
+    redirect_to user_path(current_user.id)
   end
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to trips_url
+    redirect_to user_path(current_user.id)
   end
 
   def show
@@ -32,14 +32,10 @@ class UsersController < ApplicationController
   # PUT /users/1
   def update
     @user = User.find(params[:id])
-
-    respond_to do |format|
-      if @user.update_attributes(params[:user])
-      format.html { redirect_to @user, notice: 'User was successfully updated.' }
-      format.json { head :ok }
+    if @user.update_attributes(params[:user])
+      redirect_to @user, notice: 'User was successfully updated.'
     else
       render action: "edit" 
-    end
     end
   end
 end

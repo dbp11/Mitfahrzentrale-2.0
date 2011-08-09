@@ -22,7 +22,7 @@ class RegistrationController < Devise::RegistrationsController
   def destroy
     if current_user.driver_trips
       flash[:error] = "Sie koennen ihren Account nicht loeschen, da Sie noch ausstehende Fahrten anbieten!"
-      redirect_to trips_url
+        redirect_to trips_path
     else
       current_user.car do |car|
         car.destroy
@@ -42,7 +42,7 @@ class RegistrationController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    redirect_to trips_path 
+    redirect_to user_path(current_user.id)
   end
 
   def redirect_location(scope, resource)

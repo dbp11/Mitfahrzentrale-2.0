@@ -26,13 +26,23 @@
     %tr
       %td
       %td 
-        =f.label:start_time, "Datum und Zeit"
+        =f.label:start_time, "Losfahren von:"
       %td
         = f.datetime_select:start_time, 
                            :required => "required",
                            :order=>[:hour,:day, :month, :year],
                            :use_month_numbers=>true,
                            :start_year=>Time.now.year
+                           
+    %tr
+      %td
+      %td 
+        = f.label:end_time, "Bis"
+      %td
+        = f.datetime_select:end_time, :required => "required",
+                            :order=>[:hour,:day, :month, :year],
+                            :use_month_numbers=>true,
+                            :start_year=>Time.now.year
     %tr
       %td
     %tr
@@ -52,15 +62,6 @@
         = f.select:end_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
 
 
-    %tr
-      %td
-      %td 
-        = f.label:end_time, "Datum und Zeit"
-      %td
-        = f.datetime_select:end_time, :required => "required",
-                            :order=>[:hour,:day, :month, :year],
-                            :use_month_numbers=>true,
-                            :start_year=>Time.now.year
 
     %tr
       %td 
