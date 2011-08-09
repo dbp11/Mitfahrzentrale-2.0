@@ -90,7 +90,8 @@ class Trip < ActiveRecord::Base
     puts "hallo da bin ich"
     start_a =  Gmaps4rails.geocode(self.starts_at_N.to_s  + "N " + 
                self.starts_at_E.to_s + "E", "de")[0][:full_data]
-   
+    
+
     start_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
         start_zipcode = i["long_name"]
