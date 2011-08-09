@@ -18,7 +18,7 @@
 			%td.form_table_both{:colspan => "2"}
 				= f.label(:subject, "Betreff")
 				%br
-				= f.text_field(:subject, :maxlength => "120", :required => "required")
+				= f.text_field(:subject, :maxlength => "120", :required => "required", :autofocus => "autofocus")
 		%tr
 			%td.form_table_both{:colspan => "2"}
 				= f.label(:message, "Nachricht")

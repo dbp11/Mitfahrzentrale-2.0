@@ -143,7 +143,8 @@
       %td Hinweise
       %td
         %textarea#comment{:name => "comment", :rows => "5", :cols => "40", :maxlength => "160", :wrap => "physical", :onkeydown => "cmt()", :onkeyup => "cmt()", :onkeypress => "cmt()"} 
-        #cmthinweis Noch 160 Zeichen
+        #cmthinweis
+          %script cmt();
     %tr
       %td
         %br/
