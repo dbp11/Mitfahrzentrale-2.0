@@ -4,6 +4,6 @@ class AddDeleteWriterMessages < ActiveRecord::Migration
   end
 
   def down
-    remove_column :messages, :delete_writer, :boolean
+    remove_column :messages, :delete_writer
   end
 end
