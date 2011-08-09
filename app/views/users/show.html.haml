@@ -4,10 +4,10 @@
   -if current_user == @user
     = link_to("bearbeiten", edit_user_registration_path)
   -else
-    - if current_user.is_ignored(@user) == true
-      = link_to("ignorieren", url_for(:action=>"update", :controller=>"users", :ignore=>true) ) 
+    - if current_user.is_ignored(@user) != true
+      = link_to("ignorieren", url_for(:action=>"update", :controller=>"users", :ignore=>"1") ) 
     - else
-      = link_to("nicht mehr ignorieren", url_for(:action=>"update", :controller=>"users", :ignore=>false) )
+      = link_to("nicht mehr ignorieren", url_for(:action=>"update", :controller=>"users", :ignore=>"0") )
 
 
 %table.form_arround
