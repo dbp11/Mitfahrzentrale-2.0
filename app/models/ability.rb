@@ -7,7 +7,7 @@ class Ability
     if user.role == "member"
       can :index, :all
       can :create, :all
-      cannot :index, Home
+      #cannot :index, Home
       # Jeder Member kann jede Übersicht außer der Übersicht der User sehen
       # und kann alle Elemente erstellen
       can [:show, :update, :destroy], Car do |car|
