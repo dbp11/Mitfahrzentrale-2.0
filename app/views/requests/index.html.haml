@@ -21,11 +21,11 @@
       %td= request.baggage? ? "Ja" : "Nein"
       %td= request.comment
 
-      %td= link_to 'Anzeige', request
-      %td= link_to 'Editieren', edit_request_path(request)
-      %td= link_to 'Löschen', request, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to image_tag( '/images/Button_show.png', :alt => "Anzeigen", :height => "20"), request
+      %td= link_to image_tag( '/images/Button_edit.png', :alt => "Editieren", :height => "20"), edit_request_path(request)
+      %td= link_to image_tag( '/images/Button_delete.png', :alt => "Löschen", :height => "20"), request, :confirm => 'Are you sure?', :method => :delete
 
 %br
 *Verkehrsbehinderungen werden beid er berechnung der Fahrzeit nicht berücksichtigt
 %br
-= link_to 'Neue Anfrage', new_request_path
+= link_to image_tag( '/images/Button_new_query.png', :alt => "Neue Anfrage", :height => "20"), new_request_path

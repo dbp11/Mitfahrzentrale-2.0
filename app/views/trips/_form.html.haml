@@ -18,6 +18,11 @@
     }
   }
 
+:javascript
+  function cmt(){
+    document.getElementById("cmthinweis").firstChild.nodeValue = "Noch " + (document.getElementById("comment").maxLength - document.getElementById("comment").value.length) + " Zeichen";
+  }
+
 = form_tag("create", :method => "post") do
   %table
     %tr
@@ -137,11 +142,12 @@
     %tr
       %td Hinweise
       %td
-        %textarea{:name => "comment", :rows => "5", :cols => "40", :wrap => "physical"}
+        %textarea#comment{:name => "comment", :rows => "5", :cols => "40", :maxlength => "160", :wrap => "physical", :onkeydown => "cmt()", :onkeyup => "cmt()", :onkeypress => "cmt()"} 
+        #cmthinweis Noch 160 Zeichen
     %tr
       %td
         %br/
-        = submit_tag("Erstellen")
+        = image_submit_tag("/images/Button_create.png")
 
 
 
