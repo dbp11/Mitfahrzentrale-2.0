@@ -581,7 +581,7 @@ before_validation :set_member, :set_last_delivery_ratings
         erg << r
       end
     end
-    return erg.sort{|a,b| b.created_at <=> a.created_at}
+    erg.sort{|a,b| b.created_at <=> a.created_at}[0..4]
   end
 
   # Methode, die alle Ratings liefert, die dieser User als Mitfahrer erhalten
@@ -594,7 +594,7 @@ before_validation :set_member, :set_last_delivery_ratings
         erg << r
       end
     end
-    return erg.sort{|a,b| b.created_at <=> a.created_at}
+    erg.sort{|a,b| b.created_at <=> a.created_at}[0..4]
   end
   
 
