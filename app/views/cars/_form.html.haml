@@ -1,3 +1,7 @@
+:javascript
+  function desc(){
+    document.getElementById("deshinweis").firstChild.nodeValue ="Noch " + (document.getElementById("descriptionarea").maxLength - document.getElementById("descriptionarea").value.length) + " Zeichen";
+  }
 = stylesheet_link_tag :cars
 = form_for @car do |f|
   -if @car.errors.any?
@@ -27,12 +31,25 @@
     %br
     = f.check_box :smoker
   .field
-    = f.label :description, "Beschreibung (maximal 100 Zeichen)"
+    = f.label :description, "Beschreibung"
     %br
-    = f.text_area :description, :maxlength => 100, :placeholder => "Großer Kofferraum, Keine Türen", :resize => "none"
+    = f.text_area :description, :maxlength => 160, :placeholder => "Großer Kofferraum, Keine Türen",:id => "descriptionarea", :resize => "none", :onkeydown => "desc()", :onkeyup => "desc()", :rows => "7", :onkeypress => "desc()"
+    #deshinweis
+      %script desc();
+    %br
   .field
     = f.label :carpic, "Bild hochladen"
     %br   
-    %br
     = f.file_field :carpic
-  %br
+    %br
+    %br
+    Aktuelles Bild:
+    %br
+    - if @car.carpic?
+      = image_tag @car.carpic.url(:medium)
+    - else
+      = "kein bild"
+    %br
+    %br
+
+    = image_submit_tag "/images/Button_edit.png"

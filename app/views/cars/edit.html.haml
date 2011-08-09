@@ -1,17 +1,6 @@
 %h1 Furhpark bearbeiten
 
 = render 'form'
-= image_submit_tag "/images/Button_edit.png"
-%br
-Aktuelles Bild:
-%br
-- if @car.carpic?
-  = image_tag @car.carpic.url(:medium)
-- else
-  = "kein bild"
 %br
 %br
-
-= link_to image_tag( '/images/Button_show.png', :alt => "Anzeigen", :height => "20"), @car
-\|
 = link_to image_tag( '/images/Button_back.png', :alt => "zurück", :height => "20"), cars_path
