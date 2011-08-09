@@ -3,11 +3,11 @@ class PassengersController < ApplicationController
   load_and_authorize_resource 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to root_url
+    redirect_to trips_path
   end
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to root_url
+    redirect_to trips_path
   end
   
   # GET /passengers

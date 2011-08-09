@@ -3,11 +3,11 @@ class MessagesController < ApplicationController
   load_and_authorize_resource
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to messages_url
+    redirect_to messages_path
   end
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to messages_url
+    redirect_to messages_path
   end
   
   # GET /messages
