@@ -156,7 +156,8 @@ class TripsController < ApplicationController
     temp = Geocoder.coordinates(params[:address_end])
     @trip.ends_at_N = temp[0]
     @trip.ends_at_E = temp[1]
-    @trip.set_address_info
+    @trip = @trip.set_address_info
+    puts @trip.end_city
     @trip.set_route
     @trip.comment = params[:comment]
     #Hier Schwierigkeiten View != Model
