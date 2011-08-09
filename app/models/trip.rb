@@ -305,7 +305,8 @@ class Trip < ActiveRecord::Base
   #
   # @return Zeit ( x Stunden y Minuten)
   def get_route_duration
-    return duration.div(3600).to_s+" Stunden "+(duration % 60).to_s+ " Minuten" 
+   # return duration
+   return (duration / 3600).to_s+" Stunden "+(duration / 60).to_s+ " Minuten" 
   end
  
   # Berechnet die Distanz die benötigt wird und gibt diese formatiert aus

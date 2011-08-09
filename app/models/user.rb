@@ -55,9 +55,17 @@ class User < ActiveRecord::Base
   has_attached_file :pic, :styles => { :medium =>  "300x300>", 
                                            :thumb => "100x100>"}
 
-before_validation :set_member 
+before_validation :set_member, :set_last_delivery_ratings 
   #before_save {|user| user.role = "member" if user.role.blank?} 
-  
+  def set_last_delivery_ratings
+    if last_delivery.nil?
+      self.last_delivery = Time.now
+    end
+    if self.last_ratings.nil?
+      self.last_ratings = Time.now
+    end
+  end
+
   def set_member
     if (self.role != "admin")
       self.role = "member"

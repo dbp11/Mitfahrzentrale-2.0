@@ -33,7 +33,9 @@
     }
   }
   .cars_index_bot {
+    table-layout: fixed;
     width: 100%;
+    text-overflow: ellipsis;
     tr {
       background-color: $table_bg_color1;
       td {
@@ -62,12 +64,15 @@
     }
   }
   .cars_show_left {
+    table-layout: fixed;
     background-color: $table_bg_color1;
     width: 100%;
+    word-wrap: break-word;
     tr:nth-child(2n+1){
       background-color: $table_bg_color2;
     }
     td:first-child {
+      width: 30%;
       text-align: left;
       font-weight: bold;
     }
