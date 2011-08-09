@@ -131,11 +131,11 @@ class TripsController < ApplicationController
   # GET /trips/new
   # GET /trips/new.json
   def new
-    if current_user.cars != nil
+    if !current_user.cars.empty?
       @trip = Trip.new
       @fahrzeuge = current_user.cars
     else
-      redirect_to root_path, notice: "Bitte erst Auto anmelden!"
+      redirect_to trips_url, notice: "Bitte erst Auto anmelden!"
     end
   end
 
@@ -200,8 +200,12 @@ class TripsController < ApplicationController
   # DELETE /trips/1.json
   def destroy
     @trip = Trip.find(params[:id])
-    @trip.destroy
-    redirect_to trips_url
+    if @trip.start_time > Time.now
+      @trip.destroy
+      redirect_to trips_url
+    else
+      redirect_to trips_url, notice: "Vergangene Trips koennen nicht geloescht werden"
+    end
   end
 end
 

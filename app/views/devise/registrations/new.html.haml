@@ -30,59 +30,60 @@
         }
         return true;
       }
-    = f.label :"Geschäftskunde?"
+    = f.label :business, "Geschäftskunde?"
     = f.check_box:business, :id=>"business" ,:onClick=>"formtest();" 
   %div
-    = f.label :"Name*"
+    = f.label :name, "Name*"
     %br/
-    = f.text_field :name
+    = f.text_field :name, :required=>"required", :autofocus=>"autofocus"
   %div
-    = f.label :"E-mail*"
+    = f.label :email, "E-Mail*"
     %br/
-    = f.email_field :email
+    = f.email_field :email, :required=>"required"
+    %br/
   %div
-    = f.label :"Passwort*"
+    = f.label :password, "Passwort*"
     %br/
     = f.password_field :password, :required=>"required"
   %div
-    = f.label :"Passwort wiederholen*"
+    = f.label :password_confirmation, "Passwort wiederholen*"
     %br/
     = f.password_field :password_confirmation, :required=>"required"
   %div#privat
-    = f.label :"Geburtsdatum", :id=>"lbirth"
+    = f.label :birthday, "Geburtsdatum"
     = f.date_select :birthday,
                     :start_year => 1900,
                     :end_year => 2011,
                     :order => [:day, :month, :year],
                     :use_month_numbers => true
   %div
-    = f.label :"Straße und Hausnummer*"
+    = f.label :address, "Straße und Hausnummer*"
     %br/
     = f.text_field:address, :required=>"required"
 
   %div
-    = f.label :"PLZ*"
+    = f.label :zipcode, "PLZ*"
     %br
       = f.text_field:zipcode, :required=>"required", :class=>"integer", 
                               :maxlength=>"5", :size=>"30"
 
   %div
-    = f.label :"Stadt*"
+    = f.label :city, "Stadt*"
     %br/
     = f.text_field:city, :required=>"required"
   
   %div#privat1
     %br/
-    = f.label :Geschlecht, :id=>"lsex"
+    = f.label :sex, "Geschlecht"
     = f.select:sex,  options_for_select([["Maennlich","1"], ["Weiblich","0"]]), :id=>"form_table_second"
 
   %div
-    = f.label :Telefon
+    = f.label :phone, "Telefon"
     %br/
     = f.phone_field :phone
 
   %div
-    = f.label :Instantmessenger
+    = f.label :instantmessenger, "Instantmessenger"
     %br/
     = f.text_field :instantmessenger
 

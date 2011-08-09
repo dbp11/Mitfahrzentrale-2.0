@@ -93,6 +93,10 @@
     }
   });
 
+%div.other-site#other-site
+  = link_to(image_tag('/images/Button_back.png', :alt => "Zurück"), "javascript:history.back()")
+%h2 Fahrtdetails
+
 %table.trips_base_table
   %tr
     %td
@@ -132,6 +136,10 @@
         %tr
           %td.left_bold#minimal Auto:
           %td.left{:colspan => "3"}= link_to("#{trip.car.car_type}", trip.car) +" (#{trip.car.description.truncate(60)})"
+        %tr
+          %td.left_bold#minimal Gep&auml;ck:
+          %td.left{:colspan => "3"}
+            = trip.baggage ? "Es kann Gepäck mitgenommen werden" : "Es kann kein Gepäck mitgenommen werden"
         %tr
           %td.left_bold Hinweise:
           %td.left{:colspan => "3"}= trip.comment
@@ -250,4 +258,3 @@
   var b = document.getElementById("map_canvas").offsetWidth;
   var style = document.getElementById("map_canvas").getAttribute("style");
   document.getElementById("map_canvas").setAttribute("style",style+"height:"+b,0);
-

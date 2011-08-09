@@ -1,46 +1,41 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+@import "variables";
 body.users {
   // Place scoped styles here
-  .form_arround_left{
-    width: 500px;
-  }
-	.other_site {
-		width: 50%;
-		text-align: right;
-		margin-top: -2em;
-		margin-bottom: 1em;
-		a {
-			margin-right: 0.5em;
-		}
-	}
-
-  .head{
-    text-decoration: underline;
-    padding-top: 10px; 
-    padding-bottom: 20px;
-    padding-left: 10px;
-  }
-
-  .form_arround{
-    padding-left: 10px;
-  }
-
-  .form_table_right{
-    text-align: left;
-  }
-
-  .form_table_left{
-    width: 200px;
-  }
-
-  #box{
-    background-image: url(../images/user/rahmen8.jpg);
-    background-size: 350px 360px;
-    background-position: center;
-    padding: 30px;
-
+  #main{
+    .form_arround_left{
+      width: 500px;
+    }
+    .other-site {
+      width: 50%;
+    }
+  
+    .head{
+      text-decoration: underline;
+      padding-top: 10px; 
+      padding-bottom: 20px;
+      padding-left: 10px;
+    }
+  
+    .form_arround{
+      padding-left: 10px;
+    }
+  
+    .form_table_right{
+      text-align: left;
+    }
+  
+    .form_table_left{
+      width: 200px;
+    }
+  
+    #box{
+      background-image: url(../images/user/rahmen8.jpg);
+      background-size: 350px 360px;
+      background-position: center;
+      padding: 30px;
+    }
   }
 }

@@ -1,0 +1,7 @@
+<p>Hallo <%= @resource.email %>!</p>
+
+<p>Auf Grund einer zu hohen Anzahl fehlerhafter Anmeldeversuchen wurde dein Account gesperrt.</p>
+
+<p>Klicke auf den unten stehenden Link um den Account wieder zu entsprerren:</p>
+
+<p><%= link_to 'Account entsperren', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>

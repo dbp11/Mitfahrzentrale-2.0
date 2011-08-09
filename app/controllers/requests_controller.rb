@@ -49,11 +49,11 @@ class RequestsController < ApplicationController
     @request = @request.set_address_info 
     @request.set_route
 
-    if @request.save
+    if @request.save!
       redirect_to @request, notice: 'Request was successfully created.'
     else
-      redirect_to requests_path, notice: 'FEHLER'
-        #format.html { render action: "new" }
+      redirect_to requests_path, notice: 'Speicherfehler - Deine Schuld DATUM Validation!'
+      render action: "new"
     end
   end
 
