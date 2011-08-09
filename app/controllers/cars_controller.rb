@@ -12,36 +12,35 @@ class CarsController < ApplicationController
   end  
 
   # GET /cars
-  # GET /cars.json
-  #@cars Liefert die Autos des aktuellen Nutzers
+  # Liefert die Autos des aktuellen Nutzers
   def index
     @cars = current_user.cars
   end
 
   # GET /cars/1
-  # GET /cars/1.json
-  #@car Liefert das Auto mit der entsprechenden ID in Detailansicht
+  # Liefert das Auto mit der entsprechenden ID in Detailansicht
+  # @params id des zu Zeigenden Autos
   def show
     @car = Car.find(params[:id])
   end
 
   # GET /cars/new
-  # GET /cars/new.json
-  # @car Neues Car-Objekt
+  # Neues Auto
   def new
     @car = Car.new
   end
 
   # GET /cars/1/edit
-  #@car Auto mit der passenden id finden zum editieren
+  # Auto editieren
+  # @params Auto mit der passenden id finden zum editieren
   def edit
     @car = Car.find(params[:id])
   end
 
 
   # POST /cars
-  # POST /cars.json
-  #@car Neues Car-Objekt wird mit den empfangenen Parametern befüllt
+  # Neues auto wird erstellt
+  # @params Neues Car-Objekt wird mit den empfangenen Parametern befüllt
   def create
     @car = Car.new(params[:car])
     @car.user_id = current_user.id
@@ -54,8 +53,7 @@ class CarsController < ApplicationController
   end
 
   # PUT /cars/1
-  # PUT /cars/1.json
-  # @car Car-Objekt wird mit den empfangenen Parametern geupdated
+  # @params Car-Objekt wird mit den empfangenen Parametern geupdated
   def update
     @car = Car.find(params[:id])
 
@@ -67,8 +65,8 @@ class CarsController < ApplicationController
   end
 
   # DELETE /cars/1
-  # DELETE /cars/1.json
-  # Car-Obkekt mit der passenden id löschen
+  # Entfernt ein bestimmtes Auto, wenn es nicht fuer ein Trip genutzt wird
+  # @param id des zu loeschenden Autos
   def destroy
     @car = Car.find(params[:id])
     if @car.is_used

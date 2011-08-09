@@ -54,7 +54,7 @@ until x==anztrips
   puts "PLZ-Start:"+plz_start.to_s + " PLZ-Ende:" + plz_ende.to_s
   puts "Start-Kord: "+start[0].to_s+"N "+start[1].to_s+"E"
   puts "End-Kord: "+ende[0].to_s+"N "+ende[1].to_s+"E"
-  t=Trip.new :user_id => user_id, :car_id => car_id, :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_E => ende[0].to_f, :ends_at_N => ende[1].to_f, :start_zipcode => start, :end_zipcode => ende, :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => rand(6)
+  t=Trip.new :user_id => user_id, :car_id => car_id, :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_E => ende[0].to_f, :ends_at_N => ende[1].to_f, :start_zipcode => plz_start, :end_zipcode => plz_ende, :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => rand(6)
   trips << t
 end
 
@@ -80,7 +80,7 @@ until x==anzrequests
   puts "Start-Kord: "+start[0].to_s+"N "+start[1].to_s+"E"
   puts "End-Kord: "+ende[0].to_s+"N "+ende[1].to_s+"E"
 
-  r = Request.new :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_N => ende[0].to_f, :ends_at_E => ende[1].to_f, :start_zipcode => start, :end_zipcode => ende, :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => user_id, :start_radius => rand(51), :end_radius => rand(51)
+  r = Request.new :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_N => ende[0].to_f, :ends_at_E => ende[1].to_f, :start_zipcode => plz_start, :end_zipcode => plz_ende, :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => user_id, :start_radius => rand(51), :end_radius => rand(51)
   requests << r
 end
 
@@ -132,6 +132,10 @@ cars.each do |t|
 end
 
 trips.each do |t|
+  puts t.starts_at_N
+  puts t.starts_at_E
+  puts t.ends_at_N
+  puts t.ends_at_E
   t.set_address_info
   t.set_route
   t.save!

@@ -12,7 +12,7 @@
   .field
     = f.label :seats, "Sitzplätze*" 
     %br
-    = f.number_field :seats, :size => 30, :min => 0, :max =>40
+    = f.number_field :seats, :size => 30, :min => 0, :max =>40, :autofocus => "autofocus"
   .field
     = f.label :car_type, "Modell*"
     %br
@@ -39,7 +39,7 @@
     = f.file_field :carpic
     
   .actions
-  
+  %br
     = image_submit_tag "/images/Button_add.png"
     Mit * gekennzeichnete Felder sind Pflichtfelder
 = link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), cars_path
