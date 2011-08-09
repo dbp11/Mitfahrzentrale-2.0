@@ -3,11 +3,11 @@ class TripsController < ApplicationController
   load_and_authorize_resource 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to trips_url
+    redirect_to trips_path
   end
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to root_path
+    redirect_to trips_path
   end
   
   # GET /trips
@@ -199,7 +199,7 @@ class TripsController < ApplicationController
         format.html { redirect_to @trip, notice: 'Trip was successfully created.' }
         format.json { render json: @trip, status: :created, location: @trip }
       else
-        format.html { redirect_to root_path }
+        format.html { redirect_to trips_path }
         format.json { render json: @trip.errors, status: :unprocessable_entity }
       end
     end

@@ -54,7 +54,7 @@ class RatingsController < ApplicationController
       @rating.receiver = User.find(params[:uid])
 	    @rating.trip = Trip.find(params[:tid])
     else
-      redirect_to root_path, notice: "Du kannst den Nutzer nicht bewerten!"
+      redirect_to ratings_path, notice: "Du kannst den Nutzer nicht bewerten!"
     end
     #respond_to do |format|
       #format.html # new.html.erb

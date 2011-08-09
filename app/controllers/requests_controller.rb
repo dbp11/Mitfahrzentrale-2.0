@@ -3,11 +3,11 @@ class RequestsController < ApplicationController
   load_and_authorize_resource 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to requests_url
+    redirect_to requests_path
   end
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to requests_url
+    redirect_to requests_path
   end
 
   # GET /requests
@@ -68,7 +68,7 @@ class RequestsController < ApplicationController
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else
-        format.html { redirect_to root_path, notice: 'FEHLER' }
+        format.html { redirect_to requests_path, notice: 'FEHLER' }
         #format.html { render action: "new" }
         #format.json { render json: @request.errors, status: :unprocessable_entity }
       end

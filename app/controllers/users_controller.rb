@@ -3,11 +3,11 @@ class UsersController < ApplicationController
   load_and_authorize_resource 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to trips_url
+    redirect_to user_path(current_user.id)
   end
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:error] = "Zugriff verweigert!"
-    redirect_to trips_url
+    redirect_to user_path(current_user.id)
   end
 
   def show
