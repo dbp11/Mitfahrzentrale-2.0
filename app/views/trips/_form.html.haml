@@ -27,25 +27,25 @@
   %table
     %tr
       %td
-        Startadresse
+        Startadresse*
         %br/
         &nbsp;
       %td
-        = text_field_tag(:address_start, nil, :placeholder => "Stadt (pflicht), PLZ (optional), Str.  Hausnr. (Optional)", :size => "50", :required => "required")
-        %br/
-        &nbsp;
-    %tr
-      %td
-        Zieladresse
-        %br/
-        &nbsp;
-      %td
-        = text_field_tag(:address_end, nil, :placeholder => "Stadt (pflicht), PLZ (optional), Str.  Hausnr. (Optional)", :size => "50", :required => "required")
+        = text_field_tag(:address_start, nil, :size => "50", :autofocus => "autofocus", :required => "required")
         %br/
         &nbsp;
     %tr
       %td
-        Abfahrtszeit
+        Zieladresse*
+        %br/
+        &nbsp;
+      %td
+        = text_field_tag(:address_end, nil, :size => "50", :required => "required")
+        %br/
+        &nbsp;
+    %tr
+      %td
+        Abfahrtszeit*
         %br/
         &nbsp;
       %td
@@ -109,7 +109,7 @@
         &nbsp;
     %tr
       %td
-        Fahrzeug
+        Fahrzeug*
         %br/
         &nbsp;
       %td
@@ -147,8 +147,12 @@
     %tr
       %td
         %br/
+        = "* = Pflichtfeld"
+        %br/
+        %br/
+        %br/
+        %br/
         = image_submit_tag("/images/Button_create.png")
-
 
 
 
