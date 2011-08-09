@@ -93,6 +93,8 @@
     }
   });
 
+%h2 Fahrtdetails
+
 %table.trips_base_table
   %tr
     %td
@@ -132,6 +134,10 @@
         %tr
           %td.left_bold#minimal Auto:
           %td.left{:colspan => "3"}= link_to("#{trip.car.car_type}", trip.car) +" (#{trip.car.description.truncate(60)})"
+        %tr
+          %td.left_bold#minimal Gep&auml;ck:
+          %td.left{:colspan => "3"}
+            = trip.baggage ? "Es kann Gepäck mitgenommen werden" : "Es kann kein Gepäck mitgenommen werden"
         %tr
           %td.left_bold Hinweise:
           %td.left{:colspan => "3"}= trip.comment
