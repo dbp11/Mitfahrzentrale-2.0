@@ -1,6 +1,7 @@
 %div.other-site
 	= link_to(image_tag('/images/Button_back.png', :alt => "Zurück"), "javascript:history.back()")
-	= link_to(image_tag( '/images/Button_created_rating.png', :alt => "Erstellte Bewertungen"), ratings_path)
+	- if @user == current_user and @latest_ratings != 0 
+		= link_to(image_tag( '/images/Button_created_rating.png', :alt => "Erstellte Bewertungen"), ratings_path)
 %h2
 	= "Bewertungen"
 
