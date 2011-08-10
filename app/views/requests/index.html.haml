@@ -1,4 +1,4 @@
-%h2 Suche nach Fahrer:
+%h2 Suche nach Fahrer
 
 %table.index_table
   %tr.index_table_first
@@ -7,10 +7,7 @@
     %td Startzeit
     %td Fahrzeit*
     %td Gepäck
-    %td Anmerkung
     %td Anzeigen
-    %td Editieren
-    %td Löschen
   - @requests.each do |request|
     %tr.index_table_second
       
@@ -19,14 +16,11 @@
       %td= request.start_time.strftime("%d.%m.%Y %H:%M")
       %td= request.get_route_duration
       %td= request.baggage? ? "Ja" : "Nein"
-      %td= request.comment
-
       %td= link_to image_tag( '/images/Button_show.png', :alt => "Anzeigen", :height => "20"), request
-      %td= link_to image_tag( '/images/Button_edit.png', :alt => "Editieren", :height => "20"), edit_request_path(request)
-      %td= link_to image_tag( '/images/Button_delete.png', :alt => "Löschen", :height => "20"), request, :confirm => 'Are you sure?', :method => :delete
+
 
 %br
-*Verkehrsbehinderungen werden bei der Berechnung der Fahrzeit nicht berücksichtigt
+*Angaben ohne Gewähr
 %br
 %br
 = link_to image_tag( '/images/Button_new_query.png', :alt => "Neue Anfrage", :height => "20"), new_request_path

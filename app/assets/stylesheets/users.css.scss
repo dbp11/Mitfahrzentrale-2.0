@@ -7,21 +7,30 @@ body.users {
   #main{
     .form_arround_left{
       width: 500px;
+      border: solid 1px;
     }
     .other-site {
       width: 50%;
     }
-  
-    .head{
-      text-decoration: underline;
-      padding-top: 10px; 
-      padding-bottom: 20px;
-      padding-left: 10px;
+    .left{
+      width: 65%;
     }
   
-    .form_arround{
-      padding-left: 10px;
+   .form_table{
+    border:solid 1px;
+    &:nth-child(2n){
+      background-color: $table_bg_color1;
+    }  
+    &:nth-child(2n+1){
+      background-color: $table_bg_color2;
     }
+
+    td{
+      border:solid 1px;
+      text-align: center;
+    }
+  }
+ 
   
     .form_table_right{
       text-align: left;
@@ -37,5 +46,9 @@ body.users {
       background-position: center;
       padding: 30px;
     }
+  }
+
+  .form_arround{
+    border: solid 2px;
   }
 }
