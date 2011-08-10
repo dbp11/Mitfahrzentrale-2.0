@@ -30,26 +30,16 @@
     %tr
       %td
         = label_tag(:address_start, "Startadresse:")
-        %br/
-        &nbsp;
       %td
         = text_field_tag(:address_start, nil, :maxlength => "120", :autofocus => "autofocus", :required => "required", :class => "text_input")
-        %br/
-        &nbsp;
     %tr
       %td
         = label_tag(:address_end, "Zieladresse:")
-        %br/
-        &nbsp;
       %td
         = text_field_tag(:address_end, nil, :maxlength => "120", :required => "required", :class => "text_input")
-        %br/
-        &nbsp;
     %tr
       %td
         = label_tag("Abfahrtszeit:")
-        %br/
-        &nbsp;
       %td
         %select{:name => "start_day", :required => "required"}
           - 31.times do |i|
@@ -107,40 +97,26 @@
                 %option{:value => (i*5).to_s, :selected => "selected"}= "#{i*5}"
               - else
                 %option{:value => (i*5).to_s}= "#{i*5}"
-        %br/
-        &nbsp;
     %tr
       %td
         = label_tag(:car, "Fahrzeug")
-        %br/
-        &nbsp;
       %td
         %select#car{:name => "car", :required => "required", :onchange => "carDropDown()"}
           - @fahrzeuge.each do |f|
             %option{:value => f.id}= "#{f.car_type} (#{f.seats} Sitzplätze)"
-        %br/
-        &nbsp;
     %tr
       %td
         = label_tag(:free_seats, "Sitzplätze")
-        %br/
-        &nbsp;
       %td
         %select#freeseats{:name => "free_seats"}
           %option{:value => ""} keine Änderung
           - (@fahrzeuge.first.seats - 1).times do |i|
             %option{:value => (i+1)}= (i+1)
-        %br/
-        &nbsp;
     %tr
       %td
         = label_tag(:baggage, "Gepäck")
-        %br/
-        &nbsp;
       %td
         = check_box_tag(:baggage)
-        %br/
-        &nbsp;
     %tr
       %td
         = label_tag(:comment, "Hinweise")
