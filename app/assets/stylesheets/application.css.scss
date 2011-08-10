@@ -106,13 +106,17 @@ body {
 //	margin-right: 10em;
 	width: 1000px;
 	margin: auto;
-	height: 800px;
+  margin-bottom: 10px;
+  padding-bottom: 1px;
+  margin-top: 10px;
+	min-height: 100%;
 	background:-moz-linear-gradient(top, $bg_color1, $bg_color2); /* Firefox */
 	background:-webkit-gradient(linear, left top, left bottom, from($bg_color1), to($bg_color2)); /* Safari, Chrome */
 	background:-webkit-linear-gradient(top, $bg_color1, $bg_color2); /* Safari, Chrome - neue Syntax! */
 	background:-o-linear-gradient(top, $bg_color1, $bg_color2); /* Opera */
 	background:-ms-linear-gradient(top, $bg_color1, $bg_color2); /* IE */
 	background:linear-gradient(top, $bg_color1, $bg_color2); /* W3C Standard */
+  box-shadow: 0px 0px 10px 2px #888888;
 }
 #main {
 	position: relative;

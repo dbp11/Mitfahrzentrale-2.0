@@ -68,7 +68,7 @@ class RatingsController < ApplicationController
   def create
     @rating = Rating.new(params[:rating])
 	  if @rating.save
-      redirect_to ratings_path, notice: 'Rating was successfully created.'
+      redirect_to ratings_path, notice: 'Bewertung wurde erfolgreich erstellt .'
     else
       render action: "new"
     end
@@ -81,7 +81,7 @@ class RatingsController < ApplicationController
     @rating = Rating.find(params[:id])
 
     if @rating.update_attributes(params[:rating])
-      redirect_to @rating, notice: 'Rating was successfully updated.'
+      redirect_to @rating, notice: 'Bewertung wurde erfolgreich aktualisiert.'
     else
       render action: "edit"
     end

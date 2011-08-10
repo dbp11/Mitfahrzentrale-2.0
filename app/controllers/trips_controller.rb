@@ -95,7 +95,7 @@ class TripsController < ApplicationController
         tmp.writer = User.find(@trip.user_id)
         tmp.receiver = current_user
         tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.start_city+" - "+@trip.end_city+"]]"
-        tmp.message = "Ihre Bewerbung fuer den Trip von "+@trip.start_city+" nach "+@trip.end_city+" war erfolgreich. <3"        
+        tmp.message = "Ihre Bewerbung fuer die Fahrt von "+@trip.start_city+" nach "+@trip.end_city+" war erfolgreich. <3"        
         tmp.delete_writer = true
         tmp.delete_receiver = false
         puts tmp.to_s
@@ -105,7 +105,7 @@ class TripsController < ApplicationController
         tmp.writer = current_user 
         tmp.receiver = User.find(@trip.user_id)
         tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.start_city+" - "+@trip.end_city+"]]"
-        tmp.message = "Bewerbung fuer den Trip von "+@trip.start_city+" nach "+@trip.end_city+".\n Nutzer annehmen: [[/trips/"+@trip.id.to_s+"?accept=true&uid="+current_user.id.to_s+"|Hier!]]"        
+        tmp.message = "Bewerbung fuer die Fahrt von "+@trip.start_city+" nach "+@trip.end_city+".\n Nutzer annehmen: [[/trips/"+@trip.id.to_s+"?accept=true&uid="+current_user.id.to_s+"|Hier!]]"        
 
         tmp.delete_writer = true
         tmp.delete_receiver = false
@@ -121,7 +121,7 @@ class TripsController < ApplicationController
           tmp = Message.new()
           tmp.writer = current_user
           tmp.receiver = temp
-          tmp.message = "Sie wurden fuer den Trip von "+@trip.start_city+" nach "+@trip.end_city+" angenommen!!"
+          tmp.message = "Sie wurden fuer die Fahrt von "+@trip.start_city+" nach "+@trip.end_city+" angenommen!!"
           tmp.subject = "[[/trips/"+@trip.id.to_s+"|"+@trip.start_city+" - "+@trip.end_city+"]]"
           tmp.delete_writer = true
           tmp.delete_receiver = false
@@ -138,7 +138,7 @@ class TripsController < ApplicationController
           tmp = Message.new()
           tmp.writer = current_user
           tmp.receiver = temp
-          tmp.message = "Sie wurden fuer den Trip von "+@trip.start_city+" nach "+@trip.end_city+" abgelehnt!!"
+          tmp.message = "Sie wurden fuer die Fahrt von "+@trip.start_city+" nach "+@trip.end_city+" abgelehnt!!"
           tmp.subject = "Ihre Bewerbung"
           tmp.delete_writer = true
           tmp.delete_receiver = false
@@ -218,7 +218,7 @@ class TripsController < ApplicationController
     end
 
     if @trip.save
-      redirect_to @trip, :notice => 'Trip was successfully created.'
+      redirect_to @trip, :notice => 'Die Fahrt wurde erfolgreich erstellt.'
     else
       redirect_to trips_path
     end
@@ -232,7 +232,7 @@ class TripsController < ApplicationController
       current_user.bewerben(@trip)
     end
     if @trip.update_attributes(params[:trip])
-      redirect_to @trip, :notice => 'Trip was successfully updated.'
+      redirect_to @trip, :notice => 'Die Fahrt wurde erfolgreich aktualisiert.'
     else
       render :action => "edit"
     end
@@ -246,7 +246,7 @@ class TripsController < ApplicationController
       @trip.destroy
       redirect_to trips_url
     else
-      redirect_to trips_url, :notice => "Vergangene Trips koennen nicht geloescht werden"
+      redirect_to trips_url, :notice => "Vergangene Fahrten koennen nicht geloescht werden"
     end
   end
 end
