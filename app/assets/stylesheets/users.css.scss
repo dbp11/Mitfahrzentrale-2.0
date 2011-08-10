@@ -6,28 +6,25 @@ body.users {
   // Place scoped styles here
   #main{
     .form_arround_left{
-      width: 500px;
+
     }
     .other-site {
       width: 50%;
     }
-  
-    .head{
-      text-decoration: underline;
-      padding-top: 10px; 
-      padding-bottom: 20px;
-      padding-left: 10px;
+    .left{
+      width: 65%;
     }
   
-    .form_arround{
-      padding-left: 10px;
+   .form_tables{
+
     }
+ 
   
-    .form_table_right{
+    .form_tables_right{
       text-align: left;
     }
   
-    .form_table_left{
+    .form_tables_left{
       width: 200px;
     }
   
@@ -37,5 +34,8 @@ body.users {
       background-position: center;
       padding: 30px;
     }
+  }
+
+  .form_arround{
   }
 }

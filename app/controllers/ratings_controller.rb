@@ -1,46 +1,41 @@
 class RatingsController < ApplicationController
   before_filter :authenticate_user!
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    flash[:error] = "Dieser Nutzer existiert nicht!"
+    flash[:alert] = "Dieser Nutzer existiert nicht!"
     redirect_to "/ratings/"+current_user.id.to_s 
   end
   
   # GET /ratings
-  # GET /ratings.json
+  # Liefert alle Ratings, wenn ich Admin bin, sonst nur meine
   def index
     if current_user.role == "admin"
       @ratings = Rating.all
     else
-      temp = current_user
-      @ratings = temp.get_own_written_ratings
-      #Meine erstellten Ratings --> Methode
+      @ratings = current_user.get_own_written_ratings
     end
+    # Noch ausstehnde Bewertungen an die View geben
     @new_ratings = current_user.get_waiting_ratings
   end
 
   # GET /ratings/1
-  # GET /ratings/1.json
+  # Eine Uebersicht ueber meine Ratings
   def show
-    temp = User.find(params[:id])
-	  @user = temp
-    @driver_ratings = temp.get_own_driver_ratings
-    @passenger_ratings = temp.get_own_passenger_ratings
-    @driver_avg = temp.get_avg_rating_driver
-	  @driver_cnt = temp.count_ratings_driver
-    @passenger_avg = temp.get_avg_rating_passenger
-  	@passenger_cnt = temp.count_ratings_passenger
+    @user = User.find(params[:id])
+    @driver_ratings = @user.get_own_driver_ratings
+    @passenger_ratings = @user.get_own_passenger_ratings
+    @driver_avg = @user.get_avg_rating_driver
+	  @driver_cnt = @user.count_ratings_driver
+    @passenger_avg = @user.get_avg_rating_passenger
+  	@passenger_cnt = @user.count_ratings_passenger
   	@last_ratings = current_user.last_ratings
 	  @latest_ratings = current_user.get_latest_ratings
-	  if temp == current_user
+	  if @user == current_user
 		  current_user.last_ratings = Time.now
 		  current_user.save
 	  end
-
-    # Zwei Arrays. eins mit den Ratings als Fahrer, eins als Mitfahrer
   end
 
   # GET /ratings/new
-  # GET /ratings/new.json
   def new
     usr = User.find(params[:uid])
     trp = Trip.find(params[:tid])

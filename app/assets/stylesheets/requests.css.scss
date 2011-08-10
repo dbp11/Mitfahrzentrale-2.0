@@ -5,7 +5,21 @@
 body.requests {
   // Add the requests class to your body tag
   // Then, place scoped styles here.
+  .head{
+    width:70%;
+  }
 
+  #main{
+    .other-site {
+      width: 100%;
+    }
+  }
+  .links{
+    text-align: left; 
+  }
+  .rechts{
+    text-align: right;
+  }
   h4{
     padding: 5px;
     text-decoration:underline;
@@ -13,20 +27,14 @@ body.requests {
 
   td{
     vertical-align:top;
-    padding: 5px;
-  }
-  tr{
-    padding: 10px;
-  }
-  th{
-    padding: 10px;
   }
 
   .left{
     font-weight: bold;
   }
   .index_table{
-    padding:10px;
+    border: solid 2px;
+    width: 100%;
   }
 
   .index_table_second{
@@ -44,12 +52,37 @@ body.requests {
     }
   }
   .index_table_first{
-    border: solid 2px;
     background-color: $table_bg_color0;
+    border: solid 2px;
     td{
+      border: solid 1px;
       font-weight: bold;
-      border:solid 2px;
       text-align:center;
     }
+  }
+  .first{
+    font-weight: bold;
+    border: solid 2px;
+    background-color: $table_bg_color0;
+    text-align: center;
+  }
+  .left{
+    width:120px;
+  }  
+
+  .form_table{
+    //border:solid 2px;
+    width:50%;
+    //&:nth-child(2n){
+      background-color: $table_bg_color1;
+    //}  
+    //&:nth-child(2n+1){
+      background-color: $table_bg_color2;
+    //}
+    //tr{
+    //}
+    //td{
+      text-align: left;
+    //}
   }
 }
