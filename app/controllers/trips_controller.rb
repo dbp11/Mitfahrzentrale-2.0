@@ -47,9 +47,6 @@ class TripsController < ApplicationController
   # GET /trips
   # Liefert Übersicht über alle Fahrten an denen der Nutzer beteiligt ist und war
   def index
-    if current_user.role == "admin"
-       
-    else
       #Dummy. Wird entfernt
       temp = current_user
       @trips = temp.driven
@@ -61,7 +58,6 @@ class TripsController < ApplicationController
       @ridden_trips = temp.driven_with
       #Alle Fahrten, in denen ich Mitfahrer noch teilnehmen
       @future_ridden_trips = temp.to_drive_with
-    end
   end
 
   # GET /trips/1
