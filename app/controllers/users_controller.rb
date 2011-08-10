@@ -6,10 +6,17 @@ class UsersController < ApplicationController
     flash[:error] = "Zugriff verweigert!"
     redirect_to user_path(current_user.id)
   end
+  #Exception, falls man auf einen Bereich nicht zugreifen kann
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:error] = "Zugriff verweigert!"
     redirect_to user_path(current_user.id)
   end
+  # Exception, falls ein Bereich nicht existiert
+  rescue_from Exception::StandardError do |exception|
+    flash[:alert] = exception.message
+    redirect_to new_request_path
+  end
+  # Standard-Fehler werden hier mit einer mitgegebenen Message ausgegeben und  je nachdem gecatcht
   # Exception-Handling
 
 

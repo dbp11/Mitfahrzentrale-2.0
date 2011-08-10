@@ -4,7 +4,13 @@ class RatingsController < ApplicationController
     flash[:alert] = "Dieser Nutzer existiert nicht!"
     redirect_to "/ratings/"+current_user.id.to_s 
   end
-  
+  # Exception, falls ein Bereich nicht existiert
+  rescue_from Exception::StandardError do |exception|
+    flash[:alert] = exception.message
+    redirect_to new_request_path
+  end
+  # Exception für Standardfehler, z.B. Eingabefehler
+
   # GET /ratings
   # Liefert alle Ratings, wenn ich Admin bin, sonst nur meine
   def index
