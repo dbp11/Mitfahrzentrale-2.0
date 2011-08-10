@@ -5,7 +5,7 @@ class UpdateTrip < ActiveRecord::Migration
   end
 
   def down
-    remove_column :trips, :distance, :integer
-    remove_column :trips, :duration, :integer
+    remove_column :trips, :distance
+    remove_column :trips, :duration
   end
 end

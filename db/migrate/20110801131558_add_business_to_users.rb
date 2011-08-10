@@ -3,6 +3,6 @@ class AddBusinessToUsers < ActiveRecord::Migration
     add_column :users, :business, :boolean
   end
   def down
-    remove_column :users, :business, :boolean
+    remove_column :users, :business
   end
 end

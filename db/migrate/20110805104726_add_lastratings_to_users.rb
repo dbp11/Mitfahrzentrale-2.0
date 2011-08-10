@@ -4,6 +4,6 @@ class AddLastratingsToUsers < ActiveRecord::Migration
   end
 
   def down
-    remove_column :users, :last_ratings, :datetime
+    remove_column :users, :last_ratings
   end
 end

@@ -4,6 +4,6 @@ class AddDeleteReceiverMessages < ActiveRecord::Migration
   end
 
   def down
-    remove_column :messages, :delete_receiver, :boolean
+    remove_column :messages, :delete_receiver
   end
 end

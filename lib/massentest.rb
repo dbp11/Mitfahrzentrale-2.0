@@ -1,6 +1,7 @@
 # encoding: utf-8
 # Massentest für die Datenbank, d.h. hier werden die dafür benötigten Daten erstellt
 require "plzliste"
+require "bing/route"
 
 #Anzahl der zu erstellenden Entities
 anzusers = 10
@@ -135,15 +136,19 @@ trips.each do |t|
   puts t.starts_at_N
   puts t.starts_at_E
   puts t.ends_at_N
-  puts t.ends_at_E
-  t.set_address_info
-  t.set_route
+  puts t.ends_at_E  
+  route = Bing::Route.find(:waypoints => [t.starts_at_N.to_s + " " + t.starts_at_E.to_s + " ",
+                                            t.ends_at_N.to_s + " " + t.ends_at_E.to_s + " "])[0]
+  t.distance = route.total_distance
+  t.duration = route.total_duration
   t.save!
 end
 
 requests.each do |t|
-  t.set_address_info
-  t.set_route
+  route = Bing::Route.find(:waypoints => [t.starts_at_N.to_s + " " + t.starts_at_E.to_s + " ",
+                                            t.ends_at_N.to_s + " " + t.ends_at_E.to_s + " "])[0]
+  t.distance = route.total_distance
+  t.duration = route.total_duration
   t.save!
 end
 

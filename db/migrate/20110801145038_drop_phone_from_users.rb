@@ -1,11 +1,11 @@
 class DropPhoneFromUsers < ActiveRecord::Migration
   def up
-    remove_column :users, :phone, :integer
+    remove_column :users, :phone
     add_column :users, :phone, :string
   end
 
   def down
-    remove_column :users, :phone, :string
+    remove_column :users, :phone
     add_column :users, :phone, :integer
   end
 end
