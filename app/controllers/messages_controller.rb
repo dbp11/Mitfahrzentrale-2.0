@@ -66,10 +66,7 @@ class MessagesController < ApplicationController
         check=true
       end
     end
-    if current_user.is_ignored(@message.receiver)
-      check = false
-      flash[:notice] = "Sie werden von dem User ignoriert!"
-    end
+    
     # Wenn check noch false ist, ist was falsch gelaufen und wir werden redirected
     if !check
       redirect_to messages_path
@@ -90,10 +87,10 @@ class MessagesController < ApplicationController
     @message.delete_receiver = false
     @message.delete_writer = false
 
-    if @message.save
+    if @message.save and !@message.receiver.is_ignored(current_user) 
       redirect_to messages_path, notice: 'Message was successfully created.'
     else
-      render action: "new"
+      redirect_to messages_path, notice: 'Nachricht konnte nicht gesendet werden'
     end
   end
 
