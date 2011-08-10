@@ -22,6 +22,7 @@
       = @request.start_zipcode == nil ? "" : @request.start_zipcode.to_s
       = @request.start_city == nil ? "" : @request.start_city
       = @request.start_street == nil ? "" : @request.start_street
+      = "(" + @request.start_radius.to_s + "km Umkreis)"
   %tr
     %td.left
       Zieladresse:
@@ -29,6 +30,7 @@
       = @request.end_zipcode == nil ? "" : @request.end_zipcode.to_s
       = @request.end_city == nil ? "" : @request.end_city
       = @request.end_street == nil ? "" : @request.end_street
+      = "(" + @request.end_radius.to_s + "km Umkreis)"
   %tr
     %td.left
       Startzeit:
@@ -96,4 +98,6 @@
         %td
           = "%.1f" % t[0].user.get_avg_rating_driver
           = "(" + t[0].user.count_ratings.to_s + ")"
+        %td
+          = t[1]
 
