@@ -170,6 +170,7 @@ class TripsController < ApplicationController
   end
 
   # POST /trips
+  # Methode erstellt ein neuen Trip
   def create
     @trip = Trip.new()
     @trip.user_id = current_user.id
