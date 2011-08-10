@@ -158,20 +158,9 @@ class Request < ActiveRecord::Base
   #
   # @return Zeit ( x Stunden y Minuten)
   def get_route_duration
-    hours = duration.div(3600)
-    minutes = (duration % 60)
-    ergstring = ""
-    if hours < 10
-      ergstring += "0"
-    end
-    ergstring += hours.to_s + ":"
-    if minutes < 10
-      ergstring += "0"
-    end
-    ergstring += minutes.to_s + " h"
-
-    return ergstring 
-  end
+   # return duration
+   return (duration / 3600).to_s + " Stunden "+ ((duration - duration / 3600 *3600)/60).to_s + " Minuten" 
+  end 
  
   # Berechnet die Distanz die benötigt wird und gibt diese formatiert aus
   #

@@ -2,33 +2,31 @@ class MessagesController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Zugriff verweigert!"
+    flash[:alert] = "Zugriff verweigert!"
     redirect_to messages_path
   end
+ #Exception, falls man auf einen Bereich nicht zugreifen kann
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    flash[:error] = "Zugriff verweigert!"
+    flash[:alert] = "Zugriff verweigert!"
     redirect_to messages_path
   end
+  # Exception, falls ein Bereich nicht existiert
+  rescue_from Exception::StandardError do |exception|
+    flash[:alert] = exception.message
+    redirect_to new_request_path
+  end
+ # Exception für Standardfehler
   
   # GET /messages
   # Die IndexAction gibt gibt alle empfangenen Nachrichten des Nutzer aus
   # Zeitstempel und Anzahl der neuen Nachrichten werden für die Anzeige gebraucht
    def index
     # Alle empfangenen Nachrichten des Nutzers
-    if current_user.role == "admin"
-      @latest_messages = []
-      @messages = Message.all
-      @last_delivery = current_user.last_delivery
-      User.all.each do |user|
-        @latest_messages << user.get_latest_messages
-      end
-    else
-      @messages = current_user.get_received_messages
-      # Zeitstempel des letzten Aufrufs
-      @last_delivery = current_user.last_delivery
-      # Anzahl der Nachrichten, die der Nutzer noch nicht eingesehen hat
-	    @latest_messages = current_user.get_latest_messages
-    end
+    @messages = current_user.get_received_messages
+    # Zeitstempel des letzten Aufrufs
+    @last_delivery = current_user.last_delivery
+    # Anzahl der Nachrichten, die der Nutzer noch nicht eingesehen hat
+	  @latest_messages = current_user.get_latest_messages
     # Den Zeitstempel auf die aktuelle Zeit setzen
     current_user.last_delivery = Time.now
     current_user.save

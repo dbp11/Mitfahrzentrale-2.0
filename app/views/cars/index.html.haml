@@ -15,7 +15,7 @@
   - @cars.each do |car|
     %tr
       - if car.carpic?
-        %td= image_tag car.carpic.url(:thumb)
+        %td= link_to image_tag( car.carpic.url(:thumb)), car
       - else
         %td= link_to image_tag( '/images/cars/Default_car_icon2.png', :height => "50px"), car
       %td= link_to car.car_type, car
@@ -24,5 +24,5 @@
       %td
         = car.smoker? ? "Ja" : "Nein"
       %td= car.licence
-      %td.last_td= link_to image_tag( '/images/Button_delete.png', :alt => "Löschen"), car, :confirm => 'Bist du sicher?', :method => :delete
+      %td= link_to image_tag( '/images/Button_delete.png', :alt => "Löschen"), car, :confirm => 'Bist du sicher?', :method => :delete
 
