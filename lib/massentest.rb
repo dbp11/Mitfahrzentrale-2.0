@@ -4,12 +4,12 @@ require "bla"
 require "bing/route"
 
 #Anzahl der zu erstellenden Entities
-anzusers = 10
-anztrips = 20
-anzcars = 12
-anzrequests = 20
-anzratings = 15
-anzpassenger = 20
+anzusers = 100
+anztrips = 200
+anzcars = 120
+anzrequests = 200
+anzratings = 150
+anzpassenger = 200
 
 #Erstellen von  Users
 x=0
