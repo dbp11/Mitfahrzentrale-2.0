@@ -1,5 +1,6 @@
 class Ability
   include CanCan::Ability
+##########################Ability############################################
   # Implementiert das CanCan-Gem und spezifiziert die Rechteverwaltung der 
   # angemeldeten User und trifft hierbei eine Unterscheidung zwischen einen 
   # Member und dem Admin

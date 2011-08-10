@@ -1,10 +1,15 @@
 %div.other-site
+  = link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), cars_path
   = link_to image_tag( '/images/Button_edit.png', :alt => "Editieren"), edit_car_path(@car)
 %h2 Fahrzeugdetails
 %table.cars_show_index
-  %tr 
+  %tr  
     %td
       %table.cars_show_left
+        %tr
+          %td
+            Details
+          %td  
         %tr
           %td Modell
           %td= @car.car_type
@@ -23,7 +28,7 @@
           %td= @car.licence
         %tr
           %td Beschreibung
-          %td= @car.description
+          %td.desc= @car.description
     %td.cars_show_right
       - if @car.carpic?
         = image_tag @car.carpic.url(:medium)
@@ -34,4 +39,3 @@
 %br
 %br
 
-= link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), cars_path
