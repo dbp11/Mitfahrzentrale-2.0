@@ -2,11 +2,11 @@ class PassengersController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource 
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Zugriff verweigert!"
+    flash[:alert] = "Zugriff verweigert!"
     redirect_to trips_path
   end
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    flash[:error] = "Zugriff verweigert!"
+    flash[:alert] = "Zugriff verweigert!"
     redirect_to trips_path
   end
   
