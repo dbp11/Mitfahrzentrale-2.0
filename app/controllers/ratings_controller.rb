@@ -8,7 +8,7 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
-    if current_user.role = "admin"
+    if current_user.role == "admin"
       @ratings = Rating.all
     else
       temp = current_user
