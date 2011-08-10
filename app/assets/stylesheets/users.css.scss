@@ -6,36 +6,62 @@ body.users {
   // Place scoped styles here
   #main{
     .form_arround_left{
-
+      width: 65%;
     }
     .other-site {
-      width: 50%;
+      width: 100%;
     }
     .left{
       width: 65%;
     }
   
    .form_tables{
-
+     width: 100%;
+      border: solid 2px;
+			td {
+				padding-top: 0.1em;
+				padding-bottom: 0.1em;
+				padding-left: 0.5em;
+				padding-right: 0.5em;
+			}
+      tr:nth-child(2n) {
+        background-color: $table_bg_color1;
+      }
+      tr:nth-child(2n+1) {
+        background-color: $table_bg_color2;
+      }
+      tr:first-child {
+        font-weight: bold;
+        background-color: $table_bg_color0;
+        border-bottom: solid 1px;
+      }
     }
  
   
     .form_tables_right{
       text-align: left;
+      width: 300px;
     }
   
     .form_tables_left{
-      width: 200px;
+      width: 150px;
     }
   
     #box{
       background-image: url(../images/user/rahmen8.jpg);
       background-size: 350px 360px;
       background-position: center;
-      padding: 30px;
+      img {
+        margin: 30px;
+}
     }
   }
 
   .form_arround{
+    border: solid 2px;
+    width: 100%;
+    td {
+      vertical-align: top;
+    }
   }
 }

@@ -1,17 +1,14 @@
-%table.form_head
-  %td.left
-    %h2 
-      Profil
-  %td.right
-    = link_to image_tag( '/images/Button_recieved_rating.png', :alt => "Bearbeiten"), "/ratings/"+@user.id.to_s
-  %td.right
-    -if current_user == @user
-      = link_to(image_tag( '/images/Button_edit.png', :alt => "Bearbeiten"), edit_user_registration_path)
-    -else
-      - if current_user.is_ignored(@user) != true
-        = link_to(image_tag( '/images/Button_ignore.png', :alt => "ignorieren"), url_for(:action=>"update", :controller=>"users", :ignore=>"1") ) 
-      - else
-        = link_to(image_tag( '/images/Button_ignore_not.png', :alt => "ignorieren aufheben"), url_for(:action=>"update", :controller=>"users", :ignore=>"0") )
+.other-site
+  = link_to(image_tag('/images/Button_back.png', :alt => "Zurück"), "javascript:history.back()")
+  -if current_user == @user
+    = link_to(image_tag( '/images/Button_edit.png', :alt => "Bearbeiten"), edit_user_registration_path)
+  -else
+    - if current_user.is_ignored(@user) != true
+      = link_to(image_tag( '/images/Button_ignore.png', :alt => "ignorieren"), url_for(:action=>"update", :controller=>"users", :ignore=>"1") ) 
+    - else
+      = link_to(image_tag( '/images/Button_ignore_not.png', :alt => "ignorieren aufheben"), url_for(:action=>"update", :controller=>"users", :ignore=>"0") )
+%h2 
+  Profil
 
 
 %table.form_arround
@@ -19,26 +16,30 @@
     %td.form_arround_left
       %table.form_tables
 
+        %tr
+          %td
+            = "Profildetails"
+          %td
         %tr.form_tables_row
           %td.form_tables_left
-            %h4 Nutzername: 
+            Nutzername: 
           %td.form_tables_right
             #{@user.name}
         %tr.form_tables_row
           %td.form_tables_left
-            %h4 Email:
+            Email:
           %td.form_tables_right
             #{@user.email if @user.email}
         - if !@user.business?
           %tr.form_tables_row
             %td.form_tables_left
-              %h4 Geschlecht:
+              Geschlecht:
             %td.form_tables_right
               #{@user.sex? ? "Maennlich" : "Weiblich"}
 
         %tr.form_tables_row
           %td.form_tables_left
-            %h4 Adresse: 
+            Adresse: 
           %td.form_tables_right
             - if current_user==@user
               #{@user.address}
@@ -47,7 +48,7 @@
 
         %tr.form_tables_row
           %td.form_tables_left
-            %h4 PLZ: 
+            PLZ: 
           %td.form_tables_right
             - if current_user==@user
               #{@user.zipcode}
@@ -55,7 +56,7 @@
               #{@user.visible_zip? ? @user.zipcode : "versteckt"}
         %tr.form_tables_row
           %td.form_tables_left
-            %h4 Ort: 
+            Ort: 
           %td.form_tables_right
             - if current_user==@user
               #{@user.city}
@@ -65,7 +66,7 @@
         - if !@user.business?
           %tr.form_tables_row
             %td.form_tables_left
-              %h4 Geburtsdatum: 
+              Geburtsdatum: 
             %td.form_tables_right
               - if current_user==@user
                 #{@user.birthday}
@@ -74,7 +75,7 @@
 
         %tr.form_tables_row
           %td.form_tables_left
-            %h4 InstantMassenger: 
+            InstantMassenger: 
           %td.form_tables_right
             - if current_user==@user
               #{@user.instantmessenger}
@@ -83,25 +84,30 @@
 
         %tr.form_tables_row
           %td.form_tables_left
-            %h4 Telefon: 
+            Telefon: 
           %td.form_tables_right
             - if current_user==@user
               #{@user.phone}
             - else
               #{@user.visible_phone? ? @user.phone : "versteckt"}
 
-      %td.form_arround_right
-        %p#box
-          - if (@user.pic?)
-            = image_tag @user.pic.url(:medium)
-          -else
-            - if (@user.business?)
-              = image_tag "../images/user/fabrik.jpg"
-            - else 
-              - if (@user.sex?)
-                = image_tag "../images/user/männlich.jpg"
-              - else 
-                = image_tag "../images/user/weiblich.jpg"
+      %td.form_arround_right{:rowspan => "2"}
+        %table#box
+          %tr
+            %td
+              - if (@user.pic?)
+                = image_tag @user.pic.url(:medium)
+              -else
+                - if (@user.business?)
+                  = image_tag "../images/user/fabrik.jpg"
+                - else 
+                  - if (@user.sex?)
+                    = image_tag "../images/user/männlich.jpg"
+                  - else 
+                    = image_tag "../images/user/weiblich.jpg"
 
+    %tr
+      %td
+        = link_to image_tag( '/images/Button_recieved_rating.png', :alt => "Bearbeiten"), "/ratings/"+@user.id.to_s
         
 
