@@ -8,9 +8,14 @@ class RatingsController < ApplicationController
   # GET /ratings
   # GET /ratings.json
   def index
-    @ratings = current_user.get_own_written_ratings
-    @new_ratings = current_user.get_waiting_ratings
-    #Meine erstellten Ratings --> Methode
+    
+    if current_user.role = "admin"
+      @ratings = Rating.all
+    else
+      temp = current_user
+      @ratings = temp.get_own_written_ratings
+      #Meine erstellten Ratings --> Methode
+    end
   end
 
   # GET /ratings/1
