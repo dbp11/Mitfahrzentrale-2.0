@@ -20,3 +20,7 @@ gem "gmaps4rails"
 gem "ym4r"
 gem "bing"
 #gem "metric_fu"
+
+group :production do
+  gem "mysql2"
+end

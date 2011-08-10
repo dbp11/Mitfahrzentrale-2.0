@@ -1,21 +1,25 @@
 class TripsController < ApplicationController
   before_filter :authenticate_user!
+  
   load_and_authorize_resource 
+  
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Zugriff verweigert!"
+    flash[:alert] = "Zugriff verweigert!"
     redirect_to trips_path
   end
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    flash[:error] = "Zugriff verweigert!"
+    flash[:alert] = "Zugriff verweigert!"
     redirect_to trips_path
   end
-  #rescue_from Exception::StandardError do |exception|
-   # flash[:error] = "WRONG!"
-    #redirect_to trips_path
-  #end
+  rescue_from Exception::StandardError do |exception|
+    flash[:alert] = exception.message 
+    redirect_to trips_path
+  end
+   #Exception-Handling
 
-  # GET /trips
-  # GET /trips.json
+  # Checkt, welche Rolle der User in einem bestimmten Trip einnimmt
+  # @params trp zu prüfender Trip
+  # @return Rolle des eingeloggten Users
   def check (trp)
     @trip = trp
     @FAHRER = 0
@@ -23,49 +27,68 @@ class TripsController < ApplicationController
     @POTENTIELLER_MITFAHRER = 2
     @GAST = 3
     @user = current_user
-    if current_user == @trip.user
+    if current_user == @trip.user || current_user.role == "admin"
       @status = @FAHRER
+      # User hat den Trip erstellt => er ist der Fahrer
+      # bzw. er ist der Admin
     elsif @trip.user_committed(current_user)
       @status = @MITFAHRER
+      # User ist ein Mitfahrer
     elsif @trip.user_uncommitted(current_user)
       @status = @POTENTIELLER_MITFAHRER
+      # User hat eine Anfrage auf Mitfahrerschaft gestellt
     else
       @status = @GAST
+      #User ist ein Gast
     end
     return @status
   end
 
+  # GET /trips
+  # Liefert Übersicht über alle Fahrten an denen der Nutzer beteiligt ist und war
   def index
-    #Dummy. Wird entfernt
-    temp = current_user
-    @trips = temp.driven
-    #Alle Fahrten, die ich als Fahrer noch absolvieren muss
-    @future_trips = temp.to_drive
-    #Alle Fahrten, die ich als Fahrer absolviert habe
-    @completed_trips = temp.driven
-    #Alle Fahrten, die ich als Mitfahrer absolviert habe
-    @ridden_trips = temp.driven_with
-    #Alle Fahrten, in denen ich Mitfahrer noch teilnehmen
-    @future_ridden_trips = temp.to_drive_with
+    if current_user.role == "admin"
+      @trips = current_user.driven
+      @future_trips = Trip.all
+      @completed_trips = nil
+      @ridden_trips = nil
+      @future_ridden_trips = nil
+    else
+      #Dummy. Wird entfernt
+      temp = current_user
+      @trips = temp.driven
+      #Alle Fahrten, die ich als Fahrer noch absolvieren muss
+      @future_trips = temp.to_drive
+      #Alle Fahrten, die ich als Fahrer absolviert habe
+      @completed_trips = temp.driven
+      #Alle Fahrten, die ich als Mitfahrer absolviert habe
+      @ridden_trips = temp.driven_with
+      #Alle Fahrten, in denen ich Mitfahrer noch teilnehmen
+      @future_ridden_trips = temp.to_drive_with
+    end
   end
 
   # GET /trips/1
-  # GET /trips/1.json
+  # Liefert eine bestimmte Fahrt
   def show
     @FAHRER = 0
     @MITFAHRER = 1
     @POTENTIELLER_MITFAHRER = 2
     @GAST = 3
+    # Konstanten, welche die möglichen Rollen  
     @user = current_user
     @trip = Trip.find(params[:id])
 
     @status = check(@trip)
+    # Rolle des Users wird gesetzt
     @free_seats = @trip.get_free_seats
     @occupied_seats = @trip.get_occupied_seats
-    puts "stirb"
+    # ermitteln der genutzten und freien Plätze
+    
+    # Methode, welche Mitteilungen an die Beteiligten eine Mitfahrerbewerbung verschicken lässt
     if params[:request]
       if current_user.bewerben(@trip)
-        puts "HIER"
+        #Message an den potentiellen Mitfahrer
         tmp = Message.new()
         tmp.writer = User.find(@trip.user_id)
         tmp.receiver = current_user
@@ -75,6 +98,7 @@ class TripsController < ApplicationController
         tmp.delete_receiver = false
         puts tmp.to_s
         tmp.save
+        # Message an den Fahrer
         tmp = Message.new()
         tmp.writer = current_user 
         tmp.receiver = User.find(@trip.user_id)
@@ -87,6 +111,7 @@ class TripsController < ApplicationController
       end
     end
 
+    # Methode, welche eine Mitteilung an einen angenommenen Mitfahrer versendet
     if params[:accept] and @status == @FAHRER
       temp = User.find(params[:uid])
       if @trip.get_free_seats > 0
@@ -103,6 +128,7 @@ class TripsController < ApplicationController
       end
     end
     
+    # Methode, welche eine Mitteilung an einen abgelehnten Bewerber geschickt wird
     if params[:decline] and @status != @GAST
       temp = User.find(params[:uid])
       if @trip.declined(temp)
@@ -124,10 +150,11 @@ class TripsController < ApplicationController
     @free_seats = @trip.get_free_seats
     @occupied_seats = @trip.get_occupied_seats
     @status = check(@trip)
-  end
+    # Informationsübergabe
+    end
 
   # GET /trips/new
-  # GET /trips/new.json
+  # Neuer Trip
   def new
     if !current_user.cars.empty?
       @trip = Trip.new
@@ -143,19 +170,28 @@ class TripsController < ApplicationController
   end
 
   # POST /trips
-  # POST /trips.json
+  # Methode erstellt ein neuen Trip
   def create
-    #Die eingehenden Daten empfangen und an eine Methode übergeben, die ein Array an möglichen Orten zurückgeben
-    #Redirecten mit Parametern? An die new Action?
     @trip = Trip.new()
     @trip.user_id = current_user.id
     @trip.car_id = params[:car]
+
     temp = Geocoder.coordinates(params[:address_start])
-    @trip.starts_at_N = temp[0]
-    @trip.starts_at_E = temp[1]
+    if temp != nil
+      @trip.starts_at_N = temp[0]
+      @trip.starts_at_E = temp[1]
+    else
+      raise "Fehler bei der Starteingabe"
+    end
+
     temp = Geocoder.coordinates(params[:address_end])
-    @trip.ends_at_N = temp[0]
-    @trip.ends_at_E = temp[1]
+    if temp != nil
+      @trip.ends_at_N = temp[0]
+      @trip.ends_at_E = temp[1]
+    else
+      raise "Fehler in der Zieleingabe"
+    end
+
     @trip = @trip.set_address_info
     @trip.set_route
     @trip.comment = params[:comment]

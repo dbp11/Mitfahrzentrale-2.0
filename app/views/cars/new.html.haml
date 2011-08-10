@@ -1,3 +1,7 @@
+:javascript
+  function desc(){
+    document.getElementById("deshinweis").firstChild.nodeValue ="Noch " + (document.getElementById("descriptionarea").maxLength - document.getElementById("descriptionarea").value.length) + " Zeichen";
+  }
 = stylesheet_link_tag :cars
 %h2
   = "Neues Fahrzeug hinzufügen"
@@ -32,7 +36,9 @@
   .field
     = f.label :description, "Beschreibung (max. 100 Zeichen)"
     %br
-    = f.text_area :description, :maxlength => 100, :placeholder => "Großer Kofferraum, Keine Türen", :resize => "none"
+    = f.text_area :description, :maxlength => 100, :placeholder => "Großer Kofferraum, Keine Türen", :resize => "none", :onkeydown => "desc()", :onkeyup => "desc()", :rows => "7", :onkeypress => "desc()"
+    #deshinweis
+      %script desc();
   .field
     = f.label :carpic, "Bild hochladen"
     %br

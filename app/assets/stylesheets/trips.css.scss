@@ -188,7 +188,7 @@ body.trips {
       }
   
       a {
-        font-weight: bold;
+        text-decoration: underline;
         &:visited {
           color: #333333;
         }
@@ -223,21 +223,12 @@ body.trips {
         font-weight: bold;
       }
   
-      .right {
-      /*  width: 2em;*/
-        text-align: right;
-      /*  font-weight: bold;*/
-      }
-  
       .center {
         text-align: center;
       }
   
       .comment {
-        padding-top: 0.3em;
-        padding-bottom: 0.3em;
-        background-color: #AAAAAA;
-        border-top: solid 1px;
+        text-align: justify;
       }
     }
   
@@ -281,6 +272,7 @@ body.trips {
       }
   
       a {
+        text-decoration: underline;
         &:visited {
           color: #333333;
         }

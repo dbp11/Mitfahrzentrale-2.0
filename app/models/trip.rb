@@ -1,4 +1,4 @@
-#
+# encoding: utf-8
 # Modelliert alle Fahrten die ein User als Fahrer oder Mitfahrer begeht. 
 # 
 # ===Das Model hat die Datenfelder:
@@ -61,7 +61,6 @@
 class Trip < ActiveRecord::Base
   include ActiveModel::Validations
   require 'bing/route'
-  require 'bing/location'
   ############################== Modellierung der Beziehungen #####################################
 
   #Der aktive Fahrer, zu dem jeweils ein Trip gehört
@@ -131,13 +130,13 @@ class Trip < ActiveRecord::Base
   end 
 
 
-  #Validation, eine Fahrt muss ein Datum, Startort, Zielort, freie Sitzplätze haben
+  # Validation, eine Fahrt muss ein Datum, Startort, Zielort, freie Sitzplätze haben
 
   validate :start_time_in_past, :start_address_same_as_end_address, :baggage_not_nil
 
   validates_presence_of :start_city, :end_city, :start_time, :free_seats, :starts_at_N, :starts_at_E, :ends_at_N, :ends_at_E, :duration, :distance
   
-  #Freie Sitzplätze dürfen nicht negativ sein
+  # Freie Sitzplätze dürfen nicht negativ sein
   validates_inclusion_of :free_seats, :in => 1..200
 
   # Methode prüft, ob ein erstellter Trip in der Vergangenheit liegt
@@ -293,9 +292,7 @@ class Trip < ActiveRecord::Base
 
   # Berechnet die Strecke in Metern und die Zeit in Sekunden, die für diese Strecke benötigt werden und schreibt die Informationen in die passenden Datenfelder der Tabelle
   def set_route
-
-    route = Bing::Route.find(:waypoints => [self.starts_at_N.to_s + " " + self.starts_at_E.to_s + " ",
-                                            self.ends_at_N.to_s + " " + self.ends_at_E.to_s + " "])[0]
+    route = Bing::Route.find(:waypoints => [self.starts_at_N.to_s + " " + self.starts_at_E.to_s + " ", self.ends_at_N.to_s + " " + self.ends_at_E.to_s + " "])[0]
     self.distance = route.total_distance
     self.duration = route.total_duration
   end

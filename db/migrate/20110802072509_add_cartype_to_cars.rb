@@ -3,6 +3,6 @@ class AddCartypeToCars < ActiveRecord::Migration
     add_column :cars, :car_type, :text
   end
   def down
-    remove_column :cars, :car_type, :text
+    remove_column :cars, :car_type
   end
 end

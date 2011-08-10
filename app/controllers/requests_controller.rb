@@ -13,7 +13,11 @@ class RequestsController < ApplicationController
   # GET /requests
   # GET /requests.json
   def index
-    @requests = current_user.get_own_requests
+    if current_user.role == "admin"
+      @requests = Request.all
+    else
+      @requests = current_user.get_own_requests
+    end
   end
 
   # GET /requests/1

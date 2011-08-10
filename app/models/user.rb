@@ -534,7 +534,7 @@ before_validation :set_member, :set_last_delivery_ratings
     erg = []
     trps = driven_with + driven
     trps.each do |t|
-      t.users.each do |u|
+      t.get_committed_passengers.each do |u|
         if allowed_to_rate u, t
           erg << [u, t]
         end
@@ -569,7 +569,7 @@ before_validation :set_member, :set_last_delivery_ratings
   # Methode, die alle Ratings liefert, die der User erstellt hat 
   # @return rating [] sortiert nach Datum
   def get_own_written_ratings
-    self.written_ratings.sort{|a,b| b.created_at <=> a.created_at}
+    self.written_ratings.sort{|a,b| b.created_at <=> a.created_at}[0..4]
   end
 
   # Methode, die alle Ratings liefert, die dieser User als Fahrer erhalten hat
@@ -581,7 +581,7 @@ before_validation :set_member, :set_last_delivery_ratings
         erg << r
       end
     end
-    return erg.sort{|a,b| b.created_at <=> a.created_at}
+    erg.sort{|a,b| b.created_at <=> a.created_at}[0..4]
   end
 
   # Methode, die alle Ratings liefert, die dieser User als Mitfahrer erhalten
@@ -594,7 +594,7 @@ before_validation :set_member, :set_last_delivery_ratings
         erg << r
       end
     end
-    return erg.sort{|a,b| b.created_at <=> a.created_at}
+    erg.sort{|a,b| b.created_at <=> a.created_at}[0..4]
   end
   
 
@@ -622,7 +622,9 @@ before_validation :set_member, :set_last_delivery_ratings
       end
     end
     count
-  end    
+  end   
+
+
   
   # Methode, die alle eigenen Requests zurückliefert
   #

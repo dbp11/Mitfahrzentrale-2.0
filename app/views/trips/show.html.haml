@@ -34,9 +34,6 @@
     - passenger.count_ratings
       gibt aus, wie oft der Benutzer bewertet wurde
 
-  to do:
-    - "Fahrt löschen"-Link für Fahrer??
-
 -#Die Tabelle hat zwei Spalten: Eine für den die Tabelle der Fahrtinformationen, Mitfahrer,
   Bewerber (nur für Fahrer und eigener Datensatz des Bewerbers sichtbar) und eine für die Map
   (inkl. Fahrtdauer und -entfernung)
@@ -127,7 +124,7 @@
           %td.left_bold#minimal Fahrer:
           %td.left{:colspan => "3"}
             = link_to("#{fahrer.name}", fahrer)
-            = " %.1f (#{fahrer.count_ratings_driver})" % fahrer.get_avg_rating_driver
+            = link_to(" %.1f (#{fahrer.count_ratings_driver})" % fahrer.get_avg_rating_driver, url_for(:action => "show", :controller => "ratings", :id => fahrer.id))
             -#Nur andere als der Fahrer sollen ihm Nachrichten schicken können
             - if @status != @FAHRER
               = link_to("Nachricht schicken", url_for(:action => "new", :controller => "messages", :uid => fahrer.id, :tid => trip.id)) + " "
@@ -144,7 +141,7 @@
             = trip.baggage ? "Es kann Gepäck mitgenommen werden" : "Es kann kein Gepäck mitgenommen werden"
         %tr
           %td.left_bold Hinweise:
-          %td.left{:colspan => "3"}= trip.comment
+          %td.comment{:colspan => "3"}= trip.comment
 
       -#Tabelle mit Mitfahrern
       %table.trips_show_passenger_table
@@ -171,7 +168,7 @@
             - c_passengers.each do |passenger|
               %tr
                 %td= link_to "#{passenger}", passenger
-                %td.center= "%.1f (#{passenger.count_ratings_passenger})" % passenger.get_avg_rating_passenger
+                %td.center= link_to("%.1f (#{passenger.count_ratings_passenger})" % passenger.get_avg_rating_passenger, url_for(:action => "show", :controller => "ratings", :id => passenger.id))
                 %td.right
                   -#Wenn der aktuelle Benutzer nicht der Mitfahrer ist, über den gerade iteriert wird,
                     dann gib den "Nachricht schicken"-Link aus
@@ -226,7 +223,7 @@
               - if @status == @FAHRER or passenger == user
                 %tr
                   %td.left= link_to "#{passenger}", passenger
-                  %td.center= "%.1f (#{passenger.count_ratings})" % passenger.get_avg_rating
+                  %td.center= link_to("%.1f (#{passenger.count_ratings})" % passenger.get_avg_rating, url_for(:action => "show", :controller => "ratings", :id => passenger.id))
                   -#Wenn aktueller Benutzer Fahrer ist, dann Link anzeigen zum Nachrichtenschicken,
                     Annehmen und Ablehnen der Bewerbung, ansonsten Link anzeigen, um Bewerbung
                     zurück zu nehmen.

@@ -48,7 +48,7 @@
       %td
         = f.datetime_select :end_time, 
                             :required => "required",
-                            :default => bla,
+                            :default => bla + (60*60),
                             :minute_step => 5,
                             :order=>[:hour,:day, :month, :year],
                             :use_month_names=> %w(Januar Februar März April Mai Juni Juli August September Oktober November Dezember),

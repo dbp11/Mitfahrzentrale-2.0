@@ -19,7 +19,7 @@
 							-#%li
 							-#	= link_to('Startseite', root_path)
 							%li
-								= link_to('Suchen', new_request_path)
+								= link_to('Suchen', requests_path)
 							%li
 								= link_to('Fahrten', trips_path)
 							= render 'messages/menu'
@@ -28,6 +28,8 @@
 								= link_to('Fahrzeuge', cars_path)
 						= render 'devise/menu/registration_items'
 						= render 'devise/menu/login_items'
+				- if current_user != nil and current_user.role == "admin"
+					.div{:style => "background-color: FFCCCC; font-weight: bold; padding: 0.5em; border: 1px solid #AA0000; color: #770000; left: 1em;"} Hallo Administrator
 				- flash.each do |name, msg|
 					= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
 				#main{:role => "main"}

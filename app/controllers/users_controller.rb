@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
+  # Sicherung das nur authentizierte Nutzer, die User anschauen können
   load_and_authorize_resource 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Zugriff verweigert!"
@@ -9,7 +10,11 @@ class UsersController < ApplicationController
     flash[:error] = "Zugriff verweigert!"
     redirect_to user_path(current_user.id)
   end
+  # Exception-Handling
 
+
+  # GET /users/1
+  # Liefert User mit einer bestimmten ID und gibt anderen Usern die Möglichkeit diesen zu ignorieren
   def show
     @user = User.find(params[:id])
     if params[:ignore] == "1"
@@ -19,25 +24,21 @@ class UsersController < ApplicationController
     end
   end
 
-  #GET /users/1/edit_profil
-  def edit_profil
-    @user = User.find(params[:id])
-  end
-
-
   # GET /users/1/edit
+  # User editieren
   def edit
     @user = User.find(params[:id])
   end
 
 
   # PUT /users/1
+  # User aktualisieren
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to @user, :notice => 'User was successfully updated.'
     else
-      render action: "edit" 
+      render :action => "edit" 
     end
   end
 end

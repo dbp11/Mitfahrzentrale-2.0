@@ -14,16 +14,16 @@ class AddUserAttributes < ActiveRecord::Migration
     end   
   
   def self.down
-    remove_column :users, :user_type, :boolean
-    remove_column :users, :age, :integer
-    remove_column :users, :sex, :boolean
-    remove_column :users, :address, :string
-    remove_column :users, :addressN, :float
-    remove_column :users, :addressE, :float
-    remove_column :users, :zipcode, :integer
-    remove_column :users, :phone, :integer
-    remove_column :users, :instantmessenger, :string
-    remove_column :users, :city, :string
+    remove_column :users, :user_type
+    remove_column :users, :age
+    remove_column :users, :sex
+    remove_column :users, :address
+    remove_column :users, :addressN
+    remove_column :users, :addressE
+    remove_column :users, :zipcode
+    remove_column :users, :phone
+    remove_column :users, :instantmessenger
+    remove_column :users, :city
   end
 end
 

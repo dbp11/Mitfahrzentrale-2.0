@@ -12,13 +12,13 @@ class AddUserSetup < ActiveRecord::Migration
   end
 
   def down
-    remove_column :users, :email_notifications, :boolean
-    remove_column :users, :visible_phone, :boolean
-    remove_column :users, :visible_email, :boolean
-    remove_column :users, :visible_address,:boolean
-    remove_column :users, :visible_age, :boolean
-    remove_column :users, :visible_im, :boolean
-    remove_column :users, :visible_cars, :boolean
+    remove_column :users, :email_notifications
+    remove_column :users, :visible_phone
+    remove_column :users, :visible_email
+    remove_column :users, :visible_address
+    remove_column :users, :visible_age
+    remove_column :users, :visible_im
+    remove_column :users, :visible_cars
 
   end
 end
