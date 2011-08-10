@@ -4,18 +4,18 @@ class TripsController < ApplicationController
   load_and_authorize_resource 
   
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Zugriff verweigert!"
+    flash[:alert] = "Zugriff verweigert!"
     redirect_to trips_path
   end
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    flash[:error] = "Zugriff verweigert!"
+    flash[:alert] = "Zugriff verweigert!"
     redirect_to trips_path
   end
-  #rescue_from Exception::StandardError do |exception|
-   # flash[:error] = "WRONG!"
-    #redirect_to trips_path
-  #end
-  # Exception-Handling
+  rescue_from Exception::StandardError do |exception|
+    flash[:alert] = exception.message 
+    redirect_to trips_path
+  end
+   #Exception-Handling
 
   # Checkt, welche Rolle der User in einem bestimmten Trip einnimmt
   # @params trp zu prüfender Trip
@@ -162,19 +162,27 @@ class TripsController < ApplicationController
   end
 
   # POST /trips
-  # POST /trips.json
   def create
-    #Die eingehenden Daten empfangen und an eine Methode übergeben, die ein Array an möglichen Orten zurückgeben
-    #Redirecten mit Parametern? An die new Action?
     @trip = Trip.new()
     @trip.user_id = current_user.id
     @trip.car_id = params[:car]
+
     temp = Geocoder.coordinates(params[:address_start])
-    @trip.starts_at_N = temp[0]
-    @trip.starts_at_E = temp[1]
+    if temp != nil
+      @trip.starts_at_N = temp[0]
+      @trip.starts_at_E = temp[1]
+    else
+      raise "Fehler bei der Starteingabe"
+    end
+
     temp = Geocoder.coordinates(params[:address_end])
-    @trip.ends_at_N = temp[0]
-    @trip.ends_at_E = temp[1]
+    if temp != nil
+      @trip.ends_at_N = temp[0]
+      @trip.ends_at_E = temp[1]
+    else
+      raise "Fehler in der Zieleingabe"
+    end
+
     @trip = @trip.set_address_info
     @trip.set_route
     @trip.comment = params[:comment]
