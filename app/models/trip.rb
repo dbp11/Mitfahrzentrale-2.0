@@ -234,8 +234,8 @@ class Trip < ActiveRecord::Base
       
       t_rating = t.user.get_avg_rating.to_f / 6
       t_ignors = t.user.get_relative_ignorations
-      detour = (distance - self.distance) / self.distance
-      detime = (duration - self.duration) / self.duration
+      detour = (distance - self.distance).to_f / self.distance
+      detime = (duration - self.duration).to_f / self.duration
 
       erg << [t, Math.sqrt(t_rating*t_rating + t_ignors*t_ignors + detour*detour + detime*detime)]
     end

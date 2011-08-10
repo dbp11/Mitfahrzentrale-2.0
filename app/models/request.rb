@@ -134,12 +134,9 @@ class Request < ActiveRecord::Base
 
       t_rating = t.user.get_avg_rating.to_f / 6
       t_ignors = t.user.get_relative_ignorations
-      detour = (distance - t.distance) / t.distance
-      if t.duration == 0
-        detime = 0
-      else
-        detime = (duration - t.duration) / t.duration
-      end
+      detour = (distance - t.distance).to_f / t.distance
+      detime = (duration - t.duration).to_f / t.duration
+      
       erg << [t, Math.sqrt(t_rating*t_rating + t_ignors*t_ignors + detour*detour + detime*detime)]
     end
 
