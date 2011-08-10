@@ -131,13 +131,13 @@ class Trip < ActiveRecord::Base
   end 
 
 
-  #Validation, eine Fahrt muss ein Datum, Startort, Zielort, freie Sitzplätze haben
+  # Validation, eine Fahrt muss ein Datum, Startort, Zielort, freie Sitzplätze haben
 
   validate :start_time_in_past, :start_address_same_as_end_address, :baggage_not_nil
 
   validates_presence_of :start_city, :end_city, :start_time, :free_seats, :starts_at_N, :starts_at_E, :ends_at_N, :ends_at_E, :duration, :distance
   
-  #Freie Sitzplätze dürfen nicht negativ sein
+  # Freie Sitzplätze dürfen nicht negativ sein
   validates_inclusion_of :free_seats, :in => 1..200
 
   # Methode prüft, ob ein erstellter Trip in der Vergangenheit liegt

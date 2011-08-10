@@ -11,7 +11,6 @@ class MessagesController < ApplicationController
   end
   
   # GET /messages
-  # GET /messages.json
   # Die IndexAction gibt gibt alle empfangenen Nachrichten des Nutzer aus
   # Zeitstempel und Anzahl der neuen Nachrichten werden für die Anzeige gebraucht
   def index
@@ -55,7 +54,6 @@ class MessagesController < ApplicationController
 		if params[:tid]
 			temp = Trip.find(params[:tid])
 			@message.subject = "[["+ url_for(temp) + "|" + temp.get_start_city + " - " + temp.get_end_city + " " + temp.start_time.strftime("%d.%m.%y") +"]]"
-      check=true
     end
     # Wir schreiben eine reply Nachricht, die wir empfangen haben, check true
 	  if params[:mid]

@@ -90,7 +90,8 @@ class Car < ActiveRecord::Base
   # verwendet wird,
   # false sonst
   def is_used
-    self.user.to_drive.each do |d|
+    erg = self.user.to_drive + self.user.driven
+    erg.each do |d|
       if d.car == self
         return true
       end
