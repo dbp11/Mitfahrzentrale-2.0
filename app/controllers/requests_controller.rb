@@ -72,7 +72,7 @@ class RequestsController < ApplicationController
     @request.set_route
 
     if @request.save!
-      redirect_to @request, notice: 'Request was successfully created.'
+      redirect_to @request, notice: 'Anfrage wurde erfolgreich erstellt.'
     else
       redirect_to requests_path
       render action: "new"
@@ -84,7 +84,7 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
     if @request.update_attributes(params[:request])
-      redirect_to @request, notice: 'Request was successfully updated.'
+      redirect_to @request, notice: 'Anfrage wurde erfolgreich aktualisiert.'
     else
       render action: "edit"
     end

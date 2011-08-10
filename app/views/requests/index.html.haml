@@ -8,7 +8,6 @@
     %td Nach
     %td Intervallstart
     %td Intervallende
-    %td Fahrzeit*
     %td Gepäck
     %td Anzeigen
   - @requests.each do |request|
@@ -18,12 +17,5 @@
       %td= request.end_zipcode.to_s + " " + request.end_city
       %td= request.start_time.strftime("%d.%m.%Y %H:%M")
       %td= request.end_time.strftime("%d.%m.%Y %H:%M")
-      %td= request.get_route_duration
       %td= request.baggage? ? "Ja" : "Nein"
       %td= link_to image_tag( '/images/Button_show.png', :alt => "Anzeigen", :height => "20"), request
-
-
-%br
-*Angaben ohne Gewähr
-%br
-%br

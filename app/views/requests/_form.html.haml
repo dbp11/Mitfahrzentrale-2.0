@@ -12,46 +12,28 @@
       %td
       %td 
         = f.label:start_city, "Start"
-        %br/
-        &nbsp;
       %td
         = f.text_field:start_city, :required=>"required", :size=>"46", :autofocus=>"autofocus"
-        %br/
-        &nbsp;
       %td
         = f.label:start_radius, "Radius"
-        %br/
-        &nbsp;
       %td
         = f.select:start_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
-        %br/
-        &nbsp;
 
     %tr
       %td
       %td 
         = f.label:end_city, "Ziel"
-        %br/
-        &nbsp;
       %td
         = f.text_field:end_city, :required => "required", :size=>"46"
-        %br/
-        &nbsp;
       %td
         = f.label:end_radius, "Radius"
-        %br/
-        &nbsp;
       %td
         = f.select:end_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
-        %br/
-        &nbsp;
 
     %tr
       %td
       %td 
         =f.label:start_time, "Abfahrts-"
-        %br/
-        &nbsp;
       %td
         - bla = 15.minutes.from_now
         - bla = bla - (bla.min*60) + (bla.min/5 *5)*60
@@ -62,16 +44,12 @@
                             :minute_step => 5,
                             :order=>[:hour,:day, :month, :year],
                             :start_year=>t.year
-        %br/
-        &nbsp;
       %td
       %td                          
     %tr
       %td
       %td 
         = f.label:end_time, "intervall:"
-        %br/
-        &nbsp;
       %td
         = f.datetime_select :end_time, 
                             :required => "required",
@@ -80,32 +58,22 @@
                             :order=>[:hour,:day, :month, :year],
                             :use_month_names=> %w(Januar Februar März April Mai Juni Juli August September Oktober November Dezember),
                             :start_year=>t.year
-        %br/
-        &nbsp;
       %td
       %td
     %tr
       %td
       %td 
         = f.label:baggage, "Gepäck"
-        %br/
-        &nbsp;
       %td
         = f.check_box:baggage
-        %br/
-        &nbsp;
       %td
       %td
     %tr
       %td
       %td
         = f.label:comment, "Anmerkungen"
-        %br/
-        &nbsp;
       %td
         = f.text_area:comment, :rows=>"4", :cols => "48"
-        %br/
-        &nbsp;
       %td
       %td
     %tr
