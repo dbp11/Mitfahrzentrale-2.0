@@ -29,12 +29,12 @@
   %table.form_table
     %tr
       %td
-        = label_tag(:address_start, "Startadresse:")
+        = label_tag(:address_start, "Startadresse*:")
       %td
         = text_field_tag(:address_start, nil, :maxlength => "120", :autofocus => "autofocus", :required => "required", :class => "text_input")
     %tr
       %td
-        = label_tag(:address_end, "Zieladresse:")
+        = label_tag(:address_end, "Zieladresse*:")
       %td
         = text_field_tag(:address_end, nil, :maxlength => "120", :required => "required", :class => "text_input")
     %tr
@@ -126,12 +126,7 @@
           %script cmt();
     %tr
       %td
-        %br/
-        = "* = Pflichtfeld"
-      %td
-    %tr
-      %td
         = link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), "javascript:history.back();"
       %td.form_table_right
         = image_submit_tag("/images/Button_create.png")
-
+%p Mit * gekennzeichnete Felder sind Pflichtfelder

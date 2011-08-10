@@ -11,7 +11,7 @@
     %tr
       %td
       %td 
-        = f.label:start_city, "Start"
+        = f.label:start_city, "Start*"
       %td
         = f.text_field:start_city, :required=>"required", :size=>"46", :autofocus=>"autofocus"
       %td
@@ -22,7 +22,7 @@
     %tr
       %td
       %td 
-        = f.label:end_city, "Ziel"
+        = f.label:end_city, "Ziel*"
       %td
         = f.text_field:end_city, :required => "required", :size=>"46"
       %td
@@ -84,3 +84,4 @@
       %td
       %td
         = image_submit_tag "/images/Button_create.png"
+%p Mit * gekennzeichnete Felder sind Pflichtfelder
