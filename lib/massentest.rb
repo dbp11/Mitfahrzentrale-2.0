@@ -1,6 +1,6 @@
 # encoding: utf-8
 # Massentest für die Datenbank, d.h. hier werden die dafür benötigten Daten erstellt
-require "plzliste"
+require "bla"
 require "bing/route"
 
 #Anzahl der zu erstellenden Entities
@@ -18,8 +18,8 @@ puts "User Erstellen"
 until x==anzusers
   x=x+1
   puts "User "+x.to_s
-  plz=@plz_array[rand(24119)]
-  u=User.new :email => "Test"+x.to_s+"@uos.com", :password => "dkruempe",:password_confirmation => "dkruempe", :name => "Dominik Krümpelmann", :user_type => true, :sex => true, :address => "Großer Esch 20", :addressN => "effse", :addressE => "fsefsf", :zipcode => plz, :phone => "054571598"+x.to_s, :instantmessenger => "icq: 5465465"+x.to_s, :city => "Hopsten", :email_notifications => true, :visible_phone => true, :visible_email => true, :visible_address => true, :visible_age => true, :visible_im => true, :visible_cars => true, :birthday => Date.new(1989,12,28), :visible_zip => true, :user_type => false, :visible_city => true, :business => false, :last_delivery => Time.now, :last_ratings => Time.now, :role => "member"
+  plz=@city_array[rand(2055)]
+  u=User.new :email => "Test"+x.to_s+"@uos.com", :password => "dkruempe",:password_confirmation => "dkruempe", :name => "Dominik Krümpelmann", :user_type => true, :sex => true, :address => plz, :addressN => "effse", :addressE => "fsefsf", :zipcode => 12132, :phone => "054571598"+x.to_s, :instantmessenger => "icq: 5465465"+x.to_s, :city => "Hopsten", :email_notifications => true, :visible_phone => true, :visible_email => true, :visible_address => true, :visible_age => true, :visible_im => true, :visible_cars => true, :birthday => Date.new(1989,12,28), :visible_zip => true, :user_type => false, :visible_city => true, :business => false, :last_delivery => Time.now, :last_ratings => Time.now, :role => "member"
   users << u
 end
 
@@ -46,18 +46,18 @@ until x>=anztrips
     car_id = (rand(anzcars)+1)
     #start_koordinaten
     begin
-      plz_start = @plz_array[rand(24119)]
+      plz_start = @city_array[rand(2055)]
       start=Geocoder.coordinates(plz_start.to_s)
     end while(start.nil?)
     #end_koordinaten
     begin
-      plz_ende = @plz_array[rand(24119)]
+      plz_ende = @city_array[rand(2055)]
       ende = Geocoder.coordinates(plz_ende.to_s)
     end while (ende.nil? or (ende[0]==start[0]and ende[1]==start[1]))
-    puts "PLZ START:" + plz_start.to_s + " PLZ ENDE:" + plz_ende.to_s
+    puts "START:" + plz_start.to_s + " ENDE:" + plz_ende.to_s
     puts "START CORD:" + start[0].to_s + " " + start[1].to_s
     puts "END CORD:" + ende[0].to_s + " " + ende[1].to_s
-    t=Trip.new :user_id => user_id, :car_id => car_id, :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_E => ende[1].to_f, :ends_at_N => ende[0].to_f, :start_zipcode => plz_start, :end_zipcode => plz_ende, :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => rand(6)
+    t=Trip.new :user_id => user_id, :car_id => car_id, :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_E => ende[1].to_f, :ends_at_N => ende[0].to_f, :start_zipcode => plz_start, :end_zipcode => plz_ende, :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => 4
     t.set_address_info
     sleep(0.5)
     puts t.start_street + ", " + t.start_zipcode.to_s + " " + t.start_city
@@ -84,19 +84,18 @@ until x==anzrequests
   user_id = rand(anzusers)
   #start_koordinaten
   begin
-    plz_start = @plz_array[rand(24119)]
+    plz_start = @city_array[rand(2055)]
     start=Geocoder.coordinates(plz_start.to_s)
   end while(start.nil?)
   #end_koordinaten
   begin
-    plz_ende = @plz_array[rand(24119)]
+    plz_ende = @city_array[rand(2055)]
     ende = Geocoder.coordinates(plz_ende.to_s) 
   end while (ende.nil? or (ende[0]==start[0]and ende[1]==start[1]))
-    puts "PLZ START:" + plz_start.to_s + " PLZ ENDE:" + plz_ende.to_s
+    puts "START:" + plz_start.to_s + " ENDE:" + plz_ende.to_s
     puts "START CORD:" + start[0].to_s + " " + start[1].to_s
     puts "END CORD:" + ende[0].to_s + " " + ende[1].to_s
   r = Request.new :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_N => ende[0].to_f, :ends_at_E => ende[1].to_f, :start_zipcode => plz_start, :end_zipcode => plz_ende, :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => user_id, :start_radius => rand(51), :end_radius => rand(51)
-  sleep(0.5)
   r.set_address_info
   sleep(0.5)
   puts t.start_street + ", " + t.start_zipcode.to_s + " " + t.start_city
@@ -112,43 +111,6 @@ until x==anzrequests
   end
 end
 
-
-#Erstellen von Passengers
-x=0
-passengers=[]
-puts "Passengers Erstellen"
-until x==anzpassenger
-  x=x+1
-  puts "Passengers "+x.to_s
-  trip = Trip.all[rand(anztrips)+1]
-  user = User.all[rand(anzusers)+1]
-  confirmed = rand(2)
-  con=false
-  if confirmed==0
-    con=true
-  end
-  ps = Passenger.new :user_id => user, :trip_id => trip, :confirmed => con
-  passengers << ps
-end
-
-#Erstellen von  Ratings
-#x=0
-#ratings=[]
-#puts "Ratings Erstellen"
-#until x==anzratings
-  #x=x+1
-  #puts "Ratings "+x.to_s
-  #trip_id = rand(anztrips+1)
-  #t = Trip.all[trip_id]
-  #Autor und Empfänger bestimmen
-  #random = t.users.count
-  #author = User.all[rand(random)]
-  #begin
-    #receiver = User.all[rand(random)]
-  #end while(author.id = receiver.id)
-  #ra = Rating.new :comment => "Auto im schlechten Zustand!", :mark => rand(6), :trip_id => trip_id, :receiver_id => receiver.id, :author_id => author.id
-  #ratings << ra
-#end
 
 #Erstellen der Daten
 users.each  do |t|
@@ -171,10 +133,51 @@ requests.each do |t|
   t.save!
 end
 
-passengers.each do |t|
-  puts "passenger save"
-  t.save!
-end
+
+#Erstellen von Passengers
+#x=0
+#passengers=[]
+#puts "Passengers Erstellen"
+#until x==anzpassenger
+  #x=x+1
+  #puts "Passengers "+x.to_s
+  #trip = Trip.all[rand(anztrips)]
+  #begin
+    #user = User.all[rand(anzusers)]
+  #end while((user == trip.user) ^ trip.users.include?(user))
+  #confirmed = rand(2)
+  #con=false
+  #if confirmed==0
+    #con=true
+  #end
+  #ps = Passenger.new :user_id => user, :trip_id => trip, :confirmed => con
+  #passengers << ps
+#end
+
+#Erstellen von  Ratings
+#x=0.rb:30:in `not_his_own_driver'
+#ratings=[]
+#puts "Ratings Erstellen"
+#until x==anzratings
+  #x=x+1
+  #puts "Ratings "+x.to_s
+  #trip_id = rand(anztrips+1)
+  #t = Trip.all[trip_id]
+  #Autor und Empfänger bestimmen
+  #random = t.users.count
+  #author = User.all[rand(random)]
+  #begin
+    #receiver = User.all[rand(random)]
+  #end while(author.id = receiver.id)
+  #ra = Rating.new :comment => "Auto im schlechten Zustand!", :mark => rand(6), :trip_id => trip_id, :receiver_id => receiver.id, :author_id => author.id
+  #ratings << ra
+#end
+
+
+#passengers.each do |t|
+  #puts "passenger save"
+  #t.save!
+#end
 
 #ratings.each do |t|
   #r.save!
