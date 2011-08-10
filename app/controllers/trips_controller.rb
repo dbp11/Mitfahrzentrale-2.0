@@ -172,10 +172,12 @@ class TripsController < ApplicationController
   # POST /trips
   # Methode erstellt ein neuen Trip
   def create
+    # Neuer trip wird angelegt, Nutzer bin ich, car wird aus Parameter ausgelesen und eingetragen
     @trip = Trip.new()
     @trip.user_id = current_user.id
     @trip.car_id = params[:car]
 
+    # Anahnd der Parameter wird die Geocoder-Coord. bestimmt, wenn sie nil ist schmeißen wir eine Exc.
     temp = Geocoder.coordinates(params[:address_start])
     if temp != nil
       @trip.starts_at_N = temp[0]
@@ -183,7 +185,6 @@ class TripsController < ApplicationController
     else
       raise "Fehler bei der Starteingabe"
     end
-
     temp = Geocoder.coordinates(params[:address_end])
     if temp != nil
       @trip.ends_at_N = temp[0]
@@ -191,18 +192,23 @@ class TripsController < ApplicationController
     else
       raise "Fehler in der Zieleingabe"
     end
-
+    
+    # set_address_info macht aus einem Addresseingabefeld drei Teile, so dass es in das Model eingetragen werden kann
+    # set_route bestimmt distance und duration
     @trip = @trip.set_address_info
     @trip.set_route
+    
+    # Comment wird eingefuegt
     @trip.comment = params[:comment]
-    #Hier Schwierigkeiten View != Model
+    # Die fuenf Eingabewerte der View werden zusammengefuegt, damit sie in ein Datenfeld des Models passen
     @trip.start_time = params[:start_year]+"-"+params[:start_month]+"-"+params[:start_day]+"T"+params[:start_hour]+":"+params[:start_minute]
-    temp = Car.find(params[:car])
+    # Verfuegbare Sitzplaetze des Trips werden gesetzt
     if params[:free_seats] == ""
-      @trip.free_seats = temp.seats
+      @trip.free_seats = @trip.car.seats
     else
       @trip.free_seats = params[:free_seats]
     end
+    # Ist der Fahrer bereit Gepaeck mitzunehmem?
     if params[:baggage] == nil
       @trip.baggage = false
     else

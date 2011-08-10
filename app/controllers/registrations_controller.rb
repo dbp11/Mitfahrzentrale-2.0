@@ -21,7 +21,7 @@ class RegistrationController < Devise::RegistrationsController
 
   def destroy
     if current_user.driver_trips
-      flash[:error] = "Sie koennen ihren Account nicht loeschen, da Sie noch ausstehende Fahrten anbieten!"
+      flash[:alert] = "Sie koennen ihren Account nicht loeschen, da Sie noch ausstehende Fahrten anbieten!"
         redirect_to trips_path
     else
       current_user.car do |car|
