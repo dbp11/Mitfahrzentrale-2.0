@@ -72,17 +72,34 @@ body.requests {
 
   .form_table{
     //border:solid 2px;
-    width:50%;
+    width:70%;
     //&:nth-child(2n){
       background-color: $table_bg_color1;
     //}  
     //&:nth-child(2n+1){
       background-color: $table_bg_color2;
     //}
-    //tr{
-    //}
     //td{
       text-align: left;
     //}
   }
+
+  .show_table{
+    border:solid 2px;
+    width:70%;
+    &:nth-child(2n){
+      background-color: $table_bg_color1;
+    }  
+    &:nth-child(2n+1){
+      background-color: $table_bg_color2;
+    }
+    td{
+      text-align: left;
+    }
+    tr {
+      border: 1px solid;
+    }
+  }
+  
+
 }
