@@ -7,19 +7,13 @@
       %ul
         - @request.errors.full_messages.each do |msg|
           %li= msg
-  
   %table
     %tr
-      %td 
-        = f.label:Start
-    %tr
       %td
       %td 
-        =f.label:start_city, "Startort"
+        = f.label:start_city, "Start"
       %td
-        = f.text_field:start_city, :required=>"required", :placeholder=>"Ort(pflicht), PLZ(optional), Straße(optional)", :size=>"46", :autofocus=>"autofocus"
-    %tr
-      %td
+        = f.text_field:start_city, :required=>"required", :size=>"46", :autofocus=>"autofocus"
       %td
         = f.label:start_radius, "Radius"
       %td
@@ -28,7 +22,18 @@
     %tr
       %td
       %td 
-        =f.label:start_time, "Startzeit:"
+        = f.label:end_city, "Ziel"
+      %td
+        = f.text_field:end_city, :required => "required", :size=>"46"
+      %td
+        = f.label:end_radius, "Radius"
+      %td
+        = f.select:end_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
+
+    %tr
+      %td
+      %td 
+        =f.label:start_time, "Abfahrts-"
       %td
         - bla = 15.minutes.from_now
         - bla = bla - (bla.min*60) + (bla.min/5 *5)*60
@@ -44,7 +49,7 @@
     %tr
       %td
       %td 
-        = f.label:end_time, "Endzeit:"
+        = f.label:end_time, "intervall:"
       %td
         = f.datetime_select :end_time, 
                             :required => "required",
@@ -54,29 +59,6 @@
                             :use_month_names=> %w(Januar Februar März April Mai Juni Juli August September Oktober November Dezember),
                             :start_year=>t.year
                             
-    %tr
-      %td
-    %tr
-      %td
-        = f.label:Ziel
-    %tr
-      %td
-      %td 
-        = f.label:end_city, "Zielort"
-      %td
-        = f.text_field:end_city, :required => "required", :placeholder=>"Ort(pflicht), PLZ(optional), Straße(optional)", :size=>"46"
-    %tr
-      %td
-      %td
-        = f.label:end_radius, "Radius"
-      %td
-        = f.select:end_radius, options_for_select([["5km","5"], ["10km","10"], ["15km", "15"], ["20km", "20"],["25km", "25"], ["30km","30"],["35km","35"], ["40km","40"], ["45km","45"],["50km", "50"]]), :required=>"required"
-
-
-
-    %tr
-      %td 
-        = f.label:"Details"
     %tr
       %td
       %td 
@@ -91,7 +73,6 @@
         = f.text_area:comment, :rows=>"4", :cols => "48"
 
     %tr
-      %td
       %td
       %td
       %td
