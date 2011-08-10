@@ -44,22 +44,27 @@ until x==anztrips
   user_id = (rand(anzusers)+1)
   car_id = (rand(anzcars)+1)
   #start_koordinaten
-  ready=false
   begin
     plz_start = @plz_array[rand(24119)]
-    start=Geocoder.coordinates(plz_start.to_s+",Germany")
+    start=Geocoder.coordinates(plz_start.to_s+",Deutschland")
   end while(start.nil?)
   #end_koordinaten
-  ready=false
   begin
     plz_ende = @plz_array[rand(24119)]
-    ende = Geocoder.coordinates(plz_ende.to_s+",Germany")
-  end while (ende.nil?)
+    ende = Geocoder.coordinates(plz_ende.to_s+",Deutschland")
+  end while (ende.nil? or (ende[0]==start[0]and ende[1]==start[1]))
   puts "PLZ-Start:"+plz_start.to_s + " PLZ-Ende:" + plz_ende.to_s
   puts "Start-Kord: "+start[0].to_s+"N "+start[1].to_s+"E"
   puts "End-Kord: "+ende[0].to_s+"N "+ende[1].to_s+"E"
   t=Trip.new :user_id => user_id, :car_id => car_id, :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_E => ende[1].to_f, :ends_at_N => ende[0].to_f, :start_zipcode => plz_start, :end_zipcode => plz_ende, :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => rand(6)
   sleep(0.5)
+  t.set_address_info
+  sleep(0.5)
+  puts t.start_city
+  puts t.end_city
+  route = Bing::Route.find(:waypoints => [t.start_city,t.end_city])[0]
+    t.distance = route.total_distance
+    t.duration = route.total_duration
   t.set_route
   trips << t
 end
@@ -73,23 +78,26 @@ until x==anzrequests
   puts "Request "+x.to_s
   user_id = rand(anzusers)
   #start_koordinaten
-  ready=false
   begin
     plz_start = @plz_array[rand(24119)]
-    start=Geocoder.coordinates(plz_start.to_s+",Germany")
+    start=Geocoder.coordinates(plz_start.to_s+",Deutschland")
   end while(start.nil?)
   #end_koordinaten
-  ready=false
   begin
     plz_ende = @plz_array[rand(24119)]
-    ende = Geocoder.coordinates(plz_ende.to_s+",Germany")
-  end while (ende.nil?)
+    ende = Geocoder.coordinates(plz_ende.to_s+",Deutschland") 
+  end while (ende.nil? or (ende[0]==start[0]and ende[1]==start[1]))
   puts "PLZ-Start:"+plz_start.to_s + " PLZ-Ende:" + plz_ende.to_s
   puts "Start-Kord: "+start[0].to_s+"N "+start[1].to_s+"E"
   puts "End-Kord: "+ende[0].to_s+"N "+ende[1].to_s+"E"
 
   r = Request.new :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_N => ende[0].to_f, :ends_at_E => ende[1].to_f, :start_zipcode => plz_start, :end_zipcode => plz_ende, :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => user_id, :start_radius => rand(51), :end_radius => rand(51)
   sleep(0.5)
+  r.set_address_info
+  sleep(0.5)
+  route = Bing::Route.find(:waypoints => [r.start_city,r.end_city])[0]
+    r.distance = route.total_distance
+    r.duration = route.total_duration
   r.set_route
   requests << r
 end
@@ -145,13 +153,11 @@ end
 
 trips.each do |t|
   puts "trips save"
-  t.set_address_info
   t.save!
 end
 
 requests.each do |t|
   puts "request save"
-  t.set_address_info
   t.save!
 end
 
