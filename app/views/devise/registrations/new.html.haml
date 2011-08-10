@@ -1,5 +1,7 @@
 %h1 
   Registrieren
+%div
+  Mit * gekennzeichnete Felder müssen ausgefüllt werden!
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"Formular", :onsubmit=>"return zipcheck();"}) do |f|
   = devise_error_messages!
   %table.form_table
@@ -9,9 +11,13 @@
           if (document.getElementById("business").checked==true){
             document.getElementById("privat").style.display='none';
             document.getElementById("privat1").style.display='none';
+            document.getElementById("privat3").style.display='none';
+            document.getElementById("privat4").style.display='none';
           } else {
             document.getElementById("privat").style.display='block';
             document.getElementById("privat1").style.display='block';
+            document.getElementById("privat3").style.display='block';
+            document.getElementById("privat4").style.display='block';
           } 
         }
 
@@ -38,12 +44,12 @@
       %td
         = f.label :name, "Name*"
       %td
-      = f.text_field :name, :required=>"required", :autofocus=>"autofocus"
+        = f.text_field :name, :required=>"required", :autofocus=>"autofocus"
     %tr
       %td
         = f.label :email, "E-Mail*"
       %td
-      = f.email_field :email, :required=>"required"
+        = f.email_field :email, :required=>"required"
     %tr
       %td
         = f.label :password, "Passwort*"
@@ -54,10 +60,10 @@
         = f.label :password_confirmation, "Passwort wiederholen*"
       %td
         = f.password_field :password_confirmation, :required=>"required"
-    %tr#privat
-      %td
+    %tr
+      %td#privat
         = f.label :birthday, "Geburtsdatum"
-      %td
+      %td#privat1
         = f.date_select :birthday,
                     :start_year => 1900,
                     :end_year => 2011,
@@ -82,28 +88,30 @@
       %td
         = f.text_field:city, :required=>"required"
   
-  %tr#privat1
-    %td
-      = f.label :sex, "Geschlecht"
-    %td
-      = f.select:sex,  options_for_select([["Maennlich","1"], ["Weiblich","0"]]), :id=>"form_table_second"
+    %tr
+      %td#privat3
+        = f.label :sex, "Geschlecht"
+      %td#privat4
+        = f.select:sex,  options_for_select([["Maennlich","1"], ["Weiblich","0"]]), :id=>"form_table_second"
 
-  %tr
-    %td
-      = f.label :phone, "Telefon"
-    %td
-      = f.phone_field :phone
+    %tr
+      %td
+        = f.label :phone, "Telefon"
+      %td
+        = f.phone_field :phone
 
-  %tr
-    %td
-      = f.label :instantmessenger, "Instantmessenger"
-    %td
-      = f.text_field :instantmessenger
+    %tr
+      %td
+        = f.label :instantmessenger, "Instantmessenger"
+      %td
+        = f.text_field :instantmessenger
+
+    %tr
+      %td
+      %td
+        = f.submit "Anmelden"
 
 
-  %div
-    = f.submit "Anmelden"
 
-  %div
-    Mit * gekennzeichnete Felder müssen ausgefüllt werden!
+
 -#= render :partial => "devise/shared/links"
