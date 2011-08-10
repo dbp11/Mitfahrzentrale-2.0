@@ -11,7 +11,6 @@ class MessagesController < ApplicationController
   end
   
   # GET /messages
-  # GET /messages.json
   # Die IndexAction gibt gibt alle empfangenen Nachrichten des Nutzer aus
   # Zeitstempel und Anzahl der neuen Nachrichten werden für die Anzeige gebraucht
   def index
