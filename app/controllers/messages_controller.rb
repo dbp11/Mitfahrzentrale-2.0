@@ -11,16 +11,24 @@ class MessagesController < ApplicationController
   end
   
   # GET /messages
-  # GET /messages.json
   # Die IndexAction gibt gibt alle empfangenen Nachrichten des Nutzer aus
   # Zeitstempel und Anzahl der neuen Nachrichten werden für die Anzeige gebraucht
-  def index
+   def index
     # Alle empfangenen Nachrichten des Nutzers
-    @messages = current_user.get_received_messages
-    # Zeitstempel des letzten Aufrufs
-    @last_delivery = current_user.last_delivery
-    # Anzahl der Nachrichten, die der Nutzer noch nicht eingesehen hat
-	  @latest_messages = current_user.get_latest_messages
+    if current_user.role == "admin"
+      @latest_messages = []
+      @messages = Message.all
+      @last_delivery = current_user.last_delivery
+      User.all.each do |user|
+        @latest_messages << user.get_latest_messages
+      end
+    else
+      @messages = current_user.get_received_messages
+      # Zeitstempel des letzten Aufrufs
+      @last_delivery = current_user.last_delivery
+      # Anzahl der Nachrichten, die der Nutzer noch nicht eingesehen hat
+	    @latest_messages = current_user.get_latest_messages
+    end
     # Den Zeitstempel auf die aktuelle Zeit setzen
     current_user.last_delivery = Time.now
     current_user.save
@@ -55,7 +63,6 @@ class MessagesController < ApplicationController
 		if params[:tid]
 			temp = Trip.find(params[:tid])
 			@message.subject = "[["+ url_for(temp) + "|" + temp.get_start_city + " - " + temp.get_end_city + " " + temp.start_time.strftime("%d.%m.%y") +"]]"
-      check=true
     end
     # Wir schreiben eine reply Nachricht, die wir empfangen haben, check true
 	  if params[:mid]
@@ -66,6 +73,7 @@ class MessagesController < ApplicationController
         check=true
       end
     end
+    
     # Wenn check noch false ist, ist was falsch gelaufen und wir werden redirected
     if !check
       redirect_to messages_path
@@ -86,10 +94,10 @@ class MessagesController < ApplicationController
     @message.delete_receiver = false
     @message.delete_writer = false
 
-    if @message.save
+    if @message.save and !@message.receiver.is_ignored(current_user) 
       redirect_to messages_path, notice: 'Message was successfully created.'
     else
-      render action: "new"
+      redirect_to messages_path, notice: 'Nachricht konnte nicht gesendet werden'
     end
   end
 

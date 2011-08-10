@@ -1,5 +1,6 @@
 class Ability
   include CanCan::Ability
+##########################Ability############################################
   # Implementiert das CanCan-Gem und spezifiziert die Rechteverwaltung der 
   # angemeldeten User und trifft hierbei eine Unterscheidung zwischen einen 
   # Member und dem Admin
@@ -7,6 +8,7 @@ class Ability
     if user.role == "member"
       can :index, :all
       can :create, :all
+      cannot :index, Passenger
       #cannot :index, Home
       # Jeder Member kann jede Übersicht außer der Übersicht der User sehen
       # und kann alle Elemente erstellen
