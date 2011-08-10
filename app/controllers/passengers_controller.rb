@@ -11,19 +11,21 @@ class PassengersController < ApplicationController
   end
   
   # GET /passengers
-  # GET /passengers.json
+  # Liste aller Passenger
+  # @params Liste
   def index
     @passengers = Passenger.all
   end
 
   # GET /passengers/1
-  # GET /passengers/1.json
+  # Ein bestimmten Passenger zeigen
+  # @param id anhand der Passenger identifiziert wird
   def show
     @passenger = Passenger.find(params[:id])
   end
 
   # GET /passengers/new
-  # GET /passengers/new.json
+  # 
   def new
     @passenger = Passenger.new
   end
