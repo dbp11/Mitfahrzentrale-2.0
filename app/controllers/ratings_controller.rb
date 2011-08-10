@@ -18,7 +18,8 @@ class RatingsController < ApplicationController
   end
 
   # GET /ratings/1
-  # Eine Uebersicht ueber meine Ratings
+  # Eine Uebersicht ueber meine Ratings, bzw wenn ich eine andere id angeben
+  # ueber seine Bewertungen 
   def show
     @user = User.find(params[:id])
     @driver_ratings = @user.get_own_driver_ratings
