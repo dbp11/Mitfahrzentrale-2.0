@@ -90,6 +90,7 @@ class Trip < ActiveRecord::Base
                self.starts_at_E.to_s + " ", "de")[0][:full_data]
     
 
+    hausNr = ""
     start_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
         self.start_zipcode = i["long_name"]
@@ -101,15 +102,15 @@ class Trip < ActiveRecord::Base
          self.start_street = i["long_name"]
       end
       if i["types"].include?("street_number")
-        if self.start_street != nil
-          self.start_street = self.start_street + " "+ i["long_name"]
-        end
-        end
-     end
+        hausNr = i["long_name"]
+      end
+    end
+    self.start_street = self.start_street + " " + hausNr
+
+
     end_a =  Gmaps4rails.geocode(self.ends_at_N.to_s  + " " + 
                self.ends_at_E.to_s + " ", "de")[0][:full_data]
     
-
     end_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
         self.end_zipcode = i["long_name"]
@@ -121,11 +122,11 @@ class Trip < ActiveRecord::Base
          self.end_street = i["long_name"]
       end
       if i["types"].include?("street_number")
-        if self.end_street != nil
-          self.end_street = end_street + " " + i["long_name"]
-        end
+        hausNr = i["long_name"]
       end
-     end
+    end
+    self.end_street = self.end_street + " " + hausNr
+
     return self
   end 
 
