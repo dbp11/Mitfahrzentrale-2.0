@@ -48,7 +48,7 @@ class Request < ActiveRecord::Base
                self.starts_at_E.to_s + " ", "de")[0][:full_data]
     
 
-    hausNr = self.start_street = ""
+    hausNr = self.start_street = self.end_street = ""
     start_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
         self.start_zipcode = i["long_name"]
