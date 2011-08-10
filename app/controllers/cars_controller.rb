@@ -3,13 +3,21 @@ class CarsController < ApplicationController
   load_and_authorize_resource 
   
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Zugriff verweigert!"
+    flash[:alert] = "Zugriff verweigert!"
     redirect_to cars_path
   end
+  #Exception, falls man auf einen Bereich nicht zugreifen kann
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:error] = "Zugriff verweigert!"
     redirect_to cars_path
   end  
+  # Exception, falls ein Bereich nicht existiert
+  rescue_from Exception::StandardError do |exception|
+    flash[:alert] = exception.message
+    redirect_to new_request_path
+  end
+  # Exception für Standardfehler, z.B. Eingabefehler
+
 
   ##########################cars-controller####################################
   # Alles kommentiert

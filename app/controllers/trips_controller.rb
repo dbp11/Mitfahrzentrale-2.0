@@ -7,15 +7,17 @@ class TripsController < ApplicationController
     flash[:alert] = "Zugriff verweigert!"
     redirect_to trips_path
   end
+  #Exception, falls man auf einen Bereich nicht zugreifen kann
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:alert] = "Zugriff verweigert!"
     redirect_to trips_path
   end
+  # Exception, falls ein Bereich nicht existiert
   rescue_from Exception::StandardError do |exception|
     flash[:alert] = exception.message 
     redirect_to trips_path
   end
-   #Exception-Handling
+  #Exception-Handling
 
   # Checkt, welche Rolle der User in einem bestimmten Trip einnimmt
   # @params trp zu prüfender Trip
