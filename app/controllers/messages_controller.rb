@@ -66,6 +66,10 @@ class MessagesController < ApplicationController
         check=true
       end
     end
+    if current_user.is_ignored(@message.receiver)
+      check = false
+      flash[:notice] = "Sie werden von dem User ignoriert!"
+    end
     # Wenn check noch false ist, ist was falsch gelaufen und wir werden redirected
     if !check
       redirect_to messages_path
