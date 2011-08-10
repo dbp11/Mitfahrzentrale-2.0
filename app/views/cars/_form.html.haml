@@ -15,22 +15,22 @@
       %td
         = f.label :seats, "Sitzplätze*" 
       %td
-        = f.number_field :seats, :size => 30, :value => 5, :min => 0, :max =>40, :autofocus => "autofocus"
+        = f.number_field :seats, :size => 30, :value => 5, :min => 0, :max =>40, :autofocus => "autofocus", :class => "text_input"
     %tr
       %td
         = f.label :car_type, "Fahrzeugmodell*"
       %td
-        = f.text_field :car_type, :required => true
+        = f.text_field :car_type, :required => true, :class => "text_input"
     %tr
       %td
         = f.label :licence, "Kennzeichen*"
       %td
-        = f.text_field :licence, :required => true 
+        = f.text_field :licence, :required => true , :class => "text_input"
     %tr
       %td
         = f.label :price_km, "Preis/km"
       %td
-        = f.text_field :price_km
+        = f.text_field :price_km, :class => "text_input"
     %tr
       %td
         = f.label :smoker, "Raucher"
@@ -40,7 +40,7 @@
       %td
         = f.label :description, "Beschreibung"
       %td
-        = f.text_area :description, :maxlength => 160, :placeholder => "Großer Kofferraum, Keine Türen",:id => "descriptionarea", :resize => "none", :onkeydown => "desc()", :onkeyup => "desc()", :rows => "7", :onkeypress => "desc()"
+        = f.text_area :description, :maxlength => 160, :placeholder => "Großer Kofferraum, Keine Türen",:id => "descriptionarea", :resize => "none", :onkeydown => "desc()", :onkeyup => "desc()", :onkeypress => "desc()"
         #deshinweis
           %script desc();
     %tr
@@ -50,7 +50,7 @@
         = f.file_field :carpic
     %tr  
       %td
-        = "Aktuelles Bild:"
+        = f.label @car.carpic, "Aktuelles Bild:"
       %td
         - if @car.carpic?
           = image_tag @car.carpic.url(:medium)
