@@ -188,7 +188,7 @@ body.trips {
       }
   
       a {
-        font-weight: bold;
+        text-decoration: underline;
         &:visited {
           color: #333333;
         }
@@ -281,6 +281,7 @@ body.trips {
       }
   
       a {
+        text-decoration: underline;
         &:visited {
           color: #333333;
         }
