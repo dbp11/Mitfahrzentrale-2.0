@@ -47,7 +47,7 @@ class TripsController < ApplicationController
   # GET /trips
   # Liefert Übersicht über alle Fahrten an denen der Nutzer beteiligt ist und war
   def index
-    if current_user.role = "admin"
+    if current_user.role == "admin"
       @trips = current_user.driven
       @future_trips = Trip.all
       @completed_trips = nil
