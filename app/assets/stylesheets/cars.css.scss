@@ -4,39 +4,24 @@
 @import "variables";
 body.cars {
   #main{
-    .cars_index_table {
-      width: 100%;
-    }		
     .other-site {
       width: 100%;
-    }
-    .cars_index_top {
-      tr:first-child {
-        td {
-          width: 100%;
-        }
-        td:first-child{
-          text-align: left;
-          font-size: 20pt;
-        }
-        td:last-child{
-          text-align: left;
-          padding-right: 5px;
-          width: 10px;
-        }
-      }
     }
     .cars_index_bot {
       table-layout: fixed;
       width: 100%;
       text-overflow: ellipsis;
+      border: 2px solid;
       tr {
+        border: 1px solid;
         background-color: $table_bg_color1;
         td {
-          
           text-align: center;
           border-style: solid;
           padding: 0.1em 0.5em 0.1em 0.5em;
+        }
+        td:last-Child {
+          border: 0px 0px 0px 1px;
         }
       }
       tr:nth-child(2n+1) {
@@ -49,6 +34,7 @@ body.cars {
       }
     }
     .cars_show_index {
+      border: 2px solid;
       td{
         vertical-align: top;
       }
@@ -58,12 +44,17 @@ body.cars {
       }
     }
     .cars_show_left {
+      border: 2px solid;
       table-layout: fixed;
       background-color: $table_bg_color1;
       width: 100%;
       word-wrap: break-word;
       tr:nth-child(2n+1){
         background-color: $table_bg_color2;
+      }
+      tr:first-child {
+        border-bottom: 1px solid;
+        background-color: $table_bg_color0;
       }
       td:first-child {
         width: 30%;
@@ -72,6 +63,12 @@ body.cars {
       }
       td:last-child {
         text-align: left;
+      }
+      td.desc {
+        text-align: justify;  
+      }
+      td {
+        padding-right: 0.5em;  
       }
     }
     .cars_show_right {
