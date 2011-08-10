@@ -6,8 +6,7 @@ body.users {
   // Place scoped styles here
   #main{
     .form_arround_left{
-      width: 500px;
-      border: solid 1px;
+
     }
     .other-site {
       width: 50%;
@@ -16,27 +15,16 @@ body.users {
       width: 65%;
     }
   
-   .form_table{
-    border:solid 1px;
-    &:nth-child(2n){
-      background-color: $table_bg_color1;
-    }  
-    &:nth-child(2n+1){
-      background-color: $table_bg_color2;
-    }
+   .form_tables{
 
-    td{
-      border:solid 1px;
-      text-align: center;
     }
-  }
  
   
-    .form_table_right{
+    .form_tables_right{
       text-align: left;
     }
   
-    .form_table_left{
+    .form_tables_left{
       width: 200px;
     }
   
@@ -49,6 +37,5 @@ body.users {
   }
 
   .form_arround{
-    border: solid 2px;
   }
 }

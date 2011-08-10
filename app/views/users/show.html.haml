@@ -3,8 +3,8 @@
     %h2 
       Profil
   %td.right
-    %div.other_site
     = link_to image_tag( '/images/Button_recieved_rating.png', :alt => "Bearbeiten"), "/ratings/"+@user.id.to_s
+  %td.right
     -if current_user == @user
       = link_to(image_tag( '/images/Button_edit.png', :alt => "Bearbeiten"), edit_user_registration_path)
     -else
@@ -17,74 +17,74 @@
 %table.form_arround
   %tr.form_arround_row
     %td.form_arround_left
-      %table.form_table
+      %table.form_tables
 
-        %tr.form_table_row
-          %td.form_table_left
+        %tr.form_tables_row
+          %td.form_tables_left
             %h4 Nutzername: 
-          %td.form_table_right
+          %td.form_tables_right
             #{@user.name}
-        %tr.form_table_row
-          %td.form_table_left
+        %tr.form_tables_row
+          %td.form_tables_left
             %h4 Email:
-          %td.form_table_right
+          %td.form_tables_right
             #{@user.email if @user.email}
         - if !@user.business?
-          %tr.form_table_row
-            %td.form_table_left
+          %tr.form_tables_row
+            %td.form_tables_left
               %h4 Geschlecht:
-            %td.form_table_right
+            %td.form_tables_right
               #{@user.sex? ? "Maennlich" : "Weiblich"}
 
-        %tr.form_table_row
-          %td.form_table_left
+        %tr.form_tables_row
+          %td.form_tables_left
             %h4 Adresse: 
-          %td.form_table_right
+          %td.form_tables_right
             - if current_user==@user
               #{@user.address}
             - else
               #{@user.visible_address? ? @user.address: "versteckt"}
 
-        %tr.form_table_row
-          %td.form_table_left
+        %tr.form_tables_row
+          %td.form_tables_left
             %h4 PLZ: 
-          %td.form_table_right
+          %td.form_tables_right
             - if current_user==@user
               #{@user.zipcode}
             - else
               #{@user.visible_zip? ? @user.zipcode : "versteckt"}
-        %tr.form_table_row
-          %td.form_table_left
+        %tr.form_tables_row
+          %td.form_tables_left
             %h4 Ort: 
-          %td.form_table_right
+          %td.form_tables_right
             - if current_user==@user
               #{@user.city}
             - else
               #{@user.visible_city? ? @user.city : "versteckt"}
       
         - if !@user.business?
-          %tr.form_table_row
-            %td.form_table_left
+          %tr.form_tables_row
+            %td.form_tables_left
               %h4 Geburtsdatum: 
-            %td.form_table_right
+            %td.form_tables_right
               - if current_user==@user
                 #{@user.birthday}
               - else
                 #{@user.visible_age? ?  @user.birthday.strftime("%d.%m.%Y") : "versteckt"}
 
-        %tr.form_table_row
-          %td.form_table_left
+        %tr.form_tables_row
+          %td.form_tables_left
             %h4 InstantMassenger: 
-          %td.form_table_right
+          %td.form_tables_right
             - if current_user==@user
               #{@user.instantmessenger}
             - else
               #{@user.visible_im? ?  @user.instantmessenger: "versteckt"}
 
-        %tr.form_table_row
-          %td.form_table_left
+        %tr.form_tables_row
+          %td.form_tables_left
             %h4 Telefon: 
-          %td.form_table_right
+          %td.form_tables_right
             - if current_user==@user
               #{@user.phone}
             - else
