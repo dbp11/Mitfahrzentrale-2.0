@@ -2,91 +2,103 @@
   Registrieren
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"Formular", :onsubmit=>"return zipcheck();"}) do |f|
   = devise_error_messages!
-
-  %div 
-    :javascript
-      function formtest(){
-        if (document.getElementById("business").checked==true){
-          document.getElementById("privat").style.display='none';
-          document.getElementById("privat1").style.display='none';
-        } else {
-          document.getElementById("privat").style.display='block';
-          document.getElementById("privat1").style.display='block';
-        } 
-      }
-
-      function zipcheck() {
-        var plz_field = document.getElementsByName("user[zipcode]")[0];
-        var b = (plz_field.value).search(/[^0-9]+/);
-        if(plz_field.value.length<5){
-          alert('PLZ zu kurz!');
-          plz_field.focus();
-          return false;
+  %table.form_table
+    %tr 
+      :javascript
+        function formtest(){
+          if (document.getElementById("business").checked==true){
+            document.getElementById("privat").style.display='none';
+            document.getElementById("privat1").style.display='none';
+          } else {
+            document.getElementById("privat").style.display='block';
+            document.getElementById("privat1").style.display='block';
+          } 
         }
-        if(b>=0){
-          alert('PLZ enthält falsche Zeichen!');
-          plz_field.focus;
-          return false;
+
+        function zipcheck() {
+          var plz_field = document.getElementsByName("user[zipcode]")[0];
+          var b = (plz_field.value).search(/[^0-9]+/);
+          if(plz_field.value.length<5){
+            alert('PLZ zu kurz!');
+            plz_field.focus();
+            return false;
+          }
+          if(b>=0){
+            alert('PLZ enthält falsche Zeichen!');
+            plz_field.focus;
+            return false;
+          }
+          return true;
         }
-        return true;
-      }
-    = f.label :business, "Geschäftskunde?"
-    = f.check_box:business, :id=>"business" ,:onClick=>"formtest();" 
-  %div
-    = f.label :name, "Name*"
-    %br/
-    = f.text_field :name, :required=>"required", :autofocus=>"autofocus"
-    %br/
-  %div
-    = f.label :email, "E-Mail*"
-    %br/
-    = f.email_field :email, :required=>"required"
-    %br/
-  %div
-    = f.label :password, "Passwort*"
-    %br/
-    = f.password_field :password, :required=>"required"
-  %div
-    = f.label :password_confirmation, "Passwort wiederholen*"
-    %br/
-    = f.password_field :password_confirmation, :required=>"required"
-  %div#privat
-    = f.label :birthday, "Geburtsdatum"
-    = f.date_select :birthday,
+      %td  
+        = f.label :business, "Geschäftskunde?"
+      %td
+        = f.check_box:business, :id=>"business" ,:onClick=>"formtest();" 
+    %tr
+      %td
+        = f.label :name, "Name*"
+      %td
+      = f.text_field :name, :required=>"required", :autofocus=>"autofocus"
+    %tr
+      %td
+        = f.label :email, "E-Mail*"
+      %td
+      = f.email_field :email, :required=>"required"
+    %tr
+      %td
+        = f.label :password, "Passwort*"
+      %td
+        = f.password_field :password, :required=>"required"
+    %tr
+      %td
+        = f.label :password_confirmation, "Passwort wiederholen*"
+      %td
+        = f.password_field :password_confirmation, :required=>"required"
+    %tr#privat
+      %td
+        = f.label :birthday, "Geburtsdatum"
+      %td
+        = f.date_select :birthday,
                     :start_year => 1900,
                     :end_year => 2011,
                     :order => [:day, :month, :year],
                     :use_month_numbers => true
-  %div
-    = f.label :address, "Straße und Hausnummer*"
-    %br/
-    = f.text_field:address, :required=>"required"
+    %tr
+      %td
+        = f.label :address, "Straße und Hausnummer*"
+      %td
+        = f.text_field:address, :required=>"required"
 
-  %div
-    = f.label :zipcode, "PLZ*"
-    %br
-      = f.text_field:zipcode, :required=>"required", :class=>"integer", 
+    %tr
+      %td
+        = f.label :zipcode, "PLZ*"
+      %td
+        = f.text_field:zipcode, :required=>"required", :class=>"integer", 
                               :maxlength=>"5", :size=>"30"
 
-  %div
-    = f.label :city, "Stadt*"
-    %br/
-    = f.text_field:city, :required=>"required"
+    %tr
+      %td
+        = f.label :city, "Stadt*"
+      %td
+        = f.text_field:city, :required=>"required"
   
-  %div#privat1
-    %br/
-    = f.label :sex, "Geschlecht"
-    = f.select:sex,  options_for_select([["Maennlich","1"], ["Weiblich","0"]]), :id=>"form_table_second"
+  %tr#privat1
+    %td
+      = f.label :sex, "Geschlecht"
+    %td
+      = f.select:sex,  options_for_select([["Maennlich","1"], ["Weiblich","0"]]), :id=>"form_table_second"
 
-  %div
-    = f.label :phone, "Telefon"
-    %br/
-    = f.phone_field :phone
+  %tr
+    %td
+      = f.label :phone, "Telefon"
+    %td
+      = f.phone_field :phone
 
-  %div
-    = f.label :instantmessenger, "Instantmessenger"
-    %br/
-    = f.text_field :instantmessenger
+  %tr
+    %td
+      = f.label :instantmessenger, "Instantmessenger"
+    %td
+      = f.text_field :instantmessenger
 
 
   %div

@@ -1,6 +1,5 @@
 %h2.head
   Profil bearbeiten
-  = link_to image_tag( '/images/Button_back.png', :alt => "zurück", :height => "20"), :back
 %p.under
   Mit * gekennzeichnete Felder müssen ausgefüllt sein
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :name=>"Formular", :onsubmit => "return zipcheck();" }) do |f|
@@ -12,21 +11,29 @@
         = f.label :name, "Name*"
       %td.form_table_right
         = f.text_field :name
+      %td
+      %td
     %tr.form_table_row
       %td.form_table_left
         = f.label :email, "E-Mail*"
       %td.form_table_right
         = f.email_field :email
+      %td
+      %td
     %tr.form_table_row
       %td.form_table_left
         = f.label :password, 'Neues Passwort'
       %td.form_table_right
         = f.password_field :password
+      %td
+      %td
     %tr.form_table_row
       %td.form_table_left
         = f.label :password_confirmation, "Neues Passwort wiederholen"
       %td.form_table_right
         = f.password_field :password_confirmation
+      %td
+      %td
     - if !@user.business? 
       %tr.form_table_row
         %td.form_table_left
@@ -46,6 +53,8 @@
           = f.label :sex, "Geschlecht"
         %td.form_table_right 
           = f.select:sex,  options_for_select([["Männlich","1"], ["Weiblich","0"]], @user.sex? ? "1" : "0")
+        %td
+        %td
 
     %tr.form_table_row
       %td.form_table_left
@@ -118,22 +127,25 @@
         = f.label :pic, "Bild hochladen"
       %td.form_table_right
         = f.file_field :pic
+      %td
+      %td
     %tr.form_table_row
       %td.form_table_left
         = f.label :current_password, "Passwort*"
       %td.form_table_right
         = f.password_field :current_password, :required=>"required"
+      %td
+      %td
 
     %tr.form_table_row
       %td
+        = link_to image_tag( '/images/Button_back.png', :alt => "zurück"), :back
       %td
-      %td
+      %td{:colspan => "2"}
         = image_submit_tag "/images/Button_save.png"
   %h3.links
   %p
     = link_to image_tag( '/images/Button_delete_account.png', :alt => "Account Löschen"), registration_path(resource_name), :confirm => "Sind sie sicher?", :method => :delete
-  %p.links
-    = link_to image_tag( '/images/Button_back.png', :alt => "zurück"), :back
 
 
 

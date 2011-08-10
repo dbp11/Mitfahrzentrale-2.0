@@ -42,6 +42,11 @@
     %td.right
       = @request.end_time.strftime("%d.%m.%Y %H:%M")
   %tr
+    %td.left
+      Fahrzeit*:
+    %td
+      = "#{"%02d" % (@request.duration/3600)}:#{"%02d" % (@request.duration/60%60)}"
+  %tr
     %td.left 
       Gepäck:
     %td.right
@@ -51,7 +56,8 @@
       Anmerkungen:
     %td.right  
       = @request.comment
-
+%p
+  *Angaben ohne Gewähr
 
 %h4 Dazu passende Trips:
 -if @sorted_trips == nil or @sorted_trips.count <= 0
