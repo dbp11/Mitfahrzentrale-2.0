@@ -5,10 +5,17 @@ class MessagesController < ApplicationController
     flash[:alert] = "Zugriff verweigert!"
     redirect_to messages_path
   end
+ #Exception, falls man auf einen Bereich nicht zugreifen kann
   rescue_from ActiveRecord::RecordNotFound do |exception|
     flash[:alert] = "Zugriff verweigert!"
     redirect_to messages_path
   end
+  # Exception, falls ein Bereich nicht existiert
+  rescue_from Exception::StandardError do |exception|
+    flash[:alert] = exception.message
+    redirect_to new_request_path
+  end
+ # Exception für Standardfehler
   
   # GET /messages
   # Die IndexAction gibt gibt alle empfangenen Nachrichten des Nutzer aus
