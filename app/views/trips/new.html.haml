@@ -26,10 +26,10 @@
   }
 
 = form_tag("create", :method => "post") do
-  %table
+  %table.form_table
     %tr
       %td
-        Startadresse*
+        = label_tag(:address_start, "Startadresse:")
         %br/
         &nbsp;
       %td
@@ -38,7 +38,7 @@
         &nbsp;
     %tr
       %td
-        Zieladresse*
+        = label_tag(:address_end, "Zieladresse:")
         %br/
         &nbsp;
       %td
@@ -47,7 +47,7 @@
         &nbsp;
     %tr
       %td
-        Abfahrtszeit*
+        = label_tag("Abfahrtszeit:")
         %br/
         &nbsp;
       %td
@@ -107,23 +107,11 @@
                 %option{:value => (i*5).to_s, :selected => "selected"}= "#{i*5}"
               - else
                 %option{:value => (i*5).to_s}= "#{i*5}"
-        -#%select{:name => "start_minute", :required => "required"}
-          - 60.times do |i|
-            - if i < 10
-              - if i == Time.now.min
-                %option{:value => "0"+i.to_s, :selected => "selected"}= "0#{i}"
-              - else
-                %option{:value => "0"+i.to_s}= "0#{i}"
-            - else
-              - if i == Time.now.min
-                %option{:value => i.to_s, :selected => "selected"}= "#{i}"
-              - else
-                %option{:value => i.to_s}= "#{i}"
         %br/
         &nbsp;
     %tr
       %td
-        Fahrzeug*
+        = label_tag(:car, "Fahrzeug")
         %br/
         &nbsp;
       %td
@@ -134,7 +122,7 @@
         &nbsp;
     %tr
       %td
-        Sitzpl&auml;tze 
+        = label_tag(:free_seats, "Sitzplätze")
         %br/
         &nbsp;
       %td
@@ -146,7 +134,7 @@
         &nbsp;
     %tr
       %td
-        Gep&auml;ck
+        = label_tag(:baggage, "Gepäck")
         %br/
         &nbsp;
       %td
@@ -154,7 +142,8 @@
         %br/
         &nbsp;
     %tr
-      %td Hinweise
+      %td
+        = label_tag(:comment, "Hinweise")
       %td
         %textarea#comment{:name => "comment", :maxlength => "160", :wrap => "physical", :onkeydown => "cmt()", :onkeyup => "cmt()", :onkeypress => "cmt()"} 
         #cmthinweis
