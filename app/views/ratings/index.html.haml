@@ -1,6 +1,36 @@
 %div.other-site
 	= link_to(image_tag( '/images/Button_recieved_rating.png', :alt => "Erhaltene Bewertungen"), url_for(:action => "show", :controller => "ratings", :id => current_user.id))
-%h2 Erstellte Bewertungen
+%h2 Bewertungen
+%h3 Offene Bewertungen
+-if @new_ratings.empty?
+	%p
+		= "Keine offenen Bewertungen vorhanden."
+-else
+	%table.new_ratings_table
+		%tr
+			%td
+				= "Benutzer"
+			%td
+
+			%td
+				= "Fahrt"
+			%td
+				= "Datum"
+			%td
+
+		- @new_ratings.each do |rating|
+			%tr
+				%td
+					= link_to(rating[0].name, url_for(rating[0]))
+				%td
+					= "(%s)" % ((rating[0] == rating[1].user)? "Fahrer": "Mitfahrer")
+				%td
+					= link_to(rating[1].get_start_city() + " - " + rating[1].get_end_city(), url_for(rating[1]))
+				%td
+					= rating[1].start_time.strftime("%d.%m.%y")
+				%td
+					= link_to(image_tag('/images/Button_rate.png', :alt => "Bewerten"), url_for(:action => "new", :controller => "ratings", :uid => rating[0].id, :tid => rating[1].id))
+%h3 Erstellte Bewertungen
 -if @ratings.empty?
 	%p
 		= "Keine Bewertungen erstellt."
