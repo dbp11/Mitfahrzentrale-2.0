@@ -152,9 +152,10 @@
       %td
         %br/
         = "* = Pflichtfeld"
+      %td
     %tr
       %td
-        = link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), trips_path
+        = link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), "javascript:history.back();"
       %td.form_table_right
         = image_submit_tag("/images/Button_create.png")
 
