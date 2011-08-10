@@ -1,4 +1,4 @@
-#
+# encoding: utf-8
 # Modelliert alle Fahrten die ein User als Fahrer oder Mitfahrer begeht. 
 # 
 # ===Das Model hat die Datenfelder:
@@ -61,7 +61,6 @@
 class Trip < ActiveRecord::Base
   include ActiveModel::Validations
   require 'bing/route'
-  require 'bing/location'
   ############################== Modellierung der Beziehungen #####################################
 
   #Der aktive Fahrer, zu dem jeweils ein Trip gehört
@@ -293,9 +292,7 @@ class Trip < ActiveRecord::Base
 
   # Berechnet die Strecke in Metern und die Zeit in Sekunden, die für diese Strecke benötigt werden und schreibt die Informationen in die passenden Datenfelder der Tabelle
   def set_route
-
-    route = Bing::Route.find(:waypoints => [self.starts_at_N.to_s + " " + self.starts_at_E.to_s + " ",
-                                            self.ends_at_N.to_s + " " + self.ends_at_E.to_s + " "])[0]
+    route = Bing::Route.find(:waypoints => [self.starts_at_N.to_s + " " + self.starts_at_E.to_s + " ", self.ends_at_N.to_s + " " + self.ends_at_E.to_s + " "])[0]
     self.distance = route.total_distance
     self.duration = route.total_duration
   end

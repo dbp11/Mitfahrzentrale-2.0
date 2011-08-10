@@ -18,7 +18,11 @@ class CarsController < ApplicationController
   # GET /cars
   # Liefert die Autos des aktuellen Nutzers
   def index
-    @cars = current_user.cars
+   if current_user.role == "admin"
+      @cars = Car.all
+    else
+      @cars = current_user.cars
+    end
   end
 
   # GET /cars/1

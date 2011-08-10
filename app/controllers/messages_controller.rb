@@ -13,13 +13,22 @@ class MessagesController < ApplicationController
   # GET /messages
   # Die IndexAction gibt gibt alle empfangenen Nachrichten des Nutzer aus
   # Zeitstempel und Anzahl der neuen Nachrichten werden für die Anzeige gebraucht
-  def index
+   def index
     # Alle empfangenen Nachrichten des Nutzers
-    @messages = current_user.get_received_messages
-    # Zeitstempel des letzten Aufrufs
-    @last_delivery = current_user.last_delivery
-    # Anzahl der Nachrichten, die der Nutzer noch nicht eingesehen hat
-	  @latest_messages = current_user.get_latest_messages
+    if current_user.role == "admin"
+      @latest_messages = []
+      @messages = Message.all
+      @last_delivery = current_user.last_delivery
+      User.all.each do |user|
+        @latest_messages << user.get_latest_messages
+      end
+    else
+      @messages = current_user.get_received_messages
+      # Zeitstempel des letzten Aufrufs
+      @last_delivery = current_user.last_delivery
+      # Anzahl der Nachrichten, die der Nutzer noch nicht eingesehen hat
+	    @latest_messages = current_user.get_latest_messages
+    end
     # Den Zeitstempel auf die aktuelle Zeit setzen
     current_user.last_delivery = Time.now
     current_user.save

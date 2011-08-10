@@ -141,7 +141,7 @@
             = trip.baggage ? "Es kann Gepäck mitgenommen werden" : "Es kann kein Gepäck mitgenommen werden"
         %tr
           %td.left_bold Hinweise:
-          %td.left{:colspan => "3"}= trip.comment
+          %td.comment{:colspan => "3"}= trip.comment
 
       -#Tabelle mit Mitfahrern
       %table.trips_show_passenger_table
