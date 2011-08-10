@@ -11,10 +11,10 @@ class RequestsController < ApplicationController
     redirect_to requests_path
   end
   # Exception, falls ein Bereich nicht existiert
-  rescue_from Exception::StandardError do |exception|
-    flash[:alert] = exception.message
-    redirect_to new_request_path
-  end
+  #rescue_from Exception::StandardError do |exception|
+    #flash[:alert] = exception.message
+    #redirect_to new_request_path
+  #end
   # Exception für Standardfehler, z.B. Eingabefehler
 
   # GET /requests

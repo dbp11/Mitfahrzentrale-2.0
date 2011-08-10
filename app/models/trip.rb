@@ -90,7 +90,8 @@ class Trip < ActiveRecord::Base
                self.starts_at_E.to_s + " ", "de")[0][:full_data]
     
 
-    hausNr = ""
+   
+    hausNr = self.start_street = self.end_street = ""
     start_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
         self.start_zipcode = i["long_name"]
@@ -233,8 +234,8 @@ class Trip < ActiveRecord::Base
       
       t_rating = t.user.get_avg_rating.to_f / 6
       t_ignors = t.user.get_relative_ignorations
-      detour = (distance - self.distance) / self.distance
-      detime = (duration - self.duration) / self.duration
+      detour = (distance - self.distance).to_f / self.distance
+      detime = (duration - self.duration).to_f / self.duration
 
       erg << [t, Math.sqrt(t_rating*t_rating + t_ignors*t_ignors + detour*detour + detime*detime)]
     end

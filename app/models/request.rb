@@ -48,7 +48,7 @@ class Request < ActiveRecord::Base
                self.starts_at_E.to_s + " ", "de")[0][:full_data]
     
 
-    hausNr = ""
+    hausNr = self.start_street = self.end_street = ""
     start_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
         self.start_zipcode = i["long_name"]
@@ -134,12 +134,9 @@ class Request < ActiveRecord::Base
 
       t_rating = t.user.get_avg_rating.to_f / 6
       t_ignors = t.user.get_relative_ignorations
-      detour = (distance - t.distance) / t.distance
-      if t.duration == 0
-        detime = 0
-      else
-        detime = (duration - t.duration) / t.duration
-      end
+      detour = (distance - t.distance).to_f / t.distance
+      detime = (duration - t.duration).to_f / t.duration
+      
       erg << [t, Math.sqrt(t_rating*t_rating + t_ignors*t_ignors + detour*detour + detime*detime)]
     end
 
