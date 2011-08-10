@@ -47,24 +47,14 @@ until x==anztrips
   ready=false
   begin
     plz_start = @plz_array[rand(24119)]
-    start=Geocoder.coordinates(plz_start.to_s+', Deutschland')
-    if(start.nil?)
-      ready=false
-    else
-      ready=true
-    end
-  end while(!ready)
+    start=Geocoder.coordinates(plz_start.to_s+",Germany")
+  end while(start.nil?)
   #end_koordinaten
   ready=false
   begin
     plz_ende = @plz_array[rand(24119)]
-    ende = Geocoder.coordinates(plz_ende.to_s+', Deutschland')
-    if(ende.nil? or start=ende)
-      ready=false
-    else
-      ready=true
-    end
-  end while (!ready)
+    ende = Geocoder.coordinates(plz_ende.to_s+",Germany")
+  end while (ende.nil?)
   puts "PLZ-Start:"+plz_start.to_s + " PLZ-Ende:" + plz_ende.to_s
   puts "Start-Kord: "+start[0].to_s+"N "+start[1].to_s+"E"
   puts "End-Kord: "+ende[0].to_s+"N "+ende[1].to_s+"E"
@@ -86,24 +76,14 @@ until x==anzrequests
   ready=false
   begin
     plz_start = @plz_array[rand(24119)]
-    start=Geocoder.coordinates(plz_start.to_s+', Deutschland')
-    if(start.nil?)
-      ready=false
-    else
-      ready=true
-    end
-  end while(!ready)
+    start=Geocoder.coordinates(plz_start.to_s+",Germany")
+  end while(start.nil?)
   #end_koordinaten
   ready=false
   begin
     plz_ende = @plz_array[rand(24119)]
-    ende = Geocoder.coordinates(plz_ende.to_s+', Deutschland')
-    if(ende.nil? or start=ende)
-      ready=false
-    else
-      ready=true
-    end
-  end while (!ready)
+    ende = Geocoder.coordinates(plz_ende.to_s+",Germany")
+  end while (ende.nil?)
   puts "PLZ-Start:"+plz_start.to_s + " PLZ-Ende:" + plz_ende.to_s
   puts "Start-Kord: "+start[0].to_s+"N "+start[1].to_s+"E"
   puts "End-Kord: "+ende[0].to_s+"N "+ende[1].to_s+"E"
