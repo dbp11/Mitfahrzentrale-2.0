@@ -43,19 +43,34 @@ until x==anztrips
   puts "Trips "+x.to_s
   user_id = (rand(anzusers)+1)
   car_id = (rand(anzcars)+1)
+  #start_koordinaten
+  ready=false
   begin
     plz_start = @plz_array[rand(24119)]
-    start=Geocoder.coordinates(plz_start.to_s+",Deutschland")
-  end while(start.nil?)
-  #end_koordinaten 
+    start=Geocoder.coordinates(plz_start.to_s+', Deutschland')
+    if(start.nil?)
+      ready=false
+    else
+      ready=true
+    end
+  end while(!ready)
+  #end_koordinaten
+  ready=false
   begin
     plz_ende = @plz_array[rand(24119)]
-    ende = Geocoder.coordinates(plz_ende.to_s+",Deutschland")
-  end while (plz_start==plz_ende or ende.nil?)
+    ende = Geocoder.coordinates(plz_ende.to_s+', Deutschland')
+    if(ende.nil? or start=ende)
+      ready=false
+    else
+      ready=true
+    end
+  end while (!ready)
   puts "PLZ-Start:"+plz_start.to_s + " PLZ-Ende:" + plz_ende.to_s
   puts "Start-Kord: "+start[0].to_s+"N "+start[1].to_s+"E"
   puts "End-Kord: "+ende[0].to_s+"N "+ende[1].to_s+"E"
-  t=Trip.new :user_id => user_id, :car_id => car_id, :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_E => ende[0].to_f, :ends_at_N => ende[1].to_f, :start_zipcode => plz_start, :end_zipcode => plz_ende, :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => rand(6)
+  t=Trip.new :user_id => user_id, :car_id => car_id, :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_E => ende[1].to_f, :ends_at_N => ende[0].to_f, :start_zipcode => plz_start, :end_zipcode => plz_ende, :start_time => Time.now+1.day, :comment => "Biete eine Fahrt an!", :baggage => true, :free_seats => rand(6)
+  sleep(0.5)
+  t.set_route
   trips << t
 end
 
@@ -68,20 +83,34 @@ until x==anzrequests
   puts "Request "+x.to_s
   user_id = rand(anzusers)
   #start_koordinaten
+  ready=false
   begin
     plz_start = @plz_array[rand(24119)]
-    start=Geocoder.coordinates(plz_start.to_s+",Deutschland")
-  end while(start.nil?)
-  #end_koordinaten 
+    start=Geocoder.coordinates(plz_start.to_s+', Deutschland')
+    if(start.nil?)
+      ready=false
+    else
+      ready=true
+    end
+  end while(!ready)
+  #end_koordinaten
+  ready=false
   begin
     plz_ende = @plz_array[rand(24119)]
-    ende = Geocoder.coordinates(plz_ende.to_s+",Deutschland")
-  end while (plz_start==plz_ende or ende.nil?)
+    ende = Geocoder.coordinates(plz_ende.to_s+', Deutschland')
+    if(ende.nil? or start=ende)
+      ready=false
+    else
+      ready=true
+    end
+  end while (!ready)
   puts "PLZ-Start:"+plz_start.to_s + " PLZ-Ende:" + plz_ende.to_s
   puts "Start-Kord: "+start[0].to_s+"N "+start[1].to_s+"E"
   puts "End-Kord: "+ende[0].to_s+"N "+ende[1].to_s+"E"
 
   r = Request.new :starts_at_N => start[0].to_f, :starts_at_E => start[1].to_f, :ends_at_N => ende[0].to_f, :ends_at_E => ende[1].to_f, :start_zipcode => plz_start, :end_zipcode => plz_ende, :start_time => Time.now+1.day, :end_time => Time.now+365.day, :baggage => true, :comment => "Hilfe", :user_id => user_id, :start_radius => rand(51), :end_radius => rand(51)
+  sleep(0.5)
+  r.set_route
   requests << r
 end
 
@@ -125,34 +154,29 @@ end
 
 #Erstellen der Daten
 users.each  do |t|
+  puts "user save"
   t.save!
 end
 
 cars.each do |t|
+  puts "cars save"
   t.save!
 end
 
 trips.each do |t|
-  puts t.starts_at_N
-  puts t.starts_at_E
-  puts t.ends_at_N
-  puts t.ends_at_E  
-  route = Bing::Route.find(:waypoints => [t.starts_at_N.to_s + " " + t.starts_at_E.to_s + " ",
-                                            t.ends_at_N.to_s + " " + t.ends_at_E.to_s + " "])[0]
-  t.distance = route.total_distance
-  t.duration = route.total_duration
+  puts "trips save"
+  t.set_address_info
   t.save!
 end
 
 requests.each do |t|
-  route = Bing::Route.find(:waypoints => [t.starts_at_N.to_s + " " + t.starts_at_E.to_s + " ",
-                                            t.ends_at_N.to_s + " " + t.ends_at_E.to_s + " "])[0]
-  t.distance = route.total_distance
-  t.duration = route.total_duration
+  puts "request save"
+  t.set_address_info
   t.save!
 end
 
 passengers.each do |t|
+  puts "passenger save"
   t.save!
 end
 
