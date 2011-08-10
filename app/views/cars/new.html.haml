@@ -3,49 +3,62 @@
     document.getElementById("deshinweis").firstChild.nodeValue ="Noch " + (document.getElementById("descriptionarea").maxLength - document.getElementById("descriptionarea").value.length) + " Zeichen";
   }
 = stylesheet_link_tag :cars
+#div.other-site#zwei
+  = link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), cars_path
 %h2
-  = "Neues Fahrzeug hinzufügen"
-
-= form_for :car, :url => "/cars/create", :html => { :multipart => true } do |f|
-  -if @car.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@car.errors.count, "error")} Beim speichern des Fahrzueges ist ein Fehler aufgetreten:"
-      %ul
-        - @car.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :seats, "Sitzplätze*" 
-    %br
-    = f.number_field :seats, :size => 30, :min => 0, :max =>40, :autofocus => "autofocus"
-  .field
-    = f.label :car_type, "Modell*"
-    %br
-    = f.text_field :car_type, :required => true
-  .field
-    = f.label :licence, "Kennzeichen*"
-    %br
-    = f.text_field :licence, :required => true 
-  .field
-    = f.label :price_km, "Preis pro km (numerisch)"
-    %br
-    = f.text_field :price_km
-  .field
-    = f.label :smoker, "Raucher"
-    %br
-    = f.check_box :smoker
-  .field
-    = f.label :description, "Beschreibung (max. 100 Zeichen)"
-    %br
-    = f.text_area :description, :maxlength => 100, :placeholder => "Großer Kofferraum, Keine Türen", :resize => "none", :onkeydown => "desc()", :onkeyup => "desc()", :rows => "7", :onkeypress => "desc()"
-    #deshinweis
-      %script desc();
-  .field
-    = f.label :carpic, "Bild hochladen"
-    %br
-    = f.file_field :carpic
-    
-  .actions
-  %br
-    = image_submit_tag "/images/Button_add.png"
-    Mit * gekennzeichnete Felder sind Pflichtfelder
-= link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), cars_path
+  = "Neues Fahrzeug"
+%table.form_table
+  = form_for :car, :url => "/cars/create", :html => { :multipart => true } do |f|
+    -if @car.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@car.errors.count, "error")} Beim speichern des Fahrzueges ist ein Fehler aufgetreten:"
+        %ul
+          - @car.errors.full_messages.each do |msg|
+            %li= msg
+    %tr
+      %td
+        = f.label :seats, "Sitzplätze*" 
+      %td
+        = f.number_field :seats, :class => "text_input", :min => 0, :max =>40, :autofocus => "autofocus"
+    %tr
+      %td
+        = f.label :car_type, "Modell*"
+      %td
+        = f.text_field :car_type, :required => true, :class => "text_input"
+    %tr
+      %td
+        = f.label :licence, "Kennzeichen*"
+      %td
+        = f.text_field :licence, :required => true, :class => "text_input"
+    %tr
+      %td
+        = f.label :price_km, "Kosten: € pro 100km"
+      %td
+        = f.text_field :price_km, :placeholder => "Spritverbrauch + Verschleiß", :class => "text_input"
+    %tr
+      %td
+        = f.label :smoker, "Raucher"
+      %td
+        = f.check_box :smoker, :size => 38
+    %tr
+      %td
+        = f.label :description, "Beschreibung"
+      %td
+        = f.text_area :description, :maxlength => 160, :placeholder => "Großer Kofferraum, Keine Türen", :id => "descriptionarea", :resize => "none", :onkeydown => "desc()", :onkeyup => "desc()", :onkeypress => "desc()"
+        #deshinweis
+          %script desc();
+    %tr
+      %td
+        = f.label :carpic, "Bild hochladen"
+      %td
+        = f.file_field :carpic
+      
+    %tr
+      %td
+        = image_submit_tag "/images/Button_add.png"
+      %td
+    %tr
+      %td
+        Mit * gekennzeichnete Felder sind Pflichtfelder
+      %td
+%br
