@@ -14,14 +14,10 @@ class CarsController < ApplicationController
   # Exception, falls ein Bereich nicht existiert
   rescue_from Exception::StandardError do |exception|
     flash[:alert] = exception.message
-    redirect_to new_request_path
+    redirect_to cars_path
   end
   # Exception für Standardfehler, z.B. Eingabefehler
 
-
-  ##########################cars-controller####################################
-  # Alles kommentiert
-  # Ver. 1.0
 
   # GET /cars
   # Liefert die Autos des aktuellen Nutzers

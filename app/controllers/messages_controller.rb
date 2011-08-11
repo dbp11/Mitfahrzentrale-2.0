@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
   # Exception, falls ein Bereich nicht existiert
   rescue_from Exception::StandardError do |exception|
     flash[:alert] = exception.message
-    redirect_to new_request_path
+    redirect_to messages_path
   end
  # Exception für Standardfehler
   

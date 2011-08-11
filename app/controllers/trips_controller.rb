@@ -1,6 +1,5 @@
 class TripsController < ApplicationController
   before_filter :authenticate_user!
-  
   load_and_authorize_resource 
   
   rescue_from CanCan::AccessDenied do |exception|
