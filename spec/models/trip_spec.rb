@@ -9,8 +9,12 @@ describe Trip do
       :starts_at_E => 35,
       :ends_at_E => 45,
       :ends_at_N => 5,
-      :address_start => "grrggrdrg",
-      :address_end => "fsefsefffse",
+      :start_city => "fesfe",
+      :start_street => "efsfe",
+      :start_zipcode => 4564,
+      :end_city => "dee",
+      :end_street => "edsfes",
+      :end_zipcode => 4456,
       :start_time => Time.now,
       :comment => "fejskfsbnfjkfesfse",
       :baggage => true,
@@ -19,20 +23,16 @@ describe Trip do
   end
   
   #Test ob Validations funktionieren
-  it "Kontrolle ob Validation address_start funktioniert" do
-    no_address_start = Trip.new(@attr.merge(:address_start => nil))
+  it "Kontrolle ob Validation start_city funktioniert" do
+    no_address_start = Trip.new(@attr.merge(:start_city => nil))
     no_address_start.should_not be_valid
   end
 
-  it "Kontrolle ob Validation address_end funktioniert" do
-    no_address_end = Trip.new(@attr.merge(:address_end => nil))
+  it "Kontrolle ob Validation end_city funktioniert" do
+    no_address_end = Trip.new(@attr.merge(:end_city => nil))
     no_address_end.should_not be_valid
   end
 
-  it "Kontrolle ob Validation start_time funktioniert" do
-    no_start_time = Trip.new(@attr.merge(:start_time => nil))
-    no_start_time.should_not be_valid
-  end
 
   #Test ob Methoden funktionieren
 end

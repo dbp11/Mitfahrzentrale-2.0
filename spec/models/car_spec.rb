@@ -7,7 +7,7 @@ describe Car do
       :user_id => 45645,
       :seats => 5,
       :licence => "1231",
-      :fuel_consumption => 5.5,
+      :price_km => 5.5,
       :smoker => true,
       :description => "AHA",
     }
@@ -15,7 +15,7 @@ describe Car do
       :user_id => 45655,
       :seats => 5,
       :licence => "1231",
-      :fuel_consumption => 6.5,
+      :price_km => 6.5,
       :smoker => true,
       :description => "AHA"
     }

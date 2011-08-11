@@ -7,6 +7,7 @@ describe Message do
       :message => "fjfskfsfsefefsffse",
       :writer_id => 123,
       :receiver_id => 321,
+      :subject => "fesf"
     }
   end
 

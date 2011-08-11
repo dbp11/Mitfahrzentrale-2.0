@@ -7,8 +7,12 @@ describe Request do
       :starts_at_E => 32,
       :ends_at_N => 45,
       :ends_at_E => 60,
-      :address_start => "AHA Strasse 11 aha",
-      :address_end => "Bla Strasse 9 bla",
+      :start_city => "aha",
+      :start_street => "AHA Strasse 11",
+      :start_zipcode => 2132,
+      :end_city => "bla",
+      :end_street => "Bla Strasse 9",
+      :end_zipcode => 4546,
       :start_time => Time.now - 6.day,
       :end_time => Time.now,
       :baggage => true,
@@ -50,16 +54,6 @@ describe Request do
   it "ends_at_N!=nil Validation" do
     nil_ends_at_N = Request.new(@attr.merge(:ends_at_N => nil))
     nil_ends_at_N.should_not be_valid
-  end
-
-  it "start_time!=nil Validation" do
-    nil_start_time = Request.new(@attr.merge(:start_time => nil))
-    nil_start_time.should_not be_valid
-  end
-
-  it "end_time!=nil Validation" do
-    nil_end_time = Request.new(@attr.merge(:end_time => nil))
-    nil_end_time.should_not be_valid
   end
 
   it "start_radius!=nil Validation" do
