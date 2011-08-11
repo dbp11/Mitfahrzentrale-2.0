@@ -92,7 +92,7 @@ class MessagesController < ApplicationController
     @message.delete_receiver = false
     @message.delete_writer = false
 
-    if @message.save and !@message.receiver.is_ignored(current_user) 
+    if !@message.receiver.is_ignored(current_user) and @message.save
       redirect_to messages_path, notice: 'Nachricht wurde erfolgreich erstellt.'
     else
       redirect_to messages_path, notice: 'Nachricht konnte nicht gesendet werden'
