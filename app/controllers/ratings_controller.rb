@@ -7,7 +7,7 @@ class RatingsController < ApplicationController
   # Exception, falls ein Bereich nicht existiert
   rescue_from Exception::StandardError do |exception|
     flash[:alert] = exception.message
-    redirect_to new_request_path
+    redirect_to "/ratings/"+current_user.id.to_s
   end
   # Exception für Standardfehler, z.B. Eingabefehler
 
@@ -24,7 +24,8 @@ class RatingsController < ApplicationController
   end
 
   # GET /ratings/1
-  # Eine Uebersicht ueber meine Ratings
+  # Eine Uebersicht ueber meine Ratings, bzw wenn ich eine andere id angeben
+  # ueber seine Bewertungen 
   def show
     @user = User.find(params[:id])
     @driver_ratings = @user.get_own_driver_ratings

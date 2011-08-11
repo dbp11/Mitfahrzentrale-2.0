@@ -101,6 +101,7 @@
         %td
           = "%.1f" % t[0].user.get_avg_rating_driver
           = "(" + t[0].user.count_ratings.to_s + ")"
+
         %td
           = link_to image_tag("/images/Button_show.png", :alt => "Anzeigen"), url_for(t[0])
- 
+
