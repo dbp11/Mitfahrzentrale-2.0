@@ -199,7 +199,7 @@ before_validation :set_member, :set_last_delivery_ratings
   has_many :cars, :dependent => :destroy
   # Beziehung von User zur Jointable Passengers - Diese Relation ist notwendig 
   # um zu überprüfen, ob ein User als Mitfahrer akzeptiert oder abgelehnt wurde
-  has_many :passengers, :dependent => :nullify
+  has_many :passengers, :dependent => :destroy
   # Beziehung vom User zu Requests. Requests stellen die Gesuche dar, also
   # Strecken, die man als Nutzer gerne als Mitfahrer begehen würde. 
   has_many :requests, :dependent => :destroy
