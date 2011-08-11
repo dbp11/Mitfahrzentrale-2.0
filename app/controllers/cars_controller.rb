@@ -19,10 +19,6 @@ class CarsController < ApplicationController
   # Exception für Standardfehler, z.B. Eingabefehler
 
 
-  ##########################cars-controller####################################
-  # Alles kommentiert
-  # Ver. 1.0
-
   # GET /cars
   # Liefert die Autos des aktuellen Nutzers
   def index
