@@ -1,3 +1,8 @@
+:javascript
+	function charactersLeft(){
+		document.getElementById("cmthinweis").firstChild.nodeValue = "Noch " + (document.getElementById("message_message").maxLength - document.getElementById("message_message").value.length) + " Zeichen";
+	}
+
 %h2 Nachricht Schreiben
 
 = form_for @message do |f|
@@ -23,7 +28,10 @@
 			%td.form_table_both{:colspan => "2"}
 				= f.label(:message, "Nachricht")
 				%br
-				= f.text_area(:message, :required => "required")
+				= f.text_area(:message, :required => "required", :maxlength => "1000", :onkeydown => "charactersLeft()", :onkeyup => "charactersLeft()", :onkeypress => "charactersLeft()")
+				%br
+				#cmthinweis
+					%script charactersLeft();
 		%tr
 			%td.form_table_left
 				= link_to(image_tag( '/images/Button_back.png', :alt => "Zurück"), "javascript:history.back()")
