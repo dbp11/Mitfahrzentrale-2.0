@@ -132,7 +132,7 @@ class Request < ActiveRecord::Base
       distance= bing_information.total_distance
       duration = bing_information.total_duration
 
-      t_rating = t.user.get_avg_rating.to_f / 6
+      t_rating = (t.user.get_avg_rating - 1).to_f / 5
       t_ignors = t.user.get_relative_ignorations
       detour = (distance - t.distance).to_f / t.distance
       detime = (duration - t.duration).to_f / t.duration

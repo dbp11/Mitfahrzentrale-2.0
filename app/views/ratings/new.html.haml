@@ -1,3 +1,8 @@
+:javascript
+	function charactersLeft(){
+		document.getElementById("cmthinweis").firstChild.nodeValue = "Noch " + (document.getElementById("rating_comment").maxLength - document.getElementById("rating_comment").value.length) + " Zeichen";
+	}
+
 %h2 Bewertung erstellen
 
 = form_for @rating do |f|
@@ -32,7 +37,10 @@
 			%td.form_table_both{:colspan => "2"}
 				= f.label("Kommentar")
 				%br
-				= f.text_area(:comment, :autofocus => "autofocus")
+				= f.text_area(:comment, :autofocus => "autofocus", :maxlength => "160", :onkeydown => "charactersLeft()", :onkeyup => "charactersLeft()", :onkeypress => "charactersLeft()")
+				%br
+				#cmthinweis
+					%script charactersLeft();
 		%tr
 			%td.form_table_left
 				= link_to(image_tag( '/images/Button_back.png', :alt => "Zurück"), "javascript:history.back()")
