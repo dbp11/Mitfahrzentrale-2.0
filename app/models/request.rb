@@ -45,9 +45,10 @@ class Request < ActiveRecord::Base
   def set_address_info
     
     start_a =  Gmaps4rails.geocode(self.starts_at_N.to_s + " " + 
-               self.starts_at_E.to_s, "de")[0][:full_data]
+               self.starts_at_E.to_s + " ", "de")[0][:full_data]
     
 
+    hausNr = self.start_street = self.end_street = ""
     start_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
         self.start_zipcode = i["long_name"]
@@ -59,15 +60,15 @@ class Request < ActiveRecord::Base
          self.start_street = i["long_name"]
       end
       if i["types"].include?("street_number")
-        if self.start_street != nil
-          self.start_street = self.start_street + " "+ i["long_name"]
-        end
-        end
-     end
-    end_a =  Gmaps4rails.geocode(self.ends_at_N.to_s + " " +
-               self.ends_at_E.to_s, "de")[0][:full_data]
-    
+        hausNr = i["long_name"]
+      end
+    end
+    self.start_street = self.start_street + " " + hausNr
 
+
+    end_a =  Gmaps4rails.geocode(self.ends_at_N.to_s  + " " + 
+               self.ends_at_E.to_s + " ", "de")[0][:full_data]
+    
     end_a["address_components"].each do |i|
       if i["types"].include?("postal_code")
         self.end_zipcode = i["long_name"]
@@ -79,11 +80,11 @@ class Request < ActiveRecord::Base
          self.end_street = i["long_name"]
       end
       if i["types"].include?("street_number")
-        if self.end_street != nil
-          self.end_street = end_street + " " + i["long_name"]
-        end
+        hausNr = i["long_name"]
       end
-     end
+    end
+    self.end_street = self.end_street + " " + hausNr
+
     return self
   end
 
@@ -133,12 +134,9 @@ class Request < ActiveRecord::Base
 
       t_rating = t.user.get_avg_rating.to_f / 6
       t_ignors = t.user.get_relative_ignorations
-      detour = (distance - t.distance) / t.distance
-      if t.duration == 0
-        detime = 0
-      else
-        detime = (duration - t.duration) / t.duration
-      end
+      detour = (distance - t.distance).to_f / t.distance
+      detime = (duration - t.duration).to_f / t.duration
+      
       erg << [t, Math.sqrt(t_rating*t_rating + t_ignors*t_ignors + detour*detour + detime*detime)]
     end
 
@@ -158,20 +156,9 @@ class Request < ActiveRecord::Base
   #
   # @return Zeit ( x Stunden y Minuten)
   def get_route_duration
-    hours = duration.div(3600)
-    minutes = (duration % 60)
-    ergstring = ""
-    if hours < 10
-      ergstring += "0"
-    end
-    ergstring += hours.to_s + ":"
-    if minutes < 10
-      ergstring += "0"
-    end
-    ergstring += minutes.to_s + " h"
-
-    return ergstring 
-  end
+   # return duration
+   return (duration / 3600).to_s + " Stunden "+ ((duration - duration / 3600 *3600)/60).to_s + " Minuten" 
+  end 
  
   # Berechnet die Distanz die benötigt wird und gibt diese formatiert aus
   #

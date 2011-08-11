@@ -92,8 +92,8 @@ class MessagesController < ApplicationController
     @message.delete_receiver = false
     @message.delete_writer = false
 
-    if @message.save and !@message.receiver.is_ignored(current_user) 
-      redirect_to messages_path, notice: 'Message was successfully created.'
+    if !@message.receiver.is_ignored(current_user) and @message.save
+      redirect_to messages_path, notice: 'Nachricht wurde erfolgreich erstellt.'
     else
       redirect_to messages_path, notice: 'Nachricht konnte nicht gesendet werden'
     end
@@ -117,11 +117,11 @@ class MessagesController < ApplicationController
   	end
     # Redirect je nachdem, "wer" wir sind
     if params[:who] == "writer"
-      redirect_to "/messages/outbox", notice: 'Message was successfully deleted.'
+      redirect_to "/messages/outbox", notice: 'Nachricht wurde erfolgreich entfernt.'
     elsif params[:who] == "receiver"
-      redirect_to messages_url, notice: 'Message was successfully deleted.'
+      redirect_to messages_url, notice: 'Nachricht wurde erfolgreich entfernt.'
     elsif
-      redirect_to messages_url, notice: 'Message could not be deleted.'
+      redirect_to messages_url, notice: 'Nachricht konnte nicht enfernt werden.'
     end
   end
 

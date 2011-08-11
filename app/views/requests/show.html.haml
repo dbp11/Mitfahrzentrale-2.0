@@ -10,7 +10,7 @@
     = link_to image_tag( '/images/Button_back.png', :alt => "Zurück", :height => "20"), requests_path
 
 
-%table.form_table
+%table.show_table
   %tr.first
     %td 
       Anfrage
@@ -22,6 +22,7 @@
       = @request.start_zipcode == nil ? "" : @request.start_zipcode.to_s
       = @request.start_city == nil ? "" : @request.start_city
       = @request.start_street == nil ? "" : @request.start_street
+      = "(" + @request.start_radius.to_s + "km Umkreis)"
   %tr
     %td.left
       Zieladresse:
@@ -29,6 +30,7 @@
       = @request.end_zipcode == nil ? "" : @request.end_zipcode.to_s
       = @request.end_city == nil ? "" : @request.end_city
       = @request.end_street == nil ? "" : @request.end_street
+      = "(" + @request.end_radius.to_s + "km Umkreis)"
   %tr
     %td.left
       Startzeit:
@@ -40,6 +42,11 @@
     %td.right
       = @request.end_time.strftime("%d.%m.%Y %H:%M")
   %tr
+    %td.left
+      Fahrzeit*:
+    %td
+      = "#{"%02d" % (@request.duration/3600)}:#{"%02d" % (@request.duration/60%60)}"
+  %tr
     %td.left 
       Gepäck:
     %td.right
@@ -49,9 +56,10 @@
       Anmerkungen:
     %td.right  
       = @request.comment
+%p
+  *Angaben ohne Gewähr
 
-
-%h4 Dazu passende Trips:
+%h3 Dazu passende Trips:
 -if @sorted_trips == nil or @sorted_trips.count <= 0
   %table.index_table
     %tr
@@ -67,15 +75,14 @@
       %td
         Startzeit
       %td
-        Fahrtzeit
-      %td
         Strecke
+      %td
+        Fahrtzeit
       %td
         Gepäck
       %td
-        link
-      %td
         Bewertung
+      %td
     - @sorted_trips.each do |t|
       %tr.index_table_second
         %td 
@@ -88,12 +95,12 @@
         %td
           = t[0].get_route_distance
         %td
-          = t[0].get_route_duration
+          = "#{"%02d" % (t[0].duration/3600)}:#{"%02d" % (t[0].duration/60%60)}"
         %td
           = t[0].baggage? ? "Ja" : "Nein"
         %td
-          = link_to 'Zur Fahrt', "/trips/"+t[0].id.to_s
-        %td
           = "%.1f" % t[0].user.get_avg_rating_driver
           = "(" + t[0].user.count_ratings.to_s + ")"
-
+        %td
+          = link_to image_tag("/images/Button_show.png", :alt => "Anzeigen"), url_for(t[0])
+ 

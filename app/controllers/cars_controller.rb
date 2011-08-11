@@ -62,7 +62,7 @@ class CarsController < ApplicationController
     @car.user_id = current_user.id
 
     if @car.save
-      redirect_to @car, notice: 'Car was successfully created.'
+      redirect_to @car, notice: 'Ihr Auto wurde erfolgreich erstellt.'
     else
       render action: "new"
     end
@@ -75,7 +75,7 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
 
     if @car.update_attributes(params[:car])
-      redirect_to @car, notice: 'Car was successfully updated.'
+      redirect_to @car, notice: 'Ihr Auto wurde erfolgreich aktualisiert.'
     else
       render action: "edit"
     end

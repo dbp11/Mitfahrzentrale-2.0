@@ -3,8 +3,6 @@
     document.getElementById("deshinweis").firstChild.nodeValue ="Noch " + (document.getElementById("descriptionarea").maxLength - document.getElementById("descriptionarea").value.length) + " Zeichen";
   }
 = stylesheet_link_tag :cars
-#div.other-site#zwei
-  = link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), cars_path
 %h2
   = "Neues Fahrzeug"
 %table.form_table
@@ -32,7 +30,7 @@
         = f.text_field :licence, :required => true, :class => "text_input"
     %tr
       %td
-        = f.label :price_km, "Kosten: € pro 100km"
+        = f.label :price_km, "Kosten: € pro 100km*"
       %td
         = f.text_field :price_km, :placeholder => "Spritverbrauch + Verschleiß", :class => "text_input"
     %tr
@@ -55,10 +53,8 @@
       
     %tr
       %td
+        = link_to image_tag( '/images/Button_back.png', :alt => "Zurück"), "javascript:history.back();"
+      %td
         = image_submit_tag "/images/Button_add.png"
-      %td
-    %tr
-      %td
-        Mit * gekennzeichnete Felder sind Pflichtfelder
-      %td
-%br
+%p Mit * gekennzeichnete Felder sind Pflichtfelder
+

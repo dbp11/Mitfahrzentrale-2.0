@@ -6,8 +6,15 @@ body.cars {
   #main{
     .form_table {
       width: 70%;
-      img {
-        width: 100%;
+      tr:nth-last-child(2){
+        img {
+          width: 100%;
+        }
+      }
+      tr:last-child{
+        td:last-child{
+          text-align: right;
+        }
       }
       .text_input {
         width: 50%;       

@@ -56,7 +56,7 @@ body.trips {
       tr {
         border-left: solid 2px;
         border-right: solid 2px;
-        border-top: solid 1px;
+        //border-top: solid 1px;
         &:nth-child(2n) {
           background-color: $table_bg_color1;
         }
@@ -68,12 +68,13 @@ body.trips {
         background-color: $table_bg_color0;
         font-weight: bold;
         border-top: solid 2px;
+        border-bottom: solid 1px;
       }
       tr:last-child {
         border-bottom: solid 2px;
       }
       td {
-        border: solid 1px;
+        //border: solid 1px;
         padding-top: 0.1em;
         padding-bottom: 0.1em;
         padding-left: 0.5em;

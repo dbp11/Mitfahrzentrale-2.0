@@ -47,7 +47,7 @@ class PassengersController < ApplicationController
   def create
     @passenger = Passenger.new(params[:passenger])
     if @passenger.save
-      redirect_to @passenger, notice: 'Passenger was successfully created.'
+      redirect_to @passenger, notice: 'Passagier wurde erfolgreich erstellt.'
     else
       render action: "new"
     end
@@ -58,7 +58,7 @@ class PassengersController < ApplicationController
   def update
     @passenger = Passenger.find(params[:id])
     if @passenger.update_attributes(params[:passenger])
-      redirect_to @passenger, notice: 'Passenger was successfully updated.'
+      redirect_to @passenger, notice: 'Passagier wurde erfolgreich aktualisiert.'
     else
       render action: "edit"
     end
