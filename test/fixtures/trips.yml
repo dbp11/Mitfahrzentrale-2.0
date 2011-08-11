@@ -7,10 +7,10 @@ trips_001:
   starts_at_E: 7.4452
   ends_at_E: 8.13409
   ends_at_N: 52.57975
-  start_time: '2011-08-08 14:05:05.548384'
+  start_time: '2011-08-11 07:13:19.872159'
   comment: Biete eine Fahrt an!
-  created_at: '2011-08-08 14:04:07.321368'
-  updated_at: '2011-08-08 14:04:07.321368'
+  created_at: '2011-08-11 07:12:24.438982'
+  updated_at: '2011-08-11 07:12:24.438982'
   baggage: t
   free_seats: 4
   distance: 82
@@ -29,10 +29,10 @@ trips_002:
   starts_at_E: 11.5801863
   ends_at_E: 8.807081
   ends_at_N: 53.074981
-  start_time: '2011-08-09 14:04:05.567816'
+  start_time: '2011-08-12 07:12:19.891681'
   comment: Platz für alle :D!
-  created_at: '2011-08-08 14:04:07.384031'
-  updated_at: '2011-08-08 14:04:07.384031'
+  created_at: '2011-08-11 07:12:24.471059'
+  updated_at: '2011-08-11 07:12:24.471059'
   baggage: t
   free_seats: 4
   distance: 749
@@ -51,10 +51,10 @@ trips_003:
   starts_at_E: 9.991586
   ends_at_E: 13.4113999
   ends_at_N: 52.523401
-  start_time: '2011-08-09 14:04:05.568475'
+  start_time: '2011-08-12 07:12:19.892357'
   comment: Ahoi
-  created_at: '2011-08-08 14:04:07.396383'
-  updated_at: '2011-08-08 14:04:07.396383'
+  created_at: '2011-08-11 07:12:24.483013'
+  updated_at: '2011-08-11 07:12:24.483013'
   baggage: f
   free_seats: 3
   distance: 296
@@ -73,10 +73,10 @@ trips_004:
   starts_at_E: 7.43840300000001
   ends_at_E: 7.3237899999999
   ends_at_N: 52.52306
-  start_time: '2011-08-08 14:05:05.568996'
+  start_time: '2011-08-11 07:13:19.892892'
   comment: Boom Boom
-  created_at: '2011-08-08 14:04:07.408492'
-  updated_at: '2011-08-08 14:04:07.408492'
+  created_at: '2011-08-11 07:12:24.494353'
+  updated_at: '2011-08-11 07:12:24.494353'
   baggage: t
   free_seats: 5
   distance: 33
@@ -95,10 +95,10 @@ trips_005:
   starts_at_E: 7.2911623
   ends_at_E: 8.0531882
   ends_at_N: 52.267281
-  start_time: '2011-08-08 14:05:05.569473'
+  start_time: '2011-08-11 07:13:19.893381'
   comment: Schnell schnell!
-  created_at: '2011-08-08 14:04:07.420033'
-  updated_at: '2011-08-08 14:04:07.420033'
+  created_at: '2011-08-11 07:12:24.505964'
+  updated_at: '2011-08-11 07:12:24.505964'
   baggage: f
   free_seats: 4
   distance: 93
@@ -109,3 +109,4403 @@ trips_005:
   end_zipcode: 49074
   end_street: ''
   end_city: Osnabrück
+trips_006:
+  id: 6
+  user_id: 35
+  car_id: 82
+  starts_at_N: 48.14934100000001
+  starts_at_E: 11.345934
+  ends_at_E: 10.594315
+  ends_at_N: 48.005108
+  start_time: '2011-08-12 07:13:33.079769'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.263952'
+  updated_at: '2011-08-11 07:31:44.263952'
+  baggage: t
+  free_seats: 4
+  distance: 74
+  duration: 2880
+  start_zipcode: 82178
+  start_street: Dorfstraße 25
+  start_city: Puchheim
+  end_zipcode: 86825
+  end_street: Hauptstraße 17
+  end_city: Bad Wörishofen
+trips_007:
+  id: 7
+  user_id: 96
+  car_id: 65
+  starts_at_N: 48.215958
+  starts_at_E: 9.023277
+  ends_at_E: 7.7690041
+  ends_at_N: 49.4446997
+  start_time: '2011-08-12 07:13:35.006209'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.277606'
+  updated_at: '2011-08-11 07:31:44.277606'
+  baggage: t
+  free_seats: 4
+  distance: 279
+  duration: 9924
+  start_zipcode: 72458
+  start_street: Schwarzwaldstraße 37
+  start_city: Albstadt
+  end_zipcode: 67655
+  end_street: Schneiderstraße 15
+  end_city: Kaiserslautern
+trips_008:
+  id: 8
+  user_id: 74
+  car_id: 31
+  starts_at_N: 51.3001422
+  starts_at_E: 13.3021036
+  ends_at_E: 12.0255837
+  ends_at_N: 53.4630197
+  start_time: '2011-08-12 07:13:36.500375'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.290045'
+  updated_at: '2011-08-11 07:31:44.290045'
+  baggage: t
+  free_seats: 4
+  distance: 371
+  duration: 13989
+  start_zipcode: 1589
+  start_street: Robert-Koch-Straße 6
+  start_city: Riesa
+  end_zipcode: 19386
+  end_street: Mühlenstraße 15
+  end_city: Lübz
+trips_009:
+  id: 9
+  user_id: 97
+  car_id: 105
+  starts_at_N: 51.6121734
+  starts_at_E: 8.3410385
+  ends_at_E: 6.559353900000001
+  ends_at_N: 51.3317042
+  start_time: '2011-08-12 07:13:38.741923'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.301430'
+  updated_at: '2011-08-11 07:31:44.301430'
+  baggage: t
+  free_seats: 4
+  distance: 138
+  duration: 5699
+  start_zipcode: 59597
+  start_street: Hellweg 32-34
+  start_city: Erwitte
+  end_zipcode: 47798
+  end_street: Lenssenstraße 9
+  end_city: Krefeld
+trips_010:
+  id: 10
+  user_id: 75
+  car_id: 109
+  starts_at_N: 51.396981
+  starts_at_E: 12.223308
+  ends_at_E: 11.6009988
+  ends_at_N: 51.3833091
+  start_time: '2011-08-12 07:13:40.880077'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.312825'
+  updated_at: '2011-08-11 07:31:44.312825'
+  baggage: t
+  free_seats: 4
+  distance: 70
+  duration: 2719
+  start_zipcode: 4435
+  start_street: Theodor-Heuss-Straße 1-3
+  start_city: Schkeuditz
+  end_zipcode: 6268
+  end_street: Döcklitzer Tor 10
+  end_city: Querfurt
+trips_011:
+  id: 11
+  user_id: 65
+  car_id: 69
+  starts_at_N: 50.283054
+  starts_at_E: 11.6221047
+  ends_at_E: 8.618363
+  ends_at_N: 52.30001
+  start_time: '2011-08-12 07:13:42.075038'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.325083'
+  updated_at: '2011-08-11 07:31:44.325083'
+  baggage: t
+  free_seats: 4
+  distance: 490
+  duration: 15387
+  start_zipcode: 95131
+  start_street: St2211 32-38
+  start_city: Schwarzenbach am Wald
+  end_zipcode: 32312
+  end_street: Berliner Straße 82
+  end_city: Lübbecke
+trips_012:
+  id: 12
+  user_id: 37
+  car_id: 58
+  starts_at_N: 50.1114451
+  starts_at_E: 8.680615399999999
+  ends_at_E: 9.537483
+  ends_at_N: 48.6157245
+  start_time: '2011-08-12 07:13:43.951473'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.336038'
+  updated_at: '2011-08-11 07:31:44.336038'
+  baggage: t
+  free_seats: 4
+  distance: 239
+  duration: 7666
+  start_zipcode: 60311
+  start_street: Berliner Straße 44
+  start_city: Frankfurt am Main
+  end_zipcode: 73235
+  end_street: Marktplatz 2-6
+  end_city: Weilheim an der Teck
+trips_013:
+  id: 13
+  user_id: 42
+  car_id: 33
+  starts_at_N: 51.9704049
+  starts_at_E: 13.6029077
+  ends_at_E: 6.4797742
+  ends_at_N: 50.6336091
+  start_time: '2011-08-12 07:13:45.806061'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.347489'
+  updated_at: '2011-08-11 07:31:44.347489'
+  baggage: t
+  free_seats: 4
+  distance: 666
+  duration: 20512
+  start_zipcode: 15938
+  start_street: Mühlenstraße 4
+  start_city: Golßen
+  end_zipcode: 52396
+  end_street: Hengebachstraße 73-75
+  end_city: Heimbach
+trips_014:
+  id: 14
+  user_id: 2
+  car_id: 69
+  starts_at_N: 54.29249
+  starts_at_E: 10.886947
+  ends_at_E: 10.0011567
+  ends_at_N: 49.72372499999999
+  start_time: '2011-08-12 07:13:47.692998'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.358393'
+  updated_at: '2011-08-11 07:31:44.358393'
+  baggage: t
+  free_seats: 4
+  distance: 632
+  duration: 18944
+  start_zipcode: 23758
+  start_street: Markt 15
+  start_city: Oldenburg in Holstein
+  end_zipcode: 97246
+  end_street: Falltorgasse 2
+  end_city: Eibelstadt
+trips_015:
+  id: 15
+  user_id: 1
+  car_id: 12
+  starts_at_N: 51.9078999
+  starts_at_E: 8.6106307
+  ends_at_E: 9.5918895
+  ends_at_N: 52.8618704
+  start_time: '2011-08-12 07:13:52.793313'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.371134'
+  updated_at: '2011-08-11 07:31:44.371134'
+  baggage: t
+  free_seats: 4
+  distance: 170
+  duration: 5417
+  start_zipcode: 33758
+  start_street: Bahnhofstraße 7
+  start_city: Schloß Holte
+  end_zipcode: 29664
+  end_street: Moorstraße 39
+  end_city: Walsrode
+trips_016:
+  id: 16
+  user_id: 97
+  car_id: 20
+  starts_at_N: 52.78754989999999
+  starts_at_E: 14.0301861
+  ends_at_E: 13.8815706
+  ends_at_N: 52.58045509999999
+  start_time: '2011-08-12 07:13:55.606383'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.383239'
+  updated_at: '2011-08-11 07:31:44.383239'
+  baggage: t
+  free_seats: 4
+  distance: 36
+  duration: 2208
+  start_zipcode: 16259
+  start_street: Karl-Marx-Straße 28
+  start_city: Bad Freienwalde (Oder)
+  end_zipcode: 15344
+  end_street: Große Straße 62
+  end_city: Strausberg
+trips_017:
+  id: 17
+  user_id: 98
+  car_id: 60
+  starts_at_N: 52.2641478
+  starts_at_E: 10.5263803
+  ends_at_E: 6.6462511
+  ends_at_N: 49.7537424
+  start_time: '2011-08-12 07:13:56.651191'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.395007'
+  updated_at: '2011-08-11 07:31:44.395007'
+  baggage: t
+  free_seats: 4
+  distance: 507
+  duration: 16122
+  start_zipcode: 38100
+  start_street: Bohlweg 70
+  start_city: Braunschweig
+  end_zipcode: 54290
+  end_street: An der Schellenmauer 70
+  end_city: Trier
+trips_018:
+  id: 18
+  user_id: 24
+  car_id: 11
+  starts_at_N: 52.47798599999999
+  starts_at_E: 12.842078
+  ends_at_E: 9.8993846
+  ends_at_N: 49.4799561
+  start_time: '2011-08-12 07:14:00.864494'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.406721'
+  updated_at: '2011-08-11 07:31:44.406721'
+  baggage: t
+  free_seats: 4
+  distance: 516
+  duration: 16518
+  start_zipcode: 14669
+  start_street: Rathausstraße 26
+  start_city: Ketzin
+  end_zipcode: 97990
+  end_street: Schulstraße 9
+  end_city: Weikersheim
+trips_019:
+  id: 19
+  user_id: 4
+  car_id: 14
+  starts_at_N: 51.65616199999999
+  starts_at_E: 10.3411603
+  ends_at_E: 14.0002545
+  ends_at_N: 53.0158946
+  start_time: '2011-08-12 07:14:03.103498'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.419212'
+  updated_at: '2011-08-11 07:31:44.419212'
+  baggage: t
+  free_seats: 4
+  distance: 410
+  duration: 13273
+  start_zipcode: 37412
+  start_street: Brauhausstraße 2
+  start_city: Herzberg am Harz
+  end_zipcode: 16278
+  end_street: Klosterstraße 2
+  end_city: Angermünde
+trips_020:
+  id: 20
+  user_id: 57
+  car_id: 5
+  starts_at_N: 51.9905534
+  starts_at_E: 9.1104506
+  ends_at_E: 11.1859198
+  ends_at_N: 49.7782284
+  start_time: '2011-08-12 07:14:06.994524'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.430726'
+  updated_at: '2011-08-11 07:31:44.430726'
+  baggage: t
+  free_seats: 4
+  distance: 383
+  duration: 12796
+  start_zipcode: 32683
+  start_street: Mittelstraße 38
+  start_city: Barntrup
+  end_zipcode: 91320
+  end_street: Bahnhofstraße 16-18
+  end_city: Ebermannstadt
+trips_021:
+  id: 21
+  user_id: 40
+  car_id: 46
+  starts_at_N: 47.66193699999999
+  starts_at_E: 9.1724257
+  ends_at_E: 6.677683000000001
+  ends_at_N: 51.261268
+  start_time: '2011-08-12 07:14:08.629719'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.441880'
+  updated_at: '2011-08-11 07:31:44.441880'
+  baggage: t
+  free_seats: 4
+  distance: 581
+  duration: 17685
+  start_zipcode: 78462
+  start_street: Sankt-Stephans-Platz 17
+  start_city: Konstanz
+  end_zipcode: 40667
+  end_street: Moerser Straße 130
+  end_city: Meerbusch
+trips_022:
+  id: 22
+  user_id: 17
+  car_id: 86
+  starts_at_N: 52.42182039999999
+  starts_at_E: 10.7849799
+  ends_at_E: 9.2570876
+  ends_at_N: 49.7032394
+  start_time: '2011-08-12 07:14:12.036411'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.453795'
+  updated_at: '2011-08-11 07:31:44.453795'
+  baggage: t
+  free_seats: 4
+  distance: 417
+  duration: 12998
+  start_zipcode: 38440
+  start_street: Goethestraße 61
+  start_city: Wolfsburg
+  end_zipcode: 63897
+  end_street: Mainstraße 11
+  end_city: Miltenberg
+trips_023:
+  id: 23
+  user_id: 85
+  car_id: 61
+  starts_at_N: 48.969815
+  starts_at_E: 8.307293
+  ends_at_E: 8.6976513
+  ends_at_N: 51.517744
+  start_time: '2011-08-12 07:14:14.711243'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.465958'
+  updated_at: '2011-08-11 07:31:44.465958'
+  baggage: t
+  free_seats: 4
+  distance: 407
+  duration: 12242
+  start_zipcode: 76287
+  start_street: Mörscher Straße 7-9
+  start_city: Rheinstetten
+  end_zipcode: 33181
+  end_street: Burgstraße 14
+  end_city: Bad Wünnenberg
+trips_024:
+  id: 24
+  user_id: 2
+  car_id: 1
+  starts_at_N: 49.483548
+  starts_at_E: 11.240726
+  ends_at_E: 14.2191972
+  ends_at_N: 51.6580212
+  start_time: '2011-08-12 07:14:16.708729'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.477762'
+  updated_at: '2011-08-11 07:31:44.477762'
+  baggage: t
+  free_seats: 4
+  distance: 378
+  duration: 12223
+  start_zipcode: 90552
+  start_street: Rückersdorfer Straße 14-16
+  start_city: Röthenbach an der Pegnitz
+  end_zipcode: 3116
+  end_street: Drebkauer Hauptstraße 54
+  end_city: Drebkau
+trips_025:
+  id: 25
+  user_id: 57
+  car_id: 49
+  starts_at_N: 52.5339278
+  starts_at_E: 12.3309987
+  ends_at_E: 11.0056129
+  ends_at_N: 50.3936766
+  start_time: '2011-08-12 07:14:19.520563'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.489758'
+  updated_at: '2011-08-11 07:31:44.489758'
+  baggage: t
+  free_seats: 4
+  distance: 374
+  duration: 13576
+  start_zipcode: 14727
+  start_street: Bergstraße 1
+  start_city: Premnitz
+  end_zipcode: 96528
+  end_street: Markt 2
+  end_city: Schalkau
+trips_026:
+  id: 26
+  user_id: 73
+  car_id: 100
+  starts_at_N: 51.11713700000001
+  starts_at_E: 7.3963296
+  ends_at_E: 11.0455714
+  ends_at_N: 51.7555214
+  start_time: '2011-08-12 07:14:21.475662'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.501302'
+  updated_at: '2011-08-11 07:31:44.501302'
+  baggage: t
+  free_seats: 4
+  distance: 400
+  duration: 13524
+  start_zipcode: 51688
+  start_street: Untere Straße 14
+  start_city: Wipperfürth
+  end_zipcode: 6502
+  end_street: Blankenburger Straße 41
+  end_city: Thale
+trips_027:
+  id: 27
+  user_id: 66
+  car_id: 43
+  starts_at_N: 53.2489453
+  starts_at_E: 12.0426241
+  ends_at_E: 7.599973100000001
+  ends_at_N: 51.1263709
+  start_time: '2011-08-12 07:14:26.346513'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.513582'
+  updated_at: '2011-08-11 07:31:44.513582'
+  baggage: t
+  free_seats: 4
+  distance: 538
+  duration: 16073
+  start_zipcode: 16949
+  start_street: L13 1-2
+  start_city: Putlitz
+  end_zipcode: 58566
+  end_street: L528 192-194
+  end_city: Kierspe
+trips_028:
+  id: 28
+  user_id: 39
+  car_id: 120
+  starts_at_N: 50.547045
+  starts_at_E: 7.6588726
+  ends_at_E: 9.8114043
+  ends_at_N: 48.68579099999999
+  start_time: '2011-08-12 07:14:28.657514'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.524802'
+  updated_at: '2011-08-11 07:31:44.524802'
+  baggage: t
+  free_seats: 4
+  distance: 354
+  duration: 11558
+  start_zipcode: 56269
+  start_street: Johanniterstraße 3
+  start_city: Dierdorf
+  end_zipcode: 73072
+  end_street: Schloßstraße 1
+  end_city: Donzdorf
+trips_029:
+  id: 29
+  user_id: 50
+  car_id: 26
+  starts_at_N: 51.6763815
+  starts_at_E: 8.3466483
+  ends_at_E: 8.857876
+  ends_at_N: 52.16522399999999
+  start_time: '2011-08-12 07:14:30.312356'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.535645'
+  updated_at: '2011-08-11 07:31:44.535645'
+  baggage: t
+  free_seats: 4
+  distance: 77
+  duration: 3196
+  start_zipcode: 59555
+  start_street: Lange Straße 13
+  start_city: Lippstadt
+  end_zipcode: 32602
+  end_street: Herforder Straße 4
+  end_city: Vlotho
+trips_030:
+  id: 30
+  user_id: 47
+  car_id: 58
+  starts_at_N: 51.98821400000001
+  starts_at_E: 8.041172
+  ends_at_E: 6.9872871
+  ends_at_N: 51.0337487
+  start_time: '2011-08-12 07:14:33.414815'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.547693'
+  updated_at: '2011-08-11 07:31:44.547693'
+  baggage: t
+  free_seats: 4
+  distance: 155
+  duration: 5665
+  start_zipcode: 48336
+  start_street: Lappenbrink 6-8
+  start_city: Sassenberg
+  end_zipcode: 51373
+  end_street: ! ' 6-8'
+  end_city: Leverkusen
+trips_031:
+  id: 31
+  user_id: 35
+  car_id: 71
+  starts_at_N: 49.378425
+  starts_at_E: 12.7068664
+  ends_at_E: 10.8948595
+  ends_at_N: 47.8151637
+  start_time: '2011-08-12 07:14:38.274309'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.604955'
+  updated_at: '2011-08-11 07:31:44.604955'
+  baggage: t
+  free_seats: 4
+  distance: 282
+  duration: 10373
+  start_zipcode: 93449
+  start_street: Marktplatz 15
+  start_city: Waldmünchen
+  end_zipcode: 86956
+  end_street: Bahnhofstraße 15
+  end_city: Schongau
+trips_032:
+  id: 32
+  user_id: 95
+  car_id: 21
+  starts_at_N: 51.65616199999999
+  starts_at_E: 10.3411603
+  ends_at_E: 11.557901
+  ends_at_N: 51.12509
+  start_time: '2011-08-12 07:14:39.899911'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.617036'
+  updated_at: '2011-08-11 07:31:44.617036'
+  baggage: t
+  free_seats: 4
+  distance: 130
+  duration: 7166
+  start_zipcode: 37412
+  start_street: Brauhausstraße 2
+  start_city: Herzberg am Harz
+  end_zipcode: 6648
+  end_street: L211 167
+  end_city: Eckartsberga
+trips_033:
+  id: 33
+  user_id: 65
+  car_id: 78
+  starts_at_N: 48.5849829
+  starts_at_E: 8.6045815
+  ends_at_E: 7.771589399999999
+  ends_at_N: 49.9433263
+  start_time: '2011-08-12 07:14:41.127319'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.628652'
+  updated_at: '2011-08-11 07:31:44.628652'
+  baggage: t
+  free_seats: 4
+  distance: 223
+  duration: 8819
+  start_zipcode: 72213
+  start_street: Rosenstraße 2
+  start_city: Altensteig
+  end_zipcode: 55442
+  end_street: Staatsstraße 6a
+  end_city: Stromberg
+trips_034:
+  id: 34
+  user_id: 47
+  car_id: 2
+  starts_at_N: 48.4907823
+  starts_at_E: 9.3996776
+  ends_at_E: 8.862484499999999
+  ends_at_N: 50.3173003
+  start_time: '2011-08-12 07:14:42.835613'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.640332'
+  updated_at: '2011-08-11 07:31:44.640332'
+  baggage: t
+  free_seats: 4
+  distance: 277
+  duration: 9555
+  start_zipcode: 72574
+  start_street: B465 8-10
+  start_city: Bad Urach
+  end_zipcode: 61197
+  end_street: L3189 26
+  end_city: Florstadt
+trips_035:
+  id: 35
+  user_id: 44
+  car_id: 69
+  starts_at_N: 51.1934212
+  starts_at_E: 8.533304
+  ends_at_E: 8.5671685
+  ends_at_N: 54.6911306
+  start_time: '2011-08-12 07:14:44.472523'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.652799'
+  updated_at: '2011-08-11 07:31:44.652799'
+  baggage: t
+  free_seats: 4
+  distance: 561
+  duration: 22093
+  start_zipcode: 59955
+  start_street: Poststraße 6
+  start_city: Winterberg
+  end_zipcode: 25938
+  end_street: Hafenstraße 2
+  end_city: Wyk Auf Föhr
+trips_036:
+  id: 36
+  user_id: 42
+  car_id: 5
+  starts_at_N: 49.2445212
+  starts_at_E: 11.0905811
+  ends_at_E: 12.124018
+  ends_at_N: 47.856077
+  start_time: '2011-08-12 07:14:45.923255'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.664472'
+  updated_at: '2011-08-11 07:31:44.664472'
+  baggage: t
+  free_seats: 4
+  distance: 221
+  duration: 6989
+  start_zipcode: 91154
+  start_street: Münchener Straße 2
+  start_city: Roth
+  end_zipcode: 83022
+  end_street: Prinzregentenstraße 16
+  end_city: Rosenheim
+trips_037:
+  id: 37
+  user_id: 83
+  car_id: 109
+  starts_at_N: 50.07217379999999
+  starts_at_E: 7.437179399999999
+  ends_at_E: 11.9439557
+  ends_at_N: 49.5442353
+  start_time: '2011-08-12 07:14:47.644613'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.677581'
+  updated_at: '2011-08-11 07:31:44.677581'
+  baggage: t
+  free_seats: 4
+  distance: 408
+  duration: 12911
+  start_zipcode: 56288
+  start_street: Hasental 50
+  start_city: Kastellaun
+  end_zipcode: 92242
+  end_street: Hauptstraße 85
+  end_city: Hirschau
+trips_038:
+  id: 38
+  user_id: 100
+  car_id: 113
+  starts_at_N: 50.5914076
+  starts_at_E: 6.6520046
+  ends_at_E: 11.3333333
+  ends_at_N: 51.7333333
+  start_time: '2011-08-12 07:14:49.283810'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.698893'
+  updated_at: '2011-08-11 07:31:44.698893'
+  baggage: t
+  free_seats: 4
+  distance: 503
+  duration: 15959
+  start_zipcode: 53894
+  start_street: Bahnstraße 24
+  start_city: Mechernich
+  end_zipcode: 6463
+  end_street: Vater-Jahn-Straße 5
+  end_city: Falkenstein/Harz
+trips_039:
+  id: 39
+  user_id: 90
+  car_id: 100
+  starts_at_N: 52.1552968
+  starts_at_E: 8.0425217
+  ends_at_E: 10.9175999
+  ends_at_N: 50.6845108
+  start_time: '2011-08-12 07:14:50.909422'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.713072'
+  updated_at: '2011-08-11 07:31:44.713072'
+  baggage: t
+  free_seats: 4
+  distance: 371
+  duration: 13058
+  start_zipcode: 49186
+  start_street: Münsterstraße 9
+  start_city: Bad Iburg
+  end_zipcode: 98693
+  end_street: August-Bebel-Straße 3
+  end_city: Ilmenau
+trips_040:
+  id: 40
+  user_id: 37
+  car_id: 66
+  starts_at_N: 50.7782591
+  starts_at_E: 10.8971727
+  ends_at_E: 12.4006367
+  ends_at_N: 49.0004649
+  start_time: '2011-08-12 07:14:53.141983'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.725051'
+  updated_at: '2011-08-11 07:31:44.725051'
+  baggage: t
+  free_seats: 4
+  distance: 316
+  duration: 9924
+  start_zipcode: 99338
+  start_street: Hauptstraße 32
+  start_city: Gossel
+  end_zipcode: 93086
+  end_street: Marktplatz 2
+  end_city: Wörth an der Donau
+trips_041:
+  id: 41
+  user_id: 52
+  car_id: 18
+  starts_at_N: 50.96135599999999
+  starts_at_E: 8.0005116
+  ends_at_E: 11.0475438
+  ends_at_N: 51.89173109999999
+  start_time: '2011-08-12 07:14:55.478233'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.737334'
+  updated_at: '2011-08-11 07:31:44.737334'
+  baggage: t
+  free_seats: 4
+  distance: 400
+  duration: 12992
+  start_zipcode: 57223
+  start_street: Marburger Straße 89-91
+  start_city: Kreuztal
+  end_zipcode: 38820
+  end_street: Straße der Opfer des Faschismus 36-37
+  end_city: Halberstadt
+trips_042:
+  id: 42
+  user_id: 20
+  car_id: 110
+  starts_at_N: 48.9654373
+  starts_at_E: 9.2785993
+  ends_at_E: 13.650197
+  ends_at_N: 50.999767
+  start_time: '2011-08-12 07:14:57.225829'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.750037'
+  updated_at: '2011-08-11 07:31:44.750037'
+  baggage: t
+  free_seats: 4
+  distance: 485
+  duration: 14738
+  start_zipcode: 71711
+  start_street: Marktstraße 40-42
+  start_city: Steinheim an der Murr
+  end_zipcode: 1705
+  end_street: S194 209
+  end_city: Freital
+trips_043:
+  id: 43
+  user_id: 17
+  car_id: 58
+  starts_at_N: 48.901911
+  starts_at_E: 9.193265
+  ends_at_E: 12.869221
+  ends_at_N: 52.096577
+  start_time: '2011-08-12 07:14:59.331334'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.763478'
+  updated_at: '2011-08-11 07:31:44.763478'
+  baggage: t
+  free_seats: 4
+  distance: 551
+  duration: 16492
+  start_zipcode: 71634
+  start_street: ! 'Marbacher Straße '
+  start_city: Ludwigsburg
+  end_zipcode: 14929
+  end_street: Neue Marktstraße 2
+  end_city: Treuenbrietzen
+trips_044:
+  id: 44
+  user_id: 39
+  car_id: 101
+  starts_at_N: 51.4720264
+  starts_at_E: 11.3017244
+  ends_at_E: 6.551708
+  ends_at_N: 51.502883
+  start_time: '2011-08-12 07:15:03.241367'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.774668'
+  updated_at: '2011-08-11 07:31:44.774668'
+  baggage: t
+  free_seats: 4
+  distance: 401
+  duration: 11921
+  start_zipcode: 6526
+  start_street: Alte Promenade 51
+  start_city: Sangerhausen
+  end_zipcode: 47475
+  end_street: Eupener Straße 99
+  end_city: Lintfort
+trips_045:
+  id: 45
+  user_id: 31
+  car_id: 114
+  starts_at_N: 53.47676269999999
+  starts_at_E: 9.7033766
+  ends_at_E: 12.4005825
+  ends_at_N: 48.2084252
+  start_time: '2011-08-12 07:15:06.036728'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.786284'
+  updated_at: '2011-08-11 07:31:44.786284'
+  baggage: t
+  free_seats: 4
+  distance: 848
+  duration: 26363
+  start_zipcode: 21614
+  start_street: Hansestraße 1
+  start_city: Buxtehude
+  end_zipcode: 84478
+  end_street: Berliner Platz 3
+  end_city: Waldkraiburg
+trips_046:
+  id: 46
+  user_id: 46
+  car_id: 90
+  starts_at_N: 50.25000000000001
+  starts_at_E: 8.9
+  ends_at_E: 10.427826
+  ends_at_N: 51.90449
+  start_time: '2011-08-12 07:15:09.396105'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.796916'
+  updated_at: '2011-08-11 07:31:44.796916'
+  baggage: t
+  free_seats: 4
+  distance: 298
+  duration: 9535
+  start_zipcode: 61130
+  start_street: Außenliegend Ei 1001
+  start_city: Nidderau
+  end_zipcode: 38640
+  end_street: Worthsatenwinkel 12
+  end_city: Goslar
+trips_047:
+  id: 47
+  user_id: 79
+  car_id: 51
+  starts_at_N: 52.446428
+  starts_at_E: 10.006645
+  ends_at_E: 9.2447
+  ends_at_N: 51.983168
+  start_time: '2011-08-12 07:15:12.001597'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.809635'
+  updated_at: '2011-08-11 07:31:44.809635'
+  baggage: t
+  free_seats: 4
+  distance: 107
+  duration: 5153
+  start_zipcode: 31303
+  start_street: Marktstraße 57-59
+  start_city: Burgdorf
+  end_zipcode: 31812
+  end_street: L426 4-26
+  end_city: Bad Pyrmont
+trips_048:
+  id: 48
+  user_id: 76
+  car_id: 4
+  starts_at_N: 48.131907
+  starts_at_E: 11.370857
+  ends_at_E: 7.2911623
+  ends_at_N: 52.6875079
+  start_time: '2011-08-12 07:15:16.117191'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.821582'
+  updated_at: '2011-08-11 07:31:44.821582'
+  baggage: t
+  free_seats: 4
+  distance: 763
+  duration: 23333
+  start_zipcode: 82110
+  start_street: Landsberger Straße 54
+  start_city: Germering
+  end_zipcode: 49716
+  end_street: Lingener Straße 12
+  end_city: Meppen
+trips_049:
+  id: 49
+  user_id: 5
+  car_id: 34
+  starts_at_N: 50.9119036
+  starts_at_E: 6.187378
+  ends_at_E: 7.618061
+  ends_at_N: 50.280491
+  start_time: '2011-08-12 07:15:19.642090'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.832985'
+  updated_at: '2011-08-11 07:31:44.832985'
+  baggage: t
+  free_seats: 4
+  distance: 161
+  duration: 5865
+  start_zipcode: 52499
+  start_street: Jülicher Straße 82
+  start_city: Baesweiler
+  end_zipcode: 56321
+  end_street: Mainzer Straße 1
+  end_city: Rhens
+trips_050:
+  id: 50
+  user_id: 86
+  car_id: 38
+  starts_at_N: 48.3088324
+  starts_at_E: 9.2448965
+  ends_at_E: 9.063995
+  ends_at_N: 48.799355
+  start_time: '2011-08-12 07:15:21.243294'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.844135'
+  updated_at: '2011-08-11 07:31:44.844135'
+  baggage: t
+  free_seats: 4
+  distance: 78
+  duration: 4344
+  start_zipcode: 72818
+  start_street: ! 'K6736 '
+  start_city: Trochtelfingen
+  end_zipcode: 70839
+  end_street: Kirchstraße 5
+  end_city: Gerlingen
+trips_051:
+  id: 51
+  user_id: 91
+  car_id: 29
+  starts_at_N: 50.397684
+  starts_at_E: 11.380943
+  ends_at_E: 9.917195999999999
+  ends_at_N: 49.4017513
+  start_time: '2011-08-12 07:15:24.334470'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.857339'
+  updated_at: '2011-08-11 07:31:44.857339'
+  baggage: t
+  free_seats: 4
+  distance: 220
+  duration: 9329
+  start_zipcode: 96358
+  start_street: St2198 57
+  start_city: Teuschnitz
+  end_zipcode: 97996
+  end_street: Bahnhofstraße 19
+  end_city: Niederstetten
+trips_052:
+  id: 52
+  user_id: 9
+  car_id: 46
+  starts_at_N: 50.267574
+  starts_at_E: 11.4725635
+  ends_at_E: 8.525366199999999
+  ends_at_N: 50.9130171
+  start_time: '2011-08-12 07:15:27.079993'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.868771'
+  updated_at: '2011-08-11 07:31:44.868771'
+  baggage: t
+  free_seats: 4
+  distance: 332
+  duration: 12677
+  start_zipcode: 96346
+  start_street: Hauptstraße 3
+  start_city: Wallenfels
+  end_zipcode: 35216
+  end_street: Hainstraße 62a
+  end_city: Biedenkopf
+trips_053:
+  id: 53
+  user_id: 20
+  car_id: 59
+  starts_at_N: 50.50219200000001
+  starts_at_E: 9.123650999999999
+  ends_at_E: 11.9703347
+  ends_at_N: 48.0464618
+  start_time: '2011-08-12 07:15:28.637762'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.880745'
+  updated_at: '2011-08-11 07:31:44.880745'
+  baggage: t
+  free_seats: 4
+  distance: 458
+  duration: 14918
+  start_zipcode: 63679
+  start_street: Vogelsbergstraße 124
+  start_city: Schotten
+  end_zipcode: 85567
+  end_street: Rotter Straße 11
+  end_city: Grafing bei München
+trips_054:
+  id: 54
+  user_id: 28
+  car_id: 81
+  starts_at_N: 51.8275412
+  starts_at_E: 10.283409
+  ends_at_E: 11.255364
+  ends_at_N: 48.177757
+  start_time: '2011-08-12 07:15:30.600092'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.892674'
+  updated_at: '2011-08-11 07:31:44.892674'
+  baggage: t
+  free_seats: 4
+  distance: 594
+  duration: 17799
+  start_zipcode: 38709
+  start_street: Bohlweg 15
+  start_city: Wildemann
+  end_zipcode: 82256
+  end_street: St2054 1
+  end_city: Fürstenfeldbruck
+trips_055:
+  id: 55
+  user_id: 28
+  car_id: 23
+  starts_at_N: 49.4017513
+  starts_at_E: 9.917195999999999
+  ends_at_E: 12.9031609
+  ends_at_N: 51.0768318
+  start_time: '2011-08-12 07:15:33.012031'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.904580'
+  updated_at: '2011-08-11 07:31:44.904580'
+  baggage: t
+  free_seats: 4
+  distance: 391
+  duration: 13555
+  start_zipcode: 97996
+  start_street: Bahnhofstraße 19
+  start_city: Niederstetten
+  end_zipcode: 9326
+  end_street: Markt 14
+  end_city: Geringswalde
+trips_056:
+  id: 56
+  user_id: 93
+  car_id: 37
+  starts_at_N: 48.4680065
+  starts_at_E: 7.942383199999999
+  ends_at_E: 12.977438
+  ends_at_N: 47.834803
+  start_time: '2011-08-12 07:15:35.799918'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.915977'
+  updated_at: '2011-08-11 07:31:44.915977'
+  baggage: t
+  free_seats: 4
+  distance: 505
+  duration: 15168
+  start_zipcode: 77652
+  start_street: Grabenallee 4
+  start_city: Offenburg
+  end_zipcode: 83395
+  end_street: Reichenhaller Straße 25
+  end_city: Freilassing
+trips_057:
+  id: 57
+  user_id: 29
+  car_id: 107
+  starts_at_N: 50.9332069
+  starts_at_E: 12.7045237
+  ends_at_E: 9.114644
+  ends_at_N: 50.852579
+  start_time: '2011-08-12 07:15:37.894533'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.928140'
+  updated_at: '2011-08-11 07:31:44.928140'
+  baggage: t
+  free_seats: 4
+  distance: 299
+  duration: 10774
+  start_zipcode: 9322
+  start_street: Stufenberg 2
+  start_city: Penig
+  end_zipcode: 35279
+  end_street: Marktstraße 30
+  end_city: Neustadt
+trips_058:
+  id: 58
+  user_id: 82
+  car_id: 118
+  starts_at_N: 48.5502286
+  starts_at_E: 8.7244461
+  ends_at_E: 11.4543892
+  ends_at_N: 50.5647284
+  start_time: '2011-08-12 07:15:39.701266'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.939597'
+  updated_at: '2011-08-11 07:31:44.939597'
+  baggage: t
+  free_seats: 4
+  distance: 421
+  duration: 14027
+  start_zipcode: 72202
+  start_street: Vorstadtplatz 9
+  start_city: Nagold
+  end_zipcode: 7338
+  end_street: Lemnitztal 17
+  end_city: Leutenberg
+trips_059:
+  id: 59
+  user_id: 37
+  car_id: 16
+  starts_at_N: 49.899311
+  starts_at_E: 8.846499999999999
+  ends_at_E: 11.7919239
+  ends_at_N: 54.071757
+  start_time: '2011-08-12 07:15:41.391710'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.951302'
+  updated_at: '2011-08-11 07:31:44.951302'
+  baggage: t
+  free_seats: 4
+  distance: 669
+  duration: 20999
+  start_zipcode: 64807
+  start_street: Groß-Umstädter Straße 4
+  start_city: Dieburg
+  end_zipcode: 18236
+  end_street: Strandstraße 2
+  end_city: Kröpelin
+trips_060:
+  id: 60
+  user_id: 67
+  car_id: 120
+  starts_at_N: 49.34211
+  starts_at_E: 12.5265585
+  ends_at_E: 8.427455
+  ends_at_N: 51.808367
+  start_time: '2011-08-12 07:15:44.601230'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.961975'
+  updated_at: '2011-08-11 07:31:44.961975'
+  baggage: t
+  free_seats: 4
+  distance: 527
+  duration: 16826
+  start_zipcode: 92444
+  start_street: Hussenstraße 10
+  start_city: Rötz
+  end_zipcode: 33397
+  end_street: L836 29
+  end_city: Rietberg
+trips_061:
+  id: 61
+  user_id: 27
+  car_id: 43
+  starts_at_N: 50.817428
+  starts_at_E: 6.271667
+  ends_at_E: 7.711401899999999
+  ends_at_N: 50.15153489999999
+  start_time: '2011-08-12 07:15:46.867058'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.973149'
+  updated_at: '2011-08-11 07:31:44.973149'
+  baggage: t
+  free_seats: 4
+  distance: 169
+  duration: 5513
+  start_zipcode: 52249
+  start_street: Rathausplatz 1
+  start_city: Eschweiler
+  end_zipcode: 56329
+  end_street: Schloßberg 6
+  end_city: Sankt Goar
+trips_062:
+  id: 62
+  user_id: 39
+  car_id: 28
+  starts_at_N: 53.5419399
+  starts_at_E: 8.578037799999999
+  ends_at_E: 14.428116
+  ends_at_N: 51.180968
+  start_time: '2011-08-12 07:15:48.326027'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.984617'
+  updated_at: '2011-08-11 07:31:44.984617'
+  baggage: t
+  free_seats: 4
+  distance: 583
+  duration: 17124
+  start_zipcode: 27568
+  start_street: ! 'Columbusstraße '
+  start_city: Bremerhaven
+  end_zipcode: 2625
+  end_street: Kornmarkt 15
+  end_city: Bautzen
+trips_063:
+  id: 63
+  user_id: 58
+  car_id: 79
+  starts_at_N: 52.0744281
+  starts_at_E: 12.6890778
+  ends_at_E: 8.6497323
+  ends_at_N: 48.5243163
+  start_time: '2011-08-12 07:15:51.606034'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:44.996279'
+  updated_at: '2011-08-11 07:31:44.996279'
+  baggage: t
+  free_seats: 4
+  distance: 616
+  duration: 18956
+  start_zipcode: 14823
+  start_street: Mittelstraße 17
+  start_city: Niemegk
+  end_zipcode: 72221
+  end_street: Marktplatz 1
+  end_city: Haiterbach
+trips_064:
+  id: 64
+  user_id: 50
+  car_id: 109
+  starts_at_N: 48.6245716
+  starts_at_E: 9.342412999999999
+  ends_at_E: 9.759373199999999
+  ends_at_N: 51.50291439999999
+  start_time: '2011-08-12 07:15:55.015353'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.007641'
+  updated_at: '2011-08-11 07:31:45.007641'
+  baggage: t
+  free_seats: 4
+  distance: 445
+  duration: 13586
+  start_zipcode: 72622
+  start_street: Steinengrabenstraße 17
+  start_city: Nürtingen
+  end_zipcode: 37127
+  end_street: Lange Straße 37
+  end_city: Dransfeld
+trips_065:
+  id: 65
+  user_id: 21
+  car_id: 30
+  starts_at_N: 50.852579
+  starts_at_E: 9.114644
+  ends_at_E: 13.5397398
+  ends_at_N: 52.2602491
+  start_time: '2011-08-12 07:15:57.093131'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.019400'
+  updated_at: '2011-08-11 07:31:45.019400'
+  baggage: t
+  free_seats: 4
+  distance: 449
+  duration: 14143
+  start_zipcode: 35279
+  start_street: Marktstraße 30
+  start_city: Neustadt
+  end_zipcode: 15749
+  end_street: Mittenwalder Aue 49
+  end_city: Mittenwalde
+trips_066:
+  id: 66
+  user_id: 25
+  car_id: 38
+  starts_at_N: 51.255871
+  starts_at_E: 7.149985
+  ends_at_E: 11.6278856
+  ends_at_N: 52.24967119999999
+  start_time: '2011-08-12 07:15:59.663301'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.031088'
+  updated_at: '2011-08-11 07:31:45.031088'
+  baggage: t
+  free_seats: 4
+  distance: 390
+  duration: 11754
+  start_zipcode: 42103
+  start_street: ! 'B7 '
+  start_city: Wuppertal
+  end_zipcode: 39326
+  end_street: August-Bebel-Straße 24
+  end_city: Wolmirstedt
+trips_067:
+  id: 67
+  user_id: 31
+  car_id: 37
+  starts_at_N: 52.6657137
+  starts_at_E: 8.2383252
+  ends_at_E: 11.2023615
+  ends_at_N: 50.8550031
+  start_time: '2011-08-12 07:16:16.609620'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.043497'
+  updated_at: '2011-08-11 07:31:45.043497'
+  baggage: t
+  free_seats: 4
+  distance: 436
+  duration: 14823
+  start_zipcode: 49393
+  start_street: Marktstraße 1
+  start_city: Lohne (Oldenburg)
+  end_zipcode: 99448
+  end_street: Bahnhofstraße 4
+  end_city: Kranichfeld
+trips_068:
+  id: 68
+  user_id: 93
+  car_id: 77
+  starts_at_N: 48.411669
+  starts_at_E: 9.4972266
+  ends_at_E: 8.183425
+  ends_at_N: 49.43666
+  start_time: '2011-08-12 07:16:21.381865'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.054835'
+  updated_at: '2011-08-11 07:31:45.054835'
+  baggage: t
+  free_seats: 4
+  distance: 187
+  duration: 7272
+  start_zipcode: 72525
+  start_street: Hauptstraße 48
+  start_city: Münsingen
+  end_zipcode: 67157
+  end_street: Weinstraße 4
+  end_city: Wachenheim an der Weinstraße
+trips_069:
+  id: 69
+  user_id: 40
+  car_id: 117
+  starts_at_N: 49.2853902
+  starts_at_E: 6.888122
+  ends_at_E: 14.285218
+  ends_at_N: 53.05446500000001
+  start_time: '2011-08-12 07:16:24.015329'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.066655'
+  updated_at: '2011-08-11 07:31:45.066655'
+  baggage: t
+  free_seats: 4
+  distance: 864
+  duration: 26480
+  start_zipcode: 66346
+  start_street: Bengeser Straße 9
+  start_city: Püttlingen
+  end_zipcode: 16303
+  end_street: Berliner Straße 29
+  end_city: Schwedt/Oder
+trips_070:
+  id: 70
+  user_id: 57
+  car_id: 109
+  starts_at_N: 51.628127
+  starts_at_E: 12.119633
+  ends_at_E: 11.014244
+  ends_at_N: 49.413581
+  start_time: '2011-08-12 07:16:26.166537'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.078178'
+  updated_at: '2011-08-11 07:31:45.078178'
+  baggage: t
+  free_seats: 4
+  distance: 309
+  duration: 9531
+  start_zipcode: 6780
+  start_street: Lange Straße 29
+  start_city: Zörbig
+  end_zipcode: 90547
+  end_street: Hauptstraße 36a
+  end_city: Stein
+trips_071:
+  id: 71
+  user_id: 57
+  car_id: 12
+  starts_at_N: 48.802246
+  starts_at_E: 9.016456
+  ends_at_E: 11.345934
+  ends_at_N: 48.14934100000001
+  start_time: '2011-08-12 07:16:28.439436'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.090979'
+  updated_at: '2011-08-11 07:31:45.090979'
+  baggage: t
+  free_seats: 4
+  distance: 227
+  duration: 7191
+  start_zipcode: 71229
+  start_street: Feuerbacher Straße 2a
+  start_city: Leonberg
+  end_zipcode: 82178
+  end_street: Dorfstraße 25
+  end_city: Puchheim
+trips_072:
+  id: 72
+  user_id: 24
+  car_id: 13
+  starts_at_N: 50.0238779
+  starts_at_E: 8.6955203
+  ends_at_E: 8.870092399999999
+  ends_at_N: 48.5961423
+  start_time: '2011-08-12 07:16:31.884243'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.102730'
+  updated_at: '2011-08-11 07:31:45.102730'
+  baggage: t
+  free_seats: 4
+  distance: 212
+  duration: 7127
+  start_zipcode: 63303
+  start_street: Frankfurter Straße 72
+  start_city: Dreieich
+  end_zipcode: 71083
+  end_street: Marktplatz 1-3
+  end_city: Herrenberg
+trips_073:
+  id: 73
+  user_id: 87
+  car_id: 72
+  starts_at_N: 49.6240099
+  starts_at_E: 9.662069299999999
+  ends_at_E: 10.958209
+  ends_at_N: 49.422568
+  start_time: '2011-08-12 07:16:33.539960'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.114796'
+  updated_at: '2011-08-11 07:31:45.114796'
+  baggage: t
+  free_seats: 4
+  distance: 144
+  duration: 5162
+  start_zipcode: 97941
+  start_street: Schmiederstraße 14-15
+  start_city: Tauberbischofsheim
+  end_zipcode: 90522
+  end_street: Milbenweg 2
+  end_city: Oberasbach
+trips_074:
+  id: 74
+  user_id: 95
+  car_id: 118
+  starts_at_N: 51.0524656
+  starts_at_E: 6.2236663
+  ends_at_E: 7.8601888
+  ends_at_N: 49.845941
+  start_time: '2011-08-12 07:16:35.186475'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.126336'
+  updated_at: '2011-08-11 07:31:45.126336'
+  baggage: t
+  free_seats: 4
+  distance: 216
+  duration: 6968
+  start_zipcode: 41836
+  start_street: Parkhofstraße 42
+  start_city: Hückelhoven
+  end_zipcode: 55543
+  end_street: Wilhelmstraße 1
+  end_city: Bad Kreuznach
+trips_075:
+  id: 75
+  user_id: 62
+  car_id: 55
+  starts_at_N: 49.087405
+  starts_at_E: 8.487264
+  ends_at_E: 9.4784851
+  ends_at_N: 47.6519684
+  start_time: '2011-08-12 07:16:36.825488'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.138877'
+  updated_at: '2011-08-11 07:31:45.138877'
+  baggage: t
+  free_seats: 4
+  distance: 266
+  duration: 9431
+  start_zipcode: 76297
+  start_street: Schloß Stutensee 10
+  start_city: Stutensee
+  end_zipcode: 88045
+  end_street: Metzstraße 4
+  end_city: Friedrichshafen
+trips_076:
+  id: 76
+  user_id: 30
+  car_id: 91
+  starts_at_N: 51.502883
+  starts_at_E: 6.551708
+  ends_at_E: 6.886492
+  ends_at_N: 51.427073
+  start_time: '2011-08-12 07:16:38.539724'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.149309'
+  updated_at: '2011-08-11 07:31:45.149309'
+  baggage: t
+  free_seats: 4
+  distance: 33
+  duration: 1702
+  start_zipcode: 47475
+  start_street: Eupener Straße 99
+  start_city: Lintfort
+  end_zipcode: 45468
+  end_street: Kaiserstraße 27
+  end_city: Mülheim an der Ruhr
+trips_077:
+  id: 77
+  user_id: 32
+  car_id: 44
+  starts_at_N: 50.870961
+  starts_at_E: 6.868111
+  ends_at_E: 11.425389
+  ends_at_N: 48.762145
+  start_time: '2011-08-12 07:16:40.244500'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.160333'
+  updated_at: '2011-08-11 07:31:45.160333'
+  baggage: t
+  free_seats: 4
+  distance: 507
+  duration: 15299
+  start_zipcode: 50354
+  start_street: Lindenstraße 2
+  start_city: Hürth
+  end_zipcode: 85049
+  end_street: Schutterstraße 11
+  end_city: Ingolstadt
+trips_078:
+  id: 78
+  user_id: 25
+  car_id: 87
+  starts_at_N: 48.2731931
+  starts_at_E: 12.1496717
+  ends_at_E: 9.397262099999999
+  ends_at_N: 53.1096538
+  start_time: '2011-08-12 07:16:42.415008'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.172161'
+  updated_at: '2011-08-11 07:31:45.172161'
+  baggage: t
+  free_seats: 4
+  distance: 754
+  duration: 23385
+  start_zipcode: 84405
+  start_street: Kirchtorplatz 3
+  start_city: Dorfen
+  end_zipcode: 27356
+  end_street: Aalter Allee 3
+  end_city: Rotenburg (Wümme)
+trips_079:
+  id: 79
+  user_id: 30
+  car_id: 51
+  starts_at_N: 48.9429842
+  starts_at_E: 8.4093293
+  ends_at_E: 8.533304
+  ends_at_N: 51.1934212
+  start_time: '2011-08-12 07:16:44.593395'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.184705'
+  updated_at: '2011-08-11 07:31:45.184705'
+  baggage: t
+  free_seats: 4
+  distance: 285
+  duration: 10246
+  start_zipcode: 76275
+  start_street: Kronenstraße 17
+  start_city: Ettlingen
+  end_zipcode: 59955
+  end_street: Poststraße 6
+  end_city: Winterberg
+trips_080:
+  id: 80
+  user_id: 88
+  car_id: 3
+  starts_at_N: 50.512431
+  starts_at_E: 8.394824999999999
+  ends_at_E: 12.8864374
+  ends_at_N: 49.0799393
+  start_time: '2011-08-12 07:16:46.200493'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.196277'
+  updated_at: '2011-08-11 07:31:45.196277'
+  baggage: t
+  free_seats: 4
+  distance: 473
+  duration: 14881
+  start_zipcode: 35619
+  start_street: Attenbachstraße 4
+  start_city: Braunfels
+  end_zipcode: 94234
+  end_street: Mönchshofstraße 2
+  end_city: Viechtach
+trips_081:
+  id: 81
+  user_id: 22
+  car_id: 2
+  starts_at_N: 51.0749547
+  starts_at_E: 11.3428105
+  ends_at_E: 8.7244461
+  ends_at_N: 48.5502286
+  start_time: '2011-08-12 07:16:48.025863'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.208238'
+  updated_at: '2011-08-11 07:31:45.208238'
+  baggage: t
+  free_seats: 4
+  distance: 408
+  duration: 13867
+  start_zipcode: 99439
+  start_street: Weimarische Straße 7
+  start_city: Buttelstedt
+  end_zipcode: 72202
+  end_street: Vorstadtplatz 9
+  end_city: Nagold
+trips_082:
+  id: 82
+  user_id: 42
+  car_id: 73
+  starts_at_N: 50.280491
+  starts_at_E: 7.618061
+  ends_at_E: 8.694068
+  ends_at_N: 53.861701
+  start_time: '2011-08-12 07:16:49.843365'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.219759'
+  updated_at: '2011-08-11 07:31:45.219759'
+  baggage: t
+  free_seats: 4
+  distance: 516
+  duration: 16625
+  start_zipcode: 56321
+  start_street: Mainzer Straße 1
+  start_city: Rhens
+  end_zipcode: 27474
+  end_street: Schulstraße 16
+  end_city: Cuxhaven
+trips_083:
+  id: 83
+  user_id: 35
+  car_id: 60
+  starts_at_N: 49.2391634
+  starts_at_E: 7.2601201
+  ends_at_E: 9.420042900000002
+  ends_at_N: 51.5736059
+  start_time: '2011-08-12 07:16:51.462718'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.233018'
+  updated_at: '2011-08-11 07:31:45.233018'
+  baggage: t
+  free_seats: 4
+  distance: 393
+  duration: 13090
+  start_zipcode: 66440
+  start_street: Luitpoldplatz 5
+  start_city: Blieskastel
+  end_zipcode: 34388
+  end_street: Am Rathaus 2
+  end_city: Trendelburg
+trips_084:
+  id: 84
+  user_id: 23
+  car_id: 59
+  starts_at_N: 49.051769
+  starts_at_E: 8.268307
+  ends_at_E: 11.7302064
+  ends_at_N: 50.5010387
+  start_time: '2011-08-12 07:16:53.132178'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.244798'
+  updated_at: '2011-08-11 07:31:45.244798'
+  baggage: t
+  free_seats: 4
+  distance: 419
+  duration: 12966
+  start_zipcode: 76744
+  start_street: Ludwigstraße 5
+  start_city: Wörth am Rhein
+  end_zipcode: 7929
+  end_street: Markt 83-84
+  end_city: Saalburg-Ebersdorf
+trips_085:
+  id: 85
+  user_id: 19
+  car_id: 93
+  starts_at_N: 50.3734566
+  starts_at_E: 7.275251900000001
+  ends_at_E: 14.7456052
+  ends_at_N: 51.0163403
+  start_time: '2011-08-12 07:16:56.706485'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.256260'
+  updated_at: '2011-08-11 07:31:45.256260'
+  baggage: t
+  free_seats: 4
+  distance: 641
+  duration: 20626
+  start_zipcode: 56743
+  start_street: Schäferspforte 29
+  start_city: Mendig
+  end_zipcode: 2747
+  end_street: Zinzendorfplatz 8
+  end_city: Herrnhut
+trips_086:
+  id: 86
+  user_id: 77
+  car_id: 119
+  starts_at_N: 50.9119296
+  starts_at_E: 8.1050868
+  ends_at_E: 12.936643
+  ends_at_N: 47.939636
+  start_time: '2011-08-12 07:17:00.093800'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.269343'
+  updated_at: '2011-08-11 07:31:45.269343'
+  baggage: t
+  free_seats: 4
+  distance: 671
+  duration: 20643
+  start_zipcode: 57250
+  start_street: K32 57
+  start_city: Netphen
+  end_zipcode: 83410
+  end_street: Marienplatz 5
+  end_city: Laufen
+trips_087:
+  id: 87
+  user_id: 52
+  car_id: 24
+  starts_at_N: 49.1895896
+  starts_at_E: 9.6429171
+  ends_at_E: 11.3049078
+  ends_at_N: 50.5256066
+  start_time: '2011-08-12 07:17:02.862529'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.282131'
+  updated_at: '2011-08-11 07:31:45.282131'
+  baggage: t
+  free_seats: 4
+  distance: 288
+  duration: 10850
+  start_zipcode: 74638
+  start_street: Hauptstr. 13
+  start_city: Waldenburg
+  end_zipcode: 98743
+  end_street: Karl-Liebknecht-Straße 1
+  end_city: Gräfenthal
+trips_088:
+  id: 88
+  user_id: 6
+  car_id: 8
+  starts_at_N: 50.49506479999999
+  starts_at_E: 12.1383305
+  ends_at_E: 9.0536245
+  ends_at_N: 54.4853773
+  start_time: '2011-08-12 07:17:04.988616'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.293854'
+  updated_at: '2011-08-11 07:31:45.293854'
+  baggage: t
+  free_seats: 4
+  distance: 657
+  duration: 21124
+  start_zipcode: 8523
+  start_street: Syrastraße 2
+  start_city: Plauen
+  end_zipcode: 25813
+  end_street: Hermann-Tast-Straße 6
+  end_city: Husum
+trips_089:
+  id: 89
+  user_id: 85
+  car_id: 54
+  starts_at_N: 48.0890372
+  starts_at_E: 7.629753900000001
+  ends_at_E: 8.96745
+  ends_at_N: 50.972627
+  start_time: '2011-08-12 07:17:12.438486'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.306616'
+  updated_at: '2011-08-11 07:31:45.306616'
+  baggage: t
+  free_seats: 4
+  distance: 378
+  duration: 12297
+  start_zipcode: 79235
+  start_street: Bruckmühlenstraße 1
+  start_city: Vogtsburg im Kaiserstuhl
+  end_zipcode: 35285
+  end_street: Hainstraße 18
+  end_city: Gemünden (Wohra)
+trips_090:
+  id: 90
+  user_id: 66
+  car_id: 61
+  starts_at_N: 50.7416347
+  starts_at_E: 8.205305599999999
+  ends_at_E: 10.2474597
+  ends_at_N: 51.0527728
+  start_time: '2011-08-12 07:17:14.288314'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.317841'
+  updated_at: '2011-08-11 07:31:45.317841'
+  baggage: t
+  free_seats: 4
+  distance: 193
+  duration: 6333
+  start_zipcode: 35708
+  start_street: Hauptstraße 23
+  start_city: Haiger
+  end_zipcode: 99831
+  end_street: Kasseler Straße 2
+  end_city: Creuzburg
+trips_091:
+  id: 91
+  user_id: 64
+  car_id: 67
+  starts_at_N: 50.3139224
+  starts_at_E: 9.4646172
+  ends_at_E: 8.5671685
+  ends_at_N: 54.6911306
+  start_time: '2011-08-12 07:17:16.164048'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.329920'
+  updated_at: '2011-08-11 07:31:45.329920'
+  baggage: t
+  free_seats: 4
+  distance: 644
+  duration: 23016
+  start_zipcode: 36396
+  start_street: Bellinger Tor 3
+  start_city: Steinau
+  end_zipcode: 25938
+  end_street: Hafenstraße 2
+  end_city: Wyk Auf Föhr
+trips_092:
+  id: 92
+  user_id: 7
+  car_id: 112
+  starts_at_N: 49.3451939
+  starts_at_E: 9.9808378
+  ends_at_E: 9.6508064
+  ends_at_N: 51.4143122
+  start_time: '2011-08-12 07:17:20.010917'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.341132'
+  updated_at: '2011-08-11 07:31:45.341132'
+  baggage: t
+  free_seats: 4
+  distance: 298
+  duration: 9449
+  start_zipcode: 74575
+  start_street: Krailshausener Straße 9
+  start_city: Schrozberg
+  end_zipcode: 34346
+  end_street: Fuldabrückenstraße 1
+  end_city: Hannoversch Münden
+trips_093:
+  id: 93
+  user_id: 44
+  car_id: 16
+  starts_at_N: 49.9415577
+  starts_at_E: 11.5710306
+  ends_at_E: 7.771343600000001
+  ends_at_N: 49.5043715
+  start_time: '2011-08-12 07:17:21.698175'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.352407'
+  updated_at: '2011-08-11 07:31:45.352407'
+  baggage: t
+  free_seats: 4
+  distance: 374
+  duration: 11911
+  start_zipcode: 95444
+  start_street: Bismarckstraße 4
+  start_city: Bayreuth
+  end_zipcode: 67697
+  end_street: Hauptstraße 105a
+  end_city: Otterberg
+trips_094:
+  id: 94
+  user_id: 79
+  car_id: 72
+  starts_at_N: 51.1934212
+  starts_at_E: 8.533304
+  ends_at_E: 7.671255899999998
+  ends_at_N: 50.4334615
+  start_time: '2011-08-12 07:17:23.376884'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.363417'
+  updated_at: '2011-08-11 07:31:45.363417'
+  baggage: t
+  free_seats: 4
+  distance: 150
+  duration: 8034
+  start_zipcode: 59955
+  start_street: Poststraße 6
+  start_city: Winterberg
+  end_zipcode: 56203
+  end_street: Rathausstraße 6
+  end_city: Höhr
+trips_095:
+  id: 95
+  user_id: 49
+  car_id: 112
+  starts_at_N: 48.0217264
+  starts_at_E: 8.933411699999999
+  ends_at_E: 8.301205
+  ends_at_N: 52.102071
+  start_time: '2011-08-12 07:17:25.801032'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.375044'
+  updated_at: '2011-08-11 07:31:45.375044'
+  baggage: t
+  free_seats: 4
+  distance: 641
+  duration: 20802
+  start_zipcode: 78567
+  start_street: L277 15
+  start_city: Fridingen an der Donau
+  end_zipcode: 33829
+  end_street: Freistraße 11
+  end_city: Borgholzhausen
+trips_096:
+  id: 96
+  user_id: 94
+  car_id: 104
+  starts_at_N: 52.806449
+  starts_at_E: 9.135963
+  ends_at_E: 12.6106668
+  ends_at_N: 51.336665
+  start_time: '2011-08-12 07:17:28.540744'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.386513'
+  updated_at: '2011-08-11 07:31:45.386513'
+  baggage: t
+  free_seats: 4
+  distance: 352
+  duration: 11606
+  start_zipcode: 27318
+  start_street: Von-Staffhorst-Straße 10
+  start_city: Hoya
+  end_zipcode: 4821
+  end_street: Braustraße 1
+  end_city: Brandis
+trips_097:
+  id: 97
+  user_id: 26
+  car_id: 51
+  starts_at_N: 54.0984217
+  starts_at_E: 12.0878976
+  ends_at_E: 8.2088099
+  ends_at_N: 49.5065921
+  start_time: '2011-08-12 07:17:35.266355'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.397882'
+  updated_at: '2011-08-11 07:31:45.397882'
+  baggage: t
+  free_seats: 4
+  distance: 762
+  duration: 23034
+  start_zipcode: 18069
+  start_street: Hamburger Straße 40
+  start_city: Rostock
+  end_zipcode: 67251
+  end_street: Hauptstraße 38
+  end_city: Freinsheim
+trips_098:
+  id: 98
+  user_id: 70
+  car_id: 108
+  starts_at_N: 50.0566711
+  starts_at_E: 12.1883456
+  ends_at_E: 9.570354199999999
+  ends_at_N: 54.5181131
+  start_time: '2011-08-12 07:17:37.781700'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.409585'
+  updated_at: '2011-08-11 07:31:45.409585'
+  baggage: t
+  free_seats: 4
+  distance: 701
+  duration: 21311
+  start_zipcode: 95659
+  start_street: Egerstraße 11
+  start_city: Arzberg
+  end_zipcode: 24837
+  end_street: Gallberg 26
+  end_city: Schleswig
+trips_099:
+  id: 99
+  user_id: 90
+  car_id: 17
+  starts_at_N: 51.7333333
+  starts_at_E: 11.3333333
+  ends_at_E: 7.168143499999999
+  ends_at_N: 49.6497391
+  start_time: '2011-08-12 07:17:40.426615'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.421747'
+  updated_at: '2011-08-11 07:31:45.421747'
+  baggage: t
+  free_seats: 4
+  distance: 549
+  duration: 17694
+  start_zipcode: 6463
+  start_street: Vater-Jahn-Straße 5
+  start_city: Falkenstein/Harz
+  end_zipcode: 55765
+  end_street: Achtstraße 14
+  end_city: Birkenfeld
+trips_100:
+  id: 100
+  user_id: 33
+  car_id: 15
+  starts_at_N: 51.99271299999999
+  starts_at_E: 8.793279
+  ends_at_E: 12.151825
+  ends_at_N: 48.53882300000001
+  start_time: '2011-08-12 07:17:42.428909'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.433111'
+  updated_at: '2011-08-11 07:31:45.433111'
+  baggage: t
+  free_seats: 4
+  distance: 583
+  duration: 18718
+  start_zipcode: 32791
+  start_street: Bergstraße 25
+  start_city: Lage
+  end_zipcode: 84028
+  end_street: Altstadt 96
+  end_city: Landshut
+trips_101:
+  id: 101
+  user_id: 15
+  car_id: 29
+  starts_at_N: 52.503001
+  starts_at_E: 12.0183778
+  ends_at_E: 7.480294000000001
+  ends_at_N: 53.467071
+  start_time: '2011-08-12 07:17:44.517727'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.444508'
+  updated_at: '2011-08-11 07:31:45.444508'
+  baggage: t
+  free_seats: 4
+  distance: 425
+  duration: 14420
+  start_zipcode: 39319
+  start_street: Lindenstraße 16
+  start_city: Jerichow
+  end_zipcode: 26603
+  end_street: Julianenburger Straße 1
+  end_city: Aurich
+trips_102:
+  id: 102
+  user_id: 14
+  car_id: 114
+  starts_at_N: 48.5616675
+  starts_at_E: 9.625254199999999
+  ends_at_E: 9.356169699999999
+  ends_at_N: 52.3113993
+  start_time: '2011-08-12 07:17:46.250751'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.456333'
+  updated_at: '2011-08-11 07:31:45.456333'
+  baggage: t
+  free_seats: 4
+  distance: 615
+  duration: 17987
+  start_zipcode: 73349
+  start_street: Westerheimer Straße 2
+  start_city: Wiesensteig
+  end_zipcode: 31552
+  end_street: L420 40
+  end_city: Rodenberg
+trips_103:
+  id: 103
+  user_id: 32
+  car_id: 39
+  starts_at_N: 51.2607609
+  starts_at_E: 11.09071
+  ends_at_E: 12.968144
+  ends_at_N: 53.279325
+  start_time: '2011-08-12 07:17:49.275704'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.468490'
+  updated_at: '2011-08-11 07:31:45.468490'
+  baggage: t
+  free_seats: 4
+  distance: 364
+  duration: 13827
+  start_zipcode: 99638
+  start_street: Puschkinplatz 14
+  start_city: Kindelbrück
+  end_zipcode: 17255
+  end_street: Neustrelitzer Chaussee 14
+  end_city: Wesenberg
+trips_104:
+  id: 104
+  user_id: 7
+  car_id: 116
+  starts_at_N: 51.1998305
+  starts_at_E: 11.9667231
+  ends_at_E: 9.5244957
+  ends_at_N: 49.6698055
+  start_time: '2011-08-12 07:17:50.990409'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.479836'
+  updated_at: '2011-08-11 07:31:45.479836'
+  baggage: t
+  free_seats: 4
+  distance: 346
+  duration: 10872
+  start_zipcode: 6667
+  start_street: Friedrichsstraße 18
+  start_city: Weißenfels
+  end_zipcode: 97900
+  end_street: Hauptstraße 81
+  end_city: Külsheim
+trips_105:
+  id: 105
+  user_id: 20
+  car_id: 103
+  starts_at_N: 49.703969
+  starts_at_E: 10.2603874
+  ends_at_E: 6.947115999999999
+  ends_at_N: 51.102447
+  start_time: '2011-08-12 07:17:53.595601'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.492059'
+  updated_at: '2011-08-11 07:31:45.492059'
+  baggage: t
+  free_seats: 4
+  distance: 345
+  duration: 10808
+  start_zipcode: 97346
+  start_street: Maxstraße 29
+  start_city: Iphofen
+  end_zipcode: 40764
+  end_street: Hauptstraße 32
+  end_city: Langenfeld (Rheinland)
+trips_106:
+  id: 106
+  user_id: 25
+  car_id: 19
+  starts_at_N: 51.0749547
+  starts_at_E: 11.3428105
+  ends_at_E: 13.8715871
+  ends_at_N: 51.4589148
+  start_time: '2011-08-12 07:17:57.580287'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.504081'
+  updated_at: '2011-08-11 07:31:45.504081'
+  baggage: t
+  free_seats: 4
+  distance: 256
+  duration: 8724
+  start_zipcode: 99439
+  start_street: Weimarische Straße 7
+  start_city: Buttelstedt
+  end_zipcode: 1945
+  end_street: Elsterbogen 7
+  end_city: Ruhland
+trips_107:
+  id: 107
+  user_id: 35
+  car_id: 84
+  starts_at_N: 49.29270469999999
+  starts_at_E: 9.2705576
+  ends_at_E: 8.6899955
+  ends_at_N: 48.4464835
+  start_time: '2011-08-12 07:18:00.744102'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.515772'
+  updated_at: '2011-08-11 07:31:45.515772'
+  baggage: t
+  free_seats: 4
+  distance: 133
+  duration: 4748
+  start_zipcode: 74861
+  start_street: K2158 12
+  start_city: Neudenau
+  end_zipcode: 72160
+  end_street: Bildechinger Steige 13-15
+  end_city: Horb am Neckar
+trips_108:
+  id: 108
+  user_id: 84
+  car_id: 115
+  starts_at_N: 49.483548
+  starts_at_E: 11.240726
+  ends_at_E: 10.61507
+  ends_at_N: 50.502423
+  start_time: '2011-08-12 07:18:02.745510'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.526690'
+  updated_at: '2011-08-11 07:31:45.526690'
+  baggage: t
+  free_seats: 4
+  distance: 163
+  duration: 5958
+  start_zipcode: 90552
+  start_street: Rückersdorfer Straße 14-16
+  start_city: Röthenbach an der Pegnitz
+  end_zipcode: 98660
+  end_street: Ernst-Thälmann-Straße 9
+  end_city: Themar
+trips_109:
+  id: 109
+  user_id: 98
+  car_id: 1
+  starts_at_N: 48.6157245
+  starts_at_E: 9.537483
+  ends_at_E: 7.755219200000001
+  ends_at_N: 50.52989549999999
+  start_time: '2011-08-12 07:18:06.213223'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.537568'
+  updated_at: '2011-08-11 07:31:45.537568'
+  baggage: t
+  free_seats: 4
+  distance: 322
+  duration: 9984
+  start_zipcode: 73235
+  start_street: Marktplatz 2-6
+  start_city: Weilheim an der Teck
+  end_zipcode: 56242
+  end_street: Rheinstraße 29
+  end_city: Selters
+trips_110:
+  id: 110
+  user_id: 98
+  car_id: 45
+  starts_at_N: 51.7278868
+  starts_at_E: 10.610555
+  ends_at_E: 13.3417826
+  ends_at_N: 53.9235104
+  start_time: '2011-08-12 07:18:10.578393'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.548836'
+  updated_at: '2011-08-11 07:31:45.548836'
+  baggage: t
+  free_seats: 4
+  distance: 470
+  duration: 15963
+  start_zipcode: 38700
+  start_street: Am Brunnen 1
+  start_city: Braunlage
+  end_zipcode: 17126
+  end_street: Doktor-Georg-Kohnert-Straße 1
+  end_city: Jarmen
+trips_111:
+  id: 111
+  user_id: 50
+  car_id: 37
+  starts_at_N: 48.27775219999999
+  starts_at_E: 10.0787158
+  ends_at_E: 13.3157787
+  ends_at_N: 53.2104402
+  start_time: '2011-08-12 07:18:14.831953'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.560821'
+  updated_at: '2011-08-11 07:31:45.560821'
+  baggage: t
+  free_seats: 4
+  distance: 719
+  duration: 22422
+  start_zipcode: 89269
+  start_street: Ulmer Straße 1
+  start_city: Vöhringen
+  end_zipcode: 17279
+  end_street: Am Markt 7
+  end_city: Lychen
+trips_112:
+  id: 112
+  user_id: 18
+  car_id: 5
+  starts_at_N: 50.6605822
+  starts_at_E: 10.3716016
+  ends_at_E: 10.05267
+  ends_at_N: 51.188188
+  start_time: '2011-08-12 07:18:18.077442'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.572517'
+  updated_at: '2011-08-11 07:31:45.572517'
+  baggage: t
+  free_seats: 4
+  distance: 82
+  duration: 5138
+  start_zipcode: 98634
+  start_street: Meininger Straße 19
+  start_city: Wasungen
+  end_zipcode: 37269
+  end_street: An den Anlagen 1
+  end_city: Eschwege
+trips_113:
+  id: 113
+  user_id: 63
+  car_id: 9
+  starts_at_N: 50.55163
+  starts_at_E: 8.423544
+  ends_at_E: 13.3880102
+  ends_at_N: 54.09720249999999
+  start_time: '2011-08-12 07:18:21.381917'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.583896'
+  updated_at: '2011-08-11 07:31:45.583896'
+  baggage: t
+  free_seats: 4
+  distance: 720
+  duration: 22044
+  start_zipcode: 35606
+  start_street: Wiesenstraße 3-5
+  start_city: Solms
+  end_zipcode: 17489
+  end_street: Hansering 3-5
+  end_city: Greifswald
+trips_114:
+  id: 114
+  user_id: 80
+  car_id: 8
+  starts_at_N: 50.564084
+  starts_at_E: 7.971414
+  ends_at_E: 11.01102
+  ends_at_N: 52.224403
+  start_time: '2011-08-12 07:18:23.215311'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.595618'
+  updated_at: '2011-08-11 07:31:45.595618'
+  baggage: t
+  free_seats: 4
+  distance: 390
+  duration: 12645
+  start_zipcode: 56457
+  start_street: Neustraße 23-25
+  start_city: Westerburg
+  end_zipcode: 38350
+  end_street: Wilhelmstraße 33
+  end_city: Helmstedt
+trips_115:
+  id: 115
+  user_id: 80
+  car_id: 23
+  starts_at_N: 49.0004236
+  starts_at_E: 9.769034999999999
+  ends_at_E: 11.0224351
+  ends_at_N: 50.97373409999999
+  start_time: '2011-08-12 07:18:26.706823'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.607776'
+  updated_at: '2011-08-11 07:31:45.607776'
+  baggage: t
+  free_seats: 4
+  distance: 315
+  duration: 11012
+  start_zipcode: 74405
+  start_street: Bahnhofstraße 6
+  start_city: Gaildorf
+  end_zipcode: 99084
+  end_street: Regierungsstraße 44a
+  end_city: Erfurt
+trips_116:
+  id: 116
+  user_id: 5
+  car_id: 119
+  starts_at_N: 48.0857556
+  starts_at_E: 9.2166177
+  ends_at_E: 10.2269858
+  ends_at_N: 49.8641628
+  start_time: '2011-08-12 07:18:28.332388'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.619515'
+  updated_at: '2011-08-11 07:31:45.619515'
+  baggage: t
+  free_seats: 4
+  distance: 294
+  duration: 10251
+  start_zipcode: 72488
+  start_street: Landeshausstraße 2
+  start_city: Sigmaringen
+  end_zipcode: 97332
+  end_street: Oberer Markt 3
+  end_city: Volkach
+trips_117:
+  id: 117
+  user_id: 1
+  car_id: 79
+  starts_at_N: 50.8764372
+  starts_at_E: 7.617419899999999
+  ends_at_E: 11.8335516
+  ends_at_N: 47.7894168
+  start_time: '2011-08-12 07:18:34.066096'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.630874'
+  updated_at: '2011-08-11 07:31:45.630874'
+  baggage: t
+  free_seats: 4
+  distance: 607
+  duration: 18076
+  start_zipcode: 51545
+  start_street: Bergstraße 4
+  start_city: Waldbröl
+  end_zipcode: 83714
+  end_street: Stadtplatz 3
+  end_city: Miesbach
+trips_118:
+  id: 118
+  user_id: 42
+  car_id: 77
+  starts_at_N: 49.7095767
+  starts_at_E: 7.3548217
+  ends_at_E: 6.798139099999999
+  ends_at_N: 50.9988374
+  start_time: '2011-08-12 07:18:37.135058'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.642873'
+  updated_at: '2011-08-11 07:31:45.642873'
+  baggage: t
+  free_seats: 4
+  distance: 210
+  duration: 8052
+  start_zipcode: 55743
+  start_street: ! 'Carl-Schurz-Straße '
+  start_city: Idar-Oberstein
+  end_zipcode: 50259
+  end_street: L183 1-5
+  end_city: Pulheim
+trips_119:
+  id: 119
+  user_id: 64
+  car_id: 77
+  starts_at_N: 48.9654373
+  starts_at_E: 9.2785993
+  ends_at_E: 9.9517249
+  ends_at_N: 48.0720549
+  start_time: '2011-08-12 07:18:39.660980'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.656099'
+  updated_at: '2011-08-11 07:31:45.656099'
+  baggage: t
+  free_seats: 4
+  distance: 184
+  duration: 6459
+  start_zipcode: 71711
+  start_street: Marktstraße 40-42
+  start_city: Steinheim an der Murr
+  end_zipcode: 88416
+  end_street: Poststraße 47
+  end_city: Ochsenhausen
+trips_120:
+  id: 120
+  user_id: 85
+  car_id: 17
+  starts_at_N: 50.33647209999999
+  starts_at_E: 7.7124583
+  ends_at_E: 8.4321199
+  ends_at_N: 52.89466239999999
+  start_time: '2011-08-12 07:18:42.422958'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.668100'
+  updated_at: '2011-08-11 07:31:45.668100'
+  baggage: t
+  free_seats: 4
+  distance: 383
+  duration: 11869
+  start_zipcode: 56130
+  start_street: Marktstraße 12
+  start_city: Bad Ems
+  end_zipcode: 27793
+  end_street: Heemstraße 2
+  end_city: Wildeshausen
+trips_121:
+  id: 121
+  user_id: 20
+  car_id: 119
+  starts_at_N: 53.8483366
+  starts_at_E: 11.9798671
+  ends_at_E: 10.480169
+  ends_at_N: 53.502121
+  start_time: '2011-08-12 07:18:45.377151'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.680546'
+  updated_at: '2011-08-11 07:31:45.680546'
+  baggage: t
+  free_seats: 4
+  distance: 140
+  duration: 5536
+  start_zipcode: 18246
+  start_street: Rühner Straße 1
+  start_city: Bützow
+  end_zipcode: 21493
+  end_street: Markt 1
+  end_city: Schwarzenbek
+trips_122:
+  id: 122
+  user_id: 81
+  car_id: 34
+  starts_at_N: 48.35486900000001
+  starts_at_E: 10.979685
+  ends_at_E: 12.5276633
+  ends_at_N: 48.2389044
+  start_time: '2011-08-12 07:18:46.831820'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.692707'
+  updated_at: '2011-08-11 07:31:45.692707'
+  baggage: t
+  free_seats: 4
+  distance: 139
+  duration: 5549
+  start_zipcode: 86316
+  start_street: Sankt-Jakobs-Platz 1
+  start_city: Friedberg
+  end_zipcode: 84453
+  end_street: Hohenauerstraße 2
+  end_city: Mühldorf am Inn
+trips_123:
+  id: 123
+  user_id: 17
+  car_id: 38
+  starts_at_N: 49.7972895
+  starts_at_E: 9.156360399999999
+  ends_at_E: 7.664343400000001
+  ends_at_N: 51.5916651
+  start_time: '2011-08-12 07:18:49.098137'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.704386'
+  updated_at: '2011-08-11 07:31:45.704386'
+  baggage: t
+  free_seats: 4
+  distance: 281
+  duration: 8581
+  start_zipcode: 63939
+  start_street: Torfeldstraße 1
+  start_city: Wörth
+  end_zipcode: 59174
+  end_street: Markt 4
+  end_city: Kamen
+trips_124:
+  id: 124
+  user_id: 12
+  car_id: 45
+  starts_at_N: 51.126151
+  starts_at_E: 7.903004
+  ends_at_E: 14.6434941
+  ends_at_N: 51.7420444
+  start_time: '2011-08-12 07:18:52.115334'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.715421'
+  updated_at: '2011-08-11 07:31:45.715421'
+  baggage: t
+  free_seats: 4
+  distance: 670
+  duration: 20615
+  start_zipcode: 57439
+  start_street: Kölner Straße 1
+  start_city: Attendorn
+  end_zipcode: 3149
+  end_street: Berliner Straße 58
+  end_city: Forst (Lausitz)
+trips_125:
+  id: 125
+  user_id: 15
+  car_id: 43
+  starts_at_N: 51.668232
+  starts_at_E: 9.374623
+  ends_at_E: 8.357911
+  ends_at_N: 49.630644
+  start_time: '2011-08-12 07:18:54.788030'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.726085'
+  updated_at: '2011-08-11 07:31:45.726085'
+  baggage: t
+  free_seats: 4
+  distance: 322
+  duration: 10380
+  start_zipcode: 37688
+  start_street: Bahnhofstraße 25
+  start_city: Beverungen
+  end_zipcode: 67547
+  end_street: Am Bergkloster 1
+  end_city: Worms
+trips_126:
+  id: 126
+  user_id: 90
+  car_id: 83
+  starts_at_N: 50.13540700000001
+  starts_at_E: 8.915129
+  ends_at_E: 10.238151
+  ends_at_N: 51.1360968
+  start_time: '2011-08-12 07:18:56.652537'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.737330'
+  updated_at: '2011-08-11 07:31:45.737330'
+  baggage: t
+  free_seats: 4
+  distance: 205
+  duration: 6944
+  start_zipcode: 63450
+  start_street: Im Bangert 6
+  start_city: Hanau
+  end_zipcode: 99830
+  end_street: Hessische Straße 28
+  end_city: Treffurt
+trips_127:
+  id: 127
+  user_id: 24
+  car_id: 96
+  starts_at_N: 54.032041
+  starts_at_E: 11.6728813
+  ends_at_E: 7.599973100000001
+  ends_at_N: 51.1263709
+  start_time: '2011-08-12 07:18:58.696234'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.750368'
+  updated_at: '2011-08-11 07:31:45.750368'
+  baggage: t
+  free_seats: 4
+  distance: 540
+  duration: 16595
+  start_zipcode: 18233
+  start_street: Kröpeliner Straße 4
+  start_city: Neubukow
+  end_zipcode: 58566
+  end_street: L528 192-194
+  end_city: Kierspe
+trips_128:
+  id: 128
+  user_id: 83
+  car_id: 30
+  starts_at_N: 53.0970226
+  starts_at_E: 12.8929437
+  ends_at_E: 8.353902
+  ends_at_N: 49.540807
+  start_time: '2011-08-12 07:19:00.588019'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.761743'
+  updated_at: '2011-08-11 07:31:45.761743'
+  baggage: t
+  free_seats: 4
+  distance: 692
+  duration: 21349
+  start_zipcode: 16831
+  start_street: Rhinstraße 5-6
+  start_city: Rheinsberg
+  end_zipcode: 67227
+  end_street: Wormser Straße 80
+  end_city: Frankenthal (Pfalz)
+trips_129:
+  id: 129
+  user_id: 15
+  car_id: 74
+  starts_at_N: 50.50979650000001
+  starts_at_E: 7.2984477
+  ends_at_E: 8.8971096
+  ends_at_N: 49.4466868
+  start_time: '2011-08-12 07:19:02.917266'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.773846'
+  updated_at: '2011-08-11 07:31:45.773846'
+  baggage: t
+  free_seats: 4
+  distance: 221
+  duration: 8267
+  start_zipcode: 53498
+  start_street: Biergasse 1
+  start_city: Bad Breisig
+  end_zipcode: 69434
+  end_street: Hauptstraße 19
+  end_city: Hirschhorn (Neckar)
+trips_130:
+  id: 130
+  user_id: 34
+  car_id: 65
+  starts_at_N: 48.3658398
+  starts_at_E: 12.2535789
+  ends_at_E: 12.645452
+  ends_at_N: 47.86995
+  start_time: '2011-08-12 07:19:04.835862'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.784807'
+  updated_at: '2011-08-11 07:31:45.784807'
+  baggage: t
+  free_seats: 4
+  distance: 75
+  duration: 4802
+  start_zipcode: 84149
+  start_street: Marktplatz 27
+  start_city: Velden
+  end_zipcode: 83278
+  end_street: Ludwigstraße 3
+  end_city: Traunstein
+trips_131:
+  id: 131
+  user_id: 100
+  car_id: 44
+  starts_at_N: 48.392242
+  starts_at_E: 10.835455
+  ends_at_E: 14.2617982
+  ends_at_N: 52.104775
+  start_time: '2011-08-12 07:19:06.602009'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.796925'
+  updated_at: '2011-08-11 07:31:45.796925'
+  baggage: t
+  free_seats: 4
+  distance: 592
+  duration: 20331
+  start_zipcode: 86356
+  start_street: Hauptstraße 18
+  start_city: Neusäß
+  end_zipcode: 15848
+  end_street: Karl-Marx-Straße 20
+  end_city: Friedland
+trips_132:
+  id: 132
+  user_id: 64
+  car_id: 68
+  starts_at_N: 51.9661449
+  starts_at_E: 8.2143576
+  ends_at_E: 8.7244461
+  ends_at_N: 48.5502286
+  start_time: '2011-08-12 07:19:09.812596'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.808452'
+  updated_at: '2011-08-11 07:31:45.808452'
+  baggage: t
+  free_seats: 4
+  distance: 529
+  duration: 17103
+  start_zipcode: 33428
+  start_street: Overbergstraße 2
+  start_city: Harsewinkel
+  end_zipcode: 72202
+  end_street: Vorstadtplatz 9
+  end_city: Nagold
+trips_133:
+  id: 133
+  user_id: 5
+  car_id: 106
+  starts_at_N: 48.304382
+  starts_at_E: 10.1606445
+  ends_at_E: 8.6886687
+  ends_at_N: 52.1901646
+  start_time: '2011-08-12 07:19:11.551899'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.819522'
+  updated_at: '2011-08-11 07:31:45.819522'
+  baggage: t
+  free_seats: 4
+  distance: 546
+  duration: 16258
+  start_zipcode: 89264
+  start_street: Hauptplatz 1
+  start_city: Weißenhorn
+  end_zipcode: 32584
+  end_street: Bünder Straße 169
+  end_city: Löhne
+trips_134:
+  id: 134
+  user_id: 39
+  car_id: 10
+  starts_at_N: 48.872316
+  starts_at_E: 10.722651
+  ends_at_E: 8.640674
+  ends_at_N: 50.248725
+  start_time: '2011-08-12 07:19:15.539244'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.830769'
+  updated_at: '2011-08-11 07:31:45.830769'
+  baggage: t
+  free_seats: 4
+  distance: 286
+  duration: 10336
+  start_zipcode: 86650
+  start_street: Riesgraben 21
+  start_city: Wemding
+  end_zipcode: 61381
+  end_street: Höhenstraße 8
+  end_city: Friedrichsdorf
+trips_135:
+  id: 135
+  user_id: 18
+  car_id: 30
+  starts_at_N: 52.9201589
+  starts_at_E: 11.1183552
+  ends_at_E: 11.4443771
+  ends_at_N: 49.1043523
+  start_time: '2011-08-12 07:19:17.441478'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.843139'
+  updated_at: '2011-08-11 07:31:45.843139'
+  baggage: t
+  free_seats: 4
+  distance: 519
+  duration: 17865
+  start_zipcode: 29462
+  start_street: Rudolphstraße 17
+  start_city: Wustrow
+  end_zipcode: 92334
+  end_street: Maria-Hilf-Straße 1
+  end_city: Berching
+trips_136:
+  id: 136
+  user_id: 84
+  car_id: 101
+  starts_at_N: 52.2078448
+  starts_at_E: 8.8040292
+  ends_at_E: 8.658033999999999
+  ends_at_N: 49.590592
+  start_time: '2011-08-12 07:19:25.571870'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.855395'
+  updated_at: '2011-08-11 07:31:45.855395'
+  baggage: t
+  free_seats: 4
+  distance: 403
+  duration: 11740
+  start_zipcode: 32545
+  start_street: Mindener Straße 21
+  start_city: Bad Oeynhausen
+  end_zipcode: 69502
+  end_street: B3 46
+  end_city: Hemsbach
+trips_137:
+  id: 137
+  user_id: 58
+  car_id: 33
+  starts_at_N: 51.44059
+  starts_at_E: 7.570298
+  ends_at_E: 8.7598658
+  ends_at_N: 48.210204
+  start_time: '2011-08-12 07:19:27.570513'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.867644'
+  updated_at: '2011-08-11 07:31:45.867644'
+  baggage: t
+  free_seats: 4
+  distance: 484
+  duration: 15207
+  start_zipcode: 58239
+  start_street: Brückstraße 11
+  start_city: Schwerte
+  end_zipcode: 72355
+  end_street: Schweizer Straße 12
+  end_city: Schömberg
+trips_138:
+  id: 138
+  user_id: 15
+  car_id: 41
+  starts_at_N: 49.9293544
+  starts_at_E: 10.8759193
+  ends_at_E: 6.2347701
+  ends_at_N: 51.84619379999999
+  start_time: '2011-08-12 07:19:29.455892'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.879869'
+  updated_at: '2011-08-11 07:31:45.879869'
+  baggage: t
+  free_seats: 4
+  distance: 513
+  duration: 14678
+  start_zipcode: 96103
+  start_street: B4 17-21
+  start_city: Hallstadt
+  end_zipcode: 46446
+  end_street: Klever Straße 5
+  end_city: Emmerich am Rhein
+trips_139:
+  id: 139
+  user_id: 59
+  car_id: 87
+  starts_at_N: 48.969815
+  starts_at_E: 8.307293
+  ends_at_E: 12.8864374
+  ends_at_N: 49.0799393
+  start_time: '2011-08-12 07:19:32.465615'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.892498'
+  updated_at: '2011-08-11 07:31:45.892498'
+  baggage: t
+  free_seats: 4
+  distance: 406
+  duration: 13807
+  start_zipcode: 76287
+  start_street: Mörscher Straße 7-9
+  start_city: Rheinstetten
+  end_zipcode: 94234
+  end_street: Mönchshofstraße 2
+  end_city: Viechtach
+trips_140:
+  id: 140
+  user_id: 35
+  car_id: 44
+  starts_at_N: 50.8901565
+  starts_at_E: 10.3688645
+  ends_at_E: 10.0900918
+  ends_at_N: 52.9854046
+  start_time: '2011-08-12 07:19:34.539395'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.903684'
+  updated_at: '2011-08-11 07:31:45.903684'
+  baggage: t
+  free_seats: 4
+  distance: 315
+  duration: 11855
+  start_zipcode: 99842
+  start_street: L2119 18-36
+  start_city: Ruhla
+  end_zipcode: 29633
+  end_street: Lüneburger Straße 1
+  end_city: Munster
+trips_141:
+  id: 141
+  user_id: 76
+  car_id: 92
+  starts_at_N: 53.731874
+  starts_at_E: 9.904259999999999
+  ends_at_E: 8.268307
+  ends_at_N: 49.051769
+  start_time: '2011-08-12 07:19:38.756492'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.914572'
+  updated_at: '2011-08-11 07:31:45.914572'
+  baggage: t
+  free_seats: 4
+  distance: 659
+  duration: 19923
+  start_zipcode: 25451
+  start_street: Bahnhofstraße 98
+  start_city: Quickborn
+  end_zipcode: 76744
+  end_street: Ludwigstraße 5
+  end_city: Wörth am Rhein
+trips_142:
+  id: 142
+  user_id: 40
+  car_id: 111
+  starts_at_N: 48.00483819999999
+  starts_at_E: 9.6597209
+  ends_at_E: 12.878293
+  ends_at_N: 47.72779
+  start_time: '2011-08-12 07:19:41.242985'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.925589'
+  updated_at: '2011-08-11 07:31:45.925589'
+  baggage: t
+  free_seats: 4
+  distance: 294
+  duration: 10627
+  start_zipcode: 88427
+  start_street: Biberacher Straße 14
+  start_city: Bad Schussenried
+  end_zipcode: 83435
+  end_street: Wittelsbacherstraße 11
+  end_city: Bad Reichenhall
+trips_143:
+  id: 143
+  user_id: 70
+  car_id: 103
+  starts_at_N: 50.859804
+  starts_at_E: 11.3428913
+  ends_at_E: 8.9
+  ends_at_N: 50.25000000000001
+  start_time: '2011-08-12 07:19:45.046350'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.938326'
+  updated_at: '2011-08-11 07:31:45.938326'
+  baggage: t
+  free_seats: 4
+  distance: 269
+  duration: 8811
+  start_zipcode: 99444
+  start_street: Friedrichstraße 1
+  start_city: Blankenhain
+  end_zipcode: 61130
+  end_street: Außenliegend Ei 1001
+  end_city: Nidderau
+trips_144:
+  id: 144
+  user_id: 20
+  car_id: 116
+  starts_at_N: 48.15419439999999
+  starts_at_E: 9.476016699999999
+  ends_at_E: 13.6095113
+  ends_at_N: 52.1365389
+  start_time: '2011-08-12 07:19:46.895617'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.949762'
+  updated_at: '2011-08-11 07:31:45.949762'
+  baggage: t
+  free_seats: 4
+  distance: 685
+  duration: 21455
+  start_zipcode: 88499
+  start_street: Marktplatz 1
+  start_city: Riedlingen
+  end_zipcode: 15755
+  end_street: Kirchstraße 1
+  end_city: Teupitz
+trips_145:
+  id: 145
+  user_id: 27
+  car_id: 5
+  starts_at_N: 51.94091299999999
+  starts_at_E: 11.42503
+  ends_at_E: 8.0686871
+  ends_at_N: 51.3952673
+  start_time: '2011-08-12 07:19:49.453577'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.961409'
+  updated_at: '2011-08-11 07:31:45.961409'
+  baggage: t
+  free_seats: 4
+  distance: 372
+  duration: 11658
+  start_zipcode: 39435
+  start_street: Tarthuner Straße 1
+  start_city: Egeln
+  end_zipcode: 59821
+  end_street: Hellefelder Straße 11
+  end_city: Arnsberg
+trips_146:
+  id: 146
+  user_id: 37
+  car_id: 92
+  starts_at_N: 53.3787382
+  starts_at_E: 11.5927444
+  ends_at_E: 12.8825252
+  ends_at_N: 54.184356
+  start_time: '2011-08-12 07:19:51.127103'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.973413'
+  updated_at: '2011-08-11 07:31:45.973413'
+  baggage: t
+  free_seats: 4
+  distance: 174
+  duration: 5542
+  start_zipcode: 19306
+  start_street: Parchimer Straße 1
+  start_city: Neustadt-Glewe
+  end_zipcode: 18461
+  end_street: Abtshäger Straße 16
+  end_city: Franzburg
+trips_147:
+  id: 147
+  user_id: 84
+  car_id: 101
+  starts_at_N: 49.13226119999999
+  starts_at_E: 11.1266359
+  ends_at_E: 13.29949
+  ends_at_N: 51.058067
+  start_time: '2011-08-12 07:19:52.496699'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.985580'
+  updated_at: '2011-08-11 07:31:45.985580'
+  baggage: t
+  free_seats: 4
+  distance: 307
+  duration: 9889
+  start_zipcode: 91180
+  start_street: Hauptstraße 30
+  start_city: Heideck
+  end_zipcode: 1683
+  end_street: Waldheimer Straße 1
+  end_city: Nossen
+trips_148:
+  id: 148
+  user_id: 3
+  car_id: 58
+  starts_at_N: 50.8949157
+  starts_at_E: 7.179573899999999
+  ends_at_E: 10.2371634
+  ends_at_N: 51.8102977
+  start_time: '2011-08-12 07:19:56.394908'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:45.997309'
+  updated_at: '2011-08-11 07:31:45.997309'
+  baggage: t
+  free_seats: 4
+  distance: 359
+  duration: 10864
+  start_zipcode: 51503
+  start_street: Hauptstraße 14a
+  start_city: Rösrath
+  end_zipcode: 37539
+  end_street: Markt 14
+  end_city: Bad Grund
+trips_149:
+  id: 149
+  user_id: 77
+  car_id: 58
+  starts_at_N: 49.2946422
+  starts_at_E: 8.697740399999999
+  ends_at_E: 11.6673805
+  ends_at_N: 51.4392455
+  start_time: '2011-08-12 07:19:58.687113'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.009267'
+  updated_at: '2011-08-11 07:31:46.009267'
+  baggage: t
+  free_seats: 4
+  distance: 458
+  duration: 13865
+  start_zipcode: 69168
+  start_street: Hauptstraße 93-95
+  start_city: Wiesloch
+  end_zipcode: 6279
+  end_street: K2268 31
+  end_city: Schraplau
+trips_150:
+  id: 150
+  user_id: 37
+  car_id: 56
+  starts_at_N: 48.4701725
+  starts_at_E: 8.5018797
+  ends_at_E: 8.989160799999999
+  ends_at_N: 51.89544189999999
+  start_time: '2011-08-12 07:20:03.073156'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.020759'
+  updated_at: '2011-08-11 07:31:46.020759'
+  baggage: t
+  free_seats: 4
+  distance: 522
+  duration: 17195
+  start_zipcode: 72280
+  start_street: Heselwiesenstraße 15
+  start_city: Dornstetten
+  end_zipcode: 32805
+  end_street: Hamelner Straße 29
+  end_city: Horn
+trips_151:
+  id: 151
+  user_id: 71
+  car_id: 116
+  starts_at_N: 52.1408703
+  starts_at_E: 11.9512386
+  ends_at_E: 7.553827
+  ends_at_N: 50.15576799999999
+  start_time: '2011-08-12 07:20:05.741065'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.032900'
+  updated_at: '2011-08-11 07:31:46.032900'
+  baggage: t
+  free_seats: 4
+  distance: 548
+  duration: 16614
+  start_zipcode: 39291
+  start_street: Magdeburger Straße 1
+  start_city: Möckern
+  end_zipcode: 56281
+  end_street: Rhein-Mosel-Straße 59
+  end_city: Emmelshausen
+trips_152:
+  id: 152
+  user_id: 69
+  car_id: 82
+  starts_at_N: 51.6929188
+  starts_at_E: 12.736452
+  ends_at_E: 10.5701425
+  ends_at_N: 50.0820045
+  start_time: '2011-08-12 07:20:07.608049'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.044626'
+  updated_at: '2011-08-11 07:31:46.044626'
+  baggage: t
+  free_seats: 4
+  distance: 325
+  duration: 11713
+  start_zipcode: 6905
+  start_street: ! 'Steinweg '
+  start_city: Bad Schmiedeberg
+  end_zipcode: 97486
+  end_street: Marktplatz 2
+  end_city: Königsberg in Bayern
+trips_153:
+  id: 153
+  user_id: 33
+  car_id: 90
+  starts_at_N: 51.2973142
+  starts_at_E: 7.366731700000001
+  ends_at_E: 8.6045815
+  ends_at_N: 48.5849829
+  start_time: '2011-08-12 07:20:09.499924'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.056409'
+  updated_at: '2011-08-11 07:31:46.056409'
+  baggage: t
+  free_seats: 4
+  distance: 422
+  duration: 14658
+  start_zipcode: 58256
+  start_street: Mittelstraße 37-39
+  start_city: Ennepetal
+  end_zipcode: 72213
+  end_street: Rosenstraße 2
+  end_city: Altensteig
+trips_154:
+  id: 154
+  user_id: 11
+  car_id: 16
+  starts_at_N: 49.5442353
+  starts_at_E: 11.9439557
+  ends_at_E: 10.963845
+  ends_at_N: 51.791663
+  start_time: '2011-08-12 07:20:11.248019'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.068174'
+  updated_at: '2011-08-11 07:31:46.068174'
+  baggage: t
+  free_seats: 4
+  distance: 388
+  duration: 12348
+  start_zipcode: 92242
+  start_street: Hauptstraße 85
+  start_city: Hirschau
+  end_zipcode: 38889
+  end_street: Westerhäuser Straße 13-15
+  end_city: Blankenburg (Harz)
+trips_155:
+  id: 155
+  user_id: 43
+  car_id: 52
+  starts_at_N: 52.52306
+  starts_at_E: 7.323278999999999
+  ends_at_E: 9.435706999999999
+  ends_at_N: 54.780395
+  start_time: '2011-08-12 07:20:13.389077'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.080032'
+  updated_at: '2011-08-11 07:31:46.080032'
+  baggage: t
+  free_seats: 4
+  distance: 392
+  duration: 12995
+  start_zipcode: 49808
+  start_street: Georgstraße 1
+  start_city: Lingen (Ems)
+  end_zipcode: 24937
+  end_street: Friedrich-Ebert-Straße 1
+  end_city: Flensburg
+trips_156:
+  id: 156
+  user_id: 41
+  car_id: 37
+  starts_at_N: 48.8933834
+  starts_at_E: 8.7049203
+  ends_at_E: 10.6180811
+  ends_at_N: 47.7774947
+  start_time: '2011-08-12 07:20:17.244548'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.091014'
+  updated_at: '2011-08-11 07:31:46.091014'
+  baggage: t
+  free_seats: 4
+  distance: 236
+  duration: 7837
+  start_zipcode: 75175
+  start_street: ! 'B294 '
+  start_city: Pforzheim
+  end_zipcode: 87616
+  end_street: Meichelbeckstraße 12
+  end_city: Marktoberdorf
+trips_157:
+  id: 157
+  user_id: 3
+  car_id: 35
+  starts_at_N: 48.0464618
+  starts_at_E: 11.9703347
+  ends_at_E: 10.212224
+  ends_at_N: 53.547287
+  start_time: '2011-08-12 07:20:18.887036'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.102305'
+  updated_at: '2011-08-11 07:31:46.102305'
+  baggage: t
+  free_seats: 4
+  distance: 807
+  duration: 24517
+  start_zipcode: 85567
+  start_street: Rotter Straße 11
+  start_city: Grafing bei München
+  end_zipcode: 21509
+  end_street: Mühlenstraße 39
+  end_city: Glinde
+trips_158:
+  id: 158
+  user_id: 53
+  car_id: 114
+  starts_at_N: 53.824634
+  starts_at_E: 10.493423
+  ends_at_E: 14.4178909
+  ends_at_N: 52.2458655
+  start_time: '2011-08-12 07:20:21.008502'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.113595'
+  updated_at: '2011-08-11 07:31:46.113595'
+  baggage: t
+  free_seats: 4
+  distance: 386
+  duration: 12200
+  start_zipcode: 23858
+  start_street: Hamburger Chaussee 24
+  start_city: Reinfeld (Holstein)
+  end_zipcode: 15299
+  end_street: L37 2-3
+  end_city: Müllrose
+trips_159:
+  id: 159
+  user_id: 80
+  car_id: 98
+  starts_at_N: 51.256029
+  starts_at_E: 12.143031
+  ends_at_E: 8.4540007
+  ends_at_N: 49.23674339999999
+  start_time: '2011-08-12 07:20:25.483705'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.125620'
+  updated_at: '2011-08-11 07:31:46.125620'
+  baggage: t
+  free_seats: 4
+  distance: 463
+  duration: 14217
+  start_zipcode: 6686
+  start_street: Doktor-Voigt-Straße 1
+  start_city: Lützen
+  end_zipcode: 76661
+  end_street: L555 12-16
+  end_city: Philippsburg
+trips_160:
+  id: 160
+  user_id: 42
+  car_id: 1
+  starts_at_N: 48.786463
+  starts_at_E: 10.689234
+  ends_at_E: 12.0183778
+  ends_at_N: 52.503001
+  start_time: '2011-08-12 07:20:27.693131'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.137076'
+  updated_at: '2011-08-11 07:31:46.137076'
+  baggage: t
+  free_seats: 4
+  distance: 511
+  duration: 18143
+  start_zipcode: 86655
+  start_street: Donauwörther Straße 5
+  start_city: Harburg
+  end_zipcode: 39319
+  end_street: Lindenstraße 16
+  end_city: Jerichow
+trips_161:
+  id: 161
+  user_id: 27
+  car_id: 51
+  starts_at_N: 50.30901069999999
+  starts_at_E: 7.604078200000001
+  ends_at_E: 12.161187
+  ends_at_N: 51.524388
+  start_time: '2011-08-12 07:20:29.797887'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.148877'
+  updated_at: '2011-08-11 07:31:46.148877'
+  baggage: t
+  free_seats: 4
+  distance: 449
+  duration: 14849
+  start_zipcode: 56112
+  start_street: Lahnstraße 2
+  start_city: Lahnstein
+  end_zipcode: 6188
+  end_street: Leipziger Straße 55
+  end_city: Landsberg
+trips_162:
+  id: 162
+  user_id: 85
+  car_id: 117
+  starts_at_N: 51.143335
+  starts_at_E: 9.87668
+  ends_at_E: 11.2832683
+  ends_at_N: 50.8999648
+  start_time: '2011-08-12 07:20:31.965769'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.160338'
+  updated_at: '2011-08-11 07:31:46.160338'
+  baggage: t
+  free_seats: 4
+  distance: 127
+  duration: 5045
+  start_zipcode: 37284
+  start_street: L3226 53-67
+  start_city: Waldkappel
+  end_zipcode: 99438
+  end_street: Marktplatz 6
+  end_city: Bad Berka
+trips_163:
+  id: 163
+  user_id: 58
+  car_id: 37
+  starts_at_N: 52.30001
+  starts_at_E: 8.618363
+  ends_at_E: 12.243614
+  ends_at_N: 49.950909
+  start_time: '2011-08-12 07:20:33.526582'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.173060'
+  updated_at: '2011-08-11 07:31:46.173060'
+  baggage: t
+  free_seats: 4
+  distance: 521
+  duration: 16851
+  start_zipcode: 32312
+  start_street: Berliner Straße 82
+  start_city: Lübbecke
+  end_zipcode: 95666
+  end_street: B15 1-6
+  end_city: Mitterteich
+trips_164:
+  id: 164
+  user_id: 34
+  car_id: 64
+  starts_at_N: 50.4063166
+  starts_at_E: 8.155685199999999
+  ends_at_E: 13.0389967
+  ends_at_N: 54.1105945
+  start_time: '2011-08-12 07:20:35.821702'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.184852'
+  updated_at: '2011-08-11 07:31:46.184852'
+  baggage: t
+  free_seats: 4
+  distance: 729
+  duration: 22316
+  start_zipcode: 65594
+  start_street: Burgstraße 26
+  start_city: Runkel
+  end_zipcode: 18507
+  end_street: Friedrichstraße 23
+  end_city: Grimmen
+trips_165:
+  id: 165
+  user_id: 18
+  car_id: 33
+  starts_at_N: 49.994874
+  starts_at_E: 8.410858
+  ends_at_E: 7.6047455
+  ends_at_N: 49.2037161
+  start_time: '2011-08-12 07:20:39.359935'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.196318'
+  updated_at: '2011-08-11 07:31:46.196318'
+  baggage: t
+  free_seats: 4
+  distance: 139
+  duration: 5000
+  start_zipcode: 65428
+  start_street: Mainzer Straße 7
+  start_city: Rüsselsheim
+  end_zipcode: 66953
+  end_street: Schloßstraße 23
+  end_city: Pirmasens
+trips_166:
+  id: 166
+  user_id: 97
+  car_id: 26
+  starts_at_N: 49.97585669999999
+  starts_at_E: 8.065548099999999
+  ends_at_E: 10.689234
+  ends_at_N: 48.786463
+  start_time: '2011-08-12 07:20:40.890222'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.208030'
+  updated_at: '2011-08-11 07:31:46.208030'
+  baggage: t
+  free_seats: 4
+  distance: 326
+  duration: 11011
+  start_zipcode: 55218
+  start_street: Mainzer Straße 18
+  start_city: Ingelheim am Rhein
+  end_zipcode: 86655
+  end_street: Donauwörther Straße 5
+  end_city: Harburg
+trips_167:
+  id: 167
+  user_id: 79
+  car_id: 41
+  starts_at_N: 49.13436220000001
+  starts_at_E: 10.071983
+  ends_at_E: 13.7540833
+  ends_at_N: 52.42005349999999
+  start_time: '2011-08-12 07:20:43.500212'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.220035'
+  updated_at: '2011-08-11 07:31:46.220035'
+  baggage: t
+  free_seats: 4
+  distance: 550
+  duration: 16286
+  start_zipcode: 74564
+  start_street: Spitalstraße 2a
+  start_city: Crailsheim
+  end_zipcode: 15537
+  end_street: Friedrichstraße 24-25
+  end_city: Erkner
+trips_168:
+  id: 168
+  user_id: 48
+  car_id: 19
+  starts_at_N: 50.1516376
+  starts_at_E: 11.9504232
+  ends_at_E: 8.254752400000001
+  ends_at_N: 48.8285722
+  start_time: '2011-08-12 07:20:46.004030'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.231802'
+  updated_at: '2011-08-11 07:31:46.231802'
+  baggage: t
+  free_seats: 4
+  distance: 392
+  duration: 12386
+  start_zipcode: 95158
+  start_street: Hofer Straße 2
+  start_city: Kirchenlamitz
+  end_zipcode: 76456
+  end_street: Friedrichstraße 57-59
+  end_city: Kuppenheim
+trips_169:
+  id: 169
+  user_id: 63
+  car_id: 22
+  starts_at_N: 48.2357901
+  starts_at_E: 9.643898799999999
+  ends_at_E: 8.336302
+  ends_at_N: 48.762549
+  start_time: '2011-08-12 07:20:47.809814'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.243548'
+  updated_at: '2011-08-11 07:31:46.243548'
+  baggage: t
+  free_seats: 4
+  distance: 205
+  duration: 8079
+  start_zipcode: 89597
+  start_street: Martinstraße 11
+  start_city: Munderkingen
+  end_zipcode: 76593
+  end_street: Schloßstraße 3-5
+  end_city: Gernsbach
+trips_170:
+  id: 170
+  user_id: 62
+  car_id: 55
+  starts_at_N: 49.894218
+  starts_at_E: 10.885527
+  ends_at_E: 9.2189897
+  ends_at_N: 49.6432607
+  start_time: '2011-08-12 07:20:51.296652'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.255323'
+  updated_at: '2011-08-11 07:31:46.255323'
+  baggage: t
+  free_seats: 4
+  distance: 174
+  duration: 6803
+  start_zipcode: 96047
+  start_street: Kapuzinerstraße 22
+  start_city: Bamberg
+  end_zipcode: 63916
+  end_street: Schloßplatz 52
+  end_city: Amorbach
+trips_171:
+  id: 171
+  user_id: 23
+  car_id: 39
+  starts_at_N: 52.1163929
+  starts_at_E: 8.6692547
+  ends_at_E: 11.42503
+  ends_at_N: 51.94091299999999
+  start_time: '2011-08-12 07:20:53.833358'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.267047'
+  updated_at: '2011-08-11 07:31:46.267047'
+  baggage: t
+  free_seats: 4
+  distance: 252
+  duration: 8122
+  start_zipcode: 32052
+  start_street: ! 'Abteistraße '
+  start_city: Herford
+  end_zipcode: 39435
+  end_street: Tarthuner Straße 1
+  end_city: Egeln
+trips_172:
+  id: 172
+  user_id: 57
+  car_id: 97
+  starts_at_N: 53.8078318
+  starts_at_E: 8.8987029
+  ends_at_E: 11.5414297
+  ends_at_N: 50.7753592
+  start_time: '2011-08-12 07:20:55.375510'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.278279'
+  updated_at: '2011-08-11 07:31:46.278279'
+  baggage: t
+  free_seats: 4
+  distance: 551
+  duration: 16698
+  start_zipcode: 21762
+  start_street: Johann-Heinrich-Voß-Straße 1
+  start_city: Otterndorf
+  end_zipcode: 7768
+  end_street: Bahnhofstraße 79
+  end_city: Orlamünde
+trips_173:
+  id: 173
+  user_id: 34
+  car_id: 22
+  starts_at_N: 51.5819576
+  starts_at_E: 6.2476604
+  ends_at_E: 7.140439
+  ends_at_N: 51.593151
+  start_time: '2011-08-12 07:20:59.632099'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.289266'
+  updated_at: '2011-08-11 07:31:46.289266'
+  baggage: t
+  free_seats: 4
+  distance: 81
+  duration: 3390
+  start_zipcode: 47623
+  start_street: Hauptstraße 62
+  start_city: Kevelaer
+  end_zipcode: 45699
+  end_street: Am Wittkamp 3
+  end_city: Herten
+trips_174:
+  id: 174
+  user_id: 15
+  car_id: 53
+  starts_at_N: 50.5294456
+  starts_at_E: 6.476853300000001
+  ends_at_E: 11.866368
+  ends_at_N: 52.604071
+  start_time: '2011-08-12 07:21:01.008108'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.300506'
+  updated_at: '2011-08-11 07:31:46.300506'
+  baggage: t
+  free_seats: 4
+  distance: 547
+  duration: 17739
+  start_zipcode: 53937
+  start_street: ! 'B265 '
+  start_city: Schleiden
+  end_zipcode: 39576
+  end_street: Rathenower Straße 1
+  end_city: Stendal
+trips_175:
+  id: 175
+  user_id: 86
+  car_id: 67
+  starts_at_N: 50.8178115
+  starts_at_E: 12.3883182
+  ends_at_E: 8.6439483
+  ends_at_N: 51.01426799999999
+  start_time: '2011-08-12 07:21:02.933837'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.312516'
+  updated_at: '2011-08-11 07:31:46.312516'
+  baggage: t
+  free_seats: 4
+  distance: 317
+  duration: 12033
+  start_zipcode: 8451
+  start_street: Mühlgasse 2
+  start_city: Crimmitschau
+  end_zipcode: 35088
+  end_street: Marburger Straße 20
+  end_city: Battenberg (Eder)
+trips_176:
+  id: 176
+  user_id: 76
+  car_id: 44
+  starts_at_N: 51.9433306
+  starts_at_E: 9.096852
+  ends_at_E: 11.568403
+  ends_at_N: 48.277297
+  start_time: '2011-08-12 07:21:06.123899'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.324241'
+  updated_at: '2011-08-11 07:31:46.324241'
+  baggage: t
+  free_seats: 4
+  distance: 553
+  duration: 17096
+  start_zipcode: 32825
+  start_street: Ostring 32
+  start_city: Blomberg
+  end_zipcode: 85716
+  end_street: Hauptstraße 27-29
+  end_city: Unterschleißheim
+trips_177:
+  id: 177
+  user_id: 54
+  car_id: 58
+  starts_at_N: 49.657748
+  starts_at_E: 11.03221
+  ends_at_E: 12.1729877
+  ends_at_N: 53.7967533
+  start_time: '2011-08-12 07:21:12.683930'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.335959'
+  updated_at: '2011-08-11 07:31:46.335959'
+  baggage: t
+  free_seats: 4
+  distance: 593
+  duration: 17832
+  start_zipcode: 91083
+  start_street: Judengasse 21
+  start_city: Baiersdorf
+  end_zipcode: 18273
+  end_street: Neue Wallstraße 1
+  end_city: Güstrow
+trips_178:
+  id: 178
+  user_id: 55
+  car_id: 41
+  starts_at_N: 48.0890372
+  starts_at_E: 7.629753900000001
+  ends_at_E: 9.035
+  ends_at_N: 49.8172222
+  start_time: '2011-08-12 07:21:16.640777'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.347681'
+  updated_at: '2011-08-11 07:31:46.347681'
+  baggage: t
+  free_seats: 4
+  distance: 264
+  duration: 9701
+  start_zipcode: 79235
+  start_street: Bruckmühlenstraße 1
+  start_city: Vogtsburg im Kaiserstuhl
+  end_zipcode: 64747
+  end_street: Marktplatz 7
+  end_city: Breuberg
+trips_179:
+  id: 179
+  user_id: 19
+  car_id: 31
+  starts_at_N: 50.1516376
+  starts_at_E: 11.9504232
+  ends_at_E: 6.7729273
+  ends_at_N: 51.2225129
+  start_time: '2011-08-12 07:21:18.312489'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.359909'
+  updated_at: '2011-08-11 07:31:46.359909'
+  baggage: t
+  free_seats: 4
+  distance: 526
+  duration: 16651
+  start_zipcode: 95158
+  start_street: Hofer Straße 2
+  start_city: Kirchenlamitz
+  end_zipcode: 40213
+  end_street: Bilker Straße 12
+  end_city: Düsseldorf
+trips_180:
+  id: 180
+  user_id: 41
+  car_id: 71
+  starts_at_N: 51.522229
+  starts_at_E: 6.924209
+  ends_at_E: 9.142094499999999
+  ends_at_N: 49.0022931
+  start_time: '2011-08-12 07:21:20.683634'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.371396'
+  updated_at: '2011-08-11 07:31:46.371396'
+  baggage: t
+  free_seats: 4
+  distance: 414
+  duration: 12651
+  start_zipcode: 46236
+  start_street: L511 9
+  start_city: Bottrop
+  end_zipcode: 74354
+  end_street: Hauptstraße 79
+  end_city: Besigheim
+trips_181:
+  id: 181
+  user_id: 72
+  car_id: 37
+  starts_at_N: 49.286857
+  starts_at_E: 10.260142
+  ends_at_E: 6.605313
+  ends_at_N: 51.5432997
+  start_time: '2011-08-12 07:21:22.957442'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.382819'
+  updated_at: '2011-08-11 07:31:46.382819'
+  baggage: t
+  free_seats: 4
+  distance: 463
+  duration: 13832
+  start_zipcode: 91583
+  start_street: Kirchenweg 2
+  start_city: Schillingsfürst
+  end_zipcode: 47495
+  end_street: Orsoyer Straße 3
+  end_city: Rheinberg
+trips_182:
+  id: 182
+  user_id: 67
+  car_id: 95
+  starts_at_N: 51.14304200000001
+  starts_at_E: 6.278775
+  ends_at_E: 13.1229488
+  ends_at_N: 51.1210627
+  start_time: '2011-08-12 07:21:25.188813'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.394778'
+  updated_at: '2011-08-11 07:31:46.394778'
+  baggage: t
+  free_seats: 4
+  distance: 585
+  duration: 17955
+  start_zipcode: 41844
+  start_street: Bahnhofstraße 32
+  start_city: Wegberg
+  end_zipcode: 4720
+  end_street: Zwingerstraße 32
+  end_city: Döbeln
+trips_183:
+  id: 183
+  user_id: 6
+  car_id: 48
+  starts_at_N: 51.159444
+  starts_at_E: 11.1187219
+  ends_at_E: 6.888122
+  ends_at_N: 49.2853902
+  start_time: '2011-08-12 07:21:27.817878'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.455165'
+  updated_at: '2011-08-11 07:31:46.455165'
+  baggage: t
+  free_seats: 4
+  distance: 468
+  duration: 14533
+  start_zipcode: 99610
+  start_street: Stadtring 17a
+  start_city: Sömmerda
+  end_zipcode: 66346
+  end_street: Bengeser Straße 9
+  end_city: Püttlingen
+trips_184:
+  id: 184
+  user_id: 50
+  car_id: 98
+  starts_at_N: 50.551421
+  starts_at_E: 8.359404
+  ends_at_E: 7.8006944
+  ends_at_N: 50.47270930000001
+  start_time: '2011-08-12 07:21:30.531451'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.466777'
+  updated_at: '2011-08-11 07:31:46.466777'
+  baggage: t
+  free_seats: 4
+  distance: 55
+  duration: 2428
+  start_zipcode: 35638
+  start_street: Ahornstraße 2
+  start_city: Leun
+  end_zipcode: 56422
+  end_street: Doktor-Luschberger-Straße 9-11
+  end_city: Wirges
+trips_185:
+  id: 185
+  user_id: 61
+  car_id: 6
+  starts_at_N: 47.569649
+  starts_at_E: 10.700407
+  ends_at_E: 8.826075099999999
+  ends_at_N: 49.8001376
+  start_time: '2011-08-12 07:21:32.218387'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.478868'
+  updated_at: '2011-08-11 07:31:46.478868'
+  baggage: t
+  free_seats: 4
+  distance: 393
+  duration: 12389
+  start_zipcode: 87629
+  start_street: B16 1
+  start_city: Füssen
+  end_zipcode: 64401
+  end_street: Marktstraße 20
+  end_city: Groß-Bieberau
+trips_186:
+  id: 186
+  user_id: 63
+  car_id: 107
+  starts_at_N: 51.126151
+  starts_at_E: 7.903004
+  ends_at_E: 9.948981
+  ends_at_N: 50.713335
+  start_time: '2011-08-12 07:21:33.996902'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.490878'
+  updated_at: '2011-08-11 07:31:46.490878'
+  baggage: t
+  free_seats: 4
+  distance: 230
+  duration: 8479
+  start_zipcode: 57439
+  start_street: Kölner Straße 1
+  start_city: Attendorn
+  end_zipcode: 36419
+  end_street: Athanasius-Kircher-Straße 1
+  end_city: Geisa
+trips_187:
+  id: 187
+  user_id: 47
+  car_id: 8
+  starts_at_N: 51.180968
+  starts_at_E: 14.428116
+  ends_at_E: 6.486958
+  ends_at_N: 50.7998461
+  start_time: '2011-08-12 07:21:36.086284'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.502641'
+  updated_at: '2011-08-11 07:31:46.502641'
+  baggage: t
+  free_seats: 4
+  distance: 692
+  duration: 20363
+  start_zipcode: 2625
+  start_street: Kornmarkt 15
+  start_city: Bautzen
+  end_zipcode: 52351
+  end_street: L249 1-5
+  end_city: Düren
+trips_188:
+  id: 188
+  user_id: 40
+  car_id: 4
+  starts_at_N: 50.317894
+  starts_at_E: 12.261709
+  ends_at_E: 12.4185555
+  ends_at_N: 49.4585825
+  start_time: '2011-08-12 07:21:39.233736'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.514058'
+  updated_at: '2011-08-11 07:31:46.514058'
+  baggage: t
+  free_seats: 4
+  distance: 143
+  duration: 5958
+  start_zipcode: 8626
+  start_street: Sommerleithen 1
+  start_city: Adorf/Vogtl.
+  end_zipcode: 92526
+  end_street: Haus der Bäuerin 3
+  end_city: Oberviechtach
+trips_189:
+  id: 189
+  user_id: 49
+  car_id: 97
+  starts_at_N: 51.6438315
+  starts_at_E: 11.148609
+  ends_at_E: 10.761353
+  ends_at_N: 53.699442
+  start_time: '2011-08-12 07:21:40.927500'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.524781'
+  updated_at: '2011-08-11 07:31:46.524781'
+  baggage: t
+  free_seats: 4
+  distance: 360
+  duration: 12813
+  start_zipcode: 6493
+  start_street: Feldstraße 6
+  start_city: Harzgerode
+  end_zipcode: 23909
+  end_street: Bahnhofsallee 4
+  end_city: Ratzeburg
+trips_190:
+  id: 190
+  user_id: 80
+  car_id: 73
+  starts_at_N: 48.27775219999999
+  starts_at_E: 10.0787158
+  ends_at_E: 10.480169
+  ends_at_N: 53.502121
+  start_time: '2011-08-12 07:21:44.944171'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.535736'
+  updated_at: '2011-08-11 07:31:46.535736'
+  baggage: t
+  free_seats: 4
+  distance: 733
+  duration: 21684
+  start_zipcode: 89269
+  start_street: Ulmer Straße 1
+  start_city: Vöhringen
+  end_zipcode: 21493
+  end_street: Markt 1
+  end_city: Schwarzenbek
+trips_191:
+  id: 191
+  user_id: 83
+  car_id: 50
+  starts_at_N: 49.7293801
+  starts_at_E: 7.7745034
+  ends_at_E: 6.514042000000001
+  ends_at_N: 51.190924
+  start_time: '2011-08-12 07:21:50.244095'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.548185'
+  updated_at: '2011-08-11 07:31:46.548185'
+  baggage: t
+  free_seats: 4
+  distance: 244
+  duration: 8487
+  start_zipcode: 67823
+  start_street: B420 11-13
+  start_city: Obermoschel
+  end_zipcode: 41352
+  end_street: Hochstraße 11-13
+  end_city: Korschenbroich
+trips_192:
+  id: 192
+  user_id: 37
+  car_id: 25
+  starts_at_N: 49.4018997
+  starts_at_E: 8.680285
+  ends_at_E: 8.8087742
+  ends_at_N: 49.43602620000001
+  start_time: '2011-08-12 07:21:57.045477'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.560160'
+  updated_at: '2011-08-11 07:31:46.560160'
+  baggage: t
+  free_seats: 4
+  distance: 21
+  duration: 1830
+  start_zipcode: 69115
+  start_street: Lessingstraße 36
+  start_city: Heidelberg
+  end_zipcode: 69250
+  end_street: Hauptstraße 61
+  end_city: Schönau
+trips_193:
+  id: 193
+  user_id: 19
+  car_id: 84
+  starts_at_N: 51.0970911
+  starts_at_E: 14.6656372
+  ends_at_E: 12.0842791
+  ends_at_N: 50.2014176
+  start_time: '2011-08-12 07:22:01.160744'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.571571'
+  updated_at: '2011-08-11 07:31:46.571571'
+  baggage: t
+  free_seats: 4
+  distance: 270
+  duration: 8695
+  start_zipcode: 2708
+  start_street: Promenadenring 8
+  start_city: Löbau
+  end_zipcode: 95173
+  end_street: Kirchplatz 42
+  end_city: Schönwald
+trips_194:
+  id: 194
+  user_id: 81
+  car_id: 65
+  starts_at_N: 48.53882300000001
+  starts_at_E: 12.151825
+  ends_at_E: 7.458896999999999
+  ends_at_N: 50.415199
+  start_time: '2011-08-12 07:22:03.030775'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.582993'
+  updated_at: '2011-08-11 07:31:46.582993'
+  baggage: t
+  free_seats: 4
+  distance: 498
+  duration: 15757
+  start_zipcode: 84028
+  start_street: Altstadt 96
+  start_city: Landshut
+  end_zipcode: 56575
+  end_street: Hauptstraße 130
+  end_city: Weißenthurm
+trips_195:
+  id: 195
+  user_id: 9
+  car_id: 63
+  starts_at_N: 52.1971629
+  starts_at_E: 12.7680106
+  ends_at_E: 14.6656372
+  ends_at_N: 51.0970911
+  start_time: '2011-08-12 07:22:05.003805'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.595190'
+  updated_at: '2011-08-11 07:31:46.595190'
+  baggage: t
+  free_seats: 4
+  distance: 287
+  duration: 9595
+  start_zipcode: 14822
+  start_street: B246 96-97
+  start_city: Brück
+  end_zipcode: 2708
+  end_street: Promenadenring 8
+  end_city: Löbau
+trips_196:
+  id: 196
+  user_id: 94
+  car_id: 74
+  starts_at_N: 51.3450762
+  starts_at_E: 8.283140399999999
+  ends_at_E: 8.6028486
+  ends_at_N: 49.678275
+  start_time: '2011-08-12 07:22:06.759810'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.607629'
+  updated_at: '2011-08-11 07:31:46.607629'
+  baggage: t
+  free_seats: 4
+  distance: 231
+  duration: 9759
+  start_zipcode: 59872
+  start_street: Steinstraße 9
+  start_city: Meschede
+  end_zipcode: 64625
+  end_street: Robert-Bosch-Straße 4
+  end_city: Bensheim
+trips_197:
+  id: 197
+  user_id: 7
+  car_id: 91
+  starts_at_N: 49.0238392
+  starts_at_E: 8.758072799999999
+  ends_at_E: 9.063995
+  ends_at_N: 48.799355
+  start_time: '2011-08-12 07:22:08.464999'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.618937'
+  updated_at: '2011-08-11 07:31:46.618937'
+  baggage: t
+  free_seats: 4
+  distance: 46
+  duration: 2784
+  start_zipcode: 75438
+  start_street: Marktstraße 6-8
+  start_city: Knittlingen
+  end_zipcode: 70839
+  end_street: Kirchstraße 5
+  end_city: Gerlingen
+trips_198:
+  id: 198
+  user_id: 22
+  car_id: 83
+  starts_at_N: 51.2826173
+  starts_at_E: 10.7326994
+  ends_at_E: 8.7244461
+  ends_at_N: 48.5502286
+  start_time: '2011-08-12 07:22:09.762371'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.630678'
+  updated_at: '2011-08-11 07:31:46.630678'
+  baggage: t
+  free_seats: 4
+  distance: 401
+  duration: 15327
+  start_zipcode: 99713
+  start_street: Goethestraße 1-2
+  start_city: Ebeleben
+  end_zipcode: 72202
+  end_street: Vorstadtplatz 9
+  end_city: Nagold
+trips_199:
+  id: 199
+  user_id: 96
+  car_id: 25
+  starts_at_N: 52.42682
+  starts_at_E: 14.529838
+  ends_at_E: 11.0224351
+  ends_at_N: 50.97373409999999
+  start_time: '2011-08-12 07:22:12.217716'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.643156'
+  updated_at: '2011-08-11 07:31:46.643156'
+  baggage: t
+  free_seats: 4
+  distance: 378
+  duration: 12335
+  start_zipcode: 15326
+  start_street: Seelower Straße 1
+  start_city: Lebus
+  end_zipcode: 99084
+  end_street: Regierungsstraße 44a
+  end_city: Erfurt
+trips_200:
+  id: 200
+  user_id: 45
+  car_id: 94
+  starts_at_N: 48.87184209999999
+  starts_at_E: 10.2463006
+  ends_at_E: 8.2383252
+  ends_at_N: 52.6657137
+  start_time: '2011-08-12 07:22:14.240888'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.655635'
+  updated_at: '2011-08-11 07:31:46.655635'
+  baggage: t
+  free_seats: 4
+  distance: 560
+  duration: 17812
+  start_zipcode: 73466
+  start_street: Pfarrer-Bestlin-Straße 10
+  start_city: Lauchheim
+  end_zipcode: 49393
+  end_street: Marktstraße 1
+  end_city: Lohne (Oldenburg)
+trips_201:
+  id: 201
+  user_id: 90
+  car_id: 119
+  starts_at_N: 50.7752926
+  starts_at_E: 11.0814008
+  ends_at_E: 12.587609
+  ends_at_N: 51.27803
+  start_time: '2011-08-12 07:22:16.381840'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.667004'
+  updated_at: '2011-08-11 07:31:46.667004'
+  baggage: t
+  free_seats: 4
+  distance: 171
+  duration: 5768
+  start_zipcode: 99326
+  start_street: Friedrich-Fröbel-Straße 1
+  start_city: Stadtilm
+  end_zipcode: 4683
+  end_street: Breite Straße 2
+  end_city: Naunhof
+trips_202:
+  id: 202
+  user_id: 77
+  car_id: 94
+  starts_at_N: 52.378118
+  starts_at_E: 12.933443
+  ends_at_E: 7.971414
+  ends_at_N: 50.564084
+  start_time: '2011-08-12 07:22:17.730849'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.678979'
+  updated_at: '2011-08-11 07:31:46.678979'
+  baggage: t
+  free_seats: 4
+  distance: 534
+  duration: 17026
+  start_zipcode: 14542
+  start_street: Eisenbahnstraße 8
+  start_city: Werder (Havel)
+  end_zipcode: 56457
+  end_street: Neustraße 23-25
+  end_city: Westerburg
+trips_203:
+  id: 203
+  user_id: 95
+  car_id: 35
+  starts_at_N: 50.0491059
+  starts_at_E: 10.2311527
+  ends_at_E: 6.6279449
+  ends_at_N: 51.2263259
+  start_time: '2011-08-12 07:22:19.661639'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.690383'
+  updated_at: '2011-08-11 07:31:46.690383'
+  baggage: t
+  free_seats: 4
+  distance: 393
+  duration: 12535
+  start_zipcode: 97421
+  start_street: Kornmarkt 17
+  start_city: Schweinfurt
+  end_zipcode: 41564
+  end_street: Kampstraße 37
+  end_city: Kaarst
+trips_204:
+  id: 204
+  user_id: 21
+  car_id: 43
+  starts_at_N: 50.0555266
+  starts_at_E: 8.7960494
+  ends_at_E: 12.3713639
+  ends_at_N: 51.33967310000001
+  start_time: '2011-08-12 07:22:23.519932'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.701044'
+  updated_at: '2011-08-11 07:31:46.701044'
+  baggage: t
+  free_seats: 4
+  distance: 400
+  duration: 12706
+  start_zipcode: 63150
+  start_street: Ringstraße 7
+  start_city: Heusenstamm
+  end_zipcode: 4109
+  end_street: Thomaskirchhof 7
+  end_city: Leipzig
+trips_205:
+  id: 205
+  user_id: 80
+  car_id: 75
+  starts_at_N: 50.58226
+  starts_at_E: 11.9922
+  ends_at_E: 9.253974
+  ends_at_N: 47.92595379999999
+  start_time: '2011-08-12 07:22:25.600079'
+  comment: Biete eine Fahrt an!
+  created_at: '2011-08-11 07:31:46.712295'
+  updated_at: '2011-08-11 07:31:46.712295'
+  baggage: t
+  free_seats: 4
+  distance: 461
+  duration: 16192
+  start_zipcode: 7952
+  start_street: Lutherstraße 13
+  start_city: Pausa/Vogtl.
+  end_zipcode: 88630
+  end_street: Bahnhofstraße 4
+  end_city: Pfullendorf

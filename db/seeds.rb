@@ -1,5 +1,4 @@
 # encoding: utf-8
-require 'massentest'
 #Creates 5 User
 user1 = User.new :email => "dkruempe@uos.com", :password => "dkruempe",:password_confirmation => "dkruempe", :name => "Dominik Krümpelmann", :user_type => true, :sex => true, :address => "Großer Esch 20", :addressN => 52.57975, :addressE => 8.13409, :zipcode => 48496, :phone => "054571598", :instantmessenger => "icq: 5465465", :city => "Hopsten", :email_notifications => true, :visible_phone => true, :visible_email => true, :visible_address => true, :visible_age => true, :visible_im => false, :visible_cars => true, :birthday => Date.new(1989,12,28), :visible_zip => true, :visible_city => true, :business => false, :last_delivery => Time.now, :last_ratings => Time.now, :role => "admin"
 user2 = User.new :email => "mibloemer@uos.de", :password => "mibloemer",:password_confirmation => "mibloemer", :name => "Michael Blömer", :user_type => false, :sex => true, :address => "Alfred-Delp-Str. 30" , :addressN => 52.26419, :addressE => 8.014429999999999, :zipcode => 49080, :phone => "0456465", :instantmessenger => "icq: 4564644", :city => "Osnabrück", :email_notifications => false, :visible_phone => true, :visible_email => false, :visible_address => false, :visible_age => true, :visible_im => false, :visible_cars => true, :birthday => Date.new(1990,6,6), :visible_zip => false, :visible_city => true, :business => false, :last_delivery => Time.now, :last_ratings => Time.now,:last_ratings => Time.now, :role => "member"
@@ -209,3 +208,4 @@ ra5.save!
 #Creates Assoziations
 user1.ignorings << user3
 user1.ignorings << user4
+require 'massentest'

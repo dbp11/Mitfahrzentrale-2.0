@@ -5,8 +5,8 @@ cars_001:
   seats: 5
   licence: '10234'
   smoker: t
-  created_at: '2011-08-08 14:04:07.719225'
-  updated_at: '2011-08-08 14:04:07.719225'
+  created_at: '2011-08-11 07:12:24.806396'
+  updated_at: '2011-08-11 07:12:24.806396'
   description: Kein Kofferraum
   carpic_file_name: !!null 
   carpic_content_type: !!null 
@@ -20,8 +20,8 @@ cars_002:
   seats: 2
   licence: '40321'
   smoker: f
-  created_at: '2011-08-08 14:04:07.732958'
-  updated_at: '2011-08-08 14:04:07.732958'
+  created_at: '2011-08-11 07:12:24.819748'
+  updated_at: '2011-08-11 07:12:24.819748'
   description: Kofferraum verfügbar aber kein Platz
   carpic_file_name: !!null 
   carpic_content_type: !!null 
@@ -35,8 +35,8 @@ cars_003:
   seats: 3
   licence: '12345'
   smoker: t
-  created_at: '2011-08-08 14:04:07.744274'
-  updated_at: '2011-08-08 14:04:07.744274'
+  created_at: '2011-08-11 07:12:24.831323'
+  updated_at: '2011-08-11 07:12:24.831323'
   description: Auto rostet und keine Reifen
   carpic_file_name: !!null 
   carpic_content_type: !!null 
@@ -50,8 +50,8 @@ cars_004:
   seats: 4
   licence: '54321'
   smoker: f
-  created_at: '2011-08-08 14:04:07.755851'
-  updated_at: '2011-08-08 14:04:07.755851'
+  created_at: '2011-08-11 07:12:24.842802'
+  updated_at: '2011-08-11 07:12:24.842802'
   description: Test test
   carpic_file_name: !!null 
   carpic_content_type: !!null 
@@ -65,8 +65,8 @@ cars_005:
   seats: 2
   licence: '45646'
   smoker: t
-  created_at: '2011-08-08 14:04:07.767387'
-  updated_at: '2011-08-08 14:04:07.767387'
+  created_at: '2011-08-11 07:12:24.854317'
+  updated_at: '2011-08-11 07:12:24.854317'
   description: aha aha! Hier soll etwas sinnvolles stehen?
   carpic_file_name: !!null 
   carpic_content_type: !!null 
@@ -74,3 +74,1803 @@ cars_005:
   carpic_updated_at: !!null 
   car_type: VW
   price_km: 20.3
+cars_006:
+  id: 6
+  user_id: 92
+  seats: 5
+  licence: '102341'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.647005'
+  updated_at: '2011-08-11 07:31:42.647005'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_007:
+  id: 7
+  user_id: 22
+  seats: 5
+  licence: '102342'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.658759'
+  updated_at: '2011-08-11 07:31:42.658759'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_008:
+  id: 8
+  user_id: 45
+  seats: 5
+  licence: '102343'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.670592'
+  updated_at: '2011-08-11 07:31:42.670592'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_009:
+  id: 9
+  user_id: 90
+  seats: 5
+  licence: '102344'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.682463'
+  updated_at: '2011-08-11 07:31:42.682463'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_010:
+  id: 10
+  user_id: 63
+  seats: 5
+  licence: '102345'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.694399'
+  updated_at: '2011-08-11 07:31:42.694399'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_011:
+  id: 11
+  user_id: 28
+  seats: 5
+  licence: '102346'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.706603'
+  updated_at: '2011-08-11 07:31:42.706603'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_012:
+  id: 12
+  user_id: 12
+  seats: 5
+  licence: '102347'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.718918'
+  updated_at: '2011-08-11 07:31:42.718918'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_013:
+  id: 13
+  user_id: 80
+  seats: 5
+  licence: '102348'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.731123'
+  updated_at: '2011-08-11 07:31:42.731123'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_014:
+  id: 14
+  user_id: 47
+  seats: 5
+  licence: '102349'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.743484'
+  updated_at: '2011-08-11 07:31:42.743484'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_015:
+  id: 15
+  user_id: 11
+  seats: 5
+  licence: '1023410'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.756028'
+  updated_at: '2011-08-11 07:31:42.756028'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_016:
+  id: 16
+  user_id: 55
+  seats: 5
+  licence: '1023411'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.768706'
+  updated_at: '2011-08-11 07:31:42.768706'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_017:
+  id: 17
+  user_id: 25
+  seats: 5
+  licence: '1023412'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.781225'
+  updated_at: '2011-08-11 07:31:42.781225'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_018:
+  id: 18
+  user_id: 51
+  seats: 5
+  licence: '1023413'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.793468'
+  updated_at: '2011-08-11 07:31:42.793468'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_019:
+  id: 19
+  user_id: 63
+  seats: 5
+  licence: '1023414'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.805721'
+  updated_at: '2011-08-11 07:31:42.805721'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_020:
+  id: 20
+  user_id: 45
+  seats: 5
+  licence: '1023415'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.817970'
+  updated_at: '2011-08-11 07:31:42.817970'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_021:
+  id: 21
+  user_id: 56
+  seats: 5
+  licence: '1023416'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.830359'
+  updated_at: '2011-08-11 07:31:42.830359'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_022:
+  id: 22
+  user_id: 95
+  seats: 5
+  licence: '1023417'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.842704'
+  updated_at: '2011-08-11 07:31:42.842704'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_023:
+  id: 23
+  user_id: 80
+  seats: 5
+  licence: '1023418'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.854914'
+  updated_at: '2011-08-11 07:31:42.854914'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_024:
+  id: 24
+  user_id: 59
+  seats: 5
+  licence: '1023419'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.867349'
+  updated_at: '2011-08-11 07:31:42.867349'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_025:
+  id: 25
+  user_id: 71
+  seats: 5
+  licence: '1023420'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.879727'
+  updated_at: '2011-08-11 07:31:42.879727'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_026:
+  id: 26
+  user_id: 28
+  seats: 5
+  licence: '1023421'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.892551'
+  updated_at: '2011-08-11 07:31:42.892551'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_027:
+  id: 27
+  user_id: 75
+  seats: 5
+  licence: '1023422'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.904988'
+  updated_at: '2011-08-11 07:31:42.904988'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_028:
+  id: 28
+  user_id: 25
+  seats: 5
+  licence: '1023423'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.917067'
+  updated_at: '2011-08-11 07:31:42.917067'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_029:
+  id: 29
+  user_id: 95
+  seats: 5
+  licence: '1023424'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.929934'
+  updated_at: '2011-08-11 07:31:42.929934'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_030:
+  id: 30
+  user_id: 85
+  seats: 5
+  licence: '1023425'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.942565'
+  updated_at: '2011-08-11 07:31:42.942565'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_031:
+  id: 31
+  user_id: 81
+  seats: 5
+  licence: '1023426'
+  smoker: t
+  created_at: '2011-08-11 07:31:42.998643'
+  updated_at: '2011-08-11 07:31:42.998643'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_032:
+  id: 32
+  user_id: 53
+  seats: 5
+  licence: '1023427'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.013802'
+  updated_at: '2011-08-11 07:31:43.013802'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_033:
+  id: 33
+  user_id: 76
+  seats: 5
+  licence: '1023428'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.028361'
+  updated_at: '2011-08-11 07:31:43.028361'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_034:
+  id: 34
+  user_id: 47
+  seats: 5
+  licence: '1023429'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.045655'
+  updated_at: '2011-08-11 07:31:43.045655'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_035:
+  id: 35
+  user_id: 11
+  seats: 5
+  licence: '1023430'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.061452'
+  updated_at: '2011-08-11 07:31:43.061452'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_036:
+  id: 36
+  user_id: 96
+  seats: 5
+  licence: '1023431'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.079316'
+  updated_at: '2011-08-11 07:31:43.079316'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_037:
+  id: 37
+  user_id: 51
+  seats: 5
+  licence: '1023432'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.094836'
+  updated_at: '2011-08-11 07:31:43.094836'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_038:
+  id: 38
+  user_id: 70
+  seats: 5
+  licence: '1023433'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.109503'
+  updated_at: '2011-08-11 07:31:43.109503'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_039:
+  id: 39
+  user_id: 49
+  seats: 5
+  licence: '1023434'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.125242'
+  updated_at: '2011-08-11 07:31:43.125242'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_040:
+  id: 40
+  user_id: 67
+  seats: 5
+  licence: '1023435'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.141622'
+  updated_at: '2011-08-11 07:31:43.141622'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_041:
+  id: 41
+  user_id: 97
+  seats: 5
+  licence: '1023436'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.156243'
+  updated_at: '2011-08-11 07:31:43.156243'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_042:
+  id: 42
+  user_id: 71
+  seats: 5
+  licence: '1023437'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.168283'
+  updated_at: '2011-08-11 07:31:43.168283'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_043:
+  id: 43
+  user_id: 31
+  seats: 5
+  licence: '1023438'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.179776'
+  updated_at: '2011-08-11 07:31:43.179776'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_044:
+  id: 44
+  user_id: 27
+  seats: 5
+  licence: '1023439'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.195343'
+  updated_at: '2011-08-11 07:31:43.195343'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_045:
+  id: 45
+  user_id: 49
+  seats: 5
+  licence: '1023440'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.208104'
+  updated_at: '2011-08-11 07:31:43.208104'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_046:
+  id: 46
+  user_id: 5
+  seats: 5
+  licence: '1023441'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.222338'
+  updated_at: '2011-08-11 07:31:43.222338'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_047:
+  id: 47
+  user_id: 71
+  seats: 5
+  licence: '1023442'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.239927'
+  updated_at: '2011-08-11 07:31:43.239927'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_048:
+  id: 48
+  user_id: 35
+  seats: 5
+  licence: '1023443'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.253152'
+  updated_at: '2011-08-11 07:31:43.253152'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_049:
+  id: 49
+  user_id: 24
+  seats: 5
+  licence: '1023444'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.265637'
+  updated_at: '2011-08-11 07:31:43.265637'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_050:
+  id: 50
+  user_id: 82
+  seats: 5
+  licence: '1023445'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.277811'
+  updated_at: '2011-08-11 07:31:43.277811'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_051:
+  id: 51
+  user_id: 21
+  seats: 5
+  licence: '1023446'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.290203'
+  updated_at: '2011-08-11 07:31:43.290203'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_052:
+  id: 52
+  user_id: 79
+  seats: 5
+  licence: '1023447'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.302616'
+  updated_at: '2011-08-11 07:31:43.302616'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_053:
+  id: 53
+  user_id: 85
+  seats: 5
+  licence: '1023448'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.315069'
+  updated_at: '2011-08-11 07:31:43.315069'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_054:
+  id: 54
+  user_id: 59
+  seats: 5
+  licence: '1023449'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.327425'
+  updated_at: '2011-08-11 07:31:43.327425'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_055:
+  id: 55
+  user_id: 80
+  seats: 5
+  licence: '1023450'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.339638'
+  updated_at: '2011-08-11 07:31:43.339638'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_056:
+  id: 56
+  user_id: 71
+  seats: 5
+  licence: '1023451'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.351937'
+  updated_at: '2011-08-11 07:31:43.351937'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_057:
+  id: 57
+  user_id: 72
+  seats: 5
+  licence: '1023452'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.364277'
+  updated_at: '2011-08-11 07:31:43.364277'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_058:
+  id: 58
+  user_id: 86
+  seats: 5
+  licence: '1023453'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.376619'
+  updated_at: '2011-08-11 07:31:43.376619'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_059:
+  id: 59
+  user_id: 74
+  seats: 5
+  licence: '1023454'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.388872'
+  updated_at: '2011-08-11 07:31:43.388872'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_060:
+  id: 60
+  user_id: 24
+  seats: 5
+  licence: '1023455'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.401099'
+  updated_at: '2011-08-11 07:31:43.401099'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_061:
+  id: 61
+  user_id: 21
+  seats: 5
+  licence: '1023456'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.413141'
+  updated_at: '2011-08-11 07:31:43.413141'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_062:
+  id: 62
+  user_id: 4
+  seats: 5
+  licence: '1023457'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.425478'
+  updated_at: '2011-08-11 07:31:43.425478'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_063:
+  id: 63
+  user_id: 100
+  seats: 5
+  licence: '1023458'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.437706'
+  updated_at: '2011-08-11 07:31:43.437706'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_064:
+  id: 64
+  user_id: 29
+  seats: 5
+  licence: '1023459'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.449953'
+  updated_at: '2011-08-11 07:31:43.449953'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_065:
+  id: 65
+  user_id: 14
+  seats: 5
+  licence: '1023460'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.462698'
+  updated_at: '2011-08-11 07:31:43.462698'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_066:
+  id: 66
+  user_id: 35
+  seats: 5
+  licence: '1023461'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.475226'
+  updated_at: '2011-08-11 07:31:43.475226'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_067:
+  id: 67
+  user_id: 5
+  seats: 5
+  licence: '1023462'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.487703'
+  updated_at: '2011-08-11 07:31:43.487703'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_068:
+  id: 68
+  user_id: 97
+  seats: 5
+  licence: '1023463'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.500195'
+  updated_at: '2011-08-11 07:31:43.500195'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_069:
+  id: 69
+  user_id: 93
+  seats: 5
+  licence: '1023464'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.512934'
+  updated_at: '2011-08-11 07:31:43.512934'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_070:
+  id: 70
+  user_id: 65
+  seats: 5
+  licence: '1023465'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.525823'
+  updated_at: '2011-08-11 07:31:43.525823'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_071:
+  id: 71
+  user_id: 69
+  seats: 5
+  licence: '1023466'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.538967'
+  updated_at: '2011-08-11 07:31:43.538967'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_072:
+  id: 72
+  user_id: 13
+  seats: 5
+  licence: '1023467'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.551902'
+  updated_at: '2011-08-11 07:31:43.551902'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_073:
+  id: 73
+  user_id: 4
+  seats: 5
+  licence: '1023468'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.564266'
+  updated_at: '2011-08-11 07:31:43.564266'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_074:
+  id: 74
+  user_id: 49
+  seats: 5
+  licence: '1023469'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.576333'
+  updated_at: '2011-08-11 07:31:43.576333'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_075:
+  id: 75
+  user_id: 59
+  seats: 5
+  licence: '1023470'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.588707'
+  updated_at: '2011-08-11 07:31:43.588707'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_076:
+  id: 76
+  user_id: 32
+  seats: 5
+  licence: '1023471'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.600352'
+  updated_at: '2011-08-11 07:31:43.600352'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_077:
+  id: 77
+  user_id: 91
+  seats: 5
+  licence: '1023472'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.612288'
+  updated_at: '2011-08-11 07:31:43.612288'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_078:
+  id: 78
+  user_id: 7
+  seats: 5
+  licence: '1023473'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.624404'
+  updated_at: '2011-08-11 07:31:43.624404'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_079:
+  id: 79
+  user_id: 85
+  seats: 5
+  licence: '1023474'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.636602'
+  updated_at: '2011-08-11 07:31:43.636602'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_080:
+  id: 80
+  user_id: 97
+  seats: 5
+  licence: '1023475'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.648746'
+  updated_at: '2011-08-11 07:31:43.648746'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_081:
+  id: 81
+  user_id: 49
+  seats: 5
+  licence: '1023476'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.661542'
+  updated_at: '2011-08-11 07:31:43.661542'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_082:
+  id: 82
+  user_id: 94
+  seats: 5
+  licence: '1023477'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.674491'
+  updated_at: '2011-08-11 07:31:43.674491'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_083:
+  id: 83
+  user_id: 47
+  seats: 5
+  licence: '1023478'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.730744'
+  updated_at: '2011-08-11 07:31:43.730744'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_084:
+  id: 84
+  user_id: 34
+  seats: 5
+  licence: '1023479'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.742904'
+  updated_at: '2011-08-11 07:31:43.742904'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_085:
+  id: 85
+  user_id: 46
+  seats: 5
+  licence: '1023480'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.755338'
+  updated_at: '2011-08-11 07:31:43.755338'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_086:
+  id: 86
+  user_id: 71
+  seats: 5
+  licence: '1023481'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.767951'
+  updated_at: '2011-08-11 07:31:43.767951'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_087:
+  id: 87
+  user_id: 73
+  seats: 5
+  licence: '1023482'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.780334'
+  updated_at: '2011-08-11 07:31:43.780334'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_088:
+  id: 88
+  user_id: 85
+  seats: 5
+  licence: '1023483'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.792778'
+  updated_at: '2011-08-11 07:31:43.792778'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_089:
+  id: 89
+  user_id: 34
+  seats: 5
+  licence: '1023484'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.805148'
+  updated_at: '2011-08-11 07:31:43.805148'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_090:
+  id: 90
+  user_id: 2
+  seats: 5
+  licence: '1023485'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.817437'
+  updated_at: '2011-08-11 07:31:43.817437'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_091:
+  id: 91
+  user_id: 39
+  seats: 5
+  licence: '1023486'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.829993'
+  updated_at: '2011-08-11 07:31:43.829993'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_092:
+  id: 92
+  user_id: 99
+  seats: 5
+  licence: '1023487'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.842438'
+  updated_at: '2011-08-11 07:31:43.842438'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_093:
+  id: 93
+  user_id: 75
+  seats: 5
+  licence: '1023488'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.854722'
+  updated_at: '2011-08-11 07:31:43.854722'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_094:
+  id: 94
+  user_id: 20
+  seats: 5
+  licence: '1023489'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.867131'
+  updated_at: '2011-08-11 07:31:43.867131'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_095:
+  id: 95
+  user_id: 8
+  seats: 5
+  licence: '1023490'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.879471'
+  updated_at: '2011-08-11 07:31:43.879471'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_096:
+  id: 96
+  user_id: 3
+  seats: 5
+  licence: '1023491'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.891559'
+  updated_at: '2011-08-11 07:31:43.891559'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_097:
+  id: 97
+  user_id: 13
+  seats: 5
+  licence: '1023492'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.904388'
+  updated_at: '2011-08-11 07:31:43.904388'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_098:
+  id: 98
+  user_id: 80
+  seats: 5
+  licence: '1023493'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.917318'
+  updated_at: '2011-08-11 07:31:43.917318'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_099:
+  id: 99
+  user_id: 77
+  seats: 5
+  licence: '1023494'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.930193'
+  updated_at: '2011-08-11 07:31:43.930193'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_100:
+  id: 100
+  user_id: 54
+  seats: 5
+  licence: '1023495'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.943232'
+  updated_at: '2011-08-11 07:31:43.943232'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_101:
+  id: 101
+  user_id: 22
+  seats: 5
+  licence: '1023496'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.956058'
+  updated_at: '2011-08-11 07:31:43.956058'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_102:
+  id: 102
+  user_id: 93
+  seats: 5
+  licence: '1023497'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.968383'
+  updated_at: '2011-08-11 07:31:43.968383'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_103:
+  id: 103
+  user_id: 59
+  seats: 5
+  licence: '1023498'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.981475'
+  updated_at: '2011-08-11 07:31:43.981475'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_104:
+  id: 104
+  user_id: 47
+  seats: 5
+  licence: '1023499'
+  smoker: t
+  created_at: '2011-08-11 07:31:43.993872'
+  updated_at: '2011-08-11 07:31:43.993872'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_105:
+  id: 105
+  user_id: 11
+  seats: 5
+  licence: '10234100'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.007199'
+  updated_at: '2011-08-11 07:31:44.007199'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_106:
+  id: 106
+  user_id: 64
+  seats: 5
+  licence: '10234101'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.020184'
+  updated_at: '2011-08-11 07:31:44.020184'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_107:
+  id: 107
+  user_id: 51
+  seats: 5
+  licence: '10234102'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.032606'
+  updated_at: '2011-08-11 07:31:44.032606'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_108:
+  id: 108
+  user_id: 97
+  seats: 5
+  licence: '10234103'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.045494'
+  updated_at: '2011-08-11 07:31:44.045494'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_109:
+  id: 109
+  user_id: 69
+  seats: 5
+  licence: '10234104'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.057264'
+  updated_at: '2011-08-11 07:31:44.057264'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_110:
+  id: 110
+  user_id: 87
+  seats: 5
+  licence: '10234105'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.069385'
+  updated_at: '2011-08-11 07:31:44.069385'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_111:
+  id: 111
+  user_id: 34
+  seats: 5
+  licence: '10234106'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.081582'
+  updated_at: '2011-08-11 07:31:44.081582'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_112:
+  id: 112
+  user_id: 57
+  seats: 5
+  licence: '10234107'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.093660'
+  updated_at: '2011-08-11 07:31:44.093660'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_113:
+  id: 113
+  user_id: 27
+  seats: 5
+  licence: '10234108'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.105508'
+  updated_at: '2011-08-11 07:31:44.105508'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_114:
+  id: 114
+  user_id: 34
+  seats: 5
+  licence: '10234109'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.117541'
+  updated_at: '2011-08-11 07:31:44.117541'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_115:
+  id: 115
+  user_id: 83
+  seats: 5
+  licence: '10234110'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.129545'
+  updated_at: '2011-08-11 07:31:44.129545'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_116:
+  id: 116
+  user_id: 73
+  seats: 5
+  licence: '10234111'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.141501'
+  updated_at: '2011-08-11 07:31:44.141501'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_117:
+  id: 117
+  user_id: 80
+  seats: 5
+  licence: '10234112'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.153400'
+  updated_at: '2011-08-11 07:31:44.153400'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_118:
+  id: 118
+  user_id: 38
+  seats: 5
+  licence: '10234113'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.166233'
+  updated_at: '2011-08-11 07:31:44.166233'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_119:
+  id: 119
+  user_id: 35
+  seats: 5
+  licence: '10234114'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.178703'
+  updated_at: '2011-08-11 07:31:44.178703'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_120:
+  id: 120
+  user_id: 35
+  seats: 5
+  licence: '10234115'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.191636'
+  updated_at: '2011-08-11 07:31:44.191636'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_121:
+  id: 121
+  user_id: 86
+  seats: 5
+  licence: '10234116'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.204015'
+  updated_at: '2011-08-11 07:31:44.204015'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_122:
+  id: 122
+  user_id: 81
+  seats: 5
+  licence: '10234117'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.216557'
+  updated_at: '2011-08-11 07:31:44.216557'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_123:
+  id: 123
+  user_id: 25
+  seats: 5
+  licence: '10234118'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.229278'
+  updated_at: '2011-08-11 07:31:44.229278'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_124:
+  id: 124
+  user_id: 43
+  seats: 5
+  licence: '10234119'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.241832'
+  updated_at: '2011-08-11 07:31:44.241832'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5
+cars_125:
+  id: 125
+  user_id: 93
+  seats: 5
+  licence: '10234120'
+  smoker: t
+  created_at: '2011-08-11 07:31:44.254311'
+  updated_at: '2011-08-11 07:31:44.254311'
+  description: Kein Kofferraum
+  carpic_file_name: !!null 
+  carpic_content_type: !!null 
+  carpic_file_size: !!null 
+  carpic_updated_at: !!null 
+  car_type: BMW
+  price_km: 5.5

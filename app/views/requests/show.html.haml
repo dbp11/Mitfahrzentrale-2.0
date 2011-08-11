@@ -59,7 +59,7 @@
 %p
   *Angaben ohne Gewähr
 
-%h4 Dazu passende Trips:
+%h3 Dazu passende Trips:
 -if @sorted_trips == nil or @sorted_trips.count <= 0
   %table.index_table
     %tr
@@ -81,9 +81,8 @@
       %td
         Gepäck
       %td
-        link
-      %td
         Bewertung
+      %td
     - @sorted_trips.each do |t|
       %tr.index_table_second
         %td 
@@ -96,13 +95,13 @@
         %td
           = t[0].get_route_distance
         %td
-          = t[0].get_route_duration
+          = "#{"%02d" % (t[0].duration/3600)}:#{"%02d" % (t[0].duration/60%60)}"
         %td
           = t[0].baggage? ? "Ja" : "Nein"
-        %td
-          = link_to 'Zur Fahrt', "/trips/"+t[0].id.to_s
         %td
           = "%.1f" % t[0].user.get_avg_rating_driver
           = "(" + t[0].user.count_ratings.to_s + ")"
 
+        %td
+          = link_to image_tag("/images/Button_show.png", :alt => "Anzeigen"), url_for(t[0])
 
