@@ -193,16 +193,17 @@
           %td.left= "Bewerber (#{u_passengers == nil ? "0" : u_passengers.count})"
           %td.left= "Bewertung"
           %td
+          %td
         -#Die Bewerbungen selbst darf aber nur der Fahrer sehen (und ein Bewerber seine eigene, um
           sie zurücknehmen zu können). Wenn keine Bewerbungen vorhanden, dann Hinweis ausgeben
         - if @status == @FAHRER and (u_passengers == nil or u_passengers.count <= 0)
           %tr
-            %td.left{:colspan => "3"} keine Bewerbungen vorhanden
+            %td.left{:colspan => "4"} keine Bewerbungen vorhanden
         - else
           -#Wenn aktueller Benutzer weder Fahrer noch Bewerber ist,...
           - if @status != @FAHRER and @status != @POTENTIELLER_MITFAHRER
             %tr
-              %td.center{:colspan => "3"}
+              %td.center{:colspan => "4"}
                 -#Wenn aktueller Benutzer Mitfahrer ist, dann Ansicht verweigern, ansonsten Link
                   zum Bewerben anzeigen
                 - if @status == @MITFAHRER
@@ -216,7 +217,9 @@
           - if @status == @FAHRER or @status == @POTENTIELLER_MITFAHRER
             %tr
               %td Benutzername
-              %td.left{:colspan => "3"} Rating
+              %td.center{:colspan => "1"} Rating
+              %td
+              %td
             -#Über alle Bewerber iterieren
             - u_passengers.each do |passenger|
               -#Für den Fahrer alle Bewerber ausgeben, für Bewerber noch sich selbst

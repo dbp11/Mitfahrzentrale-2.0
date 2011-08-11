@@ -1,3 +1,9 @@
+
+:javascript
+  function charactersLeft(){
+    document.getElementById("cmthinweis").firstChild.nodeValue = "Noch " + (document.getElementById("request_comment").maxLength - document.getElementById("request_comment").value.length) + " Zeichen";
+  }
+
 - t = Time.now
 - t + (60 * 15)
 = form_for @request do |f|
@@ -73,7 +79,9 @@
       %td
         = f.label:comment, "Anmerkungen"
       %td
-        = f.text_area:comment, :rows=>"4", :cols => "48"
+        = f.text_area:comment, :rows=>"4", :cols => "48", :onkeydown => "charactersLeft()", :onkeyup => "charactersLeft()", :onkeypress => "charactersLeft()", :maxlength => "160"
+        #cmthinweis
+          %script charactersLeft();
       %td
       %td
     %tr
