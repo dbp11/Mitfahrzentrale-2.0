@@ -430,8 +430,10 @@ before_validation :set_member, :set_last_delivery_ratings
   # @return Car Set
   def get_visible_cars
     erg = []
-    self.passenger_trips.each do |x|
-      erg << x.car
+    Trip.all.each do |t|
+      if t.start_time > Time.now
+        erg << t.car
+      end
     end
     return erg
   end
