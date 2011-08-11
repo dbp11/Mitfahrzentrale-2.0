@@ -99,13 +99,11 @@
                 = image_tag @user.pic.url(:medium)
               -else
                 - if (@user.business?)
-                  = image_tag "../images/user/fabrik.jpg"
+                  %img{:src=>"../images/user/fabrik.jpg"}
                 - else 
                   - if (@user.sex?)
-                    -#= image_tag "../images/user/männlich.jpg"
                     %img{:src => "/images/user/männlich.jpg"}
                   - else 
-                    -#= image_tag "../images/user/weiblich.jpg"
                     %img{:src => "/images/user/weiblich.jpg"}
 
     %tr
